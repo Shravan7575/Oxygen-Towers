@@ -248,6 +248,26 @@ button{
   .flat-grid{grid-template-columns:1fr}
   .filter-grid{grid-template-columns:1fr}
 }
+  .stat{
+  position:relative;
+  overflow:hidden;
+}
+
+.stat::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:5px;
+}
+
+.stat:nth-child(1)::before{background:#22c55e;}
+.stat:nth-child(2)::before{background:#ef4444;}
+.stat:nth-child(3)::before{background:#f59e0b;}
+.stat:nth-child(4)::before{background:#3b82f6;}
+.stat:nth-child(5)::before{background:#a855f7;}
+.stat:nth-child(6)::before{background:#ec4899;}
 </style>
 </head>
 
