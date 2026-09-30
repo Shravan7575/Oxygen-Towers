@@ -523,13 +523,16 @@ const flats = [
 const floors=[
 "Ground","1st","2nd","3rd","4th","5th","6th","7th","8th","9th"
 ];
-
+function displayStatus(status){
+  if(status==="SOLD" || status==="VENDOR" || status==="VENDOR-RMC"){
+    return status;
+  }
+  return "AVAILABLE";
+}
 
 const statusNames={
   "AVAILABLE":"AVAILABLE",
   "SOLD":"SOLD",
-  "MORTGAGE":"AVAILABLE",
-  "CITY":"AVAILABLE",
   "VENDOR":"VENDOR-MESTRI",
   "VENDOR-RMC":"VENDOR-RMC"
 };
@@ -557,7 +560,7 @@ function updateStats(){
   };
 
   flats.forEach(f=>{
-    counts[f[6]]++;
+    counts[displayStatus(f[6])]++;
   });
 
   document.getElementById("availableCount").textContent=counts.AVAILABLE;
@@ -576,10 +579,10 @@ function render(){
   const floor=document.getElementById("floor").value;
   const facing=document.getElementById("facing").value;
 
-  const results=flats.filter(f=>{
+  const flatStatus=displayStatus(f[6]);
     return (
       f[0].toLowerCase().includes(search) &&
-      (!status || f[6]===status) &&
+      (!status || flatStatus===status) &&
       (!bhk || f[3]===bhk) &&
       (!floor || f[1]===floor) &&
       (!facing || f[2]===facing)
@@ -614,7 +617,7 @@ function render(){
       const bhk=f[3];
       const area=f[4];
       const price=f[5];
-      const status=f[6];
+      const status=displayStatus(f[6]);
       const remark=f[7];
 
       const cls=status.toLowerCase().replace("-","-");
