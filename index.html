@@ -1,263 +1,1296 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Oxygen Towers | North City Developers</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7f8;color:#172033}
-header{background:linear-gradient(135deg,#073b4c,#087e8b);color:white;text-align:center;padding:35px 15px}
-header h1{margin:0;font-size:30px}
-header p{margin:7px 0}
-.container{max-width:1100px;margin:auto;padding:20px}
-.stats{background:white;border-radius:15px;padding:20px;text-align:center;margin-bottom:18px;box-shadow:0 3px 12px #0001}
-.stats b{font-size:30px;color:#087e8b}
-.filters{background:white;padding:16px;border-radius:15px;margin-bottom:20px}
-input,select{width:100%;padding:13px;border:1px solid #ddd;border-radius:9px;margin-bottom:10px;font-size:15px}
-.row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.floor{margin-bottom:25px}
-.floor h2{font-size:21px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.card{background:white;padding:16px;border-radius:14px;border-left:5px solid #19a974;box-shadow:0 3px 12px #0001}
-.flat{font-size:20px;font-weight:bold}
-.available{color:#159957;font-size:13px;font-weight:bold;margin:5px 0}
-.details{line-height:1.7;color:#555;font-size:14px}
-.price{font-size:17px;font-weight:bold;margin-top:8px}
-.whatsapp{display:block;text-align:center;background:#25d366;color:white;text-decoration:none;padding:10px;border-radius:8px;margin-top:12px;font-weight:bold}
-.empty{text-align:center;padding:40px;color:#777}
-@media(max-width:700px){
-.grid{grid-template-columns:repeat(2,1fr)}
-.row{grid-template-columns:1fr}
-header h1{font-size:25px}
+
+*{
+    box-sizing:border-box;
 }
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7f8;
+    color:#172033;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    background:linear-gradient(135deg,#073b4c,#087e8b);
+    color:white;
+    text-align:center;
+    padding:35px 15px;
+}
+
+header h1{
+    margin:0;
+    font-size:30px;
+    letter-spacing:1px;
+}
+
+header p{
+    margin:7px 0;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+/* ================= STATISTICS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.stat-box{
+    background:white;
+    border-radius:15px;
+    padding:18px 10px;
+    text-align:center;
+    box-shadow:0 3px 12px #0001;
+}
+
+.stat-box b{
+    display:block;
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.available-stat b{
+    color:#159957;
+}
+
+.sold-stat b{
+    color:#d64545;
+}
+
+.mortgage-stat b{
+    color:#087e8b;
+}
+
+.city-stat b{
+    color:#7950f2;
+}
+
+.mestri-stat b{
+    color:#d68910;
+}
+
+.rmc-stat b{
+    color:#8e44ad;
+}
+
+.stat-label{
+    font-size:13px;
+    color:#555;
+}
+
+/* ================= FILTERS ================= */
+
+.filters{
+    background:white;
+    padding:16px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px #0001;
+}
+
+input,
+select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:9px;
+    margin-bottom:10px;
+    font-size:15px;
+    background:white;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:#087e8b;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+/* ================= FLOOR ================= */
+
+.floor{
+    margin-bottom:30px;
+}
+
+.floor h2{
+    font-size:21px;
+    margin:0 0 12px;
+    padding-bottom:8px;
+    border-bottom:2px solid #087e8b;
+}
+
+/* ================= GRID ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    background:white;
+    padding:16px;
+    border-radius:14px;
+    border-left:5px solid #19a974;
+    box-shadow:0 3px 12px #0001;
+    transition:transform .15s ease, box-shadow .15s ease;
+}
+
+.card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 18px #0002;
+}
+
+/* AVAILABLE */
+
+.card.available-card{
+    border-left-color:#19a974;
+}
+
+/* SOLD */
+
+.card.sold-card{
+    border-left-color:#d64545;
+    background:#fffafa;
+}
+
+/* MORTGAGE */
+
+.card.mortgage-card{
+    border-left-color:#087e8b;
+    background:#f7fcfd;
+}
+
+/* CITY LEVEL */
+
+.card.city-card{
+    border-left-color:#7950f2;
+    background:#faf9ff;
+}
+
+/* VENDOR MESTRI */
+
+.card.mestri-card{
+    border-left-color:#f39c12;
+    background:#fffaf2;
+}
+
+/* VENDOR RMC */
+
+.card.rmc-card{
+    border-left-color:#8e44ad;
+    background:#fbf8ff;
+}
+
+/* ================= FLAT ================= */
+
+.flat{
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* ================= STATUS ================= */
+
+.status{
+    font-size:13px;
+    font-weight:bold;
+    margin:6px 0 8px;
+}
+
+/* Status colors */
+
+.status-AVAILABLE{
+    color:#159957;
+}
+
+.status-SOLD{
+    color:#d64545;
+}
+
+.status-MORTGAGE{
+    color:#087e8b;
+}
+
+.status-CITY{
+    color:#7950f2;
+}
+
+.status-MESTRI{
+    color:#d68910;
+}
+
+.status-RMC{
+    color:#8e44ad;
+}
+
+/* ================= DETAILS ================= */
+
+.details{
+    line-height:1.7;
+    color:#555;
+    font-size:14px;
+}
+
+/* ================= PRICE ================= */
+
+.price{
+    font-size:17px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+/* ================= WHATSAPP ================= */
+
+.whatsapp{
+    display:block;
+    text-align:center;
+    background:#25d366;
+    color:white;
+    text-decoration:none;
+    padding:10px;
+    border-radius:8px;
+    margin-top:12px;
+    font-weight:bold;
+    transition:background .15s ease;
+}
+
+.whatsapp:hover{
+    background:#1ebe5d;
+}
+
+/* ================= NO RESULTS ================= */
+
+.empty{
+    text-align:center;
+    padding:40px;
+    color:#777;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 3px 12px #0001;
+}
+
+/* ================= LEGEND ================= */
+
+.legend{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px #0001;
+}
+
+.legend-title{
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.legend-items{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.legend-item{
+    font-size:13px;
+    font-weight:bold;
+}
+
+.legend-dot{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    margin-right:5px;
+}
+
+.dot-available{
+    background:#19a974;
+}
+
+.dot-sold{
+    background:#d64545;
+}
+
+.dot-mortgage{
+    background:#087e8b;
+}
+
+.dot-city{
+    background:#7950f2;
+}
+
+.dot-mestri{
+    background:#f39c12;
+}
+
+.dot-rmc{
+    background:#8e44ad;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1050px){
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .row{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .row{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    header h1{
+        font-size:25px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .row{
+        grid-template-columns:1fr;
+    }
+
+    .legend-items{
+        flex-direction:column;
+        gap:8px;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- ================= HEADER ================= -->
+
 <header>
-<h1>OXYGEN TOWERS</h1>
-<p>By North City Developers</p>
-<p>Available Flats</p>
+
+    <h1>OXYGEN TOWERS</h1>
+
+    <p>By North City Developers</p>
+
+    <p>Flat Status & Availability</p>
+
 </header>
+
 
 <div class="container">
 
+
+<!-- ================= STATISTICS ================= -->
+
 <div class="stats">
-<b id="count">0</b>
-<div>Available Flats</div>
+
+    <div class="stat-box available-stat">
+        <b id="availableCount">0</b>
+        <div class="stat-label">Available</div>
+    </div>
+
+    <div class="stat-box sold-stat">
+        <b id="soldCount">0</b>
+        <div class="stat-label">Sold</div>
+    </div>
+
+    <div class="stat-box mortgage-stat">
+        <b id="mortgageCount">0</b>
+        <div class="stat-label">Mortgage</div>
+    </div>
+
+    <div class="stat-box city-stat">
+        <b id="cityCount">0</b>
+        <div class="stat-label">City Level</div>
+    </div>
+
+    <div class="stat-box mestri-stat">
+        <b id="mestriCount">0</b>
+        <div class="stat-label">Vendor-Mestri</div>
+    </div>
+
+    <div class="stat-box rmc-stat">
+        <b id="rmcCount">0</b>
+        <div class="stat-label">Vendor-RMC</div>
+    </div>
+
 </div>
+
+
+<!-- ================= LEGEND ================= -->
+
+<div class="legend">
+
+    <div class="legend-title">
+        Flat Status
+    </div>
+
+    <div class="legend-items">
+
+        <div class="legend-item">
+            <span class="legend-dot dot-available"></span>
+            AVAILABLE
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-dot dot-sold"></span>
+            SOLD
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-dot dot-mortgage"></span>
+            MORTGAGE
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-dot dot-city"></span>
+            CITY LEVEL
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-dot dot-mestri"></span>
+            VENDOR-Mestri
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-dot dot-rmc"></span>
+            VENDOR-RMC
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FILTERS ================= -->
 
 <div class="filters">
-<input id="search" placeholder="Search flat number...">
 
-<div class="row">
-<select id="bhk">
-<option value="">All BHK</option>
-<option value="2">2 BHK</option>
-<option value="3">3 BHK</option>
-</select>
+    <input
+        id="search"
+        type="text"
+        placeholder="Search flat number..."
+    >
 
-<select id="floor">
-<option value="">All Floors</option>
-</select>
 
-<select id="facing">
-<option value="">All Facing</option>
-<option value="EAST">East</option>
-<option value="WEST">West</option>
-<option value="NORTH">North</option>
-</select>
+    <div class="row">
+
+
+        <!-- STATUS -->
+
+        <select id="status">
+
+            <option value="">
+                All Status
+            </option>
+
+            <option value="AVAILABLE">
+                Available
+            </option>
+
+            <option value="SOLD">
+                Sold
+            </option>
+
+            <option value="MORTGAGE">
+                Mortgage
+            </option>
+
+            <option value="CITY">
+                City Level
+            </option>
+
+            <option value="VENDOR">
+                Vendor-Mestri
+            </option>
+
+            <option value="VENDOR-RMC">
+                Vendor-RMC
+            </option>
+
+        </select>
+
+
+        <!-- BHK -->
+
+        <select id="bhk">
+
+            <option value="">
+                All BHK
+            </option>
+
+            <option value="2">
+                2 BHK
+            </option>
+
+            <option value="3">
+                3 BHK
+            </option>
+
+        </select>
+
+
+        <!-- FLOOR -->
+
+        <select id="floor">
+
+            <option value="">
+                All Floors
+            </option>
+
+        </select>
+
+
+        <!-- FACING -->
+
+        <select id="facing">
+
+            <option value="">
+                All Facing
+            </option>
+
+            <option value="EAST">
+                East
+            </option>
+
+            <option value="WEST">
+                West
+            </option>
+
+            <option value="NORTH">
+                North
+            </option>
+
+        </select>
+
+
+    </div>
+
 </div>
-</div>
+
+
+<!-- ================= APP ================= -->
 
 <div id="app"></div>
 
+
 </div>
+
 
 <script>
 
-/*
-Only AVAILABLE flats are included here.
 
-SOLD, VENDOR-Mestri and Vendor-RMC
-are intentionally hidden.
+/*
+=========================================================
+OXYGEN TOWERS
+NORTH CITY DEVELOPERS
+
+STATUS DEFINITIONS
+
+AVAILABLE  = Blank remark in your table
+SOLD       = SOLD
+MORTGAGE   = MORTGAGE
+CITY       = CITY LEVEL
+VENDOR     = VENDOR-Mestri
+VENDOR-RMC = Vendor-RMC
+
+All flats from your supplied table are included.
+=========================================================
 */
+
 
 const flats = [
 
-["G1","Ground","EAST",3,1500,6800000],
-["G2","Ground","WEST",3,1800,8620000],
-["G3","Ground","NORTH",3,1520,7188000],
-["G6","Ground","WEST",3,1500,7100000],
-["G11","Ground","EAST",3,1500,7100000],
-["G14","Ground","NORTH",3,1520,7188000],
+/* =====================================================
+   GROUND FLOOR
+===================================================== */
 
-["101","1st","EAST",3,1500,7100000],
-["102","1st","WEST",3,1800,8620000],
-["103","1st","NORTH",3,1520,7188000],
-["104","1st","NORTH",2,1220,5724000],
-["106","1st","WEST",3,1500,7100000],
-["108","1st","NORTH",2,1220,5968000],
-["111","1st","EAST",3,1500,7100000],
-["114","1st","NORTH",3,1520,7188000],
-["115","1st","EAST",3,1800,8620000],
-["116","1st","WEST",3,1500,7100000],
+["G1","Ground","EAST",3,1500,6800000,"VENDOR"],
+["G2","Ground","WEST",3,1800,8620000,"MORTGAGE"],
+["G3","Ground","NORTH",3,1520,7188000,"MORTGAGE"],
+["G6","Ground","WEST",3,1500,7100000,"MORTGAGE"],
+["G11","Ground","EAST",3,1500,7100000,"MORTGAGE"],
+["G14","Ground","NORTH",3,1520,7188000,"MORTGAGE"],
 
-["202","2nd","WEST",3,2455,11502000],
-["204","2nd","NORTH",2,1415,6543000],
-["205","2nd","NORTH",2,1415,6826000],
-["208","2nd","NORTH",2,1415,6826000],
-["212","2nd","NORTH",2,1415,6826000],
-["213","2nd","NORTH",2,1415,6826000],
-["215","2nd","EAST",3,2455,11502000],
 
-["302","3rd","WEST",3,2455,11011000],
-["304","3rd","NORTH",2,1415,6826000],
-["305","3rd","NORTH",2,1415,6826000],
-["308","3rd","NORTH",2,1415,6826000],
-["309","3rd","NORTH",2,1415,6826000],
-["310","3rd","WEST",2,1435,6914000],
-["313","3rd","NORTH",2,1415,6826000],
+/* =====================================================
+   FIRST FLOOR
+===================================================== */
 
-["404","4th","NORTH",2,1415,6826000],
-["405","4th","NORTH",2,1415,6826000],
-["409","4th","NORTH",2,1415,6826000],
-["410","4th","WEST",2,1435,6914000],
-["412","4th","NORTH",2,1415,6826000],
-["413","4th","NORTH",2,1415,6826000],
-["414","4th","NORTH",3,2075,9830000],
+["101","1st","EAST",3,1500,7100000,"MORTGAGE"],
+["102","1st","WEST",3,1800,8620000,"MORTGAGE"],
+["103","1st","NORTH",3,1520,7188000,"MORTGAGE"],
+["104","1st","NORTH",2,1220,5724000,"VENDOR"],
+["106","1st","WEST",3,1500,7100000,"MORTGAGE"],
+["108","1st","NORTH",2,1220,5968000,"MORTGAGE"],
+["111","1st","EAST",3,1500,7100000,"MORTGAGE"],
+["114","1st","NORTH",3,1520,7188000,"MORTGAGE"],
+["115","1st","EAST",3,1800,8620000,"MORTGAGE"],
+["116","1st","WEST",3,1500,7100000,"MORTGAGE"],
 
-["508","5th","NORTH",2,1415,6826000],
-["509","5th","NORTH",2,1415,6826000],
-["510","5th","WEST",2,1435,6914000],
 
-["604","6th","NORTH",2,1415,6967500],
-["605","6th","NORTH",2,1415,6967500],
-["608","6th","NORTH",2,1415,6967500],
-["610","6th","WEST",2,1435,7057500],
-["613","6th","NORTH",2,1415,6967500],
+/* =====================================================
+   SECOND FLOOR
+===================================================== */
 
-["704","7th","NORTH",2,1415,6967500],
-["705","7th","NORTH",2,1415,6967500],
-["710","7th","WEST",2,1435,6914000],
-["714","7th","NORTH",3,2075,10037500],
+["202","2nd","WEST",3,2455,11502000,"AVAILABLE"],
+["204","2nd","NORTH",2,1415,6543000,"VENDOR"],
+["205","2nd","NORTH",2,1415,6826000,"CITY"],
+["207","2nd","EAST",2,1435,6627000,"SOLD"],
+["208","2nd","NORTH",2,1415,6826000,"CITY"],
+["212","2nd","NORTH",2,1415,6826000,"CITY"],
+["213","2nd","NORTH",2,1415,6826000,"CITY"],
+["215","2nd","EAST",3,2455,11502000,"AVAILABLE"],
 
-["804","8th","NORTH",2,1415,6967500],
-["805","8th","NORTH",2,1415,6967500],
-["806","8th","WEST",3,1790,8755000],
-["808","8th","NORTH",2,1415,6967500],
-["809","8th","NORTH",2,1415,6967500],
-["812","8th","NORTH",2,1415,6967500],
-["813","8th","NORTH",2,1415,6967500],
-["816","8th","WEST",3,1790,8755000],
 
-["904","9th","NORTH",2,1415,7144375],
-["905","9th","NORTH",2,1415,7144375],
-["906","9th","WEST",3,1790,8799750],
-["908","9th","NORTH",2,1415,7144375],
-["909","9th","NORTH",2,1415,7144375],
-["910","9th","WEST",2,1435,7093375],
-["911","9th","EAST",3,1790,8978750],
-["912","9th","NORTH",2,1415,7144375],
-["913","9th","NORTH",2,1415,7144375],
-["916","9th","WEST",3,1790,8755000]
+/* =====================================================
+   THIRD FLOOR
+===================================================== */
+
+["302","3rd","WEST",3,2455,11011000,"VENDOR"],
+["304","3rd","NORTH",2,1415,6826000,"AVAILABLE"],
+["305","3rd","NORTH",2,1415,6826000,"AVAILABLE"],
+["307","3rd","EAST",2,1435,6914000,"SOLD"],
+["308","3rd","NORTH",2,1415,6826000,"AVAILABLE"],
+["309","3rd","NORTH",2,1415,6826000,"AVAILABLE"],
+["310","3rd","WEST",2,1435,6914000,"AVAILABLE"],
+["313","3rd","NORTH",2,1415,6826000,"AVAILABLE"],
+
+
+/* =====================================================
+   FOURTH FLOOR
+===================================================== */
+
+["404","4th","NORTH",2,1415,6826000,"AVAILABLE"],
+["405","4th","NORTH",2,1415,6826000,"AVAILABLE"],
+["407","4th","EAST",2,1435,6053000,"SOLD"],
+["408","4th","NORTH",2,1415,5977000,"SOLD"],
+["409","4th","NORTH",2,1415,6826000,"AVAILABLE"],
+["410","4th","WEST",2,1435,6914000,"AVAILABLE"],
+["411","4th","EAST",3,1790,7502000,"SOLD"],
+["412","4th","NORTH",2,1415,6826000,"AVAILABLE"],
+["413","4th","NORTH",2,1415,6826000,"AVAILABLE"],
+["414","4th","NORTH",3,2075,9830000,"AVAILABLE"],
+["415","4th","EAST",3,2455,11502000,"SOLD"],
+
+
+/* =====================================================
+   FIFTH FLOOR
+===================================================== */
+
+["501","5th","EAST",3,1790,7502000,"SOLD"],
+["502","5th","WEST",3,2455,11502000,"VENDOR-RMC"],
+["503","5th","NORTH",3,2075,8585000,"SOLD"],
+["507","5th","EAST",2,1435,6053000,"SOLD"],
+["508","5th","NORTH",2,1415,6826000,"AVAILABLE"],
+["509","5th","NORTH",2,1415,6826000,"AVAILABLE"],
+["510","5th","WEST",2,1435,6914000,"AVAILABLE"],
+["511","5th","EAST",3,1790,7502000,"SOLD"],
+["515","5th","EAST",3,2455,10029000,"SOLD"],
+["516","5th","WEST",3,1790,7502000,"SOLD"],
+
+
+/* =====================================================
+   SIXTH FLOOR
+===================================================== */
+
+["601","6th","EAST",3,1790,7502000,"SOLD"],
+["602","6th","WEST",3,2455,11011000,"VENDOR-RMC"],
+["604","6th","NORTH",2,1415,6967500,"AVAILABLE"],
+["605","6th","NORTH",2,1415,6967500,"AVAILABLE"],
+["607","6th","EAST",2,1435,7057500,"SOLD"],
+["608","6th","NORTH",2,1415,6967500,"AVAILABLE"],
+["610","6th","WEST",2,1435,7057500,"AVAILABLE"],
+["612","6th","NORTH",2,1415,6967500,"SOLD"],
+["613","6th","NORTH",2,1415,6967500,"AVAILABLE"],
+["615","6th","EAST",3,2455,11747500,"SOLD"],
+
+
+/* =====================================================
+   SEVENTH FLOOR
+===================================================== */
+
+["701","7th","EAST",3,1790,7502000,"SOLD"],
+["702","7th","WEST",3,2455,10029000,"SOLD"],
+["704","7th","NORTH",2,1415,6967500,"AVAILABLE"],
+["705","7th","NORTH",2,1415,6967500,"AVAILABLE"],
+["707","7th","EAST",2,1435,6053000,"SOLD"],
+["710","7th","WEST",2,1435,6914000,"AVAILABLE"],
+["711","7th","EAST",3,1790,7502000,"SOLD"],
+["714","7th","NORTH",3,2075,10037500,"AVAILABLE"],
+["715","7th","EAST",3,2455,10029000,"SOLD"],
+
+
+/* =====================================================
+   EIGHTH FLOOR
+===================================================== */
+
+["801","8th","EAST",3,1790,8218000,"SOLD"],
+["802","8th","WEST",3,2455,11747500,"SOLD"],
+["803","8th","NORTH",3,2075,9415000,"SOLD"],
+["804","8th","NORTH",2,1415,6967500,"AVAILABLE"],
+["805","8th","NORTH",2,1415,6967500,"AVAILABLE"],
+["806","8th","WEST",3,1790,8755000,"AVAILABLE"],
+["807","8th","EAST",2,1435,6627000,"SOLD"],
+["808","8th","NORTH",2,1415,6967500,"AVAILABLE"],
+["809","8th","NORTH",2,1415,6967500,"AVAILABLE"],
+["810","8th","WEST",2,1435,7057500,"SOLD"],
+["811","8th","EAST",3,1790,8218000,"SOLD"],
+["812","8th","NORTH",2,1415,6967500,"AVAILABLE"],
+["813","8th","NORTH",2,1415,6967500,"AVAILABLE"],
+["814","8th","NORTH",3,2075,9415000,"SOLD"],
+["815","8th","EAST",3,2455,11011000,"SOLD"],
+["816","8th","WEST",3,1790,8755000,"AVAILABLE"],
+
+
+/* =====================================================
+   NINTH FLOOR
+===================================================== */
+
+["901","9th","EAST",3,1790,8978750,"SOLD"],
+["902","9th","WEST",3,2455,11808875,"SOLD"],
+["903","9th","NORTH",3,2075,10296875,"SOLD"],
+["904","9th","NORTH",2,1415,7144375,"AVAILABLE"],
+["905","9th","NORTH",2,1415,7144375,"AVAILABLE"],
+["906","9th","WEST",3,1790,8799750,"AVAILABLE"],
+["907","9th","EAST",2,1435,6627000,"SOLD"],
+["908","9th","NORTH",2,1415,7144375,"AVAILABLE"],
+["909","9th","NORTH",2,1415,7144375,"AVAILABLE"],
+["910","9th","WEST",2,1435,7093375,"AVAILABLE"],
+["911","9th","EAST",3,1790,8978750,"AVAILABLE"],
+["912","9th","NORTH",2,1415,7144375,"AVAILABLE"],
+["913","9th","NORTH",2,1415,7144375,"AVAILABLE"],
+["914","9th","NORTH",3,2075,9415000,"SOLD"],
+["915","9th","EAST",3,2455,11011000,"SOLD"],
+["916","9th","WEST",3,1790,8755000,"AVAILABLE"]
 
 ];
 
-const floors=[...new Set(flats.map(x=>x[1]))];
-const floorSelect=document.getElementById("floor");
 
-floors.forEach(f=>{
-let o=document.createElement("option");
-o.value=f;
-o.textContent=f+" Floor";
-floorSelect.appendChild(o);
+/* =====================================================
+   FLOOR ORDER
+===================================================== */
+
+const floors = [
+    "Ground",
+    "1st",
+    "2nd",
+    "3rd",
+    "4th",
+    "5th",
+    "6th",
+    "7th",
+    "8th",
+    "9th"
+];
+
+
+const floorSelect =
+    document.getElementById("floor");
+
+
+floors.forEach(f => {
+
+    const option =
+        document.createElement("option");
+
+    option.value = f;
+
+    option.textContent =
+        f + " Floor";
+
+    floorSelect.appendChild(option);
+
 });
 
-function money(n){
-return "₹"+n.toLocaleString("en-IN");
+
+/* =====================================================
+   MONEY FORMAT
+===================================================== */
+
+function money(number){
+
+    return "₹" +
+        number.toLocaleString("en-IN");
+
 }
+
+
+/* =====================================================
+   STATUS TEXT
+===================================================== */
+
+function statusText(status){
+
+    switch(status){
+
+        case "AVAILABLE":
+            return "● AVAILABLE";
+
+        case "SOLD":
+            return "● SOLD";
+
+        case "MORTGAGE":
+            return "● MORTGAGE";
+
+        case "CITY":
+            return "● CITY LEVEL";
+
+        case "VENDOR":
+            return "● VENDOR-Mestri";
+
+        case "VENDOR-RMC":
+            return "● VENDOR-RMC";
+
+        default:
+            return status;
+
+    }
+
+}
+
+
+/* =====================================================
+   CARD CLASS
+===================================================== */
+
+function cardClass(status){
+
+    switch(status){
+
+        case "AVAILABLE":
+            return "card available-card";
+
+        case "SOLD":
+            return "card sold-card";
+
+        case "MORTGAGE":
+            return "card mortgage-card";
+
+        case "CITY":
+            return "card city-card";
+
+        case "VENDOR":
+            return "card mestri-card";
+
+        case "VENDOR-RMC":
+            return "card rmc-card";
+
+        default:
+            return "card";
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
 
 function render(){
 
-let search=document.getElementById("search").value.toLowerCase();
-let bhk=document.getElementById("bhk").value;
-let floor=document.getElementById("floor").value;
-let facing=document.getElementById("facing").value;
 
-let results=flats.filter(x=>
-x[0].toLowerCase().includes(search) &&
-(!bhk || String(x[3])===bhk) &&
-(!floor || x[1]===floor) &&
-(!facing || x[2]===facing)
-);
+    const search =
+        document
+        .getElementById("search")
+        .value
+        .trim()
+        .toLowerCase();
 
-document.getElementById("count").textContent=results.length;
 
-let app=document.getElementById("app");
-app.innerHTML="";
+    const bhk =
+        document
+        .getElementById("bhk")
+        .value;
 
-if(!results.length){
-app.innerHTML='<div class="empty">No available flats found.</div>';
-return;
+
+    const floor =
+        document
+        .getElementById("floor")
+        .value;
+
+
+    const facing =
+        document
+        .getElementById("facing")
+        .value;
+
+
+    const status =
+        document
+        .getElementById("status")
+        .value;
+
+
+    /* ================= FILTER ================= */
+
+    const results =
+        flats.filter(x => {
+
+            const number = x[0];
+            const flatFloor = x[1];
+            const flatFacing = x[2];
+            const flatBhk = x[3];
+            const flatStatus = x[6];
+
+
+            return (
+
+                number
+                .toLowerCase()
+                .includes(search)
+
+                &&
+
+                (
+                    !bhk ||
+                    String(flatBhk) === bhk
+                )
+
+                &&
+
+                (
+                    !floor ||
+                    flatFloor === floor
+                )
+
+                &&
+
+                (
+                    !facing ||
+                    flatFacing === facing
+                )
+
+                &&
+
+                (
+                    !status ||
+                    flatStatus === status
+                )
+
+            );
+
+        });
+
+
+    /* ================= COUNTS ================= */
+
+    document
+        .getElementById("availableCount")
+        .textContent =
+        flats.filter(
+            x => x[6] === "AVAILABLE"
+        ).length;
+
+
+    document
+        .getElementById("soldCount")
+        .textContent =
+        flats.filter(
+            x => x[6] === "SOLD"
+        ).length;
+
+
+    document
+        .getElementById("mortgageCount")
+        .textContent =
+        flats.filter(
+            x => x[6] === "MORTGAGE"
+        ).length;
+
+
+    document
+        .getElementById("cityCount")
+        .textContent =
+        flats.filter(
+            x => x[6] === "CITY"
+        ).length;
+
+
+    document
+        .getElementById("mestriCount")
+        .textContent =
+        flats.filter(
+            x => x[6] === "VENDOR"
+        ).length;
+
+
+    document
+        .getElementById("rmcCount")
+        .textContent =
+        flats.filter(
+            x => x[6] === "VENDOR-RMC"
+        ).length;
+
+
+    /* ================= APP ================= */
+
+    const app =
+        document.getElementById("app");
+
+
+    app.innerHTML = "";
+
+
+    if(!results.length){
+
+        app.innerHTML = `
+            <div class="empty">
+                No flats found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    /* ================= FLOORS ================= */
+
+    floors.forEach(floorName => {
+
+
+        const list =
+            results.filter(
+                x => x[1] === floorName
+            );
+
+
+        if(!list.length){
+            return;
+        }
+
+
+        const section =
+            document.createElement("section");
+
+
+        section.className =
+            "floor";
+
+
+        section.innerHTML = `
+            <h2>${floorName} Floor</h2>
+            <div class="grid"></div>
+        `;
+
+
+        const grid =
+            section.querySelector(".grid");
+
+
+        /* ================= CARDS ================= */
+
+        list.forEach(x => {
+
+
+            const [
+                number,
+                flatFloor,
+                flatFacing,
+                flatBhk,
+                area,
+                price,
+                flatStatus
+            ] = x;
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                cardClass(flatStatus);
+
+
+            /*
+            ---------------------------------------------
+            WHATSAPP BUTTON
+            ONLY AVAILABLE FLATS
+            ---------------------------------------------
+            */
+
+            let enquiry = "";
+
+
+            if(flatStatus === "AVAILABLE"){
+
+                enquiry = `
+
+                    <a
+                        class="whatsapp"
+                        href="https://wa.me/917386326575?text=Hello, I am interested in Flat ${number} at Oxygen Towers. Please share the details."
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        WhatsApp Enquiry
+                    </a>
+
+                `;
+
+            }
+
+
+            /* ================= CARD HTML ================= */
+
+            card.innerHTML = `
+
+                <div class="flat">
+                    Flat ${number}
+                </div>
+
+
+                <div class="status status-${flatStatus}">
+                    ${statusText(flatStatus)}
+                </div>
+
+
+                <div class="details">
+
+                    ${flatBhk} BHK
+                    <br>
+
+                    ${area.toLocaleString("en-IN")} sq.ft
+                    <br>
+
+                    ${flatFacing} Facing
+
+                </div>
+
+
+                <div class="price">
+                    ${money(price)}
+                </div>
+
+
+                ${enquiry}
+
+            `;
+
+
+            grid.appendChild(card);
+
+        });
+
+
+        app.appendChild(section);
+
+    });
+
 }
 
-floors.forEach(f=>{
 
-let list=results.filter(x=>x[1]===f);
-if(!list.length)return;
+/* =====================================================
+   EVENT LISTENERS
+===================================================== */
 
-let section=document.createElement("section");
-section.className="floor";
+document
+    .getElementById("search")
+    .addEventListener(
+        "input",
+        render
+    );
 
-section.innerHTML=`<h2>${f} Floor</h2><div class="grid"></div>`;
 
-let grid=section.querySelector(".grid");
+document
+    .getElementById("status")
+    .addEventListener(
+        "change",
+        render
+    );
 
-list.forEach(x=>{
 
-let [number,floor,facing,bhk,area,price]=x;
+document
+    .getElementById("bhk")
+    .addEventListener(
+        "change",
+        render
+    );
 
-let card=document.createElement("div");
-card.className="card";
 
-card.innerHTML=`
-<div class="flat">Flat ${number}</div>
-<div class="available">● AVAILABLE</div>
-<div class="details">
-${bhk} BHK<br>
-${area.toLocaleString("en-IN")} sq.ft<br>
-${facing} Facing
-</div>
-<div class="price">${money(price)}</div>
-<a class="whatsapp"
-href="https://wa.me/917386326575?text=Hello, I am interested in Flat ${number} at Oxygen Towers. Please share the details."
-target="_blank">
-WhatsApp Enquiry
-</a>
-`;
+document
+    .getElementById("floor")
+    .addEventListener(
+        "change",
+        render
+    );
 
-grid.appendChild(card);
 
-});
+document
+    .getElementById("facing")
+    .addEventListener(
+        "change",
+        render
+    );
 
-app.appendChild(section);
 
-});
-
-}
-
-document.getElementById("search").oninput=render;
-document.getElementById("bhk").onchange=render;
-document.getElementById("floor").onchange=render;
-document.getElementById("facing").onchange=render;
+/* =====================================================
+   INITIAL RENDER
+===================================================== */
 
 render();
 
 </script>
 
+
 </body>
+
 </html>
+```
