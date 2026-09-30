@@ -1,4 +1,4 @@
-html
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +15,6 @@ html
     --border:#e5e7eb;
     --primary:#0f4c81;
     --primary2:#1769aa;
-
     --available:#16a34a;
     --sold:#dc2626;
     --mortgage:#ea580c;
@@ -196,7 +195,9 @@ input:focus,select:focus{
 .legend .rmc{background:#ffedd5;color:#78350f}
 
 /* FLOORS */
-.floor-section{margin-bottom:30px}
+.floor-section{
+    margin-bottom:30px;
+}
 
 .floor-heading{
     display:flex;
@@ -305,7 +306,9 @@ input:focus,select:focus{
     font-size:13px;
 }
 
-.info-row span:first-child{color:var(--muted)}
+.info-row span:first-child{
+    color:var(--muted);
+}
 
 .price{
     font-size:20px;
@@ -360,13 +363,23 @@ footer{
     font-size:12px;
 }
 
-footer strong{color:white}
+footer strong{
+    color:white;
+}
 
 /* RESPONSIVE */
 @media(max-width:1200px){
-    .stats{grid-template-columns:repeat(3,1fr)}
-    .flat-grid{grid-template-columns:repeat(3,1fr)}
-    .filters{grid-template-columns:2fr 1fr 1fr}
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .flat-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .filters{
+        grid-template-columns:2fr 1fr 1fr;
+    }
 }
 
 @media(max-width:800px){
@@ -375,23 +388,43 @@ footer strong{color:white}
         align-items:flex-start;
     }
 
-    .contact{text-align:left}
+    .contact{
+        text-align:left;
+    }
 
-    .stats{grid-template-columns:repeat(2,1fr)}
-    .flat-grid{grid-template-columns:repeat(2,1fr)}
-    .filters{grid-template-columns:1fr 1fr}
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-    .filters input{grid-column:1/-1}
+    .flat-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-    .reset{width:100%}
+    .filters{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .filters input{
+        grid-column:1/-1;
+    }
+
+    .reset{
+        width:100%;
+    }
 }
 
 @media(max-width:520px){
-    .container{width:92%}
+    .container{
+        width:92%;
+    }
 
-    .header{padding:25px 0}
+    .header{
+        padding:25px 0;
+    }
 
-    .logo h1{font-size:25px}
+    .logo h1{
+        font-size:25px;
+    }
 
     .stats{
         grid-template-columns:1fr 1fr;
@@ -403,11 +436,17 @@ footer strong{color:white}
         border-radius:13px;
     }
 
-    .stat-number{font-size:25px}
+    .stat-number{
+        font-size:25px;
+    }
 
-    .flat-grid{grid-template-columns:1fr}
+    .flat-grid{
+        grid-template-columns:1fr;
+    }
 
-    .filters{grid-template-columns:1fr}
+    .filters{
+        grid-template-columns:1fr;
+    }
 
     .filters input,
     .filters select,
@@ -415,7 +454,9 @@ footer strong{color:white}
         grid-column:auto;
     }
 
-    .floor-title{font-size:19px}
+    .floor-title{
+        font-size:19px;
+    }
 }
 </style>
 </head>
@@ -552,7 +593,7 @@ footer strong{color:white}
 
 const flats = [
 
-/* GROUND */
+/* ==================== GROUND ==================== */
 ["G1","Ground","EAST","3 BHK",1500,6800000,"VENDOR"],
 ["G2","Ground","WEST","3 BHK",1800,8620000,"MORTGAGE"],
 ["G3","Ground","NORTH","3 BHK",1520,7188000,"MORTGAGE"],
@@ -560,9 +601,379 @@ const flats = [
 ["G11","Ground","EAST","3 BHK",1500,7100000,"MORTGAGE"],
 ["G14","Ground","NORTH","3 BHK",1520,7188000,"MORTGAGE"],
 
-/* FIRST */
+/* ==================== FIRST ==================== */
 ["101","1st","EAST","3 BHK",1500,7100000,"MORTGAGE"],
 ["102","1st","WEST","3 BHK",1800,8620000,"MORTGAGE"],
 ["103","1st","NORTH","3 BHK",1520,7188000,"MORTGAGE"],
-["104","1st","NORTH]()
+["104","1st","NORTH","2 BHK",1220,5724000,"VENDOR"],
+["106","1st","WEST","3 BHK",1500,7100000,"MORTGAGE"],
+["108","1st","NORTH","2 BHK",1220,5968000,"MORTGAGE"],
+["111","1st","EAST","3 BHK",1500,7100000,"MORTGAGE"],
+["114","1st","NORTH","3 BHK",1520,7188000,"MORTGAGE"],
+["115","1st","EAST","3 BHK",1800,8620000,"MORTGAGE"],
+["116","1st","WEST","3 BHK",1500,7100000,"MORTGAGE"],
 
+/* ==================== SECOND ==================== */
+["202","2nd","WEST","3 BHK",2455,11502000,"AVAILABLE"],
+["204","2nd","NORTH","2 BHK",1415,6543000,"VENDOR"],
+["205","2nd","NORTH","2 BHK",1415,6826000,"CITY"],
+["207","2nd","EAST","2 BHK",1435,6627000,"SOLD"],
+["208","2nd","NORTH","2 BHK",1415,6826000,"CITY"],
+["212","2nd","NORTH","2 BHK",1415,6826000,"CITY"],
+["213","2nd","NORTH","2 BHK",1415,6826000,"CITY"],
+["215","2nd","EAST","3 BHK",2455,11502000,"AVAILABLE"],
+
+/* ==================== THIRD ==================== */
+["302","3rd","WEST","3 BHK",2455,11011000,"VENDOR"],
+["304","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["305","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["307","3rd","EAST","2 BHK",1435,6914000,"SOLD"],
+["308","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["309","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["310","3rd","WEST","2 BHK",1435,6914000,"AVAILABLE"],
+["313","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+
+/* ==================== FOURTH ==================== */
+["404","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["405","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["407","4th","EAST","2 BHK",1435,6053000,"SOLD"],
+["408","4th","NORTH","2 BHK",1415,5977000,"SOLD"],
+["409","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["410","4th","WEST","2 BHK",1435,6914000,"AVAILABLE"],
+["411","4th","EAST","3 BHK",1790,7502000,"SOLD"],
+["412","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["413","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["414","4th","NORTH","3 BHK",2075,9830000,"AVAILABLE"],
+["415","4th","EAST","3 BHK",2455,11502000,"SOLD"],
+
+/* ==================== FIFTH ==================== */
+["501","5th","EAST","3 BHK",1790,7502000,"SOLD"],
+["502","5th","WEST","3 BHK",2455,11502000,"VENDOR-RMC"],
+["503","5th","NORTH","3 BHK",2075,8585000,"SOLD"],
+["507","5th","EAST","2 BHK",1435,6053000,"SOLD"],
+["508","5th","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["509","5th","NORTH","2 BHK",1415,6826000,"AVAILABLE"],
+["510","5th","WEST","2 BHK",1435,6914000,"AVAILABLE"],
+["511","5th","EAST","3 BHK",1790,7502000,"SOLD"],
+["515","5th","EAST","3 BHK",2455,10029000,"SOLD"],
+["516","5th","WEST","3 BHK",1790,7502000,"SOLD"],
+
+/* ==================== SIXTH ==================== */
+["601","6th","EAST","3 BHK",1790,7502000,"SOLD"],
+["602","6th","WEST","3 BHK",2455,11011000,"VENDOR-RMC"],
+["604","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["605","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["607","6th","EAST","2 BHK",1435,7057500,"SOLD"],
+["608","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["610","6th","WEST","2 BHK",1435,7057500,"AVAILABLE"],
+["612","6th","NORTH","2 BHK",1415,6967500,"SOLD"],
+["613","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["615","6th","EAST","3 BHK",2455,11747500,"SOLD"],
+
+/* ==================== SEVENTH ==================== */
+["701","7th","EAST","3 BHK",1790,7502000,"SOLD"],
+["702","7th","WEST","3 BHK",2455,10029000,"SOLD"],
+["704","7th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["705","7th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["707","7th","EAST","2 BHK",1435,6053000,"SOLD"],
+["710","7th","WEST","2 BHK",1435,6914000,"AVAILABLE"],
+["711","7th","EAST","3 BHK",1790,7502000,"SOLD"],
+["714","7th","NORTH","3 BHK",2075,10037500,"AVAILABLE"],
+["715","7th","EAST","3 BHK",2455,10029000,"SOLD"],
+
+/* ==================== EIGHTH ==================== */
+["801","8th","EAST","3 BHK",1790,8218000,"SOLD"],
+["802","8th","WEST","3 BHK",2455,11747500,"SOLD"],
+["803","8th","NORTH","3 BHK",2075,9415000,"SOLD"],
+["804","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["805","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["806","8th","WEST","3 BHK",1790,8755000,"AVAILABLE"],
+["807","8th","EAST","2 BHK",1435,6627000,"SOLD"],
+["808","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["809","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["810","8th","WEST","2 BHK",1435,7057500,"SOLD"],
+["811","8th","EAST","3 BHK",1790,8218000,"SOLD"],
+["812","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["813","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE"],
+["814","8th","NORTH","3 BHK",2075,9415000,"SOLD"],
+["815","8th","EAST","3 BHK",2455,11011000,"SOLD"],
+["816","8th","WEST","3 BHK",1790,8755000,"AVAILABLE"],
+
+/* ==================== NINTH ==================== */
+["901","9th","EAST","3 BHK",1790,8978750,"SOLD"],
+["902","9th","WEST","3 BHK",2455,11808875,"SOLD"],
+["903","9th","NORTH","3 BHK",2075,10296875,"SOLD"],
+["904","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE"],
+["905","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE"],
+["906","9th","WEST","3 BHK",1790,8799750,"AVAILABLE"],
+["907","9th","EAST","2 BHK",1435,6627000,"SOLD"],
+["908","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE"],
+["909","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE"],
+["910","9th","WEST","2 BHK",1435,7093375,"AVAILABLE"],
+["911","9th","EAST","3 BHK",1790,8978750,"AVAILABLE"],
+["912","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE"],
+["913","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE"],
+["914","9th","NORTH","3 BHK",2075,9415000,"SOLD"],
+["915","9th","EAST","3 BHK",2455,11011000,"SOLD"],
+["916","9th","WEST","3 BHK",1790,8755000,"AVAILABLE"]
+
+];
+
+/* ==================== STATUS NAMES ==================== */
+
+const statusNames = {
+    "AVAILABLE":"AVAILABLE",
+    "SOLD":"SOLD",
+    "MORTGAGE":"MORTGAGE",
+    "CITY":"CITY LEVEL",
+    "VENDOR":"VENDOR - MESTRI",
+    "VENDOR-RMC":"VENDOR - RMC"
+};
+
+const statusClasses = {
+    "AVAILABLE":"available",
+    "SOLD":"sold",
+    "MORTGAGE":"mortgage",
+    "CITY":"city",
+    "VENDOR":"vendor",
+    "VENDOR-RMC":"vendor-rmc"
+};
+
+/* ==================== COUNTS ==================== */
+
+function updateCounts(){
+
+    const counts = {
+        AVAILABLE:0,
+        SOLD:0,
+        MORTGAGE:0,
+        CITY:0,
+        VENDOR:0,
+        "VENDOR-RMC":0
+    };
+
+    flats.forEach(flat=>{
+        counts[flat[6]]++;
+    });
+
+    document.getElementById("availableCount").textContent = counts.AVAILABLE;
+    document.getElementById("soldCount").textContent = counts.SOLD;
+    document.getElementById("mortgageCount").textContent = counts.MORTGAGE;
+    document.getElementById("cityCount").textContent = counts.CITY;
+    document.getElementById("mestriCount").textContent = counts.VENDOR;
+    document.getElementById("rmcCount").textContent = counts["VENDOR-RMC"];
+}
+
+/* ==================== PRICE FORMAT ==================== */
+
+function formatPrice(price){
+    return "₹" + price.toLocaleString("en-IN");
+}
+
+/* ==================== RENDER ==================== */
+
+function render(){
+
+    const search = document.getElementById("search").value.trim().toLowerCase();
+    const status = document.getElementById("statusFilter").value;
+    const bhk = document.getElementById("bhkFilter").value;
+    const floor = document.getElementById("floorFilter").value;
+    const facing = document.getElementById("facingFilter").value;
+
+    const filtered = flats.filter(flat=>{
+
+        const matchesSearch =
+            !search ||
+            flat[0].toLowerCase().includes(search);
+
+        const matchesStatus =
+            !status ||
+            flat[6] === status;
+
+        const matchesBhk =
+            !bhk ||
+            flat[3] === bhk;
+
+        const matchesFloor =
+            !floor ||
+            flat[1] === floor;
+
+        const matchesFacing =
+            !facing ||
+            flat[2] === facing;
+
+        return matchesSearch &&
+               matchesStatus &&
+               matchesBhk &&
+               matchesFloor &&
+               matchesFacing;
+    });
+
+    const inventory = document.getElementById("inventory");
+
+    if(filtered.length === 0){
+
+        inventory.innerHTML = `
+            <div class="empty">
+                <h3>No flats found</h3>
+                <p>Try changing your search or filters.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    const floorOrder = [
+        "Ground",
+        "1st",
+        "2nd",
+        "3rd",
+        "4th",
+        "5th",
+        "6th",
+        "7th",
+        "8th",
+        "9th"
+    ];
+
+    let html = "";
+
+    floorOrder.forEach(currentFloor=>{
+
+        const floorFlats = filtered.filter(
+            flat => flat[1] === currentFloor
+        );
+
+        if(floorFlats.length === 0) return;
+
+        html += `
+            <section class="floor-section">
+
+                <div class="floor-heading">
+                    <div class="floor-title">${currentFloor} Floor</div>
+                    <div class="floor-count">
+                        ${floorFlats.length} Flat${floorFlats.length !== 1 ? "s" : ""}
+                    </div>
+                </div>
+
+                <div class="flat-grid">
+        `;
+
+        floorFlats.forEach(flat=>{
+
+            const number = flat[0];
+            const flatFloor = flat[1];
+            const facingValue = flat[2];
+            const configuration = flat[3];
+            const area = flat[4];
+            const price = flat[5];
+            const statusValue = flat[6];
+
+            const statusClass = statusClasses[statusValue];
+            const statusText = statusNames[statusValue];
+
+            const whatsappMessage =
+                `Hello, I am interested in Flat ${number} at Oxygen Towers. Please share the details.`;
+
+            const whatsappURL =
+                `https://wa.me/917386326575?text=${encodeURIComponent(whatsappMessage)}`;
+
+            html += `
+                <article class="flat-card ${statusClass}">
+
+                    <div class="card-top">
+
+                        <div>
+                            <div class="flat-number">
+                                Flat ${number}
+                            </div>
+
+                            <div class="flat-facing">
+                                ${facingValue} Facing
+                            </div>
+                        </div>
+
+                        <div class="status status-${statusClass}">
+                            ${statusText}
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="info-row">
+                            <span>Configuration</span>
+                            <strong>${configuration}</strong>
+                        </div>
+
+                        <div class="info-row">
+                            <span>Area</span>
+                            <strong>${area.toLocaleString("en-IN")} sq.ft</strong>
+                        </div>
+
+                        <div class="info-row">
+                            <span>Floor</span>
+                            <strong>${flatFloor}</strong>
+                        </div>
+
+                        <div class="price">
+                            ${formatPrice(price)}
+                        </div>
+
+                        <div class="remark">
+                            ${statusText}
+                        </div>
+
+                        ${
+                            statusValue === "AVAILABLE"
+                            ? `
+                                <a
+                                    class="whatsapp"
+                                    href="${whatsappURL}"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    💬 Enquire on WhatsApp
+                                </a>
+                            `
+                            : ""
+                        }
+
+                    </div>
+
+                </article>
+            `;
+        });
+
+        html += `
+                </div>
+            </section>
+        `;
+    });
+
+    inventory.innerHTML = html;
+}
+
+/* ==================== RESET ==================== */
+
+function resetFilters(){
+
+    document.getElementById("search").value = "";
+    document.getElementById("statusFilter").value = "";
+    document.getElementById("bhkFilter").value = "";
+    document.getElementById("floorFilter").value = "";
+    document.getElementById("facingFilter").value = "";
+
+    render();
+}
+
+/* ==================== START ==================== */
+
+updateCounts();
+render();
+
+</script>
+
+</body>
+</html>
+```
