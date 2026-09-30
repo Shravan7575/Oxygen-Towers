@@ -403,16 +403,16 @@ const flats = [
 ["G14","Ground","NORTH","3 BHK",1520,7188000,"MORTGAGE","Mortgage"],
 
 /* FIRST */
-["101","1st","EAST","3 BHK",1500,7100000,"MORTGAGE","Available"],
-["102","1st","WEST","3 BHK",1800,8620000,"MORTGAGE","Available"],
-["103","1st","NORTH","3 BHK",1520,7188000,"MORTGAGE","Available"],
+["101","1st","EAST","3 BHK",1500,7100000,"MORTGAGE","Mortgage"],
+["102","1st","WEST","3 BHK",1800,8620000,"MORTGAGE","Mortgage"],
+["103","1st","NORTH","3 BHK",1520,7188000,"MORTGAGE","Mortgage"],
 ["104","1st","NORTH","2 BHK",1220,5724000,"VENDOR","Vendor-Mestri"],
-["106","1st","WEST","3 BHK",1500,7100000,"MORTGAGE","Available"],
-["108","1st","NORTH","2 BHK",1220,5968000,"MORTGAGE","Available"],
-["111","1st","EAST","3 BHK",1500,7100000,"MORTGAGE","Available"],
-["114","1st","NORTH","3 BHK",1520,7188000,"MORTGAGE","Available"],
-["115","1st","EAST","3 BHK",1800,8620000,"MORTGAGE","Available"],
-["116","1st","WEST","3 BHK",1500,7100000,"MORTGAGE","Available"],
+["106","1st","WEST","3 BHK",1500,7100000,"MORTGAGE","Mortgage"],
+["108","1st","NORTH","2 BHK",1220,5968000,"MORTGAGE","Mortgage"],
+["111","1st","EAST","3 BHK",1500,7100000,"MORTGAGE","Mortgage"],
+["114","1st","NORTH","3 BHK",1520,7188000,"MORTGAGE","Mortgage"],
+["115","1st","EAST","3 BHK",1800,8620000,"MORTGAGE","Mortgage"],
+["116","1st","WEST","3 BHK",1500,7100000,"MORTGAGE","Mortgage"],
 
 /* SECOND */
 ["202","2nd","WEST","3 BHK",2455,11502000,"AVAILABLE","Available"],
@@ -523,27 +523,15 @@ const flats = [
 const floors=[
 "Ground","1st","2nd","3rd","4th","5th","6th","7th","8th","9th"
 ];
-function displayStatus(status){
-  if(status==="SOLD" || status==="VENDOR" || status==="VENDOR-RMC"){
-    return status;
-  }
-  return "AVAILABLE";
-}
-
 
 const statusNames={
   "AVAILABLE":"AVAILABLE",
   "SOLD":"SOLD",
+  "MORTGAGE":"MORTGAGE",
+  "CITY":"CITY LEVEL",
   "VENDOR":"VENDOR-MESTRI",
   "VENDOR-RMC":"VENDOR-RMC"
 };
-
-function displayStatus(status){
-  if(status==="SOLD" || status==="VENDOR" || status==="VENDOR-RMC"){
-    return status;
-  }
-  return "AVAILABLE";
-}
 
 function money(value){
   return "₹" + value.toLocaleString("en-IN");
@@ -565,14 +553,13 @@ function updateStats(){
   };
 
   flats.forEach(f=>{
-    const status=displayStatus(f[6]);
-    counts[status]++;
+    counts[f[6]]++;
   });
 
   document.getElementById("availableCount").textContent=counts.AVAILABLE;
   document.getElementById("soldCount").textContent=counts.SOLD;
-  document.getElementById("mortgageCount").textContent=0;
-  document.getElementById("cityCount").textContent=0;
+  document.getElementById("mortgageCount").textContent=counts.MORTGAGE;
+  document.getElementById("cityCount").textContent=counts.CITY;
   document.getElementById("vendorCount").textContent=counts.VENDOR;
   document.getElementById("vendorRmcCount").textContent=counts["VENDOR-RMC"];
 }
@@ -586,12 +573,9 @@ function render(){
   const facing=document.getElementById("facing").value;
 
   const results=flats.filter(f=>{
-
-    const flatStatus=displayStatus(f[6]);
-
     return (
       f[0].toLowerCase().includes(search) &&
-      (!status || flatStatus===status) &&
+      (!status || f[6]===status) &&
       (!bhk || f[3]===bhk) &&
       (!floor || f[1]===floor) &&
       (!facing || f[2]===facing)
@@ -626,13 +610,13 @@ function render(){
       const bhk=f[3];
       const area=f[4];
       const price=f[5];
-      const status=displayStatus(f[6]);
+      const status=f[6];
       const remark=f[7];
 
       const cls=status.toLowerCase().replace("-","-");
 
       const message=
-        \`Hello, I am interested in Flat ${number} at Oxygen Towers. Please share the details.\`;
+        `Hello, I am interested in Flat ${number} at Oxygen Towers. Please share the details.`;
 
       html+=`
         <div class="flat ${cls}-border">
@@ -675,11 +659,11 @@ function render(){
           ${
             status==="AVAILABLE"
             ?
-            \`<a class="whatsapp"
+            `<a class="whatsapp"
                href="https://wa.me/917386326575?text=${encodeURIComponent(message)}"
                target="_blank">
                💬 WhatsApp Enquiry
-             </a>\`
+             </a>`
             :
             ""
           }
@@ -696,4 +680,29 @@ function render(){
 
   app.innerHTML=html;
 }
+
+function resetFilters(){
+
+  document.getElementById("search").value="";
+  document.getElementById("status").value="";
+  document.getElementById("bhk").value="";
+  document.getElementById("floor").value="";
+  document.getElementById("facing").value="";
+
+  render();
+}
+
+document.getElementById("search").addEventListener("input",render);
+document.getElementById("status").addEventListener("change",render);
+document.getElementById("bhk").addEventListener("change",render);
+document.getElementById("floor").addEventListener("change",render);
+document.getElementById("facing").addEventListener("change",render);
+
+updateStats();
+render();
+
+</script>
+
+</body>
+</html>
 
