@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxygen Towers | North City Developers</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7f8;color:#172033}
+header{background:linear-gradient(135deg,#073b4c,#087e8b);color:white;text-align:center;padding:35px 15px}
+header h1{margin:0;font-size:30px}
+header p{margin:7px 0}
+.container{max-width:1100px;margin:auto;padding:20px}
+.stats{background:white;border-radius:15px;padding:20px;text-align:center;margin-bottom:18px;box-shadow:0 3px 12px #0001}
+.stats b{font-size:30px;color:#087e8b}
+.filters{background:white;padding:16px;border-radius:15px;margin-bottom:20px}
+input,select{width:100%;padding:13px;border:1px solid #ddd;border-radius:9px;margin-bottom:10px;font-size:15px}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.floor{margin-bottom:25px}
+.floor h2{font-size:21px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:white;padding:16px;border-radius:14px;border-left:5px solid #19a974;box-shadow:0 3px 12px #0001}
+.flat{font-size:20px;font-weight:bold}
+.available{color:#159957;font-size:13px;font-weight:bold;margin:5px 0}
+.details{line-height:1.7;color:#555;font-size:14px}
+.price{font-size:17px;font-weight:bold;margin-top:8px}
+.whatsapp{display:block;text-align:center;background:#25d366;color:white;text-decoration:none;padding:10px;border-radius:8px;margin-top:12px;font-weight:bold}
+.empty{text-align:center;padding:40px;color:#777}
+@media(max-width:700px){
+.grid{grid-template-columns:repeat(2,1fr)}
+.row{grid-template-columns:1fr}
+header h1{font-size:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>OXYGEN TOWERS</h1>
+<p>By North City Developers</p>
+<p>Available Flats</p>
+</header>
+
+<div class="container">
+
+<div class="stats">
+<b id="count">0</b>
+<div>Available Flats</div>
+</div>
+
+<div class="filters">
+<input id="search" placeholder="Search flat number...">
+
+<div class="row">
+<select id="bhk">
+<option value="">All BHK</option>
+<option value="2">2 BHK</option>
+<option value="3">3 BHK</option>
+</select>
+
+<select id="floor">
+<option value="">All Floors</option>
+</select>
+
+<select id="facing">
+<option value="">All Facing</option>
+<option value="EAST">East</option>
+<option value="WEST">West</option>
+<option value="NORTH">North</option>
+</select>
+</div>
+</div>
+
+<div id="app"></div>
+
+</div>
+
+<script>
+
+/*
+Only AVAILABLE flats are included here.
+
+SOLD, VENDOR-Mestri and Vendor-RMC
+are intentionally hidden.
+*/
+
+const flats = [
+
+["G1","Ground","EAST",3,1500,6800000],
+["G2","Ground","WEST",3,1800,8620000],
+["G3","Ground","NORTH",3,1520,7188000],
+["G6","Ground","WEST",3,1500,7100000],
+["G11","Ground","EAST",3,1500,7100000],
+["G14","Ground","NORTH",3,1520,7188000],
+
+["101","1st","EAST",3,1500,7100000],
+["102","1st","WEST",3,1800,8620000],
+["103","1st","NORTH",3,1520,7188000],
+["104","1st","NORTH",2,1220,5724000],
+["106","1st","WEST",3,1500,7100000],
+["108","1st","NORTH",2,1220,5968000],
+["111","1st","EAST",3,1500,7100000],
+["114","1st","NORTH",3,1520,7188000],
+["115","1st","EAST",3,1800,8620000],
+["116","1st","WEST",3,1500,7100000],
+
+["202","2nd","WEST",3,2455,11502000],
+["204","2nd","NORTH",2,1415,6543000],
+["205","2nd","NORTH",2,1415,6826000],
+["208","2nd","NORTH",2,1415,6826000],
+["212","2nd","NORTH",2,1415,6826000],
+["213","2nd","NORTH",2,1415,6826000],
+["215","2nd","EAST",3,2455,11502000],
+
+["302","3rd","WEST",3,2455,11011000],
+["304","3rd","NORTH",2,1415,6826000],
+["305","3rd","NORTH",2,1415,6826000],
+["308","3rd","NORTH",2,1415,6826000],
+["309","3rd","NORTH",2,1415,6826000],
+["310","3rd","WEST",2,1435,6914000],
+["313","3rd","NORTH",2,1415,6826000],
+
+["404","4th","NORTH",2,1415,6826000],
+["405","4th","NORTH",2,1415,6826000],
+["409","4th","NORTH",2,1415,6826000],
+["410","4th","WEST",2,1435,6914000],
+["412","4th","NORTH",2,1415,6826000],
+["413","4th","NORTH",2,1415,6826000],
+["414","4th","NORTH",3,2075,9830000],
+
+["508","5th","NORTH",2,1415,6826000],
+["509","5th","NORTH",2,1415,6826000],
+["510","5th","WEST",2,1435,6914000],
+
+["604","6th","NORTH",2,1415,6967500],
+["605","6th","NORTH",2,1415,6967500],
+["608","6th","NORTH",2,1415,6967500],
+["610","6th","WEST",2,1435,7057500],
+["613","6th","NORTH",2,1415,6967500],
+
+["704","7th","NORTH",2,1415,6967500],
+["705","7th","NORTH",2,1415,6967500],
+["710","7th","WEST",2,1435,6914000],
+["714","7th","NORTH",3,2075,10037500],
+
+["804","8th","NORTH",2,1415,6967500],
+["805","8th","NORTH",2,1415,6967500],
+["806","8th","WEST",3,1790,8755000],
+["808","8th","NORTH",2,1415,6967500],
+["809","8th","NORTH",2,1415,6967500],
+["812","8th","NORTH",2,1415,6967500],
+["813","8th","NORTH",2,1415,6967500],
+["816","8th","WEST",3,1790,8755000],
+
+["904","9th","NORTH",2,1415,7144375],
+["905","9th","NORTH",2,1415,7144375],
+["906","9th","WEST",3,1790,8799750],
+["908","9th","NORTH",2,1415,7144375],
+["909","9th","NORTH",2,1415,7144375],
+["910","9th","WEST",2,1435,7093375],
+["911","9th","EAST",3,1790,8978750],
+["912","9th","NORTH",2,1415,7144375],
+["913","9th","NORTH",2,1415,7144375],
+["916","9th","WEST",3,1790,8755000]
+
+];
+
+const floors=[...new Set(flats.map(x=>x[1]))];
+const floorSelect=document.getElementById("floor");
+
+floors.forEach(f=>{
+let o=document.createElement("option");
+o.value=f;
+o.textContent=f+" Floor";
+floorSelect.appendChild(o);
+});
+
+function money(n){
+return "₹"+n.toLocaleString("en-IN");
+}
+
+function render(){
+
+let search=document.getElementById("search").value.toLowerCase();
+let bhk=document.getElementById("bhk").value;
+let floor=document.getElementById("floor").value;
+let facing=document.getElementById("facing").value;
+
+let results=flats.filter(x=>
+x[0].toLowerCase().includes(search) &&
+(!bhk || String(x[3])===bhk) &&
+(!floor || x[1]===floor) &&
+(!facing || x[2]===facing)
+);
+
+document.getElementById("count").textContent=results.length;
+
+let app=document.getElementById("app");
+app.innerHTML="";
+
+if(!results.length){
+app.innerHTML='<div class="empty">No available flats found.</div>';
+return;
+}
+
+floors.forEach(f=>{
+
+let list=results.filter(x=>x[1]===f);
+if(!list.length)return;
+
+let section=document.createElement("section");
+section.className="floor";
+
+section.innerHTML=`<h2>${f} Floor</h2><div class="grid"></div>`;
+
+let grid=section.querySelector(".grid");
+
+list.forEach(x=>{
+
+let [number,floor,facing,bhk,area,price]=x;
+
+let card=document.createElement("div");
+card.className="card";
+
+card.innerHTML=`
+<div class="flat">Flat ${number}</div>
+<div class="available">● AVAILABLE</div>
+<div class="details">
+${bhk} BHK<br>
+${area.toLocaleString("en-IN")} sq.ft<br>
+${facing} Facing
+</div>
+<div class="price">${money(price)}</div>
+<a class="whatsapp"
+href="https://wa.me/?text=Hello, I am interested in Flat ${number} at Oxygen Towers."
+target="_blank">
+WhatsApp Enquiry
+</a>
+`;
+
+grid.appendChild(card);
+
+});
+
+app.appendChild(section);
+
+});
+
+}
+
+document.getElementById("search").oninput=render;
+document.getElementById("bhk").onchange=render;
+document.getElementById("floor").onchange=render;
+document.getElementById("facing").onchange=render;
+
+render();
+
+</script>
+
+</body>
+</html>
