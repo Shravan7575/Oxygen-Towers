@@ -772,75 +772,49 @@ function formatPrice(price){
 
 /* ==================== RENDER ==================== */
 
+```javascript
 function render(){
 
     const search = document.getElementById("search").value.trim().toLowerCase();
-    const status = document.getElementById("statusFilter").value;
-    const bhk = document.getElementById("bhkFilter").value;
-    const floor = document.getElementById("floorFilter").value;
-    const facing = document.getElementById("facingFilter").value;
+    const status = document.getElementById("status").value;
+    const bhk = document.getElementById("bhk").value;
+    const floor = document.getElementById("floor").value;
+    const facing = document.getElementById("facing").value;
 
-    const filtered = flats.filter(flat=>{
+    const results = flats.filter(flat => {
 
-        const matchesSearch =
-            !search ||
-            flat[0].toLowerCase().includes(search);
+        const number = flat[0];
+        const flatFloor = flat[1];
+        const flatFacing = flat[2];
+        const flatBhk = flat[3];
+        const flatStatus = flat[6];
 
-        const matchesStatus =
-            !status ||
-            flat[6] === status;
-
-        const matchesBhk =
-            !bhk ||
-            flat[3] === bhk;
-
-        const matchesFloor =
-            !floor ||
-            flat[1] === floor;
-
-        const matchesFacing =
-            !facing ||
-            flat[2] === facing;
-
-        return matchesSearch &&
-               matchesStatus &&
-               matchesBhk &&
-               matchesFloor &&
-               matchesFacing;
+        return (
+            number.toLowerCase().includes(search) &&
+            (!status || flatStatus === status) &&
+            (!bhk || String(flatBhk) === bhk) &&
+            (!floor || flatFloor === floor) &&
+            (!facing || flatFacing === facing)
+        );
     });
 
-    const inventory = document.getElementById("inventory");
+    const app = document.getElementById("app");
 
-    if(filtered.length === 0){
-
-        inventory.innerHTML = `
+    if(results.length === 0){
+        app.innerHTML = `
             <div class="empty">
                 <h3>No flats found</h3>
                 <p>Try changing your search or filters.</p>
             </div>
         `;
-
         return;
     }
 
-    const floorOrder = [
-        "Ground",
-        "1st",
-        "2nd",
-        "3rd",
-        "4th",
-        "5th",
-        "6th",
-        "7th",
-        "8th",
-        "9th"
-    ];
-
     let html = "";
 
-    floorOrder.forEach(currentFloor=>{
+    floors.forEach(currentFloor => {
 
-        const floorFlats = filtered.filter(
+        const floorFlats = results.filter(
             flat => flat[1] === currentFloor
         );
 
@@ -850,7 +824,10 @@ function render(){
             <section class="floor-section">
 
                 <div class="floor-heading">
-                    <div class="floor-title">${currentFloor} Floor</div>
+                    <div class="floor-title">
+                        ${currentFloor} Floor
+                    </div>
+
                     <div class="floor-count">
                         ${floorFlats.length} Flat${floorFlats.length !== 1 ? "s" : ""}
                     </div>
@@ -859,18 +836,51 @@ function render(){
                 <div class="flat-grid">
         `;
 
-        floorFlats.forEach(flat=>{
+        floorFlats.forEach(flat => {
 
             const number = flat[0];
             const flatFloor = flat[1];
             const facingValue = flat[2];
-            const configuration = flat[3];
+            const bhkValue = flat[3];
             const area = flat[4];
             const price = flat[5];
             const statusValue = flat[6];
 
-            const statusClass = statusClasses[statusValue];
-            const statusText = statusNames[statusValue];
+            let statusLabel = "";
+            let cardClass = "";
+
+            switch(statusValue){
+
+                case "AVAILABLE":
+                    statusLabel = "AVAILABLE";
+                    cardClass = "available";
+                    break;
+
+                case "SOLD":
+                    statusLabel = "SOLD";
+                    cardClass = "sold";
+                    break;
+
+                case "MORTGAGE":
+                    statusLabel = "MORTGAGE";
+                    cardClass = "mortgage";
+                    break;
+
+                case "CITY":
+                    statusLabel = "CITY LEVEL";
+                    cardClass = "city";
+                    break;
+
+                case "VENDOR":
+                    statusLabel = "VENDOR - MESTRI";
+                    cardClass = "vendor";
+                    break;
+
+                case "VENDOR-RMC":
+                    statusLabel = "VENDOR - RMC";
+                    cardClass = "vendor-rmc";
+                    break;
+            }
 
             const whatsappMessage =
                 `Hello, I am interested in Flat ${number} at Oxygen Towers. Please share the details.`;
@@ -879,7 +889,7 @@ function render(){
                 `https://wa.me/917386326575?text=${encodeURIComponent(whatsappMessage)}`;
 
             html += `
-                <article class="flat-card ${statusClass}">
+                <article class="flat-card ${cardClass}">
 
                     <div class="card-top">
 
@@ -893,8 +903,8 @@ function render(){
                             </div>
                         </div>
 
-                        <div class="status status-${statusClass}">
-                            ${statusText}
+                        <div class="status status-${cardClass}">
+                            ${statusLabel}
                         </div>
 
                     </div>
@@ -903,7 +913,7 @@ function render(){
 
                         <div class="info-row">
                             <span>Configuration</span>
-                            <strong>${configuration}</strong>
+                            <strong>${bhkValue} BHK</strong>
                         </div>
 
                         <div class="info-row">
@@ -917,11 +927,11 @@ function render(){
                         </div>
 
                         <div class="price">
-                            ${formatPrice(price)}
+                            ₹${price.toLocaleString("en-IN")}
                         </div>
 
                         <div class="remark">
-                            ${statusText}
+                            ${statusLabel}
                         </div>
 
                         ${
@@ -951,29 +961,23 @@ function render(){
         `;
     });
 
-    inventory.innerHTML = html;
+    app.innerHTML = html;
 }
 
-/* ==================== RESET ==================== */
+/* RESET */
 
 function resetFilters(){
 
     document.getElementById("search").value = "";
-    document.getElementById("statusFilter").value = "";
-    document.getElementById("bhkFilter").value = "";
-    document.getElementById("floorFilter").value = "";
-    document.getElementById("facingFilter").value = "";
+    document.getElementById("status").value = "";
+    document.getElementById("bhk").value = "";
+    document.getElementById("floor").value = "";
+    document.getElementById("facing").value = "";
 
     render();
 }
 
-/* ==================== START ==================== */
+/* START */
 
-updateCounts();
 render();
-
-</script>
-
-</body>
-</html>
 
