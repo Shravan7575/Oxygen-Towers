@@ -530,6 +530,7 @@ function displayStatus(status){
   return "AVAILABLE";
 }
 
+
 const statusNames={
   "AVAILABLE":"AVAILABLE",
   "SOLD":"SOLD",
@@ -537,8 +538,12 @@ const statusNames={
   "VENDOR-RMC":"VENDOR-RMC"
 };
 
-
-};
+function displayStatus(status){
+  if(status==="SOLD" || status==="VENDOR" || status==="VENDOR-RMC"){
+    return status;
+  }
+  return "AVAILABLE";
+}
 
 function money(value){
   return "₹" + value.toLocaleString("en-IN");
@@ -560,13 +565,14 @@ function updateStats(){
   };
 
   flats.forEach(f=>{
-    counts[displayStatus(f[6])]++;
+    const status=displayStatus(f[6]);
+    counts[status]++;
   });
 
   document.getElementById("availableCount").textContent=counts.AVAILABLE;
   document.getElementById("soldCount").textContent=counts.SOLD;
-  document.getElementById("mortgageCount").textContent=counts.MORTGAGE;
-  document.getElementById("cityCount").textContent=counts.CITY;
+  document.getElementById("mortgageCount").textContent=0;
+  document.getElementById("cityCount").textContent=0;
   document.getElementById("vendorCount").textContent=counts.VENDOR;
   document.getElementById("vendorRmcCount").textContent=counts["VENDOR-RMC"];
 }
@@ -579,7 +585,10 @@ function render(){
   const floor=document.getElementById("floor").value;
   const facing=document.getElementById("facing").value;
 
-  const flatStatus=displayStatus(f[6]);
+  const results=flats.filter(f=>{
+
+    const flatStatus=displayStatus(f[6]);
+
     return (
       f[0].toLowerCase().includes(search) &&
       (!status || flatStatus===status) &&
@@ -623,7 +632,7 @@ function render(){
       const cls=status.toLowerCase().replace("-","-");
 
       const message=
-        `Hello, I am interested in Flat ${number} at Oxygen Towers. Please share the details.`;
+        \`Hello, I am interested in Flat ${number} at Oxygen Towers. Please share the details.\`;
 
       html+=`
         <div class="flat ${cls}-border">
@@ -666,11 +675,11 @@ function render(){
           ${
             status==="AVAILABLE"
             ?
-            `<a class="whatsapp"
+            \`<a class="whatsapp"
                href="https://wa.me/917386326575?text=${encodeURIComponent(message)}"
                target="_blank">
                💬 WhatsApp Enquiry
-             </a>`
+             </a>\`
             :
             ""
           }
@@ -687,29 +696,4 @@ function render(){
 
   app.innerHTML=html;
 }
-
-function resetFilters(){
-
-  document.getElementById("search").value="";
-  document.getElementById("status").value="";
-  document.getElementById("bhk").value="";
-  document.getElementById("floor").value="";
-  document.getElementById("facing").value="";
-
-  render();
-}
-
-document.getElementById("search").addEventListener("input",render);
-document.getElementById("status").addEventListener("change",render);
-document.getElementById("bhk").addEventListener("change",render);
-document.getElementById("floor").addEventListener("change",render);
-document.getElementById("facing").addEventListener("change",render);
-
-updateStats();
-render();
-
-</script>
-
-</body>
-</html>
 
