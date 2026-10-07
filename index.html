@@ -13,12 +13,15 @@
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
   --navy:#071b33;
   --navy2:#0c2c50;
   --blue:#0c6fd8;
   --blue2:#39a5ff;
-  --sky:#edf7ff;
 
   --white:#ffffff;
   --text:#17283c;
@@ -128,7 +131,7 @@ select{
 
 
 /* =========================================================
-   NAVIGATION
+   NAV
 ========================================================= */
 
 .nav{
@@ -523,7 +526,7 @@ select{
 
 
 /* =========================================================
-   SECTION
+   FIND SECTION
 ========================================================= */
 
 .find-section{
@@ -668,7 +671,7 @@ select{
 
 
 /* =========================================================
-   FILTER
+   FILTER BOX
 ========================================================= */
 
 .find-box{
@@ -746,31 +749,26 @@ select{
 
 #status{
   background:#fff8ed;
-
   border-color:#f1d8aa;
 }
 
 #bhk{
   background:#f2f0ff;
-
   border-color:#d8d0f6;
 }
 
 #floor{
   background:#eefaf6;
-
   border-color:#c8e8dc;
 }
 
 #facing{
   background:#fff1f4;
-
   border-color:#f1ccd5;
 }
 
 #sort{
   background:#eef5fb;
-
   border-color:#cbddec;
 }
 
@@ -815,7 +813,7 @@ select{
 
 
 /* =========================================================
-   EXPLORER
+   FLOOR EXPLORER
 ========================================================= */
 
 .explorer{
@@ -858,7 +856,7 @@ select{
 .floor{
   margin-top:13px;
 
-  background:white;
+  background:#ffffff;
 
   border:1px solid var(--line);
 
@@ -871,9 +869,9 @@ select{
 }
 
 .floor-head{
-  min-height:88px;
+  min-height:82px;
 
-  padding:15px 20px;
+  padding:14px 20px;
 
   display:flex;
 
@@ -893,7 +891,7 @@ select{
 }
 
 .floor-head:hover{
-  background:#f1f8ff;
+  background:#f8fbfe;
 }
 
 .floor.closed .floor-head{
@@ -901,7 +899,7 @@ select{
 }
 
 .floor.closed .floor-head:hover{
-  background:#f1f8ff;
+  background:#f8fbfe;
 }
 
 .floor-left{
@@ -909,44 +907,38 @@ select{
 
   align-items:center;
 
-  gap:14px;
+  gap:12px;
 }
 
 
 /* =========================================================
-   FLOOR NUMBER
+   SMALL CLEAN FLOOR LABEL
 ========================================================= */
 
 .floor-number{
-  width:58px;
+  width:38px;
+  height:38px;
 
-  height:58px;
+  display:flex;
 
-  border-radius:15px;
+  align-items:center;
+  justify-content:center;
 
-  display:grid;
+  border-radius:9px;
 
-  place-items:center;
+  background:#f1f7fc;
 
-  background:
-    linear-gradient(
-      145deg,
-      #dff1ff,
-      #bfe3ff
-    );
+  color:#176aa8;
 
-  color:#075fae;
-
-  border:2px solid #91c9ef;
+  border:1px solid #d6e7f4;
 
   font-family:"Manrope",sans-serif;
 
-  font-size:18px;
+  font-size:13px;
 
   font-weight:900;
 
-  box-shadow:
-    0 5px 15px rgba(8,111,194,.14);
+  box-shadow:none;
 }
 
 .floor-name{
@@ -960,9 +952,9 @@ select{
 }
 
 .floor-count{
-  margin-top:5px;
+  margin-top:4px;
 
-  color:#61788d;
+  color:#71859a;
 
   font-size:11px;
 
@@ -974,33 +966,49 @@ select{
 
   align-items:center;
 
-  gap:15px;
+  gap:12px;
 }
 
+
+/* =========================================================
+   STRONG AVAILABLE COUNT
+========================================================= */
+
 .floor-available{
-  font-size:11px;
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:9px 13px;
+
+  border-radius:9px;
+
+  background:#d9f8e8;
+
+  border:2px solid #72d4a5;
+
+  color:#007343;
+
+  font-size:12px;
 
   font-weight:900;
 
-  color:#078b5b;
+  letter-spacing:.2px;
 
-  background:#e2f8ee;
-
-  border:1px solid #a9dfc7;
-
-  padding:7px 10px;
-
-  border-radius:8px;
+  box-shadow:
+    0 4px 12px rgba(7,151,102,.12);
 }
 
 .floor-arrow{
-  width:38px;
+  width:34px;
 
-  height:38px;
+  height:34px;
 
   border-radius:50%;
 
-  background:#edf4f9;
+  background:#f0f5f9;
 
   display:grid;
 
@@ -1008,7 +1016,7 @@ select{
 
   color:#537087;
 
-  font-size:23px;
+  font-size:21px;
 
   font-weight:700;
 
@@ -1075,7 +1083,7 @@ select{
 
 
 /* =========================================================
-   SMALL STATUS CORNER
+   SMALL COLORED CORNER
 ========================================================= */
 
 .flat:before{
@@ -1096,8 +1104,6 @@ select{
   z-index:1;
 }
 
-
-/* AVAILABLE */
 .flat.available:before{
   border-color:
     transparent
@@ -1106,8 +1112,6 @@ select{
     transparent;
 }
 
-
-/* SOLD */
 .flat.sold:before{
   border-color:
     transparent
@@ -1116,8 +1120,6 @@ select{
     transparent;
 }
 
-
-/* MORTGAGE */
 .flat.mortgage:before{
   border-color:
     transparent
@@ -1126,8 +1128,6 @@ select{
     transparent;
 }
 
-
-/* CITY LEVEL */
 .flat.city:before{
   border-color:
     transparent
@@ -1136,8 +1136,6 @@ select{
     transparent;
 }
 
-
-/* VENDOR-MESTRI */
 .flat.vendor:before{
   border-color:
     transparent
@@ -1146,19 +1144,12 @@ select{
     transparent;
 }
 
-
-/* VENDOR-RMC */
 .flat.rmc:before{
   border-color:
     transparent
     #159c9c
     transparent
     transparent;
-}
-
-
-.flat:after{
-  display:none;
 }
 
 
@@ -1182,7 +1173,7 @@ select{
 
 
 /* =========================================================
-   FLAT NUMBER
+   FLAT NUMBER - CLEAN
 ========================================================= */
 
 .flat-number{
@@ -1209,7 +1200,7 @@ select{
 
 
 /* =========================================================
-   STATUS BADGE
+   STATUS BADGES
 ========================================================= */
 
 .badge{
@@ -1449,7 +1440,7 @@ select{
 
 
 /* =========================================================
-   GST NOTE
+   GST
 ========================================================= */
 
 .charges-note{
@@ -1474,7 +1465,7 @@ select{
 
 
 /* =========================================================
-   WHATSAPP ENQUIRY
+   WHATSAPP
 ========================================================= */
 
 .enquire{
@@ -1620,7 +1611,6 @@ select{
 
   .logo{
     width:125px;
-
     height:53px;
   }
 
@@ -1632,7 +1622,6 @@ select{
 
   .whatsapp-top{
     padding:10px 12px;
-
     font-size:10px;
   }
 
@@ -1642,7 +1631,6 @@ select{
 
   .hero h1{
     font-size:43px;
-
     letter-spacing:-2px;
   }
 
@@ -1657,14 +1645,14 @@ select{
   .primary-btn,
   .secondary-btn{
     padding:12px 15px;
-
     font-size:11px;
   }
 
 
+  /* MAIN */
+
   .main{
     padding:0 13px;
-
     margin-top:-45px;
   }
 
@@ -1700,7 +1688,7 @@ select{
   }
 
 
-  /* HEADING */
+  /* SECTION */
 
   .section-heading{
     display:block;
@@ -1777,19 +1765,22 @@ select{
   }
 
   .floor-head{
-    min-height:82px;
+    min-height:78px;
 
-    padding:13px;
+    padding:12px;
+  }
+
+  .floor-left{
+    gap:10px;
   }
 
   .floor-number{
-    width:53px;
+    width:34px;
+    height:34px;
 
-    height:53px;
+    border-radius:8px;
 
-    border-radius:14px;
-
-    font-size:17px;
+    font-size:11px;
   }
 
   .floor-name{
@@ -1798,10 +1789,27 @@ select{
 
   .floor-count{
     font-size:10px;
+
+    margin-top:3px;
+  }
+
+  .floor-right{
+    gap:7px;
   }
 
   .floor-available{
-    display:none;
+    padding:8px 9px;
+
+    font-size:10px;
+
+    border-width:2px;
+  }
+
+  .floor-arrow{
+    width:31px;
+    height:31px;
+
+    font-size:19px;
   }
 
   .floor-body{
@@ -1809,7 +1817,7 @@ select{
   }
 
 
-  /* ONE CARD PER ROW */
+  /* FLATS */
 
   .flat-grid{
     grid-template-columns:1fr;
@@ -1827,8 +1835,6 @@ select{
 
   .flat-number{
     font-size:36px;
-
-    letter-spacing:-1.3px;
   }
 
   .badge{
@@ -1922,7 +1928,7 @@ select{
   }
 
   .flat-number{
-    font-size:36px;
+    font-size:32px;
   }
 
   .flat-type{
@@ -1941,7 +1947,7 @@ select{
 
 
 /* =========================================================
-   EXTRA MOBILE STATUS SAFETY
+   VERY SMALL MOBILE
 ========================================================= */
 
 @media(max-width:390px){
@@ -1967,8 +1973,8 @@ select{
   }
 
   .floor-number{
-    width:50px;
-    height:50px;
+    width:32px;
+    height:32px;
   }
 
 }
@@ -2041,7 +2047,7 @@ select{
 
         <i></i>
 
-        Premium Residential Apartments
+        Premium Residential Flats
 
       </div>
 
@@ -2059,8 +2065,8 @@ select{
 
       <p class="hero-description">
 
-        Discover thoughtfully designed 2 & 3 BHK residences.
-        Explore floor-wise availability, apartment details and
+        Discover thoughtfully designed 2 & 3 BHK flats.
+        Explore floor-wise availability, flat details and
         pricing across Block A and Block B.
 
       </p>
@@ -2069,10 +2075,10 @@ select{
       <div class="hero-actions">
 
         <a
-          href="#apartments"
+          href="#flats"
           class="primary-btn"
         >
-          Explore Apartments
+          Explore Flats
           <span>↓</span>
         </a>
 
@@ -2097,7 +2103,7 @@ select{
       </div>
 
       <div class="hero-info-main">
-        2 & 3 BHK Residences
+        2 & 3 BHK Flats
       </div>
 
       <div class="hero-info-row">
@@ -2148,7 +2154,7 @@ select{
      MAIN
 ===================================================== -->
 
-<main class="main" id="apartments">
+<main class="main" id="flats">
 
 
   <!-- ===================================================
@@ -2161,7 +2167,7 @@ select{
     <div class="stat stat-main">
 
       <div class="stat-label">
-        Apartments Available
+        Flats Available
       </div>
 
       <div
@@ -2282,7 +2288,7 @@ select{
 
 
   <!-- ===================================================
-       FIND YOUR HOME
+       FIND YOUR FLAT
   =================================================== -->
 
   <section class="find-section">
@@ -2293,11 +2299,11 @@ select{
       <div>
 
         <div class="section-kicker">
-          Find Your Home
+          Find Your Flat
         </div>
 
         <div class="section-title">
-          Choose your apartment
+          Choose your flat
         </div>
 
         <div class="section-description">
@@ -2529,7 +2535,7 @@ select{
             0
           </strong>
 
-          apartments
+          flats
 
         </div>
 
@@ -2562,11 +2568,11 @@ select{
         </div>
 
         <div class="explorer-title">
-          Explore residences by floor
+          Explore Flats by Floor
         </div>
 
         <div class="explorer-sub">
-          Select a floor to view the apartments available on that level.
+          Select a floor to view the flats available on that level.
         </div>
 
       </div>
@@ -2598,7 +2604,7 @@ select{
 
   &nbsp;•&nbsp;
 
-  Apartment Availability & Sales
+  Flat Availability & Sales
 
 </footer>
 
@@ -2608,8 +2614,7 @@ select{
 
 
 /* =========================================================
-   BLOCK A DATA
-   DO NOT CHANGE
+   BLOCK A DATA — UNCHANGED
 ========================================================= */
 
 const A = [
@@ -2732,8 +2737,7 @@ const A = [
 
 
 /* =========================================================
-   BLOCK B DATA
-   DO NOT CHANGE
+   BLOCK B DATA — UNCHANGED
 ========================================================= */
 
 const B = [
@@ -2807,7 +2811,7 @@ const B = [
 
 
 /* =========================================================
-   APP VARIABLES
+   APP
 ========================================================= */
 
 let currentBlock = "ALL";
@@ -2858,7 +2862,7 @@ function money(value){
 
 
 /* =========================================================
-   STATS
+   UPDATE STATS
 ========================================================= */
 
 function updateStats(){
@@ -3164,7 +3168,7 @@ function getFilteredData(){
 
 
 /* =========================================================
-   APARTMENT CARD
+   FLAT CARD
 ========================================================= */
 
 function apartmentCard(flat){
@@ -3244,7 +3248,7 @@ function apartmentCard(flat){
 
 
         <div class="price-label">
-          Apartment Price
+          Flat Price
         </div>
 
 
@@ -3317,8 +3321,6 @@ function render(){
   container.innerHTML = "";
 
 
-  /* NO RESULTS */
-
   if(!data.length){
 
     container.innerHTML = `
@@ -3330,7 +3332,7 @@ function render(){
         </div>
 
         <h3>
-          No apartments found
+          No flats found
         </h3>
 
         <p>
@@ -3381,13 +3383,9 @@ function render(){
 
 
     /*
-      IMPORTANT:
-
-      ALL FLOORS ARE CLOSED BY DEFAULT.
-
-      If a specific floor is selected
-      in the floor dropdown, that floor
-      automatically opens.
+      All floors are collapsed by default.
+      If a floor is selected in the filter,
+      that floor opens automatically.
     */
 
     section.className =
@@ -3426,9 +3424,7 @@ function render(){
 
             <div class="floor-count">
 
-              ${flats.length}
-
-              apartments
+              ${flats.length} Flats
 
             </div>
 
@@ -3449,9 +3445,7 @@ function render(){
 
               <div class="floor-available">
 
-                ${available}
-
-                available
+                ${available} AVAILABLE
 
               </div>
 
@@ -3488,10 +3482,6 @@ function render(){
     `;
 
 
-    /* =====================================================
-       CLICK FLOOR TO OPEN / CLOSE
-    ===================================================== */
-
     section
       .querySelector(".floor-head")
       .addEventListener(
@@ -3512,7 +3502,7 @@ function render(){
 
 
 /* =========================================================
-   BLOCK BUTTONS
+   BLOCK SWITCH
 ========================================================= */
 
 document
