@@ -612,10 +612,12 @@ select{
   justify-content:space-between;
   align-items:center;
   cursor:pointer;
+  user-select:none;
+  transition:.2s;
 }
 
 .floor-head:hover{
-  background:#fbfdff;
+  background:#f8fbff;
 }
 
 .floor-left{
@@ -665,14 +667,15 @@ select{
 }
 
 .floor-arrow{
-  width:34px;
-  height:34px;
+  width:36px;
+  height:36px;
   border-radius:50%;
-  background:#f3f7fa;
+  background:#edf4f9;
   display:grid;
   place-items:center;
-  color:#6f8297;
-  font-size:22px;
+  color:#537087;
+  font-size:23px;
+  font-weight:700;
   transition:.25s;
 }
 
@@ -714,7 +717,7 @@ select{
 }
 
 /* =========================================================
-   SMALL CORNER ACCENT
+   SMALL COLORED CORNER
 ========================================================= */
 
 .flat:before{
@@ -725,48 +728,43 @@ select{
   width:0;
   height:0;
   border-style:solid;
-  border-width:0 30px 30px 0;
+  border-width:0 34px 34px 0;
   z-index:1;
 }
 
-.flat:after{
-  display:none;
-}
-
 /* AVAILABLE */
-
 .flat.available:before{
   border-color:transparent #16a66b transparent transparent;
 }
 
 /* SOLD */
-
 .flat.sold:before{
   border-color:transparent #df4545 transparent transparent;
 }
 
 /* MORTGAGE */
-
 .flat.mortgage:before{
   border-color:transparent #e39a27 transparent transparent;
 }
 
-/* CITY */
-
+/* CITY LEVEL */
 .flat.city:before{
   border-color:transparent #7655c8 transparent transparent;
 }
 
-/* VENDOR */
-
+/* VENDOR-MESTRI */
 .flat.vendor:before{
   border-color:transparent #287fc4 transparent transparent;
 }
 
-/* RMC */
-
+/* VENDOR-RMC */
 .flat.rmc:before{
   border-color:transparent #159c9c transparent transparent;
+}
+
+/* No large background */
+.flat:after{
+  display:none;
 }
 
 /* =========================================================
@@ -806,7 +804,7 @@ select{
 }
 
 /* =========================================================
-   BADGES
+   STATUS BADGES
 ========================================================= */
 
 .badge{
@@ -823,7 +821,6 @@ select{
 }
 
 /* AVAILABLE */
-
 .badge.available{
   color:#047a4e;
   background:#dff8ec;
@@ -832,7 +829,6 @@ select{
 }
 
 /* SOLD */
-
 .badge.sold{
   color:#c62f2f;
   background:#ffe8e8;
@@ -840,31 +836,27 @@ select{
 }
 
 /* MORTGAGE */
-
 .badge.mortgage{
   color:#a96400;
   background:#fff1d6;
   border:1px solid #edce96;
 }
 
-/* CITY */
-
+/* CITY LEVEL */
 .badge.city{
   color:#6040ad;
   background:#eee7ff;
   border:1px solid #d3c2f4;
 }
 
-/* VENDOR */
-
+/* VENDOR-MESTRI */
 .badge.vendor{
   color:#176aa7;
   background:#e5f3ff;
   border:1px solid #bddcf4;
 }
 
-/* RMC */
-
+/* VENDOR-RMC */
 .badge.rmc{
   color:#087e7e;
   background:#e2fafa;
@@ -1358,7 +1350,7 @@ select{
 
         <div class="brand-copy">
           <strong>NorthCity Developers</strong>
-           <small>HYDERABAD</small>
+          <small>HYDERABAD</small>
         </div>
 
       </div>
@@ -2514,6 +2506,10 @@ function render(){
   }
 
 
+  const selectedFloor =
+    document.getElementById("floor").value;
+
+
   floors.forEach(floor => {
 
     const flats =
@@ -2542,8 +2538,20 @@ function render(){
     const section =
       document.createElement("section");
 
+
+    /*
+      DEFAULT:
+      Every floor is CLOSED.
+
+      EXCEPTION:
+      If a specific floor is selected from
+      the filter, that floor opens automatically.
+    */
+
     section.className =
-      "floor";
+      selectedFloor === floor
+        ? "floor"
+        : "floor closed";
 
 
     section.innerHTML = `
@@ -2611,6 +2619,10 @@ function render(){
 
     `;
 
+
+    /* =====================================================
+       CLICK FLOOR TO EXPAND / MINIMISE
+    ===================================================== */
 
     section
       .querySelector(".floor-head")
