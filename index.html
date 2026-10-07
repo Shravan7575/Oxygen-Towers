@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oxygen Towers | NorthCity Developers</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 *{
   box-sizing:border-box;
@@ -12,30 +16,67 @@
   padding:0;
 }
 
-body{
-  font-family:Inter,Arial,sans-serif;
-  background:#f4f7fb;
-  color:#10233f;
+:root{
+  --navy:#082b52;
+  --blue:#0b63ce;
+  --blue2:#1685f7;
+  --sky:#eaf5ff;
+  --green:#0c9b67;
+  --green-bg:#e9fbf4;
+  --red:#e04747;
+  --red-bg:#fff0f0;
+  --orange:#d78313;
+  --orange-bg:#fff7e8;
+  --purple:#7555c7;
+  --purple-bg:#f4efff;
+  --dark:#12233a;
+  --muted:#718096;
+  --line:#e5edf5;
+  --white:#fff;
+  --bg:#f4f8fc;
+  --shadow:0 12px 35px rgba(15,45,80,.08);
 }
 
-/* ================= HEADER ================= */
+body{
+  font-family:"DM Sans",sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+}
+
+/* HEADER */
 
 .header{
-  background:linear-gradient(135deg,#061d3b,#0b3b73);
-  color:white;
-  padding:22px 30px;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 8px 30px rgba(0,0,0,.15);
+  background:
+    radial-gradient(circle at 85% 10%,rgba(47,148,255,.25),transparent 30%),
+    linear-gradient(135deg,#061d38,#0b3d70 65%,#0a63c7);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+
+.header:after{
+  content:"";
+  position:absolute;
+  width:400px;
+  height:400px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;
+  right:-130px;
+  top:-190px;
 }
 
 .header-inner{
-  max-width:1500px;
+  max-width:1450px;
   margin:auto;
+  padding:24px 28px 42px;
+  position:relative;
+  z-index:2;
+}
+
+.topbar{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:20px;
 }
 
@@ -46,604 +87,594 @@ body{
 }
 
 .logo{
-  width:76px;
-  height:76px;
+  width:165px;
+  max-height:65px;
   object-fit:contain;
-  background:white;
-  border-radius:14px;
-  padding:7px;
+  background:#fff;
+  border-radius:12px;
+  padding:6px;
 }
 
-.brand h1{
-  font-size:28px;
-  letter-spacing:.5px;
+.brand-text{
+  border-left:1px solid rgba(255,255,255,.25);
+  padding-left:16px;
 }
 
-.brand p{
-  margin-top:5px;
-  opacity:.8;
-  font-size:14px;
+.brand-text small{
+  display:block;
+  font-size:12px;
+  opacity:.7;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.brand-text strong{
+  font-family:"Manrope",sans-serif;
+  font-size:17px;
 }
 
 .whatsapp-top{
-  text-decoration:none;
-  background:#25D366;
+  background:#20c875;
   color:white;
-  padding:12px 20px;
+  text-decoration:none;
+  padding:11px 18px;
   border-radius:12px;
   font-weight:700;
+  font-size:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
-
-/* ================= MAIN ================= */
-
-.container{
-  max-width:1500px;
-  margin:auto;
-  padding:25px;
-}
-
-/* ================= WELCOME ================= */
 
 .hero{
-  background:white;
-  border-radius:22px;
-  padding:25px;
-  margin-bottom:22px;
-  box-shadow:0 8px 30px rgba(19,48,87,.07);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+  padding-top:50px;
+  max-width:850px;
 }
 
-.hero h2{
-  font-size:27px;
-  margin-bottom:7px;
+.hero-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  padding:8px 13px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-family:"Manrope",sans-serif;
+  font-size:clamp(34px,5vw,64px);
+  line-height:1.05;
+  margin-top:18px;
+  letter-spacing:-2px;
+}
+
+.hero h1 span{
+  color:#6fc0ff;
 }
 
 .hero p{
-  color:#6d7d91;
+  margin-top:16px;
+  color:#d7e8fa;
+  font-size:16px;
+  line-height:1.7;
+  max-width:650px;
 }
 
-.hero-badge{
-  background:#eaf3ff;
-  color:#0b56a0;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
+/* MAIN */
+
+.container{
+  max-width:1450px;
+  margin:-28px auto 60px;
+  padding:0 28px;
+  position:relative;
+  z-index:5;
 }
 
-/* ================= STATS ================= */
+/* STATS */
 
 .stats{
   display:grid;
   grid-template-columns:repeat(6,1fr);
-  gap:15px;
-  margin-bottom:22px;
+  gap:14px;
 }
 
 .stat{
-  background:white;
+  background:#fff;
+  border:1px solid var(--line);
   border-radius:18px;
-  padding:20px;
-  box-shadow:0 7px 25px rgba(19,48,87,.06);
-  border:1px solid #e8edf4;
+  padding:19px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
 }
 
-.stat-title{
-  color:#718096;
-  font-size:13px;
+.stat:after{
+  content:"";
+  position:absolute;
+  width:55px;
+  height:55px;
+  right:-18px;
+  top:-18px;
+  border-radius:50%;
+  background:var(--sky);
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:11px;
   font-weight:700;
   text-transform:uppercase;
+  letter-spacing:.8px;
 }
 
-.stat-number{
-  font-size:30px;
+.stat-value{
+  font-family:"Manrope",sans-serif;
+  font-size:29px;
   font-weight:800;
-  margin-top:8px;
+  margin-top:7px;
+  color:var(--navy);
 }
 
-.stat.available .stat-number{color:#159447}
-.stat.sold .stat-number{color:#d93434}
-.stat.mortgage .stat-number{color:#d69500}
-.stat.city .stat-number{color:#3867d6}
-.stat.vendor .stat-number{color:#8e44ad}
-.stat.rmc .stat-number{color:#d35400}
+/* CONTROLS */
 
-/* ================= BLOCK TABS ================= */
+.panel{
+  margin-top:20px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
 
 .block-tabs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-  margin-bottom:22px;
+  display:flex;
+  gap:8px;
+  margin-bottom:18px;
 }
 
 .block-tab{
-  background:white;
-  border:2px solid #e5ebf3;
-  border-radius:20px;
-  padding:22px;
+  border:1px solid var(--line);
+  background:#f7fafc;
+  color:#53667b;
+  padding:12px 20px;
+  border-radius:12px;
+  font-weight:700;
   cursor:pointer;
   transition:.2s;
 }
 
 .block-tab:hover{
-  transform:translateY(-2px);
+  border-color:#9cc8f2;
 }
 
 .block-tab.active{
-  border-color:#1167c9;
-  box-shadow:0 8px 25px rgba(17,103,201,.12);
+  background:var(--navy);
+  color:#fff;
+  border-color:var(--navy);
+  box-shadow:0 7px 18px rgba(8,43,82,.18);
 }
 
-.block-name{
-  font-size:21px;
-  font-weight:800;
-}
-
-.block-info{
-  color:#728198;
-  margin-top:7px;
-  font-size:14px;
-}
-
-.block-progress{
-  height:7px;
-  background:#edf1f6;
-  border-radius:10px;
-  overflow:hidden;
-  margin-top:15px;
-}
-
-.block-progress span{
-  display:block;
-  height:100%;
-  background:#1469c8;
-  border-radius:10px;
-}
-
-/* ================= FILTERS ================= */
-
-.filters{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  margin-bottom:25px;
-  box-shadow:0 8px 30px rgba(19,48,87,.06);
-}
-
-.filter-title{
-  font-size:16px;
-  font-weight:800;
-  margin-bottom:15px;
-}
-
-.filter-grid{
+.controls{
   display:grid;
-  grid-template-columns:2fr repeat(5,1fr) auto;
+  grid-template-columns:2fr repeat(5,1fr);
   gap:10px;
 }
 
-input,
-select{
+.control{
+  position:relative;
+}
+
+.control input,
+.control select{
   width:100%;
   height:46px;
-  border:1px solid #dce4ee;
+  border:1px solid var(--line);
+  background:#f8fafc;
   border-radius:11px;
   padding:0 13px;
   outline:none;
+  color:var(--dark);
+  font-family:inherit;
+  font-size:13px;
+}
+
+.control input:focus,
+.control select:focus{
+  border-color:#76b6ec;
   background:#fff;
-  color:#26384f;
-  font-size:14px;
+  box-shadow:0 0 0 3px rgba(22,133,247,.08);
 }
 
-input:focus,
-select:focus{
-  border-color:#1472d4;
-}
+/* FLOOR */
 
-.reset{
-  height:46px;
-  padding:0 18px;
-  border:0;
-  border-radius:11px;
-  background:#102f55;
-  color:white;
-  font-weight:700;
-  cursor:pointer;
-}
-
-/* ================= LEGEND ================= */
-
-.legend{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-bottom:20px;
-}
-
-.legend span{
-  padding:7px 12px;
-  border-radius:30px;
-  font-size:12px;
-  font-weight:800;
-}
-
-.l-available{background:#e4f7eb;color:#12833f}
-.l-sold{background:#fde7e7;color:#c52d2d}
-.l-mortgage{background:#fff2cf;color:#a76d00}
-.l-city{background:#e8efff;color:#315bb7}
-.l-vendor{background:#f3e8fa;color:#81409c}
-.l-rmc{background:#fff0e5;color:#c45b13}
-
-/* ================= FLOOR ================= */
-
-.floor{
-  background:white;
-  border-radius:20px;
-  margin-bottom:16px;
-  overflow:hidden;
-  box-shadow:0 7px 25px rgba(19,48,87,.06);
-  border:1px solid #e6ecf3;
+.floor-section{
+  margin-top:24px;
 }
 
 .floor-header{
-  padding:17px 20px;
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  align-items:center;
-  cursor:pointer;
   background:#fff;
+  border:1px solid var(--line);
+  padding:17px 20px;
+  border-radius:17px;
+  cursor:pointer;
+  box-shadow:0 5px 18px rgba(15,45,80,.04);
 }
 
-.floor-header:hover{
-  background:#f8fbff;
-}
-
-.floor-title{
+.floor-left{
   display:flex;
   align-items:center;
-  gap:10px;
-  font-size:18px;
+  gap:13px;
+}
+
+.floor-icon{
+  width:40px;
+  height:40px;
+  border-radius:11px;
+  background:var(--sky);
+  display:grid;
+  place-items:center;
+  color:var(--blue);
   font-weight:800;
 }
 
-.arrow{
-  width:27px;
-  height:27px;
-  border-radius:50%;
-  background:#eaf2fb;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#1765aa;
-  font-size:13px;
+.floor-name{
+  font-family:"Manrope",sans-serif;
+  font-weight:800;
+  color:var(--navy);
 }
 
 .floor-count{
-  color:#75849a;
-  font-size:13px;
-  font-weight:600;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:2px;
 }
 
-.floor-body{
-  padding:0 18px 20px;
+.floor-arrow{
+  font-size:20px;
+  color:#8295a8;
+  transition:.2s;
 }
 
-/* ================= FLAT GRID ================= */
+.floor-section.closed .floor-arrow{
+  transform:rotate(-90deg);
+}
 
 .flat-grid{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:12px;
 }
 
+.floor-section.closed .flat-grid{
+  display:none;
+}
+
+/* FLAT CARD */
+
 .flat-card{
-  border:1px solid #e1e7ef;
-  border-radius:15px;
-  padding:15px;
   background:#fff;
-  position:relative;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:17px;
+  box-shadow:0 7px 20px rgba(20,50,80,.05);
   transition:.2s;
-  border-left:5px solid #159447;
+  position:relative;
+  overflow:hidden;
 }
 
 .flat-card:hover{
   transform:translateY(-3px);
-  box-shadow:0 9px 25px rgba(20,60,100,.10);
+  box-shadow:0 14px 30px rgba(20,50,80,.11);
+  border-color:#c8ddec;
+}
+
+.flat-card.available{
+  border-top:3px solid var(--green);
 }
 
 .flat-card.sold{
-  border-left-color:#d93434;
+  border-top:3px solid var(--red);
 }
 
 .flat-card.mortgage{
-  border-left-color:#d69500;
+  border-top:3px solid var(--orange);
 }
 
 .flat-card.city{
-  border-left-color:#3867d6;
-}
-
-.flat-card.vendor{
-  border-left-color:#8e44ad;
-}
-
-.flat-card.rmc{
-  border-left-color:#d35400;
+  border-top:3px solid var(--purple);
 }
 
 .flat-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:8px;
-  margin-bottom:11px;
+  gap:10px;
 }
 
-.flat-number{
-  font-size:18px;
-  font-weight:850;
-}
-
-.block-mini{
-  background:#edf5ff;
-  color:#1661a5;
-  padding:4px 7px;
-  border-radius:6px;
-  font-size:10px;
+.flat-no{
+  font-family:"Manrope",sans-serif;
+  font-size:22px;
   font-weight:800;
+  color:var(--navy);
 }
 
 .badge{
-  display:inline-block;
   font-size:10px;
+  padding:6px 9px;
+  border-radius:30px;
   font-weight:800;
-  padding:5px 8px;
-  border-radius:20px;
-  margin-bottom:11px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  white-space:nowrap;
 }
 
 .badge.available{
-  background:#e4f7eb;
-  color:#12833f;
+  color:var(--green);
+  background:var(--green-bg);
 }
 
 .badge.sold{
-  background:#fde7e7;
-  color:#c52d2d;
+  color:var(--red);
+  background:var(--red-bg);
 }
 
 .badge.mortgage{
-  background:#fff2cf;
-  color:#a76d00;
+  color:var(--orange);
+  background:var(--orange-bg);
 }
 
 .badge.city{
-  background:#e8efff;
-  color:#315bb7;
+  color:var(--purple);
+  background:var(--purple-bg);
 }
 
-.badge.vendor{
-  background:#f3e8fa;
-  color:#81409c;
-}
-
-.badge.rmc{
-  background:#fff0e5;
-  color:#c45b13;
-}
-
-.flat-details{
+.flat-info{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:7px;
-  font-size:12px;
-  color:#65758a;
+  gap:9px;
+  margin-top:16px;
 }
 
-.flat-details strong{
+.info{
+  background:#f7fafc;
+  border-radius:9px;
+  padding:8px 10px;
+}
+
+.info label{
   display:block;
-  color:#263a53;
-  font-size:12px;
+  font-size:9px;
+  color:#8a9aab;
+  text-transform:uppercase;
+  font-weight:700;
+  letter-spacing:.4px;
+}
+
+.info strong{
+  display:block;
   margin-top:2px;
+  font-size:12px;
+  color:#30465e;
 }
 
 .price{
-  font-size:18px;
-  font-weight:850;
-  color:#092f5f;
-  margin-top:13px;
+  margin-top:15px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+}
+
+.price small{
+  display:block;
+  font-size:10px;
+  color:var(--muted);
+}
+
+.price strong{
+  display:block;
+  margin-top:2px;
+  font-family:"Manrope",sans-serif;
+  color:var(--navy);
+  font-size:20px;
 }
 
 .remark{
   margin-top:9px;
   font-size:11px;
-  font-weight:800;
-  color:#63738a;
+  color:#6f8092;
 }
 
-.wa{
+.whatsapp{
   display:block;
+  margin-top:14px;
   text-align:center;
   text-decoration:none;
-  background:#25D366;
-  color:white;
-  padding:9px;
-  border-radius:9px;
-  font-size:12px;
+  background:#18b96b;
+  color:#fff;
+  padding:10px;
+  border-radius:10px;
   font-weight:800;
-  margin-top:12px;
+  font-size:12px;
 }
 
-/* ================= EMPTY ================= */
+.whatsapp:hover{
+  background:#0e9f5b;
+}
 
-.empty{
-  background:white;
-  border-radius:20px;
-  padding:60px 20px;
+.no-results{
+  margin-top:25px;
+  background:#fff;
+  border:1px dashed #cbd8e5;
+  border-radius:18px;
+  padding:50px 20px;
   text-align:center;
-  color:#718096;
+  color:var(--muted);
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 
-footer{
+.footer{
   text-align:center;
-  padding:30px 20px;
-  color:#8090a4;
-  font-size:13px;
+  color:#8191a1;
+  font-size:12px;
+  padding:0 20px 35px;
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
-@media(max-width:1200px){
+@media(max-width:1100px){
   .stats{
     grid-template-columns:repeat(3,1fr);
   }
 
-  .filter-grid{
+  .controls{
     grid-template-columns:repeat(3,1fr);
   }
 
+  .control:first-child{
+    grid-column:span 3;
+  }
+
   .flat-grid{
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
   }
 }
 
-@media(max-width:800px){
-  .header{
-    padding:15px;
+@media(max-width:760px){
+  .header-inner{
+    padding:18px 16px 42px;
   }
 
-  .header-inner{
+  .topbar{
     align-items:flex-start;
   }
 
-  .brand h1{
-    font-size:21px;
-  }
-
-  .brand p{
-    font-size:12px;
-  }
-
   .logo{
-    width:60px;
-    height:60px;
+    width:125px;
+    max-height:55px;
+  }
+
+  .brand-text{
+    display:none;
   }
 
   .whatsapp-top{
-    font-size:12px;
-    padding:9px 12px;
-  }
-
-  .container{
-    padding:14px;
+    font-size:11px;
+    padding:9px 11px;
   }
 
   .hero{
-    padding:19px;
-    display:block;
+    padding-top:40px;
   }
 
-  .hero h2{
-    font-size:22px;
+  .hero h1{
+    font-size:39px;
+    letter-spacing:-1.5px;
   }
 
-  .hero-badge{
-    display:inline-block;
-    margin-top:14px;
+  .hero p{
+    font-size:14px;
+  }
+
+  .container{
+    padding:0 14px;
+    margin-top:-22px;
   }
 
   .stats{
     grid-template-columns:repeat(2,1fr);
-  }
-
-  .stat{
-    padding:15px;
-  }
-
-  .stat-number{
-    font-size:25px;
-  }
-
-  .block-tabs{
-    grid-template-columns:1fr;
-  }
-
-  .filter-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .filter-grid input{
-    grid-column:1/-1;
-  }
-
-  .reset{
-    width:100%;
-  }
-
-  .flat-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-@media(max-width:500px){
-  .header-inner{
-    flex-wrap:wrap;
-  }
-
-  .brand{
-    width:100%;
-  }
-
-  .whatsapp-top{
-    width:100%;
-    text-align:center;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
     gap:9px;
   }
 
   .stat{
-    padding:13px;
-    border-radius:14px;
+    padding:15px;
+    border-radius:15px;
   }
 
-  .stat-title{
+  .stat-value{
+    font-size:24px;
+  }
+
+  .panel{
+    padding:13px;
+    border-radius:17px;
+  }
+
+  .block-tabs{
+    overflow-x:auto;
+  }
+
+  .block-tab{
+    white-space:nowrap;
+    padding:10px 14px;
+    font-size:12px;
+  }
+
+  .controls{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .control:first-child{
+    grid-column:span 2;
+  }
+
+  .flat-grid{
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+
+  .flat-card{
+    padding:13px;
+    border-radius:15px;
+  }
+
+  .flat-no{
+    font-size:18px;
+  }
+
+  .badge{
+    font-size:8px;
+    padding:5px 6px;
+  }
+
+  .flat-info{
+    gap:6px;
+  }
+
+  .info{
+    padding:7px;
+  }
+
+  .info strong{
     font-size:10px;
   }
 
-  .stat-number{
-    font-size:22px;
+  .price strong{
+    font-size:16px;
   }
+}
 
-  .filter-grid{
-    grid-template-columns:1fr;
-  }
-
-  .filter-grid input{
-    grid-column:auto;
-  }
-
+@media(max-width:450px){
   .flat-grid{
     grid-template-columns:1fr;
   }
 
-  .floor-header{
-    padding:15px;
+  .controls{
+    grid-template-columns:1fr;
   }
 
-  .floor-body{
-    padding:0 10px 12px;
+  .control:first-child{
+    grid-column:auto;
   }
 
-  .flat-card{
-    padding:15px;
+  .hero h1{
+    font-size:34px;
   }
 }
 </style>
@@ -651,203 +682,178 @@ footer{
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header class="header">
   <div class="header-inner">
 
-    <div class="brand">
-      <img
-        src="northcity-logo.png"
-        class="logo"
-        alt="NorthCity Developers Logo"
-        onerror="this.style.display='none'"
-      >
+    <div class="topbar">
+      <div class="brand">
+        <img
+          src="northcity-logo.png"
+          class="logo"
+          alt="NorthCity Developers"
+          onerror="this.style.display='none'"
+        >
 
-      <div>
-        <h1>OXYGEN TOWERS</h1>
-        <p>By NorthCity Developers · Apartment Availability & Sales Dashboard</p>
+        <div class="brand-text">
+          <small>Premium Residential Project</small>
+          <strong>NorthCity Developers</strong>
+        </div>
       </div>
+
+      <a class="whatsapp-top"
+         href="https://wa.me/917386326575"
+         target="_blank">
+        WhatsApp Sales
+      </a>
     </div>
 
-    <a
-      class="whatsapp-top"
-      href="https://wa.me/917386326575"
-      target="_blank"
-    >
-      💬 +91 73863 26575
-    </a>
+    <div class="hero">
+      <div class="hero-kicker">
+        ✦ Apartment Availability
+      </div>
+
+      <h1>
+        Find Your Perfect Home at
+        <span>Oxygen Towers</span>
+      </h1>
+
+      <p>
+        Explore available apartments, pricing, floor-wise availability
+        and flat details across Block A and Block B.
+      </p>
+    </div>
 
   </div>
 </header>
 
+
 <main class="container">
 
-  <!-- ================= HERO ================= -->
-
-  <section class="hero">
-    <div>
-      <h2>Apartment Sales Dashboard</h2>
-      <p>Quickly check availability, pricing, floor, facing and apartment status.</p>
-    </div>
-
-    <div class="hero-badge">
-      NorthCity Developers
-    </div>
-  </section>
-
-  <!-- ================= STATS ================= -->
-
   <section class="stats">
-
-    <div class="stat available">
-      <div class="stat-title">Available</div>
-      <div class="stat-number" id="availableCount">0</div>
+    <div class="stat">
+      <div class="stat-label">Available</div>
+      <div class="stat-value" id="availableCount">0</div>
     </div>
 
-    <div class="stat sold">
-      <div class="stat-title">Sold</div>
-      <div class="stat-number" id="soldCount">0</div>
+    <div class="stat">
+      <div class="stat-label">Sold</div>
+      <div class="stat-value" id="soldCount">0</div>
     </div>
 
-    <div class="stat mortgage">
-      <div class="stat-title">Mortgage</div>
-      <div class="stat-number" id="mortgageCount">0</div>
+    <div class="stat">
+      <div class="stat-label">Mortgage</div>
+      <div class="stat-value" id="mortgageCount">0</div>
     </div>
 
-    <div class="stat city">
-      <div class="stat-title">City Level</div>
-      <div class="stat-number" id="cityCount">0</div>
+    <div class="stat">
+      <div class="stat-label">City Level</div>
+      <div class="stat-value" id="cityCount">0</div>
     </div>
 
-    <div class="stat vendor">
-      <div class="stat-title">Vendor-Mestri</div>
-      <div class="stat-number" id="vendorCount">0</div>
+    <div class="stat">
+      <div class="stat-label">Vendor-Mestri</div>
+      <div class="stat-value" id="vendorCount">0</div>
     </div>
 
-    <div class="stat rmc">
-      <div class="stat-title">Vendor-RMC</div>
-      <div class="stat-number" id="rmcCount">0</div>
+    <div class="stat">
+      <div class="stat-label">Vendor-RMC</div>
+      <div class="stat-value" id="rmcCount">0</div>
     </div>
-
   </section>
 
-  <!-- ================= BLOCKS ================= -->
 
-  <section class="block-tabs">
+  <section class="panel">
 
-    <div
-      class="block-tab active"
-      id="blockA"
-      onclick="selectBlock('A')"
-    >
-      <div class="block-name">🏢 Block A</div>
-      <div class="block-info" id="blockAInfo">Loading...</div>
-      <div class="block-progress">
-        <span id="blockAProgress"></span>
-      </div>
-    </div>
-
-    <div
-      class="block-tab"
-      id="blockB"
-      onclick="selectBlock('B')"
-    >
-      <div class="block-name">🏢 Block B</div>
-      <div class="block-info" id="blockBInfo">Loading...</div>
-      <div class="block-progress">
-        <span id="blockBProgress"></span>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ================= FILTERS ================= -->
-
-  <section class="filters">
-
-    <div class="filter-title">🔎 Find an Apartment</div>
-
-    <div class="filter-grid">
-
-      <input
-        id="search"
-        type="text"
-        placeholder="Search flat number..."
-        oninput="render()"
-      >
-
-      <select id="status" onchange="render()">
-        <option value="">All Status</option>
-        <option value="AVAILABLE">Available</option>
-        <option value="SOLD">Sold</option>
-        <option value="MORTGAGE">Mortgage</option>
-        <option value="CITY">City Level</option>
-        <option value="VENDOR">Vendor-Mestri</option>
-        <option value="VENDOR-RMC">Vendor-RMC</option>
-      </select>
-
-      <select id="bhk" onchange="render()">
-        <option value="">All BHK</option>
-        <option value="2 BHK">2 BHK</option>
-        <option value="3 BHK">3 BHK</option>
-      </select>
-
-      <select id="floor" onchange="render()">
-        <option value="">All Floors</option>
-        <option value="Ground">Ground</option>
-        <option value="1st">1st</option>
-        <option value="2nd">2nd</option>
-        <option value="3rd">3rd</option>
-        <option value="4th">4th</option>
-        <option value="5th">5th</option>
-        <option value="6th">6th</option>
-        <option value="7th">7th</option>
-        <option value="8th">8th</option>
-        <option value="9th">9th</option>
-      </select>
-
-      <select id="facing" onchange="render()">
-        <option value="">All Facing</option>
-        <option value="EAST">East</option>
-        <option value="WEST">West</option>
-        <option value="NORTH">North</option>
-      </select>
-
-      <select id="sort" onchange="render()">
-        <option value="">Default Order</option>
-        <option value="priceLow">Price: Low → High</option>
-        <option value="priceHigh">Price: High → Low</option>
-        <option value="flat">Flat Number</option>
-      </select>
-
-      <button class="reset" onclick="resetFilters()">
-        RESET
+    <div class="block-tabs">
+      <button class="block-tab active" data-block="ALL">
+        All Blocks
       </button>
 
+      <button class="block-tab" data-block="A">
+        Block A
+      </button>
+
+      <button class="block-tab" data-block="B">
+        Block B
+      </button>
     </div>
 
+    <div class="controls">
+
+      <div class="control">
+        <input
+          id="search"
+          type="text"
+          placeholder="🔎 Search flat number..."
+        >
+      </div>
+
+      <div class="control">
+        <select id="status">
+          <option value="ALL">All Status</option>
+          <option value="AVAILABLE">Available</option>
+          <option value="SOLD">Sold</option>
+          <option value="MORTGAGE">Mortgage</option>
+          <option value="CITY">City Level</option>
+          <option value="VENDOR">Vendor-Mestri</option>
+          <option value="RMC">Vendor-RMC</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <select id="bhk">
+          <option value="ALL">All BHK</option>
+          <option value="2 BHK">2 BHK</option>
+          <option value="3 BHK">3 BHK</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <select id="floor">
+          <option value="ALL">All Floors</option>
+          <option value="Ground">Ground</option>
+          <option value="1st">1st Floor</option>
+          <option value="2nd">2nd Floor</option>
+          <option value="3rd">3rd Floor</option>
+          <option value="4th">4th Floor</option>
+          <option value="5th">5th Floor</option>
+          <option value="6th">6th Floor</option>
+          <option value="7th">7th Floor</option>
+          <option value="8th">8th Floor</option>
+          <option value="9th">9th Floor</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <select id="facing">
+          <option value="ALL">All Facing</option>
+          <option value="EAST">East</option>
+          <option value="WEST">West</option>
+          <option value="NORTH">North</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <select id="sort">
+          <option value="FLAT">Flat Number</option>
+          <option value="PRICE_LOW">Price: Low → High</option>
+          <option value="PRICE_HIGH">Price: High → Low</option>
+          <option value="AREA_LOW">Area: Low → High</option>
+          <option value="AREA_HIGH">Area: High → Low</option>
+        </select>
+      </div>
+
+    </div>
   </section>
 
-  <!-- ================= LEGEND ================= -->
 
-  <div class="legend">
-    <span class="l-available">AVAILABLE</span>
-    <span class="l-sold">SOLD</span>
-    <span class="l-mortgage">MORTGAGE</span>
-    <span class="l-city">CITY LEVEL</span>
-    <span class="l-vendor">VENDOR-MESTRI</span>
-    <span class="l-rmc">VENDOR-RMC</span>
-  </div>
-
-  <!-- ================= FLOOR LIST ================= -->
-
-  <section id="floors"></section>
+  <div id="floors"></div>
 
 </main>
 
-<footer>
-  © NorthCity Developers · Oxygen Towers · Apartment Sales Dashboard
+
+<footer class="footer">
+  Oxygen Towers • NorthCity Developers • Apartment Availability & Sales
 </footer>
 
 
@@ -855,13 +861,11 @@ footer{
 
 /* =========================================================
    FLAT DATA
-   IMPORTANT:
-   EXISTING DATA RETAINED WITHOUT CHANGES
-========================================================= */
+   ========================================================= */
 
 const A = [
 
-/* GROUND */
+/* Ground */
 ["G1","Ground","EAST","3 BHK",1500,6800000,"VENDOR","Vendor-Mestri"],
 ["G2","Ground","WEST","3 BHK",1800,8620000,"AVAILABLE","Mortgage"],
 ["G3","Ground","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
@@ -869,7 +873,7 @@ const A = [
 ["G11","Ground","EAST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
 ["G14","Ground","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
 
-/* 1ST */
+/* 1st */
 ["101","1st","EAST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
 ["102","1st","WEST","3 BHK",1800,8620000,"AVAILABLE","Mortgage"],
 ["103","1st","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
@@ -881,7 +885,7 @@ const A = [
 ["115","1st","EAST","3 BHK",1800,8620000,"AVAILABLE","Mortgage"],
 ["116","1st","WEST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
 
-/* 2ND */
+/* 2nd */
 ["202","2nd","WEST","3 BHK",2455,11502000,"AVAILABLE","Available"],
 ["204","2nd","NORTH","2 BHK",1415,6543000,"VENDOR","Vendor-Mestri"],
 ["205","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
@@ -891,7 +895,7 @@ const A = [
 ["213","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
 ["215","2nd","EAST","3 BHK",2455,11502000,"SOLD","Sold"],
 
-/* 3RD */
+/* 3rd */
 ["302","3rd","WEST","3 BHK",2455,11011000,"VENDOR","Vendor-Mestri"],
 ["304","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
 ["305","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
@@ -901,7 +905,7 @@ const A = [
 ["310","3rd","WEST","2 BHK",1435,6914000,"AVAILABLE","Available"],
 ["313","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
 
-/* 4TH */
+/* 4th */
 ["404","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
 ["405","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
 ["407","4th","EAST","2 BHK",1435,6053000,"SOLD","Sold"],
@@ -914,7 +918,7 @@ const A = [
 ["414","4th","NORTH","3 BHK",2075,9830000,"AVAILABLE","Available"],
 ["415","4th","EAST","3 BHK",2455,11502000,"SOLD","Sold"],
 
-/* 5TH */
+/* 5th */
 ["501","5th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
 ["502","5th","WEST","3 BHK",2455,11747500,"VENDOR-RMC","Vendor-RMC"],
 ["503","5th","NORTH","3 BHK",2075,8585000,"SOLD","Sold"],
@@ -926,7 +930,7 @@ const A = [
 ["515","5th","EAST","3 BHK",2455,10029000,"SOLD","Sold"],
 ["516","5th","WEST","3 BHK",1790,7502000,"SOLD","Sold"],
 
-/* 6TH */
+/* 6th */
 ["601","6th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
 ["602","6th","WEST","3 BHK",2455,11747500,"VENDOR-RMC","Vendor-RMC"],
 ["604","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
@@ -938,7 +942,7 @@ const A = [
 ["613","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
 ["615","6th","EAST","3 BHK",2455,11747500,"SOLD","Sold"],
 
-/* 7TH */
+/* 7th */
 ["701","7th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
 ["702","7th","WEST","3 BHK",2455,10029000,"SOLD","Sold"],
 ["704","7th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
@@ -949,7 +953,7 @@ const A = [
 ["714","7th","NORTH","3 BHK",2075,10037500,"AVAILABLE","Available"],
 ["715","7th","EAST","3 BHK",2455,10029000,"SOLD","Sold"],
 
-/* 8TH */
+/* 8th */
 ["801","8th","EAST","3 BHK",1790,8218000,"SOLD","Sold"],
 ["802","8th","WEST","3 BHK",2455,11520200,"SOLD","Sold"],
 ["803","8th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
@@ -967,7 +971,7 @@ const A = [
 ["815","8th","EAST","3 BHK",2455,11011000,"SOLD","Sold"],
 ["816","8th","WEST","3 BHK",1790,8755000,"AVAILABLE","Available"],
 
-/* 9TH */
+/* 9th */
 ["901","9th","EAST","3 BHK",1790,8934000,"SOLD","Sold"],
 ["902","9th","WEST","3 BHK",2455,11520200,"SOLD","Sold"],
 ["903","9th","NORTH","3 BHK",2075,10296875,"SOLD","Sold"],
@@ -984,13 +988,8 @@ const A = [
 ["914","9th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
 ["915","9th","EAST","3 BHK",2455,11011000,"SOLD","Sold"],
 ["916","9th","WEST","3 BHK",1790,8755000,"AVAILABLE","Available"]
-
 ];
 
-
-/* =========================================================
-   BLOCK B DATA
-========================================================= */
 
 const B = [
 
@@ -1063,84 +1062,28 @@ const B = [
 
 
 /* =========================================================
-   BLOCK IDENTIFICATION
-========================================================= */
+   DASHBOARD LOGIC
+   ========================================================= */
 
-const blockBNumbers = new Set([
-"G17","G18",
-"118","125",
-"217","218","220","222","223","226",
-"318","319","321","323","325",
-"417","425","426",
-"517","520","521","522",
-"619","620","622","623","624","626",
-"717","718","719","720","723","724","726",
-"817","818","819","820","821","822","823","824","825","826",
-"917","918","919","920","921","922","923","924","925","926"
-]);
+let currentBlock = "ALL";
 
-
-let currentBlock = "A";
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function getBlock(flat){
-  return blockBNumbers.has(flat[0]) ? "B" : "A";
-}
+const floorOrder = [
+  "Ground","1st","2nd","3rd","4th",
+  "5th","6th","7th","8th","9th"
+];
 
 function money(value){
   return "₹" + Number(value).toLocaleString("en-IN");
 }
 
-function getClass(flat){
-
-  const status = flat[6];
-  const remark = flat[7];
-
-  if(status === "SOLD") return "sold";
-  if(status === "VENDOR") return "vendor";
-  if(status === "VENDOR-RMC") return "rmc";
-  if(remark === "Mortgage") return "mortgage";
-  if(remark === "City Level") return "city";
-
-  return "available";
-}
-
-function getBadgeClass(flat){
-
-  const status = flat[6];
-  const remark = flat[7];
-
-  if(status === "SOLD") return "sold";
-  if(status === "VENDOR") return "vendor";
-  if(status === "VENDOR-RMC") return "rmc";
-  if(remark === "Mortgage") return "mortgage";
-  if(remark === "City Level") return "city";
-
-  return "available";
-}
-
-function getDisplayStatus(flat){
-
-  const status = flat[6];
-  const remark = flat[7];
-
-  if(status === "SOLD") return "SOLD";
-  if(status === "VENDOR") return "VENDOR-MESTRI";
-  if(status === "VENDOR-RMC") return "VENDOR-RMC";
-  if(remark === "Mortgage") return "MORTGAGE";
-  if(remark === "City Level") return "CITY LEVEL";
-
-  return "AVAILABLE";
+function getData(){
+  if(currentBlock === "A") return A;
+  if(currentBlock === "B") return B;
+  return [...A,...B];
 }
 
 
-/* =========================================================
-   STATS
-========================================================= */
+/* STATS */
 
 function updateStats(){
 
@@ -1175,73 +1118,40 @@ function updateStats(){
 }
 
 
-/* =========================================================
-   BLOCK SUMMARY
-========================================================= */
+/* STATUS */
 
-function updateBlockInfo(){
+function getClass(flat){
 
-  const blocks = {
-    A:A,
-    B:B
-  };
+  if(flat[7] === "Mortgage") return "mortgage";
+  if(flat[7] === "City Level") return "city";
 
-  ["A","B"].forEach(block => {
+  if(flat[6] === "SOLD") return "sold";
+  if(flat[6] === "VENDOR") return "sold";
+  if(flat[6] === "VENDOR-RMC") return "sold";
 
-    const data = blocks[block];
-
-    const available = data.filter(f => f[6] === "AVAILABLE").length;
-    const total = data.length;
-
-    const sold = data.filter(f => f[6] === "SOLD").length;
-
-    const percentage = total
-      ? Math.round((available / total) * 100)
-      : 0;
-
-    document.getElementById(
-      "block"+block+"Info"
-    ).textContent =
-      `${total} Apartments · ${available} Available · ${sold} Sold`;
-
-    document.getElementById(
-      "block"+block+"Progress"
-    ).style.width = percentage + "%";
-
-  });
+  return "available";
 }
 
 
-/* =========================================================
-   SELECT BLOCK
-========================================================= */
+function getBadge(flat){
 
-function selectBlock(block){
+  if(flat[7] === "Mortgage") return "Mortgage";
+  if(flat[7] === "City Level") return "City Level";
 
-  currentBlock = block;
+  if(flat[6] === "SOLD") return "Sold";
+  if(flat[6] === "VENDOR") return "Vendor-Mestri";
+  if(flat[6] === "VENDOR-RMC") return "Vendor-RMC";
 
-  document.getElementById("blockA")
-    .classList.toggle("active",block === "A");
-
-  document.getElementById("blockB")
-    .classList.toggle("active",block === "B");
-
-  render();
+  return "Available";
 }
 
 
-/* =========================================================
-   FILTER
-========================================================= */
+/* FILTER */
 
 function filterData(){
 
-  const data = currentBlock === "A" ? [...A] : [...B];
-
   const search =
-    document.getElementById("search").value
-      .trim()
-      .toLowerCase();
+    document.getElementById("search").value.trim().toLowerCase();
 
   const status =
     document.getElementById("status").value;
@@ -1255,251 +1165,151 @@ function filterData(){
   const facing =
     document.getElementById("facing").value;
 
-  let result = data.filter(f => {
-
-    const flatNo = String(f[0]).toLowerCase();
-
-    if(search && !flatNo.includes(search))
-      return false;
-
-    if(bhk && f[3] !== bhk)
-      return false;
-
-    if(floor && f[1] !== floor)
-      return false;
-
-    if(facing && f[2] !== facing)
-      return false;
-
-    if(status === "MORTGAGE" &&
-       f[7] !== "Mortgage")
-      return false;
-
-    if(status === "CITY" &&
-       f[7] !== "City Level")
-      return false;
-
-    if(status === "VENDOR" &&
-       f[6] !== "VENDOR")
-      return false;
-
-    if(status === "VENDOR-RMC" &&
-       f[6] !== "VENDOR-RMC")
-      return false;
-
-    if(status === "AVAILABLE" &&
-       f[6] !== "AVAILABLE")
-      return false;
-
-    if(status === "SOLD" &&
-       f[6] !== "SOLD")
-      return false;
-
-    return true;
-
-  });
-
   const sort =
     document.getElementById("sort").value;
 
-  if(sort === "priceLow"){
-    result.sort((a,b) => a[5] - b[5]);
-  }
+  let data = getData().filter(f => {
 
-  if(sort === "priceHigh"){
-    result.sort((a,b) => b[5] - a[5]);
-  }
+    if(search && !String(f[0]).toLowerCase().includes(search))
+      return false;
 
-  if(sort === "flat"){
-    result.sort((a,b) =>
-      String(a[0]).localeCompare(
-        String(b[0]),
-        undefined,
-        {numeric:true}
-      )
-    );
-  }
+    if(bhk !== "ALL" && f[3] !== bhk)
+      return false;
 
-  return result;
-}
+    if(floor !== "ALL" && f[1] !== floor)
+      return false;
+
+    if(facing !== "ALL" && f[2] !== facing)
+      return false;
 
 
-/* =========================================================
-   RENDER
-========================================================= */
+    if(status === "AVAILABLE" && f[6] !== "AVAILABLE")
+      return false;
 
-function render(){
+    if(status === "SOLD" && f[6] !== "SOLD")
+      return false;
 
-  const data = filterData();
+    if(status === "MORTGAGE" && f[7] !== "Mortgage")
+      return false;
 
-  const floors = [
-    "Ground",
-    "1st",
-    "2nd",
-    "3rd",
-    "4th",
-    "5th",
-    "6th",
-    "7th",
-    "8th",
-    "9th"
-  ];
+    if(status === "CITY" && f[7] !== "City Level")
+      return false;
 
-  const container =
-    document.getElementById("floors");
+    if(status === "VENDOR" && f[6] !== "VENDOR")
+      return false;
 
-  if(!data.length){
+    if(status === "RMC" && f[6] !== "VENDOR-RMC")
+      return false;
 
-    container.innerHTML = `
-      <div class="empty">
-        <h3>No apartments found</h3>
-        <p>Try changing your search or filters.</p>
-      </div>
-    `;
-
-    return;
-  }
-
-  let html = "";
-
-  floors.forEach((floor,index) => {
-
-    const flats =
-      data.filter(f => f[1] === floor);
-
-    if(!flats.length) return;
-
-    html += `
-      <section class="floor">
-
-        <div
-          class="floor-header"
-          onclick="toggleFloor(this)"
-        >
-
-          <div class="floor-title">
-
-            <span class="arrow">
-              ${index === 0 ? "▼" : "▶"}
-            </span>
-
-            <span>
-              ${floor} Floor
-            </span>
-
-          </div>
-
-          <div class="floor-count">
-            ${flats.length} Apartment${flats.length !== 1 ? "s" : ""}
-          </div>
-
-        </div>
-
-        <div
-          class="floor-body"
-          style="display:${index === 0 ? "block" : "none"}"
-        >
-
-          <div class="flat-grid">
-
-            ${flats.map(flatCard).join("")}
-
-          </div>
-
-        </div>
-
-      </section>
-    `;
+    return true;
   });
 
-  container.innerHTML = html;
+
+  if(sort === "PRICE_LOW")
+    data.sort((a,b) => a[5]-b[5]);
+
+  if(sort === "PRICE_HIGH")
+    data.sort((a,b) => b[5]-a[5]);
+
+  if(sort === "AREA_LOW")
+    data.sort((a,b) => a[4]-b[4]);
+
+  if(sort === "AREA_HIGH")
+    data.sort((a,b) => b[4]-a[4]);
+
+  if(sort === "FLAT")
+    data.sort((a,b) =>
+      a[0].localeCompare(b[0],undefined,{numeric:true})
+    );
+
+  return data;
 }
 
 
-/* =========================================================
-   FLAT CARD
-========================================================= */
+/* CARD */
 
-function flatCard(f){
+function card(flat){
 
-  const flatNo = f[0];
-  const floor = f[1];
-  const facing = f[2];
-  const bhk = f[3];
-  const area = f[4];
-  const price = f[5];
-  const remark = f[7];
+  const cls = getClass(flat);
+  const badge = getBadge(flat);
 
-  const block = getBlock(f);
+  const available =
+    flat[6] === "AVAILABLE";
 
-  const cardClass = getClass(f);
-  const badgeClass = getBadgeClass(f);
-  const displayStatus = getDisplayStatus(f);
-
-  const whatsappText =
-    `Hello, I am interested in Flat ${flatNo}, Block ${block} at Oxygen Towers.`;
+  const block =
+    A.includes(flat) ? "A" : "B";
 
   return `
-    <article class="flat-card ${cardClass}">
+    <article class="flat-card ${cls}">
 
       <div class="flat-top">
 
-        <div class="flat-number">
-          Flat ${flatNo}
+        <div class="flat-no">
+          ${flat[0]}
         </div>
 
-        <div class="block-mini">
-          BLOCK ${block}
+        <div class="badge ${cls}">
+          ${badge}
+        </div>
+
+      </div>
+
+
+      <div class="flat-info">
+
+        <div class="info">
+          <label>Block</label>
+          <strong>Block ${block}</strong>
+        </div>
+
+        <div class="info">
+          <label>Type</label>
+          <strong>${flat[3]}</strong>
+        </div>
+
+        <div class="info">
+          <label>Area</label>
+          <strong>${flat[4].toLocaleString("en-IN")} Sq.Ft</strong>
+        </div>
+
+        <div class="info">
+          <label>Facing</label>
+          <strong>${flat[2]}</strong>
+        </div>
+
+        <div class="info">
+          <label>Floor</label>
+          <strong>${flat[1]}</strong>
         </div>
 
       </div>
 
-      <div class="badge ${badgeClass}">
-        ${displayStatus}
-      </div>
-
-      <div class="flat-details">
-
-        <div>
-          BHK
-          <strong>${bhk}</strong>
-        </div>
-
-        <div>
-          Area
-          <strong>${Number(area).toLocaleString("en-IN")} sq.ft</strong>
-        </div>
-
-        <div>
-          Facing
-          <strong>${facing}</strong>
-        </div>
-
-        <div>
-          Floor
-          <strong>${floor}</strong>
-        </div>
-
-      </div>
 
       <div class="price">
-        ${money(price)}
+        <small>Apartment Price</small>
+        <strong>${money(flat[5])}</strong>
       </div>
 
       <div class="remark">
-        ${remark}
+        ${flat[7]}
       </div>
 
       ${
-        f[6] === "AVAILABLE"
+        available
         ?
         `
         <a
-          class="wa"
-          href="https://wa.me/917386326575?text=${encodeURIComponent(whatsappText)}"
+          class="whatsapp"
+          href="https://wa.me/917386326575?text=${encodeURIComponent(
+            "Hello, I am interested in Oxygen Towers Flat " +
+            flat[0] +
+            " (" +
+            flat[3] +
+            "). Please share more details."
+          )}"
           target="_blank"
         >
-          💬 WhatsApp
+          💬 Enquire on WhatsApp
         </a>
         `
         :
@@ -1511,55 +1321,144 @@ function flatCard(f){
 }
 
 
-/* =========================================================
-   FLOOR COLLAPSE
-========================================================= */
+/* RENDER */
 
-function toggleFloor(header){
+function render(){
 
-  const body =
-    header.nextElementSibling;
+  const data = filterData();
 
-  const arrow =
-    header.querySelector(".arrow");
+  const container =
+    document.getElementById("floors");
 
-  if(body.style.display === "none"){
+  container.innerHTML = "";
 
-    body.style.display = "block";
-    arrow.textContent = "▼";
+  if(data.length === 0){
 
-  }else{
+    container.innerHTML = `
+      <div class="no-results">
+        <div style="font-size:34px">🔎</div>
+        <h3 style="margin-top:10px;color:#183452">
+          No apartments found
+        </h3>
+        <p style="margin-top:6px">
+          Try changing your search or filters.
+        </p>
+      </div>
+    `;
 
-    body.style.display = "none";
-    arrow.textContent = "▶";
-
+    return;
   }
+
+
+  floorOrder.forEach(floor => {
+
+    const flats =
+      data.filter(f => f[1] === floor);
+
+    if(!flats.length) return;
+
+
+    const section =
+      document.createElement("section");
+
+    section.className = "floor-section";
+
+
+    section.innerHTML = `
+      <div class="floor-header">
+
+        <div class="floor-left">
+
+          <div class="floor-icon">
+            ${floor === "Ground" ? "G" : floor.replace("st","").replace("nd","").replace("rd","").replace("th","")}
+          </div>
+
+          <div>
+            <div class="floor-name">
+              ${floor === "Ground" ? "Ground Floor" : floor + " Floor"}
+            </div>
+
+            <div class="floor-count">
+              ${flats.length}
+              apartment${flats.length > 1 ? "s" : ""}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="floor-arrow">
+         ⌄
+        </div>
+
+      </div>
+
+      <div class="flat-grid">
+        ${flats.map(card).join("")}
+      </div>
+    `;
+
+
+    section
+      .querySelector(".floor-header")
+      .addEventListener("click",() => {
+        section.classList.toggle("closed");
+      });
+
+
+    container.appendChild(section);
+
+  });
+
 }
 
 
-/* =========================================================
-   RESET
-========================================================= */
+/* BLOCK TABS */
 
-function resetFilters(){
+document.querySelectorAll(".block-tab")
+.forEach(button => {
 
-  document.getElementById("search").value = "";
-  document.getElementById("status").value = "";
-  document.getElementById("bhk").value = "";
-  document.getElementById("floor").value = "";
-  document.getElementById("facing").value = "";
-  document.getElementById("sort").value = "";
+  button.addEventListener("click",() => {
 
-  render();
-}
+    document
+      .querySelectorAll(".block-tab")
+      .forEach(b => b.classList.remove("active"));
+
+    button.classList.add("active");
+
+    currentBlock =
+      button.dataset.block;
+
+    render();
+
+  });
+
+});
 
 
-/* =========================================================
-   START
-========================================================= */
+/* FILTER EVENTS */
+
+[
+  "search",
+  "status",
+  "bhk",
+  "floor",
+  "facing",
+  "sort"
+].forEach(id => {
+
+  document
+    .getElementById(id)
+    .addEventListener(
+      id === "search" ? "input" : "change",
+      render
+    );
+
+});
+
+
+/* START */
 
 updateStats();
-updateBlockInfo();
 render();
 
 </script>
