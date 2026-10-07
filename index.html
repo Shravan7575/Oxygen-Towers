@@ -8,14 +8,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   ROOT
-========================================================= */
 
 :root{
   --navy:#071b33;
@@ -23,7 +18,7 @@
   --blue:#0c6fd8;
   --blue2:#39a5ff;
 
-  --white:#ffffff;
+  --white:#fff;
   --text:#17283c;
   --muted:#728399;
   --line:#e2eaf1;
@@ -69,22 +64,9 @@ select{
   min-height:610px;
 
   background:
-    radial-gradient(
-      circle at 80% 25%,
-      rgba(54,159,255,.23),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 60% 100%,
-      rgba(9,104,207,.25),
-      transparent 35%
-    ),
-    linear-gradient(
-      135deg,
-      #06172b 0%,
-      #082b50 55%,
-      #075ca7 100%
-    );
+    radial-gradient(circle at 80% 25%,rgba(54,159,255,.23),transparent 30%),
+    radial-gradient(circle at 60% 100%,rgba(9,104,207,.25),transparent 35%),
+    linear-gradient(135deg,#06172b 0%,#082b50 55%,#075ca7 100%);
 
   position:relative;
   overflow:hidden;
@@ -198,7 +180,6 @@ select{
   color:#cce5fb;
 
   font-size:13px;
-
   font-weight:600;
 }
 
@@ -214,11 +195,9 @@ select{
   border-radius:12px;
 
   font-size:12px;
-
   font-weight:800;
 
-  box-shadow:
-    0 10px 25px rgba(0,0,0,.15);
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
 
@@ -228,15 +207,12 @@ select{
 
 .hero-content{
   padding-top:82px;
-
   max-width:880px;
 }
 
 .eyebrow{
   display:inline-flex;
-
   align-items:center;
-
   gap:9px;
 
   border:1px solid rgba(255,255,255,.17);
@@ -268,8 +244,7 @@ select{
 
   background:#4de2a5;
 
-  box-shadow:
-    0 0 0 5px rgba(77,226,165,.12);
+  box-shadow:0 0 0 5px rgba(77,226,165,.12);
 }
 
 .hero h1{
@@ -288,7 +263,6 @@ select{
 
 .hero h1 span{
   display:block;
-
   color:#62b8ff;
 }
 
@@ -321,7 +295,6 @@ select{
   border-radius:12px;
 
   font-size:13px;
-
   font-weight:800;
 
   display:inline-flex;
@@ -333,7 +306,6 @@ select{
 
 .primary-btn{
   color:#07203a;
-
   background:white;
 }
 
@@ -385,7 +357,6 @@ select{
   font-family:"Manrope",sans-serif;
 
   font-size:27px;
-
   font-weight:800;
 
   margin-top:8px;
@@ -424,7 +395,6 @@ select{
   padding:0 30px;
 
   position:relative;
-
   z-index:5;
 }
 
@@ -436,9 +406,7 @@ select{
 .quick-stats{
   display:grid;
 
-  grid-template-columns:
-    1.2fr
-    repeat(5,1fr);
+  grid-template-columns:1.2fr repeat(5,1fr);
 
   background:white;
 
@@ -470,13 +438,7 @@ select{
 }
 
 .stat-main{
-  background:
-    linear-gradient(
-      145deg,
-      #0b4d89,
-      #0873d5
-    );
-
+  background:linear-gradient(145deg,#0b4d89,#0873d5);
   color:white;
 }
 
@@ -593,8 +555,7 @@ select{
 
   border-radius:15px;
 
-  box-shadow:
-    inset 0 1px 2px rgba(0,0,0,.04);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.04);
 }
 
 .block-btn{
@@ -623,50 +584,31 @@ select{
 
 .block-btn:hover{
   background:#f8fbfd;
-
   color:#123250;
 }
 
 .block-btn[data-block="ALL"].active{
-  background:
-    linear-gradient(
-      135deg,
-      #102f50,
-      #075fae
-    );
+  background:linear-gradient(135deg,#102f50,#075fae);
 
   color:white;
 
-  box-shadow:
-    0 8px 18px rgba(8,62,110,.24);
+  box-shadow:0 8px 18px rgba(8,62,110,.24);
 }
 
 .block-btn[data-block="A"].active{
-  background:
-    linear-gradient(
-      135deg,
-      #0c8b72,
-      #12b892
-    );
+  background:linear-gradient(135deg,#0c8b72,#12b892);
 
   color:white;
 
-  box-shadow:
-    0 8px 18px rgba(12,139,114,.24);
+  box-shadow:0 8px 18px rgba(12,139,114,.24);
 }
 
 .block-btn[data-block="B"].active{
-  background:
-    linear-gradient(
-      135deg,
-      #7552c7,
-      #9673e8
-    );
+  background:linear-gradient(135deg,#7552c7,#9673e8);
 
   color:white;
 
-  box-shadow:
-    0 8px 18px rgba(117,82,199,.24);
+  box-shadow:0 8px 18px rgba(117,82,199,.24);
 }
 
 
@@ -675,12 +617,7 @@ select{
 ========================================================= */
 
 .find-box{
-  background:
-    linear-gradient(
-      145deg,
-      #ffffff,
-      #f7fbff
-    );
+  background:linear-gradient(145deg,#ffffff,#f7fbff);
 
   border:1px solid #dce8f2;
 
@@ -688,16 +625,13 @@ select{
 
   padding:20px;
 
-  box-shadow:
-    0 15px 40px rgba(12,48,82,.08);
+  box-shadow:0 15px 40px rgba(12,48,82,.08);
 }
 
 .search-row{
   display:grid;
 
-  grid-template-columns:
-    2fr
-    repeat(5,1fr);
+  grid-template-columns:2fr repeat(5,1fr);
 
   gap:12px;
 }
@@ -743,7 +677,6 @@ select{
 
 .field input::placeholder{
   color:#71859a;
-
   font-weight:700;
 }
 
@@ -778,8 +711,7 @@ select{
 
   border-color:#1382df !important;
 
-  box-shadow:
-    0 0 0 4px rgba(19,130,223,.09);
+  box-shadow:0 0 0 4px rgba(19,130,223,.09);
 
   transform:translateY(-1px);
 }
@@ -787,8 +719,7 @@ select{
 .field select:hover{
   transform:translateY(-1px);
 
-  box-shadow:
-    0 7px 18px rgba(20,55,90,.07);
+  box-shadow:0 7px 18px rgba(20,55,90,.07);
 }
 
 .filter-summary{
@@ -813,7 +744,7 @@ select{
 
 
 /* =========================================================
-   FLOOR EXPLORER
+   EXPLORER
 ========================================================= */
 
 .explorer{
@@ -856,7 +787,7 @@ select{
 .floor{
   margin-top:13px;
 
-  background:#ffffff;
+  background:#fff;
 
   border:1px solid var(--line);
 
@@ -864,8 +795,7 @@ select{
 
   overflow:hidden;
 
-  box-shadow:
-    0 8px 26px rgba(15,45,80,.045);
+  box-shadow:0 8px 26px rgba(15,45,80,.045);
 }
 
 .floor-head{
@@ -883,7 +813,7 @@ select{
 
   user-select:none;
 
-  background:#ffffff;
+  background:#fff;
 
   border-bottom:1px solid #e2ebf2;
 
@@ -891,14 +821,6 @@ select{
 }
 
 .floor-head:hover{
-  background:#f8fbfe;
-}
-
-.floor.closed .floor-head{
-  background:#ffffff;
-}
-
-.floor.closed .floor-head:hover{
   background:#f8fbfe;
 }
 
@@ -911,9 +833,7 @@ select{
 }
 
 
-/* =========================================================
-   SMALL CLEAN FLOOR LABEL
-========================================================= */
+/* Small floor label */
 
 .floor-number{
   width:38px;
@@ -970,9 +890,7 @@ select{
 }
 
 
-/* =========================================================
-   STRONG AVAILABLE COUNT
-========================================================= */
+/* Strong availability */
 
 .floor-available{
   display:flex;
@@ -997,13 +915,11 @@ select{
 
   letter-spacing:.2px;
 
-  box-shadow:
-    0 4px 12px rgba(7,151,102,.12);
+  box-shadow:0 4px 12px rgba(7,151,102,.12);
 }
 
 .floor-arrow{
   width:34px;
-
   height:34px;
 
   border-radius:50%;
@@ -1043,8 +959,7 @@ select{
 .flat-grid{
   display:grid;
 
-  grid-template-columns:
-    repeat(4,1fr);
+  grid-template-columns:repeat(4,1fr);
 
   gap:12px;
 }
@@ -1057,7 +972,7 @@ select{
 .flat{
   position:relative;
 
-  background:#ffffff;
+  background:#fff;
 
   border:1px solid #dfe8ef;
 
@@ -1077,13 +992,13 @@ select{
 
   border-color:#bcd3e5;
 
-  box-shadow:
-    0 18px 35px rgba(10,45,80,.11);
+  box-shadow:0 18px 35px rgba(10,45,80,.11);
 }
 
 
 /* =========================================================
-   SMALL COLORED CORNER
+   STATUS DOT
+   NO TRIANGLE / NO LARGE BACKGROUND
 ========================================================= */
 
 .flat:before{
@@ -1091,65 +1006,75 @@ select{
 
   position:absolute;
 
-  top:0;
-  left:0;
+  top:22px;
+  left:14px;
 
-  width:0;
-  height:0;
+  width:7px;
+  height:7px;
 
-  border-style:solid;
+  border-radius:50%;
 
-  border-width:0 38px 38px 0;
-
-  z-index:1;
+  z-index:2;
 }
+
+
+/* Available */
 
 .flat.available:before{
-  border-color:
-    transparent
-    #16a66b
-    transparent
-    transparent;
+  background:#16a66b;
+
+  box-shadow:
+    0 0 0 4px rgba(22,166,107,.10);
 }
+
+
+/* Sold */
 
 .flat.sold:before{
-  border-color:
-    transparent
-    #df4545
-    transparent
-    transparent;
+  background:#df4545;
+
+  box-shadow:
+    0 0 0 4px rgba(223,69,69,.10);
 }
+
+
+/* Mortgage */
 
 .flat.mortgage:before{
-  border-color:
-    transparent
-    #e39a27
-    transparent
-    transparent;
+  background:#e39a27;
+
+  box-shadow:
+    0 0 0 4px rgba(227,154,39,.10);
 }
+
+
+/* City Level */
 
 .flat.city:before{
-  border-color:
-    transparent
-    #7655c8
-    transparent
-    transparent;
+  background:#7655c8;
+
+  box-shadow:
+    0 0 0 4px rgba(118,85,200,.10);
 }
+
+
+/* Vendor-Mestri */
 
 .flat.vendor:before{
-  border-color:
-    transparent
-    #287fc4
-    transparent
-    transparent;
+  background:#287fc4;
+
+  box-shadow:
+    0 0 0 4px rgba(40,127,196,.10);
 }
 
+
+/* Vendor-RMC */
+
 .flat.rmc:before{
-  border-color:
-    transparent
-    #159c9c
-    transparent
-    transparent;
+  background:#159c9c;
+
+  box-shadow:
+    0 0 0 4px rgba(21,156,156,.10);
 }
 
 
@@ -1173,7 +1098,7 @@ select{
 
 
 /* =========================================================
-   FLAT NUMBER - CLEAN
+   FLAT NUMBER
 ========================================================= */
 
 .flat-number{
@@ -1196,6 +1121,17 @@ select{
   background:transparent;
 
   text-shadow:none;
+
+  padding-left:15px;
+}
+
+
+/* Make absolutely sure there is no shape behind number */
+
+.flat-number::before,
+.flat-number::after{
+  content:none !important;
+  display:none !important;
 }
 
 
@@ -1232,12 +1168,8 @@ select{
 
   border:2px solid transparent;
 
-  box-shadow:
-    0 4px 10px rgba(0,0,0,.06);
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
 }
-
-
-/* AVAILABLE */
 
 .badge.available{
   color:#006f45;
@@ -1246,12 +1178,8 @@ select{
 
   border-color:#72d4a5;
 
-  box-shadow:
-    0 5px 14px rgba(7,151,102,.16);
+  box-shadow:0 5px 14px rgba(7,151,102,.16);
 }
-
-
-/* SOLD */
 
 .badge.sold{
   color:#b92323;
@@ -1260,12 +1188,8 @@ select{
 
   border-color:#ef9696;
 
-  box-shadow:
-    0 5px 14px rgba(223,69,69,.14);
+  box-shadow:0 5px 14px rgba(223,69,69,.14);
 }
-
-
-/* MORTGAGE */
 
 .badge.mortgage{
   color:#995c00;
@@ -1274,12 +1198,8 @@ select{
 
   border-color:#e6b75d;
 
-  box-shadow:
-    0 5px 14px rgba(201,130,23,.14);
+  box-shadow:0 5px 14px rgba(201,130,23,.14);
 }
-
-
-/* CITY LEVEL */
 
 .badge.city{
   color:#5737a5;
@@ -1288,12 +1208,8 @@ select{
 
   border-color:#bca5ed;
 
-  box-shadow:
-    0 5px 14px rgba(118,85,200,.14);
+  box-shadow:0 5px 14px rgba(118,85,200,.14);
 }
-
-
-/* VENDOR-MESTRI */
 
 .badge.vendor{
   color:#0c5f98;
@@ -1302,12 +1218,8 @@ select{
 
   border-color:#94c9ed;
 
-  box-shadow:
-    0 5px 14px rgba(40,127,196,.14);
+  box-shadow:0 5px 14px rgba(40,127,196,.14);
 }
-
-
-/* VENDOR-RMC */
 
 .badge.rmc{
   color:#067777;
@@ -1316,8 +1228,7 @@ select{
 
   border-color:#8dd6d6;
 
-  box-shadow:
-    0 5px 14px rgba(21,156,156,.14);
+  box-shadow:0 5px 14px rgba(21,156,156,.14);
 }
 
 
@@ -1419,8 +1330,7 @@ select{
 
   display:inline-block;
 
-  box-shadow:
-    0 4px 12px rgba(10,75,125,.06);
+  box-shadow:0 4px 12px rgba(10,75,125,.06);
 }
 
 
@@ -1477,12 +1387,7 @@ select{
 
   text-align:center;
 
-  background:
-    linear-gradient(
-      135deg,
-      #12a963,
-      #19c477
-    );
+  background:linear-gradient(135deg,#12a963,#19c477);
 
   color:white;
 
@@ -1631,6 +1536,7 @@ select{
 
   .hero h1{
     font-size:43px;
+
     letter-spacing:-2px;
   }
 
@@ -1835,6 +1741,16 @@ select{
 
   .flat-number{
     font-size:36px;
+
+    padding-left:15px;
+  }
+
+  .flat:before{
+    top:24px;
+    left:14px;
+
+    width:7px;
+    height:7px;
   }
 
   .badge{
@@ -1929,6 +1845,10 @@ select{
 
   .flat-number{
     font-size:32px;
+  }
+
+  .flat:before{
+    top:23px;
   }
 
   .flat-type{
@@ -2044,31 +1964,23 @@ select{
     <div class="hero-content">
 
       <div class="eyebrow">
-
         <i></i>
-
         Premium Residential Flats
-
       </div>
 
 
       <h1>
-
         Welcome to
-
         <span>
           Oxygen Towers.
         </span>
-
       </h1>
 
 
       <p class="hero-description">
-
         Discover thoughtfully designed 2 & 3 BHK flats.
         Explore floor-wise availability, flat details and
         pricing across Block A and Block B.
-
       </p>
 
 
@@ -2107,39 +2019,18 @@ select{
       </div>
 
       <div class="hero-info-row">
-
-        <span>
-          Blocks
-        </span>
-
-        <strong>
-          A & B
-        </strong>
-
+        <span>Blocks</span>
+        <strong>A & B</strong>
       </div>
 
       <div class="hero-info-row">
-
-        <span>
-          Floors
-        </span>
-
-        <strong>
-          Ground – 9th
-        </strong>
-
+        <span>Floors</span>
+        <strong>Ground – 9th</strong>
       </div>
 
       <div class="hero-info-row">
-
-        <span>
-          Sales
-        </span>
-
-        <strong>
-          +91 73863 26575
-        </strong>
-
+        <span>Sales</span>
+        <strong>+91 73863 26575</strong>
       </div>
 
     </div>
@@ -2157,9 +2048,7 @@ select{
 <main class="main" id="flats">
 
 
-  <!-- ===================================================
-       QUICK STATS
-  =================================================== -->
+  <!-- QUICK STATS -->
 
   <section class="quick-stats">
 
@@ -2287,9 +2176,7 @@ select{
 
 
 
-  <!-- ===================================================
-       FIND YOUR FLAT
-  =================================================== -->
+  <!-- FIND -->
 
   <section class="find-section">
 
@@ -2530,15 +2417,10 @@ select{
         <div class="result-count">
 
           Showing
-
-          <strong id="resultCount">
-            0
-          </strong>
-
+          <strong id="resultCount">0</strong>
           flats
 
         </div>
-
 
         <div>
           Oxygen Towers • NorthCity Developers
@@ -2552,12 +2434,9 @@ select{
 
 
 
-  <!-- ===================================================
-       FLOOR EXPLORER
-  =================================================== -->
+  <!-- FLOOR EXPLORER -->
 
   <section class="explorer">
-
 
     <div class="explorer-head">
 
@@ -2588,9 +2467,7 @@ select{
 
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- FOOTER -->
 
 <footer class="footer">
 
@@ -2614,7 +2491,7 @@ select{
 
 
 /* =========================================================
-   BLOCK A DATA — UNCHANGED
+   BLOCK A — ORIGINAL DATA
 ========================================================= */
 
 const A = [
@@ -2737,7 +2614,7 @@ const A = [
 
 
 /* =========================================================
-   BLOCK B DATA — UNCHANGED
+   BLOCK B — ORIGINAL DATA
 ========================================================= */
 
 const B = [
@@ -2750,7 +2627,7 @@ const B = [
 
 ["217","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
 ["218","2nd","WEST","3 BHK",2305,10842000,"AVAILABLE","Available"],
-["220","2nd","NORTH","3 BHK",1900,600000,"AVAILABLE","City Level"],
+["220","2nd","NORTH","3 BHK",1900,9060000,"AVAILABLE","City Level"],
 ["222","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
 ["223","2nd","NORTH","3 BHK",1900,9060000,"AVAILABLE","City Level"],
 ["226","2nd","WEST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
@@ -2811,7 +2688,7 @@ const B = [
 
 
 /* =========================================================
-   APP
+   APP SETTINGS
 ========================================================= */
 
 let currentBlock = "ALL";
@@ -2845,7 +2722,6 @@ function getData(){
   }
 
   return [...A,...B];
-
 }
 
 
@@ -2862,7 +2738,7 @@ function money(value){
 
 
 /* =========================================================
-   UPDATE STATS
+   STATS
 ========================================================= */
 
 function updateStats(){
@@ -2906,23 +2782,12 @@ function updateStats(){
   });
 
 
-  document.getElementById("availableCount").textContent =
-    available;
-
-  document.getElementById("soldCount").textContent =
-    sold;
-
-  document.getElementById("mortgageCount").textContent =
-    mortgage;
-
-  document.getElementById("cityCount").textContent =
-    city;
-
-  document.getElementById("vendorCount").textContent =
-    vendor;
-
-  document.getElementById("rmcCount").textContent =
-    rmc;
+  document.getElementById("availableCount").textContent = available;
+  document.getElementById("soldCount").textContent = sold;
+  document.getElementById("mortgageCount").textContent = mortgage;
+  document.getElementById("cityCount").textContent = city;
+  document.getElementById("vendorCount").textContent = vendor;
+  document.getElementById("rmcCount").textContent = rmc;
 
 }
 
@@ -2954,7 +2819,6 @@ function visualClass(flat){
   }
 
   return "available";
-
 }
 
 
@@ -2985,7 +2849,6 @@ function visualBadge(flat){
   }
 
   return "Available";
-
 }
 
 
@@ -3017,134 +2880,110 @@ function getFilteredData(){
     document.getElementById("sort").value;
 
 
-  let data =
-    getData().filter(flat => {
+  let data = getData().filter(flat => {
+
+    if(
+      search &&
+      !String(flat[0])
+        .toLowerCase()
+        .includes(search)
+    ){
+      return false;
+    }
 
 
-      if(
-        search &&
-        !String(flat[0])
-          .toLowerCase()
-          .includes(search)
-      ){
-        return false;
-      }
+    if(
+      bhk !== "ALL" &&
+      flat[3] !== bhk
+    ){
+      return false;
+    }
 
 
-      if(
-        bhk !== "ALL" &&
-        flat[3] !== bhk
-      ){
-        return false;
-      }
+    if(
+      floor !== "ALL" &&
+      flat[1] !== floor
+    ){
+      return false;
+    }
 
 
-      if(
-        floor !== "ALL" &&
-        flat[1] !== floor
-      ){
-        return false;
-      }
+    if(
+      facing !== "ALL" &&
+      flat[2] !== facing
+    ){
+      return false;
+    }
 
 
-      if(
-        facing !== "ALL" &&
-        flat[2] !== facing
-      ){
-        return false;
-      }
+    if(
+      status === "AVAILABLE" &&
+      flat[6] !== "AVAILABLE"
+    ){
+      return false;
+    }
 
 
-      if(
-        status === "AVAILABLE" &&
-        flat[6] !== "AVAILABLE"
-      ){
-        return false;
-      }
+    if(
+      status === "SOLD" &&
+      flat[6] !== "SOLD"
+    ){
+      return false;
+    }
 
 
-      if(
-        status === "SOLD" &&
-        flat[6] !== "SOLD"
-      ){
-        return false;
-      }
+    if(
+      status === "MORTGAGE" &&
+      flat[7] !== "Mortgage"
+    ){
+      return false;
+    }
 
 
-      if(
-        status === "MORTGAGE" &&
-        flat[7] !== "Mortgage"
-      ){
-        return false;
-      }
+    if(
+      status === "CITY" &&
+      flat[7] !== "City Level"
+    ){
+      return false;
+    }
 
 
-      if(
-        status === "CITY" &&
-        flat[7] !== "City Level"
-      ){
-        return false;
-      }
+    if(
+      status === "VENDOR" &&
+      flat[6] !== "VENDOR"
+    ){
+      return false;
+    }
 
 
-      if(
-        status === "VENDOR" &&
-        flat[6] !== "VENDOR"
-      ){
-        return false;
-      }
+    if(
+      status === "RMC" &&
+      flat[6] !== "VENDOR-RMC"
+    ){
+      return false;
+    }
 
 
-      if(
-        status === "RMC" &&
-        flat[6] !== "VENDOR-RMC"
-      ){
-        return false;
-      }
+    return true;
 
+  });
 
-      return true;
-
-    });
-
-
-  /* SORT */
 
   if(sort === "PRICE_LOW"){
-
-    data.sort(
-      (a,b) => a[5] - b[5]
-    );
-
+    data.sort((a,b) => a[5] - b[5]);
   }
-
 
   if(sort === "PRICE_HIGH"){
-
-    data.sort(
-      (a,b) => b[5] - a[5]
-    );
-
+    data.sort((a,b) => b[5] - a[5]);
   }
-
 
   if(sort === "AREA_LOW"){
-
-    data.sort(
-      (a,b) => a[4] - b[4]
-    );
-
+    data.sort((a,b) => a[4] - b[4]);
   }
-
 
   if(sort === "AREA_HIGH"){
-
-    data.sort(
-      (a,b) => b[4] - a[4]
-    );
-
+    data.sort((a,b) => b[4] - a[4]);
   }
-
 
   if(sort === "FLAT"){
 
@@ -3163,7 +3002,6 @@ function getFilteredData(){
 
 
   return data;
-
 }
 
 
@@ -3173,11 +3011,9 @@ function getFilteredData(){
 
 function apartmentCard(flat){
 
-  const type =
-    visualClass(flat);
+  const type = visualClass(flat);
 
-  const badge =
-    visualBadge(flat);
+  const badge = visualBadge(flat);
 
   const isAvailable =
     flat[6] === "AVAILABLE";
@@ -3196,19 +3032,15 @@ function apartmentCard(flat){
 
     <article class="flat ${type}">
 
-
       <div class="flat-top">
-
 
         <div class="flat-number">
           ${flat[0]}
         </div>
 
-
         <div class="badge ${type}">
           ${badge}
         </div>
-
 
       </div>
 
@@ -3220,42 +3052,34 @@ function apartmentCard(flat){
 
       <div class="flat-meta">
 
-
         <span class="meta">
           Block ${block}
         </span>
-
 
         <span class="meta">
           ${flat[4].toLocaleString("en-IN")} Sq.Ft
         </span>
 
-
         <span class="meta">
           ${flat[2]}
         </span>
 
-
         <span class="meta">
           ${flat[1]}
         </span>
-
 
       </div>
 
 
       <div class="price-box">
 
-
         <div class="price-label">
           Flat Price
         </div>
 
-
         <div class="price">
           ${money(flat[5])}
         </div>
-
 
       </div>
 
@@ -3274,7 +3098,6 @@ function apartmentCard(flat){
         isAvailable
           ?
         `
-
           <a
             class="enquire"
             href="https://wa.me/917386326575?text=${encodeURIComponent(message)}"
@@ -3282,12 +3105,10 @@ function apartmentCard(flat){
           >
             💬 Enquire About This Flat
           </a>
-
         `
           :
         ""
       }
-
 
     </article>
 
@@ -3302,13 +3123,10 @@ function apartmentCard(flat){
 
 function render(){
 
-  const data =
-    getFilteredData();
-
+  const data = getFilteredData();
 
   const container =
     document.getElementById("floors");
-
 
   const resultCount =
     document.getElementById("resultCount");
@@ -3344,7 +3162,6 @@ function render(){
     `;
 
     return;
-
   }
 
 
@@ -3353,7 +3170,6 @@ function render(){
 
 
   floors.forEach(floor => {
-
 
     const flats =
       data.filter(
@@ -3383,7 +3199,7 @@ function render(){
 
 
     /*
-      All floors are collapsed by default.
+      All floors are collapsed initially.
       If a floor is selected in the filter,
       that floor opens automatically.
     */
@@ -3396,20 +3212,15 @@ function render(){
 
     section.innerHTML = `
 
-
       <div class="floor-head">
 
-
         <div class="floor-left">
-
 
           <div class="floor-number">
             ${floorNumber}
           </div>
 
-
           <div>
-
 
             <div class="floor-name">
 
@@ -3421,53 +3232,39 @@ function render(){
 
             </div>
 
-
             <div class="floor-count">
-
               ${flats.length} Flats
-
             </div>
 
-
           </div>
-
 
         </div>
 
 
         <div class="floor-right">
 
-
           ${
             available
               ?
             `
-
               <div class="floor-available">
-
                 ${available} AVAILABLE
-
               </div>
-
             `
               :
             ""
           }
 
-
           <div class="floor-arrow">
             ›
           </div>
 
-
         </div>
-
 
       </div>
 
 
       <div class="floor-body">
-
 
         <div class="flat-grid">
 
@@ -3475,9 +3272,7 @@ function render(){
 
         </div>
 
-
       </div>
-
 
     `;
 
@@ -3509,11 +3304,9 @@ document
   .querySelectorAll(".block-btn")
   .forEach(button => {
 
-
     button.addEventListener(
       "click",
       () => {
-
 
         document
           .querySelectorAll(".block-btn")
@@ -3534,7 +3327,6 @@ document
       }
     );
 
-
   });
 
 
@@ -3551,19 +3343,15 @@ document
   "sort"
 ].forEach(id => {
 
-
   const element =
     document.getElementById(id);
 
 
   element.addEventListener(
-
     id === "search"
       ? "input"
       : "change",
-
     render
-
   );
 
 });
