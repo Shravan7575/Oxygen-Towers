@@ -654,10 +654,6 @@ select{
 
   font-weight:800;
 
-  border-width:1px;
-
-  border-style:solid;
-
   cursor:pointer;
 
   transition:.2s;
@@ -666,7 +662,7 @@ select{
 .field:first-child input{
   background:#f0f7ff;
 
-  border-color:#c9e1f7;
+  border:1px solid #c9e1f7;
 
   color:#092744;
 
@@ -682,27 +678,27 @@ select{
 
 #status{
   background:#fff8ed;
-  border-color:#f1d8aa;
+  border:1px solid #f1d8aa;
 }
 
 #bhk{
   background:#f2f0ff;
-  border-color:#d8d0f6;
+  border:1px solid #d8d0f6;
 }
 
 #floor{
   background:#eefaf6;
-  border-color:#c8e8dc;
+  border:1px solid #c8e8dc;
 }
 
 #facing{
   background:#fff1f4;
-  border-color:#f1ccd5;
+  border:1px solid #f1ccd5;
 }
 
 #sort{
   background:#eef5fb;
-  border-color:#cbddec;
+  border:1px solid #cbddec;
 }
 
 .field input:focus,
@@ -832,9 +828,6 @@ select{
   gap:12px;
 }
 
-
-/* Small floor label */
-
 .floor-number{
   width:38px;
   height:38px;
@@ -857,8 +850,6 @@ select{
   font-size:13px;
 
   font-weight:900;
-
-  box-shadow:none;
 }
 
 .floor-name{
@@ -889,9 +880,6 @@ select{
   gap:12px;
 }
 
-
-/* Strong availability */
-
 .floor-available{
   display:flex;
 
@@ -912,8 +900,6 @@ select{
   font-size:12px;
 
   font-weight:900;
-
-  letter-spacing:.2px;
 
   box-shadow:0 4px 12px rgba(7,151,102,.12);
 }
@@ -961,12 +947,13 @@ select{
 
   grid-template-columns:repeat(4,1fr);
 
-  gap:12px;
+  gap:14px;
 }
 
 
 /* =========================================================
    FLAT CARD
+   CLEAR INDIVIDUAL BORDER
 ========================================================= */
 
 .flat{
@@ -974,31 +961,71 @@ select{
 
   background:#fff;
 
-  border:1px solid #dfe8ef;
+  border:1.5px solid #d5e0e8;
 
   border-radius:19px;
 
-  padding:19px;
+  padding:19px 19px 19px 21px;
 
   overflow:hidden;
 
   transition:.25s;
 
   min-height:300px;
+
+  box-shadow:
+    0 5px 16px rgba(10,45,80,.045);
 }
 
-.flat:hover{
-  transform:translateY(-4px);
 
-  border-color:#bcd3e5;
+/* Colored vertical status line */
 
-  box-shadow:0 18px 35px rgba(10,45,80,.11);
+.flat:after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  top:16px;
+  bottom:16px;
+
+  width:4px;
+
+  border-radius:0 5px 5px 0;
+
+  z-index:2;
+}
+
+
+/* Status line colors */
+
+.flat.available:after{
+  background:#16a66b;
+}
+
+.flat.sold:after{
+  background:#df4545;
+}
+
+.flat.mortgage:after{
+  background:#e39a27;
+}
+
+.flat.city:after{
+  background:#7655c8;
+}
+
+.flat.vendor:after{
+  background:#287fc4;
+}
+
+.flat.rmc:after{
+  background:#159c9c;
 }
 
 
 /* =========================================================
-   STATUS DOT
-   NO TRIANGLE / NO LARGE BACKGROUND
+   SMALL STATUS DOT
 ========================================================= */
 
 .flat:before{
@@ -1014,11 +1041,8 @@ select{
 
   border-radius:50%;
 
-  z-index:2;
+  z-index:3;
 }
-
-
-/* Available */
 
 .flat.available:before{
   background:#16a66b;
@@ -1027,18 +1051,12 @@ select{
     0 0 0 4px rgba(22,166,107,.10);
 }
 
-
-/* Sold */
-
 .flat.sold:before{
   background:#df4545;
 
   box-shadow:
     0 0 0 4px rgba(223,69,69,.10);
 }
-
-
-/* Mortgage */
 
 .flat.mortgage:before{
   background:#e39a27;
@@ -1047,18 +1065,12 @@ select{
     0 0 0 4px rgba(227,154,39,.10);
 }
 
-
-/* City Level */
-
 .flat.city:before{
   background:#7655c8;
 
   box-shadow:
     0 0 0 4px rgba(118,85,200,.10);
 }
-
-
-/* Vendor-Mestri */
 
 .flat.vendor:before{
   background:#287fc4;
@@ -1067,14 +1079,25 @@ select{
     0 0 0 4px rgba(40,127,196,.10);
 }
 
-
-/* Vendor-RMC */
-
 .flat.rmc:before{
   background:#159c9c;
 
   box-shadow:
     0 0 0 4px rgba(21,156,156,.10);
+}
+
+
+/* =========================================================
+   FLAT HOVER
+========================================================= */
+
+.flat:hover{
+  transform:translateY(-4px);
+
+  border-color:#9eb9ce;
+
+  box-shadow:
+    0 18px 35px rgba(10,45,80,.12);
 }
 
 
@@ -1126,11 +1149,12 @@ select{
 }
 
 
-/* Make absolutely sure there is no shape behind number */
+/* Absolutely no shape behind flat number */
 
 .flat-number::before,
 .flat-number::after{
   content:none !important;
+
   display:none !important;
 }
 
@@ -1527,6 +1551,7 @@ select{
 
   .whatsapp-top{
     padding:10px 12px;
+
     font-size:10px;
   }
 
@@ -1551,6 +1576,7 @@ select{
   .primary-btn,
   .secondary-btn{
     padding:12px 15px;
+
     font-size:11px;
   }
 
@@ -1559,6 +1585,7 @@ select{
 
   .main{
     padding:0 13px;
+
     margin-top:-45px;
   }
 
@@ -1734,23 +1761,35 @@ select{
   .flat{
     min-height:auto;
 
-    padding:20px;
+    padding:20px 20px 20px 22px;
 
     border-radius:19px;
+
+    border-width:1.5px;
+  }
+
+  .flat:after{
+    top:15px;
+
+    bottom:15px;
+
+    width:4px;
+  }
+
+  .flat:before{
+    top:24px;
+
+    left:14px;
+
+    width:7px;
+
+    height:7px;
   }
 
   .flat-number{
     font-size:36px;
 
     padding-left:15px;
-  }
-
-  .flat:before{
-    top:24px;
-    left:14px;
-
-    width:7px;
-    height:7px;
   }
 
   .badge{
@@ -1840,7 +1879,7 @@ select{
   }
 
   .flat{
-    padding:19px;
+    padding:19px 19px 19px 21px;
   }
 
   .flat-number{
@@ -2052,7 +2091,6 @@ select{
 
   <section class="quick-stats">
 
-
     <div class="stat stat-main">
 
       <div class="stat-label">
@@ -2180,7 +2218,6 @@ select{
 
   <section class="find-section">
 
-
     <div class="section-heading">
 
       <div>
@@ -2232,7 +2269,6 @@ select{
     <div class="find-box">
 
       <div class="search-row">
-
 
         <div class="field">
 
@@ -2467,7 +2503,9 @@ select{
 
 
 
-<!-- FOOTER -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer class="footer">
 
@@ -2627,7 +2665,7 @@ const B = [
 
 ["217","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
 ["218","2nd","WEST","3 BHK",2305,10842000,"AVAILABLE","Available"],
-["220","2nd","NORTH","3 BHK",1900,9060000,"AVAILABLE","City Level"],
+["220","2nd","NORTH","3 BHK",1900,600000,"AVAILABLE","City Level"],
 ["222","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
 ["223","2nd","NORTH","3 BHK",1900,9060000,"AVAILABLE","City Level"],
 ["226","2nd","WEST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
@@ -2688,7 +2726,7 @@ const B = [
 
 
 /* =========================================================
-   APP SETTINGS
+   APP
 ========================================================= */
 
 let currentBlock = "ALL";
@@ -2708,7 +2746,7 @@ const floors = [
 
 
 /* =========================================================
-   GET DATA
+   DATA
 ========================================================= */
 
 function getData(){
@@ -2722,6 +2760,7 @@ function getData(){
   }
 
   return [...A,...B];
+
 }
 
 
@@ -2793,7 +2832,7 @@ function updateStats(){
 
 
 /* =========================================================
-   VISUAL CLASS
+   STATUS CLASS
 ========================================================= */
 
 function visualClass(flat){
@@ -2819,11 +2858,12 @@ function visualClass(flat){
   }
 
   return "available";
+
 }
 
 
 /* =========================================================
-   VISUAL BADGE
+   STATUS BADGE
 ========================================================= */
 
 function visualBadge(flat){
@@ -2849,6 +2889,7 @@ function visualBadge(flat){
   }
 
   return "Available";
+
 }
 
 
@@ -2881,6 +2922,7 @@ function getFilteredData(){
 
 
   let data = getData().filter(flat => {
+
 
     if(
       search &&
@@ -3002,6 +3044,7 @@ function getFilteredData(){
 
 
   return data;
+
 }
 
 
@@ -3118,7 +3161,7 @@ function apartmentCard(flat){
 
 
 /* =========================================================
-   RENDER
+   RENDER FLOORS
 ========================================================= */
 
 function render(){
@@ -3199,9 +3242,11 @@ function render(){
 
 
     /*
-      All floors are collapsed initially.
-      If a floor is selected in the filter,
-      that floor opens automatically.
+      All floors start collapsed.
+
+      If the user selects a particular
+      floor in the filter, only that
+      floor opens.
     */
 
     section.className =
@@ -3297,7 +3342,7 @@ function render(){
 
 
 /* =========================================================
-   BLOCK SWITCH
+   BLOCK BUTTONS
 ========================================================= */
 
 document
