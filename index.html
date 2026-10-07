@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,19 +8,34 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap"
-  rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================================================
-   BASIC
-   ========================================================= */
+:root{
+  --navy:#071b33;
+  --navy2:#0c2c50;
+  --blue:#0c6fd8;
+  --blue2:#39a5ff;
+
+  --white:#fff;
+  --text:#17283c;
+  --muted:#728399;
+  --line:#e2eaf1;
+
+  --green:#079766;
+  --red:#df4545;
+  --orange:#c98217;
+  --purple:#7655c8;
+  --vendor:#287fc4;
+  --rmc:#159c9c;
+
+  --shadow:0 20px 55px rgba(7,35,65,.09);
+}
 
 *{
+  margin:0;
+  padding:0;
   box-sizing:border-box;
 }
 
@@ -30,430 +44,843 @@ html{
 }
 
 body{
-  margin:0;
-  background:#f4f8fb;
-  color:#173b57;
   font-family:"DM Sans",sans-serif;
+  background:#f5f8fb;
+  color:var(--text);
 }
 
 button,
 input,
 select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
+  font-family:inherit;
 }
 
 
 /* =========================================================
    HERO
-   ========================================================= */
+========================================================= */
 
 .hero{
+  min-height:610px;
+
+  background:
+    radial-gradient(circle at 80% 25%,rgba(54,159,255,.23),transparent 30%),
+    radial-gradient(circle at 60% 100%,rgba(9,104,207,.25),transparent 35%),
+    linear-gradient(135deg,#06172b 0%,#082b50 55%,#075ca7 100%);
+
   position:relative;
   overflow:hidden;
-  background:
-    linear-gradient(
-      135deg,
-      #062b4b,
-      #0b4c78 58%,
-      #0a648d
-    );
-  color:#fff;
-  padding:28px 22px 38px;
+  color:white;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+
+  width:700px;
+  height:700px;
+
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:50%;
+
+  right:-260px;
+  top:-330px;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+
+  width:500px;
+  height:500px;
+
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:50%;
+
+  right:-170px;
+  top:-230px;
 }
 
 .hero-inner{
-  max-width:1320px;
+  max-width:1450px;
   margin:auto;
-  padding-right:220px;
+
+  padding:24px 30px 80px;
+
+  position:relative;
+  z-index:2;
 }
 
-.logo-top-right{
-  position:absolute;
-  top:20px;
-  right:25px;
 
-  width:180px;
-  height:105px;
+/* =========================================================
+   NAV
+========================================================= */
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:17px;
+}
+
+.logo{
+  width:165px;
+  height:65px;
 
   object-fit:contain;
 
-  background:transparent;
+  background:white;
 
   border-radius:12px;
 
-  filter:drop-shadow(
-    0 8px 18px rgba(0,0,0,.20)
-  );
+  padding:5px;
 }
 
-.logo-fallback{
-  position:absolute;
-  top:20px;
-  right:25px;
+.brand-divider{
+  width:1px;
+  height:42px;
 
-  width:180px;
-  height:105px;
+  background:rgba(255,255,255,.22);
+}
 
-  display:none;
+.brand-copy small{
+  display:block;
 
+  color:#9fc5e8;
+
+  font-size:10px;
+
+  letter-spacing:1.5px;
+
+  text-transform:uppercase;
+}
+
+.brand-copy strong{
+  display:block;
+
+  margin-top:4px;
+
+  font-family:"Manrope",sans-serif;
+
+  font-size:16px;
+}
+
+.top-contact{
+  display:flex;
   align-items:center;
-  justify-content:center;
-  flex-direction:column;
+  gap:12px;
+}
 
-  border-radius:12px;
+.contact-number{
+  color:#cce5fb;
 
-  background:#0872b5;
+  font-size:13px;
+  font-weight:600;
+}
+
+.whatsapp-top{
+  text-decoration:none;
 
   color:#fff;
 
-  text-align:center;
+  background:#1fc775;
 
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.18);
+  padding:12px 18px;
+
+  border-radius:12px;
+
+  font-size:12px;
+  font-weight:800;
+
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
-.logo-fallback .north{
-  font-size:27px;
-  line-height:1;
-  font-weight:900;
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content{
+  padding-top:82px;
+  max-width:880px;
 }
 
-.logo-fallback .developers{
-  font-size:9px;
-  letter-spacing:3px;
-  margin-top:5px;
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+
+  border:1px solid rgba(255,255,255,.17);
+
+  background:rgba(255,255,255,.08);
+
+  backdrop-filter:blur(8px);
+
+  padding:8px 13px;
+
+  border-radius:30px;
+
+  color:#d5eaff;
+
+  font-size:10px;
+
+  letter-spacing:1.6px;
+
+  text-transform:uppercase;
+
   font-weight:800;
 }
 
-.logo-fallback .city{
-  font-size:27px;
-  line-height:1;
-  font-weight:900;
-  margin-top:1px;
+.eyebrow i{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:#4de2a5;
+
+  box-shadow:0 0 0 5px rgba(77,226,165,.12);
 }
 
 .hero h1{
-  margin:30px 0 8px;
+  margin-top:22px;
 
-  font-family:Manrope,sans-serif;
+  font-family:"Manrope",sans-serif;
 
-  font-size:
-    clamp(
-      30px,
-      4vw,
-      50px
-    );
+  font-size:clamp(42px,6vw,76px);
 
-  line-height:1.05;
+  line-height:.98;
 
-  font-weight:900;
+  letter-spacing:-3px;
+
+  max-width:850px;
 }
 
-.hero p{
-  max-width:760px;
+.hero h1 span{
+  display:block;
+  color:#62b8ff;
+}
 
-  margin:0 0 22px;
+.hero-description{
+  margin-top:23px;
 
-  color:#dcecf6;
+  color:#bcd5ec;
 
   font-size:16px;
 
-  line-height:1.65;
+  line-height:1.75;
+
+  max-width:650px;
 }
 
 .hero-actions{
   display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+
+  gap:12px;
+
+  margin-top:30px;
 }
 
-.hero-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
+.primary-btn,
+.secondary-btn{
   text-decoration:none;
 
-  border-radius:11px;
+  padding:14px 20px;
 
-  padding:11px 17px;
+  border-radius:12px;
 
-  font-weight:900;
+  font-size:13px;
+  font-weight:800;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:8px;
 }
 
-.hero-btn.primary{
-  background:#fff;
-  color:#0b426b;
+.primary-btn{
+  color:#07203a;
+  background:white;
 }
 
-.hero-btn.whatsapp{
-  background:#16a66b;
-  color:#fff;
+.secondary-btn{
+  color:white;
+
+  border:1px solid rgba(255,255,255,.22);
+
+  background:rgba(255,255,255,.07);
+}
+
+
+/* =========================================================
+   HERO INFO
+========================================================= */
+
+.hero-info{
+  position:absolute;
+
+  right:30px;
+  bottom:75px;
+
+  width:350px;
+
+  background:rgba(255,255,255,.09);
+
+  border:1px solid rgba(255,255,255,.15);
+
+  backdrop-filter:blur(15px);
+
+  border-radius:20px;
+
+  padding:20px;
+}
+
+.hero-info-title{
+  color:#b9d9f5;
+
+  font-size:10px;
+
+  letter-spacing:1.4px;
+
+  text-transform:uppercase;
+
+  font-weight:800;
+}
+
+.hero-info-main{
+  font-family:"Manrope",sans-serif;
+
+  font-size:27px;
+  font-weight:800;
+
+  margin-top:8px;
+}
+
+.hero-info-row{
+  display:flex;
+
+  justify-content:space-between;
+
+  border-top:1px solid rgba(255,255,255,.12);
+
+  margin-top:15px;
+
+  padding-top:13px;
+
+  color:#c8def1;
+
+  font-size:12px;
+}
+
+.hero-info-row strong{
+  color:white;
 }
 
 
 /* =========================================================
    MAIN
-   ========================================================= */
+========================================================= */
 
 .main{
-  max-width:1320px;
+  max-width:1450px;
 
-  margin:auto;
+  margin:-65px auto 80px;
 
-  padding:
-    28px
-    20px
-    50px;
+  padding:0 30px;
+
+  position:relative;
+  z-index:5;
 }
 
 
 /* =========================================================
    QUICK STATS
-   ========================================================= */
+========================================================= */
 
 .quick-stats{
   display:grid;
 
-  grid-template-columns:
-    repeat(6,1fr);
+  grid-template-columns:1.2fr repeat(5,1fr);
 
-  gap:12px;
+  background:white;
 
-  margin-bottom:25px;
+  border-radius:22px;
+
+  border:1px solid var(--line);
+
+  box-shadow:var(--shadow);
+
+  overflow:hidden;
 }
 
-.quick-stat{
-  background:#fff;
+.stat{
+  min-height:120px;
 
-  border:
-    1px solid
-    #dbe6ed;
+  padding:23px;
 
-  border-radius:17px;
+  border-right:1px solid var(--line);
 
-  padding:
-    18px
-    15px;
+  display:flex;
 
-  min-height:100px;
+  flex-direction:column;
 
-  box-shadow:
-    0 8px 25px
-    rgba(10,45,80,.06);
+  justify-content:center;
 }
 
-.stat-value{
-  font-size:26px;
+.stat:last-child{
+  border-right:none;
+}
 
-  line-height:1;
-
-  font-weight:900;
-
-  margin-bottom:8px;
+.stat-main{
+  background:linear-gradient(145deg,#0b4d89,#0873d5);
+  color:white;
 }
 
 .stat-label{
-  font-size:13px;
+  font-size:10px;
 
-  font-weight:900;
+  text-transform:uppercase;
 
-  color:#60768a;
+  letter-spacing:1px;
+
+  font-weight:800;
+
+  color:var(--muted);
+}
+
+.stat-main .stat-label{
+  color:#acd4f7;
+}
+
+.stat-number{
+  margin-top:7px;
+
+  font-family:"Manrope",sans-serif;
+
+  font-size:31px;
+
+  font-weight:800;
+
+  color:var(--navy);
+}
+
+.stat-main .stat-number{
+  color:white;
+}
+
+.stat-note{
+  margin-top:4px;
+
+  font-size:11px;
+
+  color:var(--muted);
+}
+
+.stat-main .stat-note{
+  color:#c7e2f8;
 }
 
 
 /* =========================================================
    FIND SECTION
-   ========================================================= */
+========================================================= */
 
 .find-section{
-  background:#fff;
+  margin-top:32px;
+}
 
-  border:
-    1px solid
-    #dbe6ed;
+.section-heading{
+  display:flex;
 
-  border-radius:20px;
+  justify-content:space-between;
 
-  padding:22px;
+  align-items:end;
 
-  margin-bottom:25px;
+  gap:20px;
 
-  box-shadow:
-    0 8px 25px
-    rgba(10,45,80,.05);
+  margin-bottom:17px;
+}
+
+.section-kicker{
+  color:var(--blue);
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:1.5px;
+
+  font-weight:900;
 }
 
 .section-title{
-  margin:
-    0
-    0
-    16px;
+  font-family:"Manrope",sans-serif;
 
-  color:#092d50;
+  font-size:28px;
 
-  font-family:Manrope,sans-serif;
+  margin-top:5px;
 
-  font-size:24px;
+  color:var(--navy);
 
-  font-weight:900;
+  font-weight:800;
+}
+
+.section-description{
+  color:var(--muted);
+
+  font-size:12px;
+
+  margin-top:4px;
 }
 
 
 /* =========================================================
    BLOCK SWITCH
-   ========================================================= */
+========================================================= */
 
 .block-switch{
-  display:grid;
+  display:flex;
 
-  grid-template-columns:
-    repeat(3,1fr);
+  gap:6px;
 
-  gap:10px;
+  padding:6px;
 
-  margin-bottom:20px;
+  background:#e4ebf2;
+
+  border-radius:15px;
+
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.04);
 }
 
-.block-switch button{
-  border:
-    1.5px solid
-    #cbd9e3;
+.block-btn{
+  border:0;
 
-  background:#f7fafc;
+  min-width:105px;
 
-  color:#173d5d;
+  height:43px;
 
-  min-height:46px;
+  background:transparent;
 
-  padding:
-    11px
-    20px;
+  color:#60758a;
+
+  padding:0 16px;
 
   border-radius:11px;
 
-  font-size:15px;
+  cursor:pointer;
+
+  font-size:11px;
 
   font-weight:900;
 
-  transition:.2s;
+  transition:.25s;
 }
 
-.block-switch button.active{
-  background:#0b426b;
+.block-btn:hover{
+  background:#f8fbfd;
+  color:#123250;
+}
 
-  color:#fff;
+.block-btn[data-block="ALL"].active{
+  background:linear-gradient(135deg,#102f50,#075fae);
 
-  border-color:#0b426b;
+  color:white;
 
-  box-shadow:
-    0 7px 16px
-    rgba(11,66,107,.18);
+  box-shadow:0 8px 18px rgba(8,62,110,.24);
+}
+
+.block-btn[data-block="A"].active{
+  background:linear-gradient(135deg,#0c8b72,#12b892);
+
+  color:white;
+
+  box-shadow:0 8px 18px rgba(12,139,114,.24);
+}
+
+.block-btn[data-block="B"].active{
+  background:linear-gradient(135deg,#7552c7,#9673e8);
+
+  color:white;
+
+  box-shadow:0 8px 18px rgba(117,82,199,.24);
 }
 
 
 /* =========================================================
-   FILTERS
-   SORT REMOVED
-   ========================================================= */
+   FILTER BOX
+========================================================= */
 
-.filters{
+.find-box{
+  background:linear-gradient(145deg,#ffffff,#f7fbff);
+
+  border:1px solid #dce8f2;
+
+  border-radius:24px;
+
+  padding:20px;
+
+  box-shadow:0 15px 40px rgba(12,48,82,.08);
+}
+
+.search-row{
   display:grid;
 
-  grid-template-columns:
-    2fr
-    repeat(4,1fr);
+  grid-template-columns:2fr repeat(5,1fr);
 
-  gap:10px;
+  gap:12px;
 }
 
-.field{
+.field input,
+.field select{
   width:100%;
 
-  min-height:45px;
+  height:52px;
 
-  border:
-    1.5px solid
-    #d2dfe7;
-
-  border-radius:10px;
-
-  background:#fbfdfe;
-
-  color:#173d5d;
-
-  padding:
-    10px
-    12px;
-
-  font-weight:700;
+  border-radius:13px;
 
   outline:none;
+
+  padding:0 14px;
+
+  color:#162f49;
+
+  font-size:12px;
+
+  font-weight:800;
+
+  border-width:1px;
+
+  border-style:solid;
+
+  cursor:pointer;
+
+  transition:.2s;
 }
 
-.field:focus{
-  border-color:#6fa5c7;
+.field:first-child input{
+  background:#f0f7ff;
 
-  box-shadow:
-    0 0 0 3px
-    rgba(67,137,180,.10);
+  border-color:#c9e1f7;
+
+  color:#092744;
+
+  font-size:13px;
+
+  font-weight:800;
+}
+
+.field input::placeholder{
+  color:#71859a;
+  font-weight:700;
+}
+
+#status{
+  background:#fff8ed;
+  border-color:#f1d8aa;
+}
+
+#bhk{
+  background:#f2f0ff;
+  border-color:#d8d0f6;
+}
+
+#floor{
+  background:#eefaf6;
+  border-color:#c8e8dc;
+}
+
+#facing{
+  background:#fff1f4;
+  border-color:#f1ccd5;
+}
+
+#sort{
+  background:#eef5fb;
+  border-color:#cbddec;
+}
+
+.field input:focus,
+.field select:focus{
+  background:white !important;
+
+  border-color:#1382df !important;
+
+  box-shadow:0 0 0 4px rgba(19,130,223,.09);
+
+  transform:translateY(-1px);
+}
+
+.field select:hover{
+  transform:translateY(-1px);
+
+  box-shadow:0 7px 18px rgba(20,55,90,.07);
+}
+
+.filter-summary{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-top:15px;
+
+  padding:0 4px;
+
+  color:var(--muted);
+
+  font-size:11px;
+}
+
+.result-count strong{
+  color:var(--navy);
+}
+
+
+/* =========================================================
+   EXPLORER
+========================================================= */
+
+.explorer{
+  margin-top:36px;
+}
+
+.explorer-head{
+  display:flex;
+
+  align-items:end;
+
+  justify-content:space-between;
+
+  margin-bottom:17px;
+}
+
+.explorer-title{
+  font-family:"Manrope",sans-serif;
+
+  color:var(--navy);
+
+  font-size:28px;
+
+  font-weight:800;
+}
+
+.explorer-sub{
+  color:var(--muted);
+
+  font-size:12px;
+
+  margin-top:4px;
 }
 
 
 /* =========================================================
    FLOOR
-   ========================================================= */
+========================================================= */
 
 .floor{
+  margin-top:13px;
+
   background:#fff;
 
-  border:
-    1px solid
-    #d9e4eb;
+  border:1px solid var(--line);
 
   border-radius:19px;
 
-  margin-bottom:15px;
-
   overflow:hidden;
 
-  box-shadow:
-    0 7px 22px
-    rgba(10,45,80,.045);
-}
-
-.floor.closed .floor-body{
-  display:none;
+  box-shadow:0 8px 26px rgba(15,45,80,.045);
 }
 
 .floor-head{
+  min-height:82px;
+
+  padding:14px 20px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  cursor:pointer;
+
+  user-select:none;
+
+  background:#fff;
+
+  border-bottom:1px solid #e2ebf2;
+
+  transition:.2s;
+}
+
+.floor-head:hover{
+  background:#f8fbfe;
+}
+
+.floor-left{
   display:flex;
 
   align-items:center;
 
-  justify-content:space-between;
-
-  gap:15px;
-
-  padding:
-    15px
-    17px;
-
-  cursor:pointer;
-
-  background:
-    linear-gradient(
-      180deg,
-      #fff,
-      #f9fcfe
-    );
+  gap:12px;
 }
 
-.floor-left,
+
+/* Small floor label */
+
+.floor-number{
+  width:38px;
+  height:38px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border-radius:9px;
+
+  background:#f1f7fc;
+
+  color:#176aa8;
+
+  border:1px solid #d6e7f4;
+
+  font-family:"Manrope",sans-serif;
+
+  font-size:13px;
+
+  font-weight:900;
+
+  box-shadow:none;
+}
+
+.floor-name{
+  font-family:"Manrope",sans-serif;
+
+  color:#061d36;
+
+  font-size:17px;
+
+  font-weight:900;
+}
+
+.floor-count{
+  margin-top:4px;
+
+  color:#71859a;
+
+  font-size:11px;
+
+  font-weight:700;
+}
+
 .floor-right{
   display:flex;
 
@@ -462,361 +889,260 @@ button{
   gap:12px;
 }
 
-.floor-number{
-  width:48px;
-  height:48px;
 
-  flex:0 0 48px;
+/* Strong availability */
 
+.floor-available{
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 
-  border-radius:12px;
+  padding:9px 13px;
 
-  background:#e8f3fa;
+  border-radius:9px;
 
-  border:
-    1px solid
-    #bcd5e4;
+  background:#d9f8e8;
 
-  color:#0a4d77;
+  border:2px solid #72d4a5;
 
-  font-size:20px;
+  color:#007343;
 
-  font-weight:900;
-}
-
-.floor-name{
-  font-size:20px;
+  font-size:12px;
 
   font-weight:900;
 
-  color:#092d50;
+  letter-spacing:.2px;
 
-  line-height:1.2;
-}
-
-.floor-count{
-  margin-top:3px;
-
-  color:#718698;
-
-  font-size:13px;
-
-  font-weight:800;
-}
-
-.floor-available{
-  display:inline-flex;
-
-  align-items:center;
-  justify-content:center;
-
-  background:#d8f7e8;
-
-  color:#007548;
-
-  border:
-    1.5px solid
-    #72d4a5;
-
-  border-radius:10px;
-
-  padding:
-    8px
-    12px;
-
-  font-size:14px;
-
-  font-weight:900;
-
-  white-space:nowrap;
+  box-shadow:0 4px 12px rgba(7,151,102,.12);
 }
 
 .floor-arrow{
-  font-size:27px;
+  width:34px;
+  height:34px;
 
-  color:#6f8798;
+  border-radius:50%;
 
-  transform:rotate(90deg);
+  background:#f0f5f9;
 
-  transition:.2s;
+  display:grid;
+
+  place-items:center;
+
+  color:#537087;
+
+  font-size:21px;
+
+  font-weight:700;
+
+  transition:.25s;
 }
 
 .floor.closed .floor-arrow{
-  transform:rotate(0);
+  transform:rotate(-90deg);
 }
 
 .floor-body{
-  padding:
-    0
-    14px
-    14px;
+  padding:0 15px 17px;
+}
+
+.floor.closed .floor-body{
+  display:none;
 }
 
 
 /* =========================================================
    FLAT GRID
-   LAPTOP = 4
-   TABLET = 3
-   MOBILE = 1
-   ========================================================= */
+========================================================= */
 
 .flat-grid{
   display:grid;
 
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(0,1fr)
-    );
+  grid-template-columns:repeat(4,1fr);
 
-  gap:13px;
+  gap:12px;
 }
 
 
 /* =========================================================
    FLAT CARD
-   ========================================================= */
+========================================================= */
 
 .flat{
   position:relative;
 
   background:#fff;
 
-  border:
-    1.5px solid
-    #d5e0e8;
+  border:1px solid #dfe8ef;
 
-  border-radius:17px;
+  border-radius:19px;
 
-  padding:
-    16px
-    15px
-    22px;
+  padding:19px;
 
   overflow:hidden;
 
   transition:.25s;
 
-  min-width:0;
-
-  min-height:280px;
-
-  box-shadow:
-    0 5px 16px
-    rgba(10,45,80,.045);
+  min-height:300px;
 }
 
 .flat:hover{
-  transform:translateY(-3px);
+  transform:translateY(-4px);
 
-  border-color:#9eb9ce;
+  border-color:#bcd3e5;
 
-  box-shadow:
-    0 18px 35px
-    rgba(10,45,80,.12);
+  box-shadow:0 18px 35px rgba(10,45,80,.11);
 }
 
 
 /* =========================================================
-   SMALL STATUS DOT
-   ========================================================= */
+   STATUS DOT
+   NO TRIANGLE / NO LARGE BACKGROUND
+========================================================= */
 
 .flat:before{
   content:"";
 
   position:absolute;
 
-  top:21px;
-  left:10px;
+  top:22px;
+  left:14px;
 
   width:7px;
   height:7px;
 
   border-radius:50%;
 
-  z-index:3;
+  z-index:2;
 }
+
+
+/* Available */
 
 .flat.available:before{
   background:#16a66b;
 
   box-shadow:
-    0 0 0 4px
-    rgba(22,166,107,.10);
+    0 0 0 4px rgba(22,166,107,.10);
 }
+
+
+/* Sold */
 
 .flat.sold:before{
   background:#df4545;
 
   box-shadow:
-    0 0 0 4px
-    rgba(223,69,69,.10);
+    0 0 0 4px rgba(223,69,69,.10);
 }
+
+
+/* Mortgage */
 
 .flat.mortgage:before{
   background:#e39a27;
 
   box-shadow:
-    0 0 0 4px
-    rgba(227,154,39,.10);
+    0 0 0 4px rgba(227,154,39,.10);
 }
+
+
+/* City Level */
 
 .flat.city:before{
   background:#7655c8;
 
   box-shadow:
-    0 0 0 4px
-    rgba(118,85,200,.10);
+    0 0 0 4px rgba(118,85,200,.10);
 }
+
+
+/* Vendor-Mestri */
 
 .flat.vendor:before{
   background:#287fc4;
 
   box-shadow:
-    0 0 0 4px
-    rgba(40,127,196,.10);
+    0 0 0 4px rgba(40,127,196,.10);
 }
+
+
+/* Vendor-RMC */
 
 .flat.rmc:before{
   background:#159c9c;
 
   box-shadow:
-    0 0 0 4px
-    rgba(21,156,156,.10);
+    0 0 0 4px rgba(21,156,156,.10);
 }
 
 
 /* =========================================================
-   BOTTOM STATUS LINE
-   ========================================================= */
-
-.flat:after{
-  content:"";
-
-  position:absolute;
-
-  left:12px;
-  right:12px;
-  bottom:0;
-
-  height:4px;
-
-  border-radius:
-    5px
-    5px
-    0
-    0;
-}
-
-.flat.available:after{
-  background:#16a66b;
-}
-
-.flat.sold:after{
-  background:#df4545;
-}
-
-.flat.mortgage:after{
-  background:#e39a27;
-}
-
-.flat.city:after{
-  background:#7655c8;
-}
-
-.flat.vendor:after{
-  background:#287fc4;
-}
-
-.flat.rmc:after{
-  background:#159c9c;
-}
-
-
-/* =========================================================
-   FLAT TITLE
-   IMPORTANT:
-   Flat-220 | 3 BHK | CITY LEVEL
-   ========================================================= */
+   FLAT TOP
+========================================================= */
 
 .flat-top{
-  display:block;
-
-  width:100%;
-
-  margin-bottom:13px;
-
-  min-width:0;
-}
-
-.flat-title{
   display:flex;
 
-  align-items:center;
+  justify-content:space-between;
 
-  gap:6px;
+  align-items:flex-start;
 
-  width:100%;
+  gap:10px;
 
-  min-width:0;
+  position:relative;
 
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  color:#082d4f;
-
-  font-size:15px;
-
-  line-height:1.15;
-
-  font-weight:900;
+  z-index:5;
 }
 
+
+/* =========================================================
+   FLAT NUMBER
+========================================================= */
+
 .flat-number{
-  flex:0 0 auto;
+  position:relative;
 
-  padding-left:12px;
+  z-index:5;
 
-  color:#082d4f;
+  font-family:"Manrope",sans-serif;
 
-  font-size:15px;
+  font-size:30px;
 
   line-height:1;
 
   font-weight:900;
 
-  letter-spacing:-.2px;
+  letter-spacing:-1px;
 
-  white-space:nowrap;
+  color:#061d36;
+
+  background:transparent;
+
+  text-shadow:none;
+
+  padding-left:15px;
 }
 
-.flat-title-separator{
-  flex:0 0 auto;
 
-  color:#91a5b4;
+/* Make absolutely sure there is no shape behind number */
 
-  font-weight:900;
+.flat-number::before,
+.flat-number::after{
+  content:none !important;
+  display:none !important;
 }
 
-.flat-title-bhk{
-  flex:0 0 auto;
 
-  color:#315873;
+/* =========================================================
+   STATUS BADGES
+========================================================= */
 
-  font-size:12px;
+.badge{
+  position:relative;
 
-  font-weight:900;
-
-  white-space:nowrap;
-}
-
-.flat-title-status{
-  flex:0 0 auto;
+  z-index:5;
 
   display:inline-flex;
 
@@ -824,394 +1150,351 @@ button{
 
   justify-content:center;
 
-  min-height:25px;
+  min-height:32px;
 
-  padding:
-    5px
-    6px;
-
-  border-radius:7px;
-
-  font-size:8px;
-
-  line-height:1;
+  font-size:10px;
 
   text-transform:uppercase;
 
-  letter-spacing:.15px;
+  letter-spacing:.55px;
 
   font-weight:900;
 
+  padding:7px 11px;
+
+  border-radius:9px;
+
   white-space:nowrap;
 
-  border:
-    1px solid
-    transparent;
+  border:2px solid transparent;
+
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
 }
 
-
-/* =========================================================
-   TITLE STATUS COLORS
-   ========================================================= */
-
-.flat-title-status.available{
+.badge.available{
   color:#006f45;
 
   background:#d8f7e8;
 
   border-color:#72d4a5;
+
+  box-shadow:0 5px 14px rgba(7,151,102,.16);
 }
 
-.flat-title-status.sold{
+.badge.sold{
   color:#b92323;
 
   background:#ffe0e0;
 
   border-color:#ef9696;
+
+  box-shadow:0 5px 14px rgba(223,69,69,.14);
 }
 
-.flat-title-status.mortgage{
+.badge.mortgage{
   color:#995c00;
 
   background:#ffedc8;
 
   border-color:#e6b75d;
+
+  box-shadow:0 5px 14px rgba(201,130,23,.14);
 }
 
-.flat-title-status.city{
+.badge.city{
   color:#5737a5;
 
   background:#eee5ff;
 
   border-color:#bca5ed;
+
+  box-shadow:0 5px 14px rgba(118,85,200,.14);
 }
 
-.flat-title-status.vendor{
+.badge.vendor{
   color:#0c5f98;
 
   background:#e0f1ff;
 
   border-color:#94c9ed;
+
+  box-shadow:0 5px 14px rgba(40,127,196,.14);
 }
 
-.flat-title-status.rmc{
+.badge.rmc{
   color:#067777;
 
   background:#dcf8f8;
 
   border-color:#8dd6d6;
+
+  box-shadow:0 5px 14px rgba(21,156,156,.14);
 }
 
 
 /* =========================================================
    FLAT DETAILS
-   Block B | 1,900 SFT | NORTH
-   ========================================================= */
+========================================================= */
+
+.flat-type{
+  margin-top:17px;
+
+  font-family:"Manrope",sans-serif;
+
+  font-size:15px;
+
+  font-weight:900;
+
+  color:#233e58;
+
+  position:relative;
+
+  z-index:3;
+}
 
 .flat-meta{
   display:flex;
 
-  align-items:center;
-
   flex-wrap:wrap;
 
-  gap:5px;
+  gap:7px;
 
-  width:100%;
-
-  margin-bottom:12px;
+  margin-top:11px;
 }
 
-.flat-meta .meta{
-  display:inline-flex;
+.meta{
+  background:#f0f5f8;
 
-  align-items:center;
+  color:#526a80;
 
-  justify-content:center;
+  padding:7px 9px;
 
-  min-width:0;
-
-  color:#234a65;
-
-  background:#f3f7fa;
-
-  border:
-    1px solid
-    #dbe5eb;
-
-  padding:
-    6px
-    7px;
-
-  border-radius:7px;
+  border-radius:8px;
 
   font-size:10px;
 
-  line-height:1.1;
-
   font-weight:800;
 
-  white-space:nowrap;
+  border:1px solid #e4ebf0;
 }
 
 
 /* =========================================================
    PRICE
-   ========================================================= */
+========================================================= */
 
 .price-box{
-  border:
-    1.5px solid
-    #b9d9ec;
+  border-top:1px solid #e5edf3;
 
-  background:#f1f9fe;
+  margin-top:16px;
 
-  border-radius:12px;
-
-  padding:
-    10px
-    12px;
-
-  margin-bottom:10px;
+  padding-top:14px;
 }
 
 .price-label{
-  color:#638096;
+  color:#537087;
 
-  font-size:10px;
-
-  font-weight:900;
+  font-size:9px;
 
   text-transform:uppercase;
 
-  letter-spacing:.4px;
-}
-
-.price{
-  color:#075789;
-
-  font-size:22px;
-
-  line-height:1.2;
+  letter-spacing:1px;
 
   font-weight:900;
 
-  margin-top:3px;
+  margin-bottom:2px;
+}
+
+.price{
+  color:#041a30;
+
+  font-family:"Manrope",sans-serif;
+
+  font-size:25px;
+
+  line-height:1.15;
+
+  font-weight:900;
+
+  margin-top:5px;
+
+  letter-spacing:-.6px;
+
+  background:#f1f8ff;
+
+  border:1px solid #c9e3f7;
+
+  border-radius:10px;
+
+  padding:10px 12px;
+
+  display:inline-block;
+
+  box-shadow:0 4px 12px rgba(10,75,125,.06);
 }
 
 
 /* =========================================================
    REMARK
-   ========================================================= */
+========================================================= */
 
 .remark{
-  font-size:13px;
+  color:#657b8f;
 
-  font-weight:900;
+  font-size:10px;
 
-  color:#294f68;
+  margin-top:8px;
 
-  margin-bottom:9px;
+  font-weight:700;
 }
 
 
 /* =========================================================
    GST
-   ========================================================= */
+========================================================= */
 
 .charges-note{
-  display:inline-flex;
+  margin-top:9px;
 
-  align-items:center;
+  color:#8a6a35;
 
-  background:#fff4df;
+  background:#fff9ed;
 
-  color:#9a650d;
-
-  border:
-    1px solid
-    #f0d29b;
+  border:1px solid #f1e1bf;
 
   border-radius:7px;
 
-  padding:
-    5px
-    8px;
+  padding:7px 9px;
 
-  font-size:10px;
+  font-size:9px;
+
+  line-height:1.3;
 
   font-weight:800;
-
-  margin-bottom:11px;
 }
 
 
 /* =========================================================
    WHATSAPP
-   ========================================================= */
+========================================================= */
 
 .enquire{
-  display:flex;
+  display:block;
 
-  align-items:center;
+  margin-top:14px;
 
-  justify-content:center;
+  padding:12px;
+
+  text-align:center;
+
+  background:linear-gradient(135deg,#12a963,#19c477);
+
+  color:white;
 
   text-decoration:none;
 
-  background:#0b426b;
+  border-radius:10px;
 
-  color:#fff;
-
-  border-radius:9px;
-
-  padding:
-    10px
-    9px;
-
-  font-size:12px;
+  font-size:10px;
 
   font-weight:900;
+
+  letter-spacing:.2px;
+
+  transition:.2s;
 }
 
 .enquire:hover{
-  background:#073653;
+  background:#078e51;
+
+  transform:translateY(-1px);
 }
 
 
 /* =========================================================
    EMPTY
-   ========================================================= */
+========================================================= */
 
 .empty{
-  background:#fff;
+  background:white;
 
-  border:
-    1px solid
-    #dbe6ed;
+  border:1px dashed #cbd9e5;
 
-  border-radius:18px;
+  border-radius:20px;
 
-  padding:35px;
+  padding:65px 20px;
 
   text-align:center;
 
-  color:#60768a;
+  margin-top:20px;
+}
+
+.empty-icon{
+  font-size:36px;
+}
+
+.empty h3{
+  font-family:"Manrope",sans-serif;
+
+  color:var(--navy);
+
+  margin-top:12px;
+}
+
+.empty p{
+  color:var(--muted);
+
+  font-size:12px;
+
+  margin-top:5px;
 }
 
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 .footer{
-  padding:
-    25px
-    20px;
+  background:#06182d;
+
+  color:#8ca5bd;
+
+  padding:35px 20px;
 
   text-align:center;
 
-  color:#718698;
-
-  font-size:13px;
+  font-size:11px;
 }
 
 .footer strong{
-  color:#0b426b;
+  color:white;
 }
 
 
 /* =========================================================
-   LAPTOP / TABLET
-   ========================================================= */
+   TABLET
+========================================================= */
 
-@media(max-width:1100px){
+@media(max-width:1150px){
+
+  .hero-info{
+    display:none;
+  }
 
   .quick-stats{
-    grid-template-columns:
-      repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
   }
 
-  .filters{
-    grid-template-columns:
-      1.5fr
-      repeat(4,1fr);
+  .stat:nth-child(3){
+    border-right:none;
+  }
+
+  .search-row{
+    grid-template-columns:repeat(3,1fr);
   }
 
   .flat-grid{
-    grid-template-columns:
-      repeat(
-        3,
-        minmax(0,1fr)
-      );
-  }
-
-  .hero-inner{
-    padding-right:200px;
-  }
-
-}
-
-
-/* =========================================================
-   SMALLER LAPTOP / TABLET
-   ========================================================= */
-
-@media(min-width:761px) and (max-width:1050px){
-
-  .flat-grid{
-    grid-template-columns:
-      repeat(
-        3,
-        minmax(0,1fr)
-      );
-  }
-
-  .flat{
-    padding:
-      15px
-      13px
-      21px;
-  }
-
-  .flat-title{
-    gap:5px;
-
-    font-size:14px;
-  }
-
-  .flat-number{
-    font-size:14px;
-
-    padding-left:10px;
-  }
-
-  .flat-title-bhk{
-    font-size:11px;
-  }
-
-  .flat-title-status{
-    font-size:7px;
-
-    padding:
-      5px;
-
-    min-height:24px;
-  }
-
-  .flat-meta{
-    gap:4px;
-  }
-
-  .flat-meta .meta{
-    font-size:9px;
-
-    padding:
-      6px;
-  }
-
-  .price{
-    font-size:20px;
+    grid-template-columns:repeat(3,1fr);
   }
 
 }
@@ -1219,293 +1502,365 @@ button{
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media(max-width:760px){
 
   .hero{
-    padding:
-      17px
-      15px
-      28px;
+    min-height:570px;
   }
 
   .hero-inner{
-    padding-right:0;
+    padding:17px 16px 65px;
   }
 
-  .logo-top-right{
-    position:relative;
-
-    top:auto;
-    right:auto;
-
-    display:block;
-
-    width:145px;
-    height:82px;
-
-    margin:
-      0
-      0
-      14px
-      auto;
+  .logo{
+    width:125px;
+    height:53px;
   }
 
-  .logo-fallback{
-    position:relative;
+  .brand-divider,
+  .brand-copy,
+  .contact-number{
+    display:none;
+  }
 
-    top:auto;
-    right:auto;
+  .whatsapp-top{
+    padding:10px 12px;
+    font-size:10px;
+  }
 
-    width:145px;
-    height:82px;
-
-    margin:
-      0
-      0
-      14px
-      auto;
+  .hero-content{
+    padding-top:60px;
   }
 
   .hero h1{
-    margin:
-      8px
-      0
-      8px;
+    font-size:43px;
 
-    font-size:30px;
+    letter-spacing:-2px;
   }
 
-  .hero p{
-    font-size:14px;
+  .hero-description{
+    font-size:13px;
+  }
+
+  .hero-actions{
+    flex-wrap:wrap;
+  }
+
+  .primary-btn,
+  .secondary-btn{
+    padding:12px 15px;
+    font-size:11px;
   }
 
 
   /* MAIN */
 
   .main{
-    padding:
-      20px
-      12px
-      35px;
+    padding:0 13px;
+    margin-top:-45px;
   }
 
 
   /* STATS */
 
   .quick-stats{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
 
-    gap:8px;
+    border-radius:17px;
   }
 
-  .quick-stat{
-    min-height:82px;
+  .stat{
+    min-height:100px;
 
-    padding:
-      13px
-      11px;
-  }
-
-  .stat-value{
-    font-size:21px;
-  }
-
-  .stat-label{
-    font-size:11px;
-  }
-
-
-  /* FIND */
-
-  .find-section{
     padding:16px;
 
-    border-radius:16px;
+    border-right:1px solid var(--line);
+
+    border-bottom:1px solid var(--line);
+  }
+
+  .stat:nth-child(2n){
+    border-right:none;
+  }
+
+  .stat-main{
+    grid-column:span 2;
+  }
+
+  .stat-number{
+    font-size:25px;
+  }
+
+
+  /* SECTION */
+
+  .section-heading{
+    display:block;
   }
 
   .section-title{
-    font-size:21px;
+    font-size:23px;
   }
 
 
-  /* BLOCK BUTTONS */
+  /* BLOCK */
 
   .block-switch{
-    grid-template-columns:
-      1fr
-      1fr;
+    margin-top:15px;
 
-    gap:7px;
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:5px;
   }
 
-  .block-switch button{
-    min-height:42px;
+  .block-btn{
+    min-width:0;
 
-    padding:
-      9px
-      8px;
+    width:100%;
 
-    font-size:13px;
-  }
+    height:46px;
 
-  .block-switch button:first-child{
-    grid-column:
-      1 /
-      -1;
+    padding:0 5px;
+
+    font-size:10px;
   }
 
 
-  /* FILTERS */
+  /* FILTER */
 
-  .filters{
-    grid-template-columns:
-      1fr
-      1fr;
+  .find-box{
+    padding:14px;
 
-    gap:7px;
+    border-radius:19px;
   }
 
-  .filters #search{
-    grid-column:
-      1 /
-      -1;
+  .search-row{
+    grid-template-columns:1fr 1fr;
+
+    gap:9px;
   }
 
-  .field{
-    min-height:42px;
+  .field:first-child{
+    grid-column:span 2;
+  }
 
-    padding:
-      8px
-      9px;
+  .field input,
+  .field select{
+    height:54px;
 
-    font-size:12px;
+    font-size:11px;
+
+    border-radius:12px;
   }
 
 
   /* FLOOR */
 
-  .floor-head{
-    padding:12px;
-  }
-
-  .floor-number{
-    width:42px;
-    height:42px;
-
-    flex-basis:42px;
-
-    font-size:18px;
-  }
-
-  .floor-name{
-    font-size:17px;
-  }
-
-  .floor-count{
-    font-size:11px;
-  }
-
-  .floor-available{
-    padding:
-      7px
-      8px;
-
-    font-size:11px;
-  }
-
-  .floor-arrow{
+  .explorer-title{
     font-size:23px;
   }
 
+  .floor{
+    border-radius:17px;
+  }
+
+  .floor-head{
+    min-height:78px;
+
+    padding:12px;
+  }
+
+  .floor-left{
+    gap:10px;
+  }
+
+  .floor-number{
+    width:34px;
+    height:34px;
+
+    border-radius:8px;
+
+    font-size:11px;
+  }
+
+  .floor-name{
+    font-size:15px;
+  }
+
+  .floor-count{
+    font-size:10px;
+
+    margin-top:3px;
+  }
+
+  .floor-right{
+    gap:7px;
+  }
+
+  .floor-available{
+    padding:8px 9px;
+
+    font-size:10px;
+
+    border-width:2px;
+  }
+
+  .floor-arrow{
+    width:31px;
+    height:31px;
+
+    font-size:19px;
+  }
+
   .floor-body{
-    padding:
-      0
-      9px
-      9px;
+    padding:0 10px 12px;
   }
 
 
-  /* ONE FLAT PER ROW */
+  /* FLATS */
 
   .flat-grid{
     grid-template-columns:1fr;
 
-    gap:10px;
+    gap:12px;
   }
 
   .flat{
-    min-height:0;
+    min-height:auto;
 
-    padding:
-      17px
-      14px
-      21px;
-  }
+    padding:20px;
 
-
-  /* BIGGER MOBILE TITLE */
-
-  .flat-top{
-    margin-bottom:12px;
-  }
-
-  .flat-title{
-    gap:6px;
-
-    overflow:visible;
-
-    font-size:18px;
-
-    line-height:1.15;
+    border-radius:19px;
   }
 
   .flat-number{
-    font-size:18px;
+    font-size:36px;
 
-    padding-left:11px;
+    padding-left:15px;
   }
 
-  .flat-title-bhk{
-    font-size:14px;
+  .flat:before{
+    top:24px;
+    left:14px;
+
+    width:7px;
+    height:7px;
   }
 
-  .flat-title-status{
-    min-height:28px;
+  .badge{
+    min-height:34px;
 
-    padding:
-      6px
-      7px;
+    padding:8px 10px;
 
-    font-size:9px;
-
-    letter-spacing:.1px;
+    font-size:10px;
   }
 
+  .flat-type{
+    font-size:16px;
 
-  /* DETAILS */
+    margin-top:18px;
+  }
 
   .flat-meta{
-    flex-wrap:wrap;
+    gap:7px;
 
-    gap:6px;
+    margin-top:12px;
   }
 
-  .flat-meta .meta{
-    font-size:12px;
+  .meta{
+    padding:8px 10px;
 
-    padding:
-      7px
-      8px;
+    font-size:10px;
   }
-
-
-  /* PRICE */
 
   .price{
-    font-size:23px;
+    font-size:25px;
+
+    padding:10px 12px;
+  }
+
+  .price-label{
+    font-size:9px;
+  }
+
+  .remark{
+    font-size:11px;
+  }
+
+  .charges-note{
+    font-size:10px;
+
+    padding:8px 10px;
+  }
+
+  .enquire{
+    padding:13px;
+
+    font-size:11px;
+
+    border-radius:11px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:430px){
+
+  .hero h1{
+    font-size:37px;
+  }
+
+  .search-row{
+    grid-template-columns:1fr;
+  }
+
+  .field:first-child{
+    grid-column:auto;
+  }
+
+  .field input,
+  .field select{
+    height:55px;
+
+    font-size:12px;
+  }
+
+  .block-btn{
+    font-size:9px;
+  }
+
+  .flat{
+    padding:19px;
+  }
+
+  .flat-number{
+    font-size:32px;
+  }
+
+  .flat:before{
+    top:23px;
+  }
+
+  .flat-type{
+    font-size:17px;
+  }
+
+  .meta{
+    font-size:10px;
+  }
+
+  .price{
+    font-size:26px;
   }
 
 }
@@ -1513,34 +1868,33 @@ button{
 
 /* =========================================================
    VERY SMALL MOBILE
-   ========================================================= */
+========================================================= */
 
-@media(max-width:380px){
+@media(max-width:390px){
 
-  .flat-title{
-    gap:4px;
-
-    font-size:16px;
+  .flat-top{
+    gap:7px;
   }
 
   .flat-number{
-    font-size:16px;
-
-    padding-left:10px;
+    font-size:32px;
   }
 
-  .flat-title-bhk{
-    font-size:12px;
-  }
-
-  .flat-title-status{
+  .badge{
     font-size:8px;
 
-    padding:
-      5px
-      6px;
+    padding:7px 8px;
 
-    min-height:26px;
+    letter-spacing:.35px;
+  }
+
+  .floor-name{
+    font-size:14px;
+  }
+
+  .floor-number{
+    width:32px;
+    height:32px;
   }
 
 }
@@ -1552,69 +1906,132 @@ button{
 <body>
 
 
-<!-- =======================================================
-     HEADER
-     ======================================================= -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <header class="hero">
 
-  <!--
-    IMPORTANT:
-    Save your uploaded NorthCity logo as:
-
-    northcity-logo.png
-
-    Put it in the SAME folder as this index.html.
-  -->
-
-  <img
-    class="logo-top-right"
-    src="northcity-logo.png"
-    alt="NorthCity Developers Hyderabad"
-    onerror="
-      this.style.display='none';
-      document.getElementById('logoFallback').style.display='flex';
-    "
-  >
-
-  <div
-    class="logo-fallback"
-    id="logoFallback"
-  >
-    <div class="north">North</div>
-    <div class="developers">DEVELOPERS</div>
-    <div class="city">CITY</div>
-  </div>
-
-
   <div class="hero-inner">
 
-    <h1>
-      Oxygen Towers
-    </h1>
+    <nav class="nav">
 
-    <p>
-      Premium flats by NorthCity Developers.
-      Explore availability, BHK type, SFT,
-      facing, price and flat status floor by floor.
-    </p>
+      <div class="brand">
 
-    <div class="hero-actions">
+        <img
+          src="northcity-logo.png"
+          class="logo"
+          alt="NorthCity Developers"
+          onerror="this.style.display='none'"
+        >
 
-      <a
-        class="hero-btn primary"
-        href="#find"
-      >
-        Find Your Flat
-      </a>
+        <div class="brand-divider"></div>
 
-      <a
-        class="hero-btn whatsapp"
-        href="https://wa.me/917386326575"
-        target="_blank"
-      >
-        💬 WhatsApp Us
-      </a>
+        <div class="brand-copy">
+
+          <strong>
+            NorthCity Developers
+          </strong>
+
+          <small>
+            HYDERABAD
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <div class="top-contact">
+
+        <div class="contact-number">
+          +91 73863 26575
+        </div>
+
+        <a
+          class="whatsapp-top"
+          href="https://wa.me/917386326575"
+          target="_blank"
+        >
+          WhatsApp Us
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        <i></i>
+        Premium Residential Flats
+      </div>
+
+
+      <h1>
+        Welcome to
+        <span>
+          Oxygen Towers.
+        </span>
+      </h1>
+
+
+      <p class="hero-description">
+        Discover thoughtfully designed 2 & 3 BHK flats.
+        Explore floor-wise availability, flat details and
+        pricing across Block A and Block B.
+      </p>
+
+
+      <div class="hero-actions">
+
+        <a
+          href="#flats"
+          class="primary-btn"
+        >
+          Explore Flats
+          <span>↓</span>
+        </a>
+
+
+        <a
+          href="https://wa.me/917386326575"
+          target="_blank"
+          class="secondary-btn"
+        >
+          💬 Talk to Sales
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-info">
+
+      <div class="hero-info-title">
+        Oxygen Towers
+      </div>
+
+      <div class="hero-info-main">
+        2 & 3 BHK Flats
+      </div>
+
+      <div class="hero-info-row">
+        <span>Blocks</span>
+        <strong>A & B</strong>
+      </div>
+
+      <div class="hero-info-row">
+        <span>Floors</span>
+        <strong>Ground – 9th</strong>
+      </div>
+
+      <div class="hero-info-row">
+        <span>Sales</span>
+        <strong>+91 73863 26575</strong>
+      </div>
 
     </div>
 
@@ -1623,324 +2040,459 @@ button{
 </header>
 
 
-<!-- =======================================================
+
+<!-- =====================================================
      MAIN
-     ======================================================= -->
+===================================================== -->
 
-<main class="main">
+<main class="main" id="flats">
 
 
-<!-- =======================================================
-     QUICK STATS
-     ======================================================= -->
+  <!-- QUICK STATS -->
 
-<section class="quick-stats">
+  <section class="quick-stats">
 
-  <div class="quick-stat">
-    <div
-      class="stat-value"
-      id="statAvailable"
-    >
-      0
+
+    <div class="stat stat-main">
+
+      <div class="stat-label">
+        Flats Available
+      </div>
+
+      <div
+        class="stat-number"
+        id="availableCount"
+      >
+        0
+      </div>
+
+      <div class="stat-note">
+        Across Block A & Block B
+      </div>
+
     </div>
 
-    <div class="stat-label">
-      AVAILABLE
-    </div>
-  </div>
 
+    <div class="stat">
 
-  <div class="quick-stat">
-    <div
-      class="stat-value"
-      id="statSold"
-    >
-      0
-    </div>
+      <div class="stat-label">
+        Sold
+      </div>
 
-    <div class="stat-label">
-      SOLD
-    </div>
-  </div>
+      <div
+        class="stat-number"
+        id="soldCount"
+      >
+        0
+      </div>
 
+      <div class="stat-note">
+        Successfully booked
+      </div>
 
-  <div class="quick-stat">
-    <div
-      class="stat-value"
-      id="statMortgage"
-    >
-      0
     </div>
 
-    <div class="stat-label">
-      MORTGAGE
-    </div>
-  </div>
 
+    <div class="stat">
 
-  <div class="quick-stat">
-    <div
-      class="stat-value"
-      id="statCity"
-    >
-      0
-    </div>
+      <div class="stat-label">
+        Mortgage
+      </div>
 
-    <div class="stat-label">
-      CITY LEVEL
-    </div>
-  </div>
+      <div
+        class="stat-number"
+        id="mortgageCount"
+      >
+        0
+      </div>
 
+      <div class="stat-note">
+        Special category
+      </div>
 
-  <div class="quick-stat">
-    <div
-      class="stat-value"
-      id="statMestri"
-    >
-      0
     </div>
 
-    <div class="stat-label">
-      VENDOR-MESTRI
+
+    <div class="stat">
+
+      <div class="stat-label">
+        City Level
+      </div>
+
+      <div
+        class="stat-number"
+        id="cityCount"
+      >
+        0
+      </div>
+
+      <div class="stat-note">
+        Special category
+      </div>
+
     </div>
-  </div>
 
 
-  <div class="quick-stat">
-    <div
-      class="stat-value"
-      id="statRmc"
-    >
-      0
+    <div class="stat">
+
+      <div class="stat-label">
+        Vendor-Mestri
+      </div>
+
+      <div
+        class="stat-number"
+        id="vendorCount"
+      >
+        0
+      </div>
+
+      <div class="stat-note">
+        Reserved
+      </div>
+
     </div>
 
-    <div class="stat-label">
-      VENDOR-RMC
+
+    <div class="stat">
+
+      <div class="stat-label">
+        Vendor-RMC
+      </div>
+
+      <div
+        class="stat-number"
+        id="rmcCount"
+      >
+        0
+      </div>
+
+      <div class="stat-note">
+        Reserved
+      </div>
+
     </div>
-  </div>
 
-</section>
-
-
-<!-- =======================================================
-     FIND YOUR FLAT
-     ======================================================= -->
-
-<section
-  class="find-section"
-  id="find"
->
-
-  <h2 class="section-title">
-    Find Your Flat
-  </h2>
+  </section>
 
 
-  <!-- BLOCK BUTTONS -->
 
-  <div class="block-switch">
+  <!-- FIND -->
 
-    <button
-      class="active"
-      data-block="ALL"
-    >
-      ALL BLOCKS
-    </button>
-
-    <button
-      data-block="A"
-    >
-      BLOCK A
-    </button>
-
-    <button
-      data-block="B"
-    >
-      BLOCK B
-    </button>
-
-  </div>
+  <section class="find-section">
 
 
-  <!-- FILTERS
-       SORT REMOVED
-  -->
+    <div class="section-heading">
 
-  <div class="filters">
+      <div>
 
-    <input
-      class="field"
-      id="search"
-      type="text"
-      placeholder="Search Flat Number..."
-    >
+        <div class="section-kicker">
+          Find Your Flat
+        </div>
 
+        <div class="section-title">
+          Choose your flat
+        </div>
 
-    <select
-      class="field"
-      id="status"
-    >
+        <div class="section-description">
+          Select a block, floor, configuration or search by flat number.
+        </div>
 
-      <option value="">
-        ALL STATUS
-      </option>
-
-      <option value="AVAILABLE">
-        AVAILABLE
-      </option>
-
-      <option value="SOLD">
-        SOLD
-      </option>
-
-      <option value="VENDOR">
-        VENDOR-MESTRI
-      </option>
-
-      <option value="VENDOR-RMC">
-        VENDOR-RMC
-      </option>
-
-    </select>
+      </div>
 
 
-    <select
-      class="field"
-      id="bhk"
-    >
+      <div class="block-switch">
 
-      <option value="">
-        ALL BHK
-      </option>
+        <button
+          class="block-btn active"
+          data-block="ALL"
+        >
+          All Blocks
+        </button>
 
-      <option value="2 BHK">
-        2 BHK
-      </option>
+        <button
+          class="block-btn"
+          data-block="A"
+        >
+          Block A
+        </button>
 
-      <option value="3 BHK">
-        3 BHK
-      </option>
+        <button
+          class="block-btn"
+          data-block="B"
+        >
+          Block B
+        </button>
 
-    </select>
+      </div>
 
-
-    <select
-      class="field"
-      id="floor"
-    >
-
-      <option value="">
-        ALL FLOORS
-      </option>
-
-      <option value="Ground">
-        GROUND FLOOR
-      </option>
-
-      <option value="1st">
-        1ST FLOOR
-      </option>
-
-      <option value="2nd">
-        2ND FLOOR
-      </option>
-
-      <option value="3rd">
-        3RD FLOOR
-      </option>
-
-      <option value="4th">
-        4TH FLOOR
-      </option>
-
-      <option value="5th">
-        5TH FLOOR
-      </option>
-
-      <option value="6th">
-        6TH FLOOR
-      </option>
-
-      <option value="7th">
-        7TH FLOOR
-      </option>
-
-      <option value="8th">
-        8TH FLOOR
-      </option>
-
-      <option value="9th">
-        9TH FLOOR
-      </option>
-
-    </select>
+    </div>
 
 
-    <select
-      class="field"
-      id="facing"
-    >
 
-      <option value="">
-        ALL FACING
-      </option>
+    <div class="find-box">
 
-      <option value="NORTH">
-        NORTH
-      </option>
-
-      <option value="SOUTH">
-        SOUTH
-      </option>
-
-      <option value="EAST">
-        EAST
-      </option>
-
-      <option value="WEST">
-        WEST
-      </option>
-
-    </select>
-
-  </div>
-
-</section>
+      <div class="search-row">
 
 
-<!-- =======================================================
-     FLOOR EXPLORER
-     ======================================================= -->
+        <div class="field">
 
-<section id="explorer"></section>
+          <input
+            id="search"
+            type="text"
+            placeholder="🔎  Search flat number..."
+          >
 
+        </div>
+
+
+        <div class="field">
+
+          <select id="status">
+
+            <option value="ALL">
+              All Status
+            </option>
+
+            <option value="AVAILABLE">
+              Available
+            </option>
+
+            <option value="SOLD">
+              Sold
+            </option>
+
+            <option value="MORTGAGE">
+              Mortgage
+            </option>
+
+            <option value="CITY">
+              City Level
+            </option>
+
+            <option value="VENDOR">
+              Vendor-Mestri
+            </option>
+
+            <option value="RMC">
+              Vendor-RMC
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <select id="bhk">
+
+            <option value="ALL">
+              All BHK
+            </option>
+
+            <option value="2 BHK">
+              2 BHK
+            </option>
+
+            <option value="3 BHK">
+              3 BHK
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <select id="floor">
+
+            <option value="ALL">
+              All Floors
+            </option>
+
+            <option value="Ground">
+              Ground
+            </option>
+
+            <option value="1st">
+              1st Floor
+            </option>
+
+            <option value="2nd">
+              2nd Floor
+            </option>
+
+            <option value="3rd">
+              3rd Floor
+            </option>
+
+            <option value="4th">
+              4th Floor
+            </option>
+
+            <option value="5th">
+              5th Floor
+            </option>
+
+            <option value="6th">
+              6th Floor
+            </option>
+
+            <option value="7th">
+              7th Floor
+            </option>
+
+            <option value="8th">
+              8th Floor
+            </option>
+
+            <option value="9th">
+              9th Floor
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <select id="facing">
+
+            <option value="ALL">
+              Any Facing
+            </option>
+
+            <option value="EAST">
+              East
+            </option>
+
+            <option value="WEST">
+              West
+            </option>
+
+            <option value="NORTH">
+              North
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <select id="sort">
+
+            <option value="FLAT">
+              Flat Number
+            </option>
+
+            <option value="PRICE_LOW">
+              Price: Low → High
+            </option>
+
+            <option value="PRICE_HIGH">
+              Price: High → Low
+            </option>
+
+            <option value="AREA_LOW">
+              Area: Low → High
+            </option>
+
+            <option value="AREA_HIGH">
+              Area: High → Low
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="filter-summary">
+
+        <div class="result-count">
+
+          Showing
+          <strong id="resultCount">0</strong>
+          flats
+
+        </div>
+
+        <div>
+          Oxygen Towers • NorthCity Developers
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- FLOOR EXPLORER -->
+
+  <section class="explorer">
+
+    <div class="explorer-head">
+
+      <div>
+
+        <div class="section-kicker">
+          Floor Explorer
+        </div>
+
+        <div class="explorer-title">
+          Explore Flats by Floor
+        </div>
+
+        <div class="explorer-sub">
+          Select a floor to view the flats available on that level.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="floors"></div>
+
+  </section>
 
 </main>
 
 
-<!-- =======================================================
-     FOOTER
-     ======================================================= -->
+
+<!-- FOOTER -->
 
 <footer class="footer">
 
   <strong>
-    Oxygen Towers | NorthCity Developers
+    OXYGEN TOWERS
   </strong>
 
-  <br>
+  &nbsp;•&nbsp;
 
-  GST & other charges extra
+  NorthCity Developers
+
+  &nbsp;•&nbsp;
+
+  Flat Availability & Sales
 
 </footer>
 
 
+
 <script>
 
+
 /* =========================================================
-   BLOCK A DATA
-   DO NOT CHANGE
-   ========================================================= */
+   BLOCK A — ORIGINAL DATA
+========================================================= */
 
 const A = [
 
@@ -2062,9 +2614,8 @@ const A = [
 
 
 /* =========================================================
-   BLOCK B DATA
-   DO NOT CHANGE
-   ========================================================= */
+   BLOCK B — ORIGINAL DATA
+========================================================= */
 
 const B = [
 
@@ -2076,7 +2627,7 @@ const B = [
 
 ["217","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
 ["218","2nd","WEST","3 BHK",2305,10842000,"AVAILABLE","Available"],
-["220","2nd","NORTH","3 BHK",1900,600000,"AVAILABLE","City Level"],
+["220","2nd","NORTH","3 BHK",1900,9060000,"AVAILABLE","City Level"],
 ["222","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
 ["223","2nd","NORTH","3 BHK",1900,9060000,"AVAILABLE","City Level"],
 ["226","2nd","WEST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
@@ -2137,54 +2688,113 @@ const B = [
 
 
 /* =========================================================
+   APP SETTINGS
+========================================================= */
+
+let currentBlock = "ALL";
+
+const floors = [
+  "Ground",
+  "1st",
+  "2nd",
+  "3rd",
+  "4th",
+  "5th",
+  "6th",
+  "7th",
+  "8th",
+  "9th"
+];
+
+
+/* =========================================================
+   GET DATA
+========================================================= */
+
+function getData(){
+
+  if(currentBlock === "A"){
+    return A;
+  }
+
+  if(currentBlock === "B"){
+    return B;
+  }
+
+  return [...A,...B];
+}
+
+
+/* =========================================================
    MONEY
-   ========================================================= */
+========================================================= */
 
 function money(value){
 
   return "₹" +
-    Number(value)
-      .toLocaleString("en-IN");
+    Number(value).toLocaleString("en-IN");
 
 }
 
 
 /* =========================================================
-   GET CURRENT BLOCK DATA
-   ========================================================= */
+   STATS
+========================================================= */
 
-function getData(){
+function updateStats(){
 
-  const block =
-    document
-      .querySelector(
-        ".block-switch button.active"
-      )
-      ?.dataset.block ||
-    "ALL";
+  const data = [...A,...B];
 
-
-  if(block === "A"){
-    return A;
-  }
+  let available = 0;
+  let sold = 0;
+  let mortgage = 0;
+  let city = 0;
+  let vendor = 0;
+  let rmc = 0;
 
 
-  if(block === "B"){
-    return B;
-  }
+  data.forEach(flat => {
+
+    if(flat[6] === "AVAILABLE"){
+      available++;
+    }
+
+    if(flat[6] === "SOLD"){
+      sold++;
+    }
+
+    if(flat[7] === "Mortgage"){
+      mortgage++;
+    }
+
+    if(flat[7] === "City Level"){
+      city++;
+    }
+
+    if(flat[6] === "VENDOR"){
+      vendor++;
+    }
+
+    if(flat[6] === "VENDOR-RMC"){
+      rmc++;
+    }
+
+  });
 
 
-  return [
-    ...A,
-    ...B
-  ];
+  document.getElementById("availableCount").textContent = available;
+  document.getElementById("soldCount").textContent = sold;
+  document.getElementById("mortgageCount").textContent = mortgage;
+  document.getElementById("cityCount").textContent = city;
+  document.getElementById("vendorCount").textContent = vendor;
+  document.getElementById("rmcCount").textContent = rmc;
 
 }
 
 
 /* =========================================================
-   STATUS CLASS
-   ========================================================= */
+   VISUAL CLASS
+========================================================= */
 
 function visualClass(flat){
 
@@ -2192,35 +2802,29 @@ function visualClass(flat){
     return "mortgage";
   }
 
-
   if(flat[7] === "City Level"){
     return "city";
   }
-
 
   if(flat[6] === "SOLD"){
     return "sold";
   }
 
-
   if(flat[6] === "VENDOR"){
     return "vendor";
   }
-
 
   if(flat[6] === "VENDOR-RMC"){
     return "rmc";
   }
 
-
   return "available";
-
 }
 
 
 /* =========================================================
-   STATUS BADGE
-   ========================================================= */
+   VISUAL BADGE
+========================================================= */
 
 function visualBadge(flat){
 
@@ -2228,204 +2832,191 @@ function visualBadge(flat){
     return "Mortgage";
   }
 
-
   if(flat[7] === "City Level"){
     return "City Level";
   }
-
 
   if(flat[6] === "SOLD"){
     return "Sold";
   }
 
-
   if(flat[6] === "VENDOR"){
     return "Vendor-Mestri";
   }
-
 
   if(flat[6] === "VENDOR-RMC"){
     return "Vendor-RMC";
   }
 
-
   return "Available";
-
 }
 
 
 /* =========================================================
-   FILTER DATA
-   ========================================================= */
+   FILTER
+========================================================= */
 
 function getFilteredData(){
 
-  let data =
-    getData();
-
-
   const search =
-    document
-      .getElementById("search")
+    document.getElementById("search")
       .value
       .trim()
       .toLowerCase();
 
-
   const status =
-    document
-      .getElementById("status")
-      .value;
-
+    document.getElementById("status").value;
 
   const bhk =
-    document
-      .getElementById("bhk")
-      .value;
-
+    document.getElementById("bhk").value;
 
   const floor =
-    document
-      .getElementById("floor")
-      .value;
-
+    document.getElementById("floor").value;
 
   const facing =
-    document
-      .getElementById("facing")
-      .value;
+    document.getElementById("facing").value;
+
+  const sort =
+    document.getElementById("sort").value;
 
 
-  return data.filter(
-    flat => {
+  let data = getData().filter(flat => {
 
-      if(
-        search &&
-        !String(flat[0])
-          .toLowerCase()
-          .includes(search)
-      ){
-        return false;
-      }
-
-
-      if(
-        status &&
-        flat[6] !== status
-      ){
-        return false;
-      }
-
-
-      if(
-        bhk &&
-        flat[3] !== bhk
-      ){
-        return false;
-      }
-
-
-      if(
-        floor &&
-        flat[1] !== floor
-      ){
-        return false;
-      }
-
-
-      if(
-        facing &&
-        flat[2] !== facing
-      ){
-        return false;
-      }
-
-
-      return true;
-
+    if(
+      search &&
+      !String(flat[0])
+        .toLowerCase()
+        .includes(search)
+    ){
+      return false;
     }
-  );
-
-}
 
 
-/* =========================================================
-   UPDATE STATS
-   ========================================================= */
-
-function updateStats(){
-
-  const data =
-    getData();
+    if(
+      bhk !== "ALL" &&
+      flat[3] !== bhk
+    ){
+      return false;
+    }
 
 
-  document
-    .getElementById("statAvailable")
-    .textContent =
-      data.filter(
-        x => x[6] === "AVAILABLE"
-      ).length;
+    if(
+      floor !== "ALL" &&
+      flat[1] !== floor
+    ){
+      return false;
+    }
 
 
-  document
-    .getElementById("statSold")
-    .textContent =
-      data.filter(
-        x => x[6] === "SOLD"
-      ).length;
+    if(
+      facing !== "ALL" &&
+      flat[2] !== facing
+    ){
+      return false;
+    }
 
 
-  document
-    .getElementById("statMortgage")
-    .textContent =
-      data.filter(
-        x => x[7] === "Mortgage"
-      ).length;
+    if(
+      status === "AVAILABLE" &&
+      flat[6] !== "AVAILABLE"
+    ){
+      return false;
+    }
 
 
-  document
-    .getElementById("statCity")
-    .textContent =
-      data.filter(
-        x => x[7] === "City Level"
-      ).length;
+    if(
+      status === "SOLD" &&
+      flat[6] !== "SOLD"
+    ){
+      return false;
+    }
 
 
-  document
-    .getElementById("statMestri")
-    .textContent =
-      data.filter(
-        x => x[6] === "VENDOR"
-      ).length;
+    if(
+      status === "MORTGAGE" &&
+      flat[7] !== "Mortgage"
+    ){
+      return false;
+    }
 
 
-  document
-    .getElementById("statRmc")
-    .textContent =
-      data.filter(
-        x => x[6] === "VENDOR-RMC"
-      ).length;
+    if(
+      status === "CITY" &&
+      flat[7] !== "City Level"
+    ){
+      return false;
+    }
 
+
+    if(
+      status === "VENDOR" &&
+      flat[6] !== "VENDOR"
+    ){
+      return false;
+    }
+
+
+    if(
+      status === "RMC" &&
+      flat[6] !== "VENDOR-RMC"
+    ){
+      return false;
+    }
+
+
+    return true;
+
+  });
+
+
+  if(sort === "PRICE_LOW"){
+    data.sort((a,b) => a[5] - b[5]);
+  }
+
+  if(sort === "PRICE_HIGH"){
+    data.sort((a,b) => b[5] - a[5]);
+  }
+
+  if(sort === "AREA_LOW"){
+    data.sort((a,b) => a[4] - b[4]);
+  }
+
+  if(sort === "AREA_HIGH"){
+    data.sort((a,b) => b[4] - a[4]);
+  }
+
+  if(sort === "FLAT"){
+
+    data.sort(
+      (a,b) =>
+        a[0].localeCompare(
+          b[0],
+          undefined,
+          {
+            numeric:true
+          }
+        )
+    );
+
+  }
+
+
+  return data;
 }
 
 
 /* =========================================================
    FLAT CARD
-   ========================================================= */
+========================================================= */
 
 function apartmentCard(flat){
 
-  const type =
-    visualClass(flat);
+  const type = visualClass(flat);
 
-
-  const badge =
-    visualBadge(flat);
-
+  const badge = visualBadge(flat);
 
   const isAvailable =
     flat[6] === "AVAILABLE";
-
 
   const block =
     A.includes(flat)
@@ -2439,49 +3030,25 @@ function apartmentCard(flat){
 
   return `
 
-    <article
-      class="flat ${type}"
-    >
-
-
-      <!-- FLAT TITLE -->
+    <article class="flat ${type}">
 
       <div class="flat-top">
 
-        <div class="flat-title">
+        <div class="flat-number">
+          ${flat[0]}
+        </div>
 
-          <span class="flat-number">
-            Flat-${flat[0]}
-          </span>
-
-
-          <span class="flat-title-separator">
-            |
-          </span>
-
-
-          <span class="flat-title-bhk">
-            ${flat[3]}
-          </span>
-
-
-          <span class="flat-title-separator">
-            |
-          </span>
-
-
-          <span
-            class="flat-title-status ${type}"
-          >
-            ${badge}
-          </span>
-
+        <div class="badge ${type}">
+          ${badge}
         </div>
 
       </div>
 
 
-      <!-- DETAILS -->
+      <div class="flat-type">
+        ${flat[3]}
+      </div>
+
 
       <div class="flat-meta">
 
@@ -2489,20 +3056,20 @@ function apartmentCard(flat){
           Block ${block}
         </span>
 
-
         <span class="meta">
-          ${flat[4].toLocaleString("en-IN")} SFT
+          ${flat[4].toLocaleString("en-IN")} Sq.Ft
         </span>
-
 
         <span class="meta">
           ${flat[2]}
         </span>
 
+        <span class="meta">
+          ${flat[1]}
+        </span>
+
       </div>
 
-
-      <!-- PRICE -->
 
       <div class="price-box">
 
@@ -2517,25 +3084,19 @@ function apartmentCard(flat){
       </div>
 
 
-      <!-- REMARK -->
-
       <div class="remark">
         ${flat[7]}
       </div>
 
-
-      <!-- GST -->
 
       <div class="charges-note">
         GST & other charges extra
       </div>
 
 
-      <!-- WHATSAPP -->
-
       ${
         isAvailable
-        ?
+          ?
         `
           <a
             class="enquire"
@@ -2545,10 +3106,9 @@ function apartmentCard(flat){
             💬 Enquire About This Flat
           </a>
         `
-        :
+          :
         ""
       }
-
 
     </article>
 
@@ -2558,314 +3118,248 @@ function apartmentCard(flat){
 
 
 /* =========================================================
-   RENDER FLOORS
-   ========================================================= */
+   RENDER
+========================================================= */
 
 function render(){
 
-  const explorer =
-    document.getElementById(
-      "explorer"
-    );
+  const data = getFilteredData();
 
+  const container =
+    document.getElementById("floors");
 
-  explorer.innerHTML = "";
+  const resultCount =
+    document.getElementById("resultCount");
 
 
-  const data =
-    getFilteredData();
+  resultCount.textContent =
+    data.length;
 
 
-  const floors = [
-    "Ground",
-    "1st",
-    "2nd",
-    "3rd",
-    "4th",
-    "5th",
-    "6th",
-    "7th",
-    "8th",
-    "9th"
-  ];
+  container.innerHTML = "";
 
 
-  const selectedFloor =
-    document
-      .getElementById("floor")
-      .value;
+  if(!data.length){
 
-
-  floors.forEach(
-    floor => {
-
-
-      const flats =
-        data.filter(
-          flat =>
-            flat[1] === floor
-        );
-
-
-      if(!flats.length){
-        return;
-      }
-
-
-      const section =
-        document.createElement(
-          "section"
-        );
-
-
-      /*
-        Initially all floors are CLOSED.
-
-        If a particular floor is selected,
-        that floor opens automatically.
-      */
-
-      section.className =
-        selectedFloor === floor
-          ? "floor"
-          : "floor closed";
-
-
-      const available =
-        flats.filter(
-          flat =>
-            flat[6] === "AVAILABLE"
-        ).length;
-
-
-      const floorNumber =
-        floor === "Ground"
-          ? "G"
-          : floor.replace(
-              /[^\d]/g,
-              ""
-            );
-
-
-      section.innerHTML = `
-
-        <div class="floor-head">
-
-
-          <div class="floor-left">
-
-
-            <div class="floor-number">
-              ${floorNumber}
-            </div>
-
-
-            <div>
-
-              <div class="floor-name">
-
-                ${
-                  floor === "Ground"
-                    ? "Ground Floor"
-                    : floor + " Floor"
-                }
-
-              </div>
-
-
-              <div class="floor-count">
-
-                ${flats.length} Flats
-
-              </div>
-
-            </div>
-
-
-          </div>
-
-
-          <div class="floor-right">
-
-
-            ${
-              available
-              ?
-              `
-                <div class="floor-available">
-
-                  ${available}
-                  AVAILABLE
-
-                </div>
-              `
-              :
-              ""
-            }
-
-
-            <div class="floor-arrow">
-              ›
-            </div>
-
-
-          </div>
-
-
-        </div>
-
-
-        <div class="floor-body">
-
-          <div class="flat-grid">
-
-            ${
-              flats
-                .map(
-                  apartmentCard
-                )
-                .join("")
-            }
-
-          </div>
-
-        </div>
-
-      `;
-
-
-      section
-        .querySelector(
-          ".floor-head"
-        )
-        .addEventListener(
-          "click",
-          () => {
-
-            section
-              .classList
-              .toggle(
-                "closed"
-              );
-
-          }
-        );
-
-
-      explorer.appendChild(
-        section
-      );
-
-    }
-  );
-
-
-  if(
-    !explorer.children.length
-  ){
-
-    explorer.innerHTML = `
+    container.innerHTML = `
 
       <div class="empty">
 
-        <strong>
+        <div class="empty-icon">
+          🔎
+        </div>
+
+        <h3>
           No flats found
-        </strong>
+        </h3>
 
-        <br>
-
-        Try changing your filters
-        or search.
+        <p>
+          Try changing your search or filters.
+        </p>
 
       </div>
 
     `;
 
+    return;
   }
+
+
+  const selectedFloor =
+    document.getElementById("floor").value;
+
+
+  floors.forEach(floor => {
+
+    const flats =
+      data.filter(
+        flat => flat[1] === floor
+      );
+
+
+    if(!flats.length){
+      return;
+    }
+
+
+    const available =
+      flats.filter(
+        flat => flat[6] === "AVAILABLE"
+      ).length;
+
+
+    const floorNumber =
+      floor === "Ground"
+        ? "G"
+        : floor.replace(/[^\d]/g,"");
+
+
+    const section =
+      document.createElement("section");
+
+
+    /*
+      All floors are collapsed initially.
+      If a floor is selected in the filter,
+      that floor opens automatically.
+    */
+
+    section.className =
+      selectedFloor === floor
+        ? "floor"
+        : "floor closed";
+
+
+    section.innerHTML = `
+
+      <div class="floor-head">
+
+        <div class="floor-left">
+
+          <div class="floor-number">
+            ${floorNumber}
+          </div>
+
+          <div>
+
+            <div class="floor-name">
+
+              ${
+                floor === "Ground"
+                  ? "Ground Floor"
+                  : floor + " Floor"
+              }
+
+            </div>
+
+            <div class="floor-count">
+              ${flats.length} Flats
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="floor-right">
+
+          ${
+            available
+              ?
+            `
+              <div class="floor-available">
+                ${available} AVAILABLE
+              </div>
+            `
+              :
+            ""
+          }
+
+          <div class="floor-arrow">
+            ›
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="floor-body">
+
+        <div class="flat-grid">
+
+          ${flats.map(apartmentCard).join("")}
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    section
+      .querySelector(".floor-head")
+      .addEventListener(
+        "click",
+        () => {
+
+          section.classList.toggle("closed");
+
+        }
+      );
+
+
+    container.appendChild(section);
+
+  });
 
 }
 
 
 /* =========================================================
-   BLOCK BUTTONS
-   ========================================================= */
+   BLOCK SWITCH
+========================================================= */
 
 document
-  .querySelectorAll(
-    ".block-switch button"
-  )
-  .forEach(
-    button => {
+  .querySelectorAll(".block-btn")
+  .forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-
-          document
-            .querySelectorAll(
-              ".block-switch button"
-            )
-            .forEach(
-              b =>
-                b.classList.remove(
-                  "active"
-                )
-            );
-
-
-          button.classList.add(
-            "active"
+        document
+          .querySelectorAll(".block-btn")
+          .forEach(btn =>
+            btn.classList.remove("active")
           );
 
 
-          updateStats();
+        button.classList.add("active");
 
-          render();
 
-        }
-      );
+        currentBlock =
+          button.dataset.block;
 
-    }
-  );
+
+        render();
+
+      }
+    );
+
+  });
 
 
 /* =========================================================
    FILTER EVENTS
-   ========================================================= */
+========================================================= */
 
-document
-  .querySelectorAll(
-    ".field"
-  )
-  .forEach(
-    field => {
+[
+  "search",
+  "status",
+  "bhk",
+  "floor",
+  "facing",
+  "sort"
+].forEach(id => {
+
+  const element =
+    document.getElementById(id);
 
 
-      field.addEventListener(
-        "input",
-        render
-      );
-
-
-      field.addEventListener(
-        "change",
-        () => {
-
-          updateStats();
-
-          render();
-
-        }
-      );
-
-    }
+  element.addEventListener(
+    id === "search"
+      ? "input"
+      : "change",
+    render
   );
+
+});
 
 
 /* =========================================================
-   INITIAL LOAD
-   ========================================================= */
+   INITIALIZE
+========================================================= */
 
 updateStats();
 
