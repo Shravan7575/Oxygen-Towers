@@ -8,21 +8,25 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
   --navy:#071b33;
   --navy2:#0c2c50;
   --blue:#0c6fd8;
   --blue2:#39a5ff;
   --sky:#edf7ff;
-  --gold:#c9a15b;
-  --cream:#fbfaf7;
+
   --white:#ffffff;
   --text:#17283c;
   --muted:#728399;
-  --line:#e7edf3;
+  --line:#e2eaf1;
 
   --green:#079766;
   --green-bg:#e9faf4;
@@ -35,6 +39,12 @@
 
   --purple:#7655c8;
   --purple-bg:#f3efff;
+
+  --vendor:#287fc4;
+  --vendor-bg:#eaf5ff;
+
+  --rmc:#159c9c;
+  --rmc-bg:#e8ffff;
 
   --shadow:0 20px 55px rgba(7,35,65,.09);
 }
@@ -106,7 +116,9 @@ select{
   z-index:2;
 }
 
-/* NAV */
+/* =========================================================
+   NAV
+========================================================= */
 
 .nav{
   display:flex;
@@ -173,7 +185,9 @@ select{
   box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
-/* HERO CONTENT */
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
 .hero-content{
   padding-top:82px;
@@ -255,7 +269,9 @@ select{
   background:rgba(255,255,255,.07);
 }
 
-/* HERO FLOATING INFO */
+/* =========================================================
+   HERO INFO
+========================================================= */
 
 .hero-info{
   position:absolute;
@@ -377,7 +393,7 @@ select{
 }
 
 /* =========================================================
-   SEARCH AREA
+   FIND SECTION
 ========================================================= */
 
 .find-section{
@@ -397,7 +413,7 @@ select{
   font-size:10px;
   text-transform:uppercase;
   letter-spacing:1.5px;
-  font-weight:800;
+  font-weight:900;
 }
 
 .section-title{
@@ -405,54 +421,88 @@ select{
   font-size:28px;
   margin-top:5px;
   color:var(--navy);
+  font-weight:800;
 }
 
 .section-description{
   color:var(--muted);
   font-size:12px;
+  margin-top:4px;
 }
 
-/* BLOCK SWITCHER */
+/* =========================================================
+   BLOCK SWITCHER
+========================================================= */
 
 .block-switch{
   display:flex;
   gap:6px;
-  padding:5px;
-  background:#eaf0f6;
-  border-radius:14px;
+  padding:6px;
+  background:#e4ebf2;
+  border-radius:15px;
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.04);
 }
 
 .block-btn{
-  border:none;
+  border:0;
+  min-width:105px;
+  height:43px;
   background:transparent;
-  color:#617389;
-  padding:10px 17px;
-  border-radius:10px;
+  color:#60758a;
+  padding:0 16px;
+  border-radius:11px;
   cursor:pointer;
-  font-size:12px;
-  font-weight:800;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.2px;
+  transition:.25s;
 }
 
-.block-btn.active{
-  background:var(--navy);
+.block-btn:hover{
+  background:#f8fbfd;
+  color:#123250;
+}
+
+/* ALL BLOCKS */
+
+.block-btn[data-block="ALL"].active{
+  background:linear-gradient(135deg,#102f50,#075fae);
   color:white;
-  box-shadow:0 5px 14px rgba(7,27,51,.16);
+  box-shadow:0 8px 18px rgba(8,62,110,.24);
 }
 
-/* FIND BOX */
+/* BLOCK A */
+
+.block-btn[data-block="A"].active{
+  background:linear-gradient(135deg,#0c8b72,#12b892);
+  color:white;
+  box-shadow:0 8px 18px rgba(12,139,114,.24);
+}
+
+/* BLOCK B */
+
+.block-btn[data-block="B"].active{
+  background:linear-gradient(135deg,#7552c7,#9673e8);
+  color:white;
+  box-shadow:0 8px 18px rgba(117,82,199,.24);
+}
+
+/* =========================================================
+   FILTER BOX
+========================================================= */
 
 .find-box{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:18px;
-  box-shadow:0 10px 35px rgba(15,45,80,.06);
+  background:linear-gradient(145deg,#ffffff,#f7fbff);
+  border:1px solid #dce8f2;
+  border-radius:24px;
+  padding:20px;
+  box-shadow:0 15px 40px rgba(12,48,82,.08);
 }
 
 .search-row{
   display:grid;
   grid-template-columns:2fr repeat(5,1fr);
-  gap:10px;
+  gap:12px;
 }
 
 .field{
@@ -462,24 +512,85 @@ select{
 .field input,
 .field select{
   width:100%;
-  height:48px;
-  border:1px solid var(--line);
-  background:#f8fafc;
-  border-radius:11px;
+  height:52px;
+  border-radius:13px;
   outline:none;
-  padding:0 13px;
-  color:var(--text);
+  padding:0 14px;
+  color:#162f49;
   font-size:12px;
+  font-weight:800;
+  border-width:1px;
+  border-style:solid;
+  cursor:pointer;
+  transition:.2s;
+}
+
+/* SEARCH */
+
+.field:first-child input{
+  background:#f0f7ff;
+  border-color:#c9e1f7;
+  color:#092744;
+  font-size:13px;
+  font-weight:800;
+}
+
+.field input::placeholder{
+  color:#71859a;
+  font-weight:700;
+}
+
+/* STATUS */
+
+#status{
+  background:#fff8ed;
+  border-color:#f1d8aa;
+}
+
+/* BHK */
+
+#bhk{
+  background:#f2f0ff;
+  border-color:#d8d0f6;
+}
+
+/* FLOOR */
+
+#floor{
+  background:#eefaf6;
+  border-color:#c8e8dc;
+}
+
+/* FACING */
+
+#facing{
+  background:#fff1f4;
+  border-color:#f1ccd5;
+}
+
+/* SORT */
+
+#sort{
+  background:#eef5fb;
+  border-color:#cbddec;
 }
 
 .field input:focus,
 .field select:focus{
-  border-color:#7db8eb;
-  background:white;
-  box-shadow:0 0 0 3px rgba(12,111,216,.07);
+  background:white !important;
+  border-color:#1382df !important;
+  box-shadow:0 0 0 4px rgba(19,130,223,.09);
+  transform:translateY(-1px);
 }
 
-/* FILTER SUMMARY */
+.field select:hover{
+  transform:translateY(-1px);
+  box-shadow:0 7px 18px rgba(20,55,90,.07);
+}
+
+/* =========================================================
+   FILTER SUMMARY
+========================================================= */
 
 .filter-summary{
   display:flex;
@@ -514,6 +625,7 @@ select{
   font-family:"Manrope",sans-serif;
   color:var(--navy);
   font-size:28px;
+  font-weight:800;
 }
 
 .explorer-sub{
@@ -522,7 +634,9 @@ select{
   margin-top:4px;
 }
 
-/* FLOOR CARD */
+/* =========================================================
+   FLOOR
+========================================================= */
 
 .floor{
   margin-top:13px;
@@ -534,8 +648,8 @@ select{
 }
 
 .floor-head{
-  min-height:76px;
-  padding:14px 19px;
+  min-height:82px;
+  padding:15px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -553,29 +667,31 @@ select{
 }
 
 .floor-number{
-  width:47px;
-  height:47px;
-  border-radius:13px;
+  width:51px;
+  height:51px;
+  border-radius:14px;
   display:grid;
   place-items:center;
-  background:var(--sky);
-  color:var(--blue);
+  background:linear-gradient(145deg,#e9f5ff,#dcefff);
+  color:#086bc5;
   font-family:"Manrope",sans-serif;
-  font-size:14px;
-  font-weight:800;
+  font-size:16px;
+  font-weight:900;
+  border:1px solid #cfe5f7;
 }
 
 .floor-name{
   font-family:"Manrope",sans-serif;
-  color:var(--navy);
-  font-size:15px;
-  font-weight:800;
+  color:#092541;
+  font-size:16px;
+  font-weight:900;
 }
 
 .floor-count{
-  margin-top:3px;
-  color:var(--muted);
+  margin-top:4px;
+  color:#788b9e;
   font-size:11px;
+  font-weight:600;
 }
 
 .floor-right{
@@ -586,18 +702,19 @@ select{
 
 .floor-available{
   font-size:11px;
-  font-weight:700;
+  font-weight:800;
   color:var(--green);
 }
 
 .floor-arrow{
-  width:32px;
-  height:32px;
+  width:34px;
+  height:34px;
   border-radius:50%;
   background:#f3f7fa;
   display:grid;
   place-items:center;
   color:#6f8297;
+  font-size:22px;
   transition:.25s;
 }
 
@@ -614,7 +731,7 @@ select{
 }
 
 /* =========================================================
-   APARTMENT CARDS
+   APARTMENT GRID
 ========================================================= */
 
 .flat-grid{
@@ -623,157 +740,273 @@ select{
   gap:12px;
 }
 
+/* =========================================================
+   APARTMENT CARD
+========================================================= */
+
 .flat{
   position:relative;
-  background:#fbfdff;
-  border:1px solid #e5edf4;
-  border-radius:17px;
-  padding:16px;
+  background:#ffffff;
+  border:1px solid #dfe8ef;
+  border-radius:19px;
+  padding:19px;
   overflow:hidden;
   transition:.25s;
+  min-height:260px;
 }
 
-.flat:hover{
-  transform:translateY(-4px);
-  background:white;
-  border-color:#cbdce9;
-  box-shadow:0 16px 30px rgba(10,45,80,.09);
-}
+/* =========================================================
+   COLORED CORNER
+========================================================= */
 
 .flat:before{
   content:"";
   position:absolute;
   top:0;
   left:0;
-  width:100%;
-  height:3px;
+  width:0;
+  height:0;
+  border-style:solid;
+  border-width:0 52px 52px 0;
+  z-index:1;
 }
+
+.flat:after{
+  content:"";
+  position:absolute;
+  top:8px;
+  left:8px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  z-index:2;
+}
+
+/* AVAILABLE */
 
 .flat.available:before{
-  background:var(--green);
+  border-color:transparent #0bad6b transparent transparent;
 }
+
+.flat.available:after{
+  background:#dffff0;
+}
+
+/* SOLD */
 
 .flat.sold:before{
-  background:var(--red);
+  border-color:transparent #df4545 transparent transparent;
 }
+
+.flat.sold:after{
+  background:#ffe0e0;
+}
+
+/* MORTGAGE */
 
 .flat.mortgage:before{
-  background:var(--orange);
+  border-color:transparent #e49a25 transparent transparent;
 }
 
-.flat.city:before{
-  background:var(--purple);
+.flat.mortgage:after{
+  background:#fff0cf;
 }
+
+/* CITY LEVEL */
+
+.flat.city:before{
+  border-color:transparent #7655c8 transparent transparent;
+}
+
+.flat.city:after{
+  background:#e9e0ff;
+}
+
+/* VENDOR-MESTRI */
+
+.flat.vendor:before{
+  border-color:transparent #287fc4 transparent transparent;
+}
+
+.flat.vendor:after{
+  background:#dceeff;
+}
+
+/* VENDOR-RMC */
+
+.flat.rmc:before{
+  border-color:transparent #159c9c transparent transparent;
+}
+
+.flat.rmc:after{
+  background:#d8ffff;
+}
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.flat:hover{
+  transform:translateY(-4px);
+  background:white;
+  border-color:#bcd3e5;
+  box-shadow:0 18px 35px rgba(10,45,80,.11);
+}
+
+/* =========================================================
+   CARD TOP
+========================================================= */
 
 .flat-top{
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:flex-start;
+  gap:10px;
+  position:relative;
+  z-index:3;
 }
 
 .flat-number{
   font-family:"Manrope",sans-serif;
-  font-size:21px;
-  font-weight:800;
-  color:var(--navy);
+  font-size:30px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-1px;
+  color:#061d36;
 }
+
+/* =========================================================
+   BADGES
+========================================================= */
 
 .badge{
   font-size:9px;
   text-transform:uppercase;
-  letter-spacing:.45px;
-  font-weight:800;
-  padding:6px 8px;
+  letter-spacing:.5px;
+  font-weight:900;
+  padding:7px 9px;
   border-radius:20px;
+  white-space:nowrap;
+  border:1px solid transparent;
 }
 
 .badge.available{
-  color:var(--green);
-  background:var(--green-bg);
+  color:#087b55;
+  background:#e8faf3;
+  border-color:#b9ecd7;
 }
 
 .badge.sold{
-  color:var(--red);
-  background:var(--red-bg);
+  color:#c73535;
+  background:#fff0f0;
+  border-color:#f2c4c4;
 }
 
 .badge.mortgage{
-  color:var(--orange);
-  background:var(--orange-bg);
+  color:#b66d08;
+  background:#fff6e5;
+  border-color:#f0d49f;
 }
 
 .badge.city{
-  color:var(--purple);
-  background:var(--purple-bg);
+  color:#6542b4;
+  background:#f2edff;
+  border-color:#d8c9f7;
 }
 
+.badge.vendor{
+  color:#1769a6;
+  background:#eaf5ff;
+  border-color:#c5def2;
+}
+
+.badge.rmc{
+  color:#0c8585;
+  background:#e8ffff;
+  border-color:#bfe8e8;
+}
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
 .flat-type{
-  margin-top:13px;
+  margin-top:17px;
   font-family:"Manrope",sans-serif;
-  font-size:13px;
-  font-weight:800;
-  color:#334b63;
+  font-size:15px;
+  font-weight:900;
+  color:#233e58;
 }
 
 .flat-meta{
   display:flex;
   flex-wrap:wrap;
-  gap:6px;
-  margin-top:9px;
+  gap:7px;
+  margin-top:11px;
 }
 
 .meta{
-  background:#f1f5f8;
-  color:#697c90;
-  padding:5px 7px;
-  border-radius:7px;
-  font-size:9px;
-  font-weight:700;
+  background:#f0f5f8;
+  color:#526a80;
+  padding:7px 9px;
+  border-radius:8px;
+  font-size:10px;
+  font-weight:800;
+  border:1px solid #e4ebf0;
 }
 
 .price-box{
-  border-top:1px solid #e6edf3;
-  margin-top:14px;
-  padding-top:12px;
+  border-top:1px solid #e5edf3;
+  margin-top:16px;
+  padding-top:14px;
 }
 
 .price-label{
-  color:#8a99a9;
+  color:#8191a1;
   font-size:9px;
   text-transform:uppercase;
-  letter-spacing:.5px;
+  letter-spacing:.8px;
+  font-weight:800;
 }
 
 .price{
-  color:var(--navy);
+  color:#071f38;
   font-family:"Manrope",sans-serif;
-  font-size:19px;
-  font-weight:800;
-  margin-top:3px;
+  font-size:23px;
+  font-weight:900;
+  margin-top:4px;
+  letter-spacing:-.5px;
 }
 
 .remark{
-  color:#7b8c9e;
+  color:#74879a;
   font-size:10px;
-  margin-top:7px;
+  margin-top:8px;
+  font-weight:600;
 }
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
 
 .enquire{
   display:block;
-  margin-top:12px;
-  padding:10px;
+  margin-top:14px;
+  padding:12px;
   text-align:center;
-  background:#16b968;
+  background:linear-gradient(135deg,#12a963,#19c477);
   color:white;
   text-decoration:none;
-  border-radius:9px;
+  border-radius:10px;
   font-size:10px;
-  font-weight:800;
+  font-weight:900;
+  letter-spacing:.2px;
   transition:.2s;
 }
 
 .enquire:hover{
-  background:#0d9f58;
+  background:#078e51;
+  transform:translateY(-1px);
 }
 
 /* =========================================================
@@ -822,7 +1055,7 @@ select{
 }
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
 ========================================================= */
 
 @media(max-width:1150px){
@@ -847,6 +1080,10 @@ select{
     grid-template-columns:repeat(3,1fr);
   }
 }
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:760px){
 
@@ -902,6 +1139,8 @@ select{
     margin-top:-45px;
   }
 
+  /* STATS */
+
   .quick-stats{
     grid-template-columns:repeat(2,1fr);
     border-radius:17px;
@@ -926,6 +1165,8 @@ select{
     font-size:25px;
   }
 
+  /* HEADING */
+
   .section-heading{
     display:block;
   }
@@ -934,52 +1175,149 @@ select{
     font-size:23px;
   }
 
+  /* BLOCKS */
+
   .block-switch{
     margin-top:15px;
-    width:max-content;
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:5px;
   }
 
   .block-btn{
-    padding:9px 12px;
+    min-width:0;
+    width:100%;
+    height:46px;
+    padding:0 5px;
     font-size:10px;
+  }
+
+  /* FILTER */
+
+  .find-box{
+    padding:14px;
+    border-radius:19px;
   }
 
   .search-row{
     grid-template-columns:1fr 1fr;
+    gap:9px;
   }
 
   .field:first-child{
     grid-column:span 2;
   }
 
-  .find-box{
-    padding:12px;
-    border-radius:17px;
+  .field input,
+  .field select{
+    height:54px;
+    font-size:11px;
+    border-radius:12px;
   }
+
+  /* FLOOR */
 
   .explorer-title{
     font-size:23px;
   }
 
-  .flat-grid{
-    grid-template-columns:repeat(2,1fr);
+  .floor{
+    border-radius:17px;
   }
 
   .floor-head{
+    min-height:76px;
     padding:12px;
   }
 
   .floor-number{
-    width:42px;
-    height:42px;
+    width:45px;
+    height:45px;
+    font-size:14px;
+  }
+
+  .floor-name{
+    font-size:14px;
+  }
+
+  .floor-count{
+    font-size:10px;
   }
 
   .floor-available{
     display:none;
   }
+
+  .floor-body{
+    padding:0 10px 12px;
+  }
+
+  /* ONE LARGE CARD PER ROW */
+
+  .flat-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .flat{
+    min-height:auto;
+    padding:20px;
+    border-radius:19px;
+  }
+
+  /* VERY LARGE G1 / G2 / G14 */
+
+  .flat-number{
+    font-size:34px;
+    letter-spacing:-1.2px;
+  }
+
+  .badge{
+    font-size:9px;
+    padding:8px 10px;
+  }
+
+  .flat-type{
+    font-size:16px;
+    margin-top:18px;
+  }
+
+  .flat-meta{
+    gap:7px;
+    margin-top:12px;
+  }
+
+  .meta{
+    padding:8px 10px;
+    font-size:10px;
+  }
+
+  .price{
+    font-size:25px;
+  }
+
+  .price-label{
+    font-size:9px;
+  }
+
+  .remark{
+    font-size:11px;
+  }
+
+  .enquire{
+    padding:13px;
+    font-size:11px;
+    border-radius:11px;
+  }
+
 }
 
-@media(max-width:460px){
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:430px){
 
   .hero h1{
     font-size:37px;
@@ -993,18 +1331,43 @@ select{
     grid-column:auto;
   }
 
-  .flat-grid{
-    grid-template-columns:1fr;
+  .field input,
+  .field select{
+    height:55px;
+    font-size:12px;
   }
 
-  .floor-right{
-    gap:5px;
+  .block-btn{
+    font-size:9px;
   }
+
+  .flat{
+    padding:19px;
+  }
+
+  .flat-number{
+    font-size:36px;
+  }
+
+  .flat-type{
+    font-size:17px;
+  }
+
+  .meta{
+    font-size:10px;
+  }
+
+  .price{
+    font-size:26px;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
+
 
 <!-- =====================================================
      HERO
@@ -1133,7 +1496,9 @@ select{
 <main class="main" id="apartments">
 
 
-  <!-- QUICK STATS -->
+  <!-- =====================================================
+       QUICK STATS
+  ===================================================== -->
 
   <section class="quick-stats">
 
@@ -1241,13 +1606,16 @@ select{
   </section>
 
 
-  <!-- FIND APARTMENT -->
+  <!-- =====================================================
+       FIND APARTMENT
+  ===================================================== -->
 
   <section class="find-section">
 
     <div class="section-heading">
 
       <div>
+
         <div class="section-kicker">
           Find Your Home
         </div>
@@ -1259,6 +1627,7 @@ select{
         <div class="section-description">
           Select a block, floor, configuration or search by flat number.
         </div>
+
       </div>
 
 
@@ -1295,15 +1664,18 @@ select{
       <div class="search-row">
 
         <div class="field">
+
           <input
             id="search"
             type="text"
             placeholder="🔎  Search flat number..."
           >
+
         </div>
 
 
         <div class="field">
+
           <select id="status">
 
             <option value="ALL">
@@ -1335,10 +1707,12 @@ select{
             </option>
 
           </select>
+
         </div>
 
 
         <div class="field">
+
           <select id="bhk">
 
             <option value="ALL">
@@ -1354,10 +1728,12 @@ select{
             </option>
 
           </select>
+
         </div>
 
 
         <div class="field">
+
           <select id="floor">
 
             <option value="ALL">
@@ -1405,10 +1781,12 @@ select{
             </option>
 
           </select>
+
         </div>
 
 
         <div class="field">
+
           <select id="facing">
 
             <option value="ALL">
@@ -1428,10 +1806,12 @@ select{
             </option>
 
           </select>
+
         </div>
 
 
         <div class="field">
+
           <select id="sort">
 
             <option value="FLAT">
@@ -1455,6 +1835,7 @@ select{
             </option>
 
           </select>
+
         </div>
 
       </div>
@@ -1479,7 +1860,9 @@ select{
   </section>
 
 
-  <!-- FLOOR EXPLORER -->
+  <!-- =====================================================
+       FLOOR EXPLORER
+  ===================================================== -->
 
   <section class="explorer">
 
@@ -1511,6 +1894,10 @@ select{
 </main>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer class="footer">
 
   <strong>OXYGEN TOWERS</strong>
@@ -1525,7 +1912,7 @@ select{
 <script>
 
 /* =========================================================
-   ORIGINAL DATA — UNTOUCHED
+   BLOCK A DATA — UNTOUCHED
 ========================================================= */
 
 const A = [
@@ -1643,8 +2030,13 @@ const A = [
 ["914","9th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
 ["915","9th","EAST","3 BHK",2455,11011000,"SOLD","Sold"],
 ["916","9th","WEST","3 BHK",1790,8755000,"AVAILABLE","Available"]
+
 ];
 
+
+/* =========================================================
+   BLOCK B DATA — UNTOUCHED
+========================================================= */
 
 const B = [
 
@@ -1736,17 +2128,28 @@ const floors = [
 ];
 
 
+/* =========================================================
+   GET CURRENT DATA
+========================================================= */
+
 function getData(){
 
-  if(currentBlock === "A")
+  if(currentBlock === "A"){
     return A;
+  }
 
-  if(currentBlock === "B")
+  if(currentBlock === "B"){
     return B;
+  }
 
   return [...A,...B];
+
 }
 
+
+/* =========================================================
+   MONEY
+========================================================= */
 
 function money(value){
 
@@ -1773,73 +2176,110 @@ function updateStats(){
 
   data.forEach(flat => {
 
-    if(flat[6] === "AVAILABLE")
+    if(flat[6] === "AVAILABLE"){
       available++;
+    }
 
-    if(flat[6] === "SOLD")
+    if(flat[6] === "SOLD"){
       sold++;
+    }
 
-    if(flat[7] === "Mortgage")
+    if(flat[7] === "Mortgage"){
       mortgage++;
+    }
 
-    if(flat[7] === "City Level")
+    if(flat[7] === "City Level"){
       city++;
+    }
 
-    if(flat[6] === "VENDOR")
+    if(flat[6] === "VENDOR"){
       vendor++;
+    }
 
-    if(flat[6] === "VENDOR-RMC")
+    if(flat[6] === "VENDOR-RMC"){
       rmc++;
+    }
 
   });
 
 
-  document.getElementById("availableCount").textContent = available;
-  document.getElementById("soldCount").textContent = sold;
-  document.getElementById("mortgageCount").textContent = mortgage;
-  document.getElementById("cityCount").textContent = city;
-  document.getElementById("vendorCount").textContent = vendor;
-  document.getElementById("rmcCount").textContent = rmc;
+  document.getElementById("availableCount").textContent =
+    available;
+
+  document.getElementById("soldCount").textContent =
+    sold;
+
+  document.getElementById("mortgageCount").textContent =
+    mortgage;
+
+  document.getElementById("cityCount").textContent =
+    city;
+
+  document.getElementById("vendorCount").textContent =
+    vendor;
+
+  document.getElementById("rmcCount").textContent =
+    rmc;
 
 }
 
 
 /* =========================================================
-   VISUAL STATUS
+   VISUAL CLASS
 ========================================================= */
 
 function visualClass(flat){
 
-  if(flat[7] === "Mortgage")
+  if(flat[7] === "Mortgage"){
     return "mortgage";
+  }
 
-  if(flat[7] === "City Level")
+  if(flat[7] === "City Level"){
     return "city";
+  }
 
-  if(flat[6] === "SOLD")
+  if(flat[6] === "SOLD"){
     return "sold";
+  }
+
+  if(flat[6] === "VENDOR"){
+    return "vendor";
+  }
+
+  if(flat[6] === "VENDOR-RMC"){
+    return "rmc";
+  }
 
   return "available";
 
 }
 
 
+/* =========================================================
+   BADGE TEXT
+========================================================= */
+
 function visualBadge(flat){
 
-  if(flat[7] === "Mortgage")
+  if(flat[7] === "Mortgage"){
     return "Mortgage";
+  }
 
-  if(flat[7] === "City Level")
+  if(flat[7] === "City Level"){
     return "City Level";
+  }
 
-  if(flat[6] === "SOLD")
+  if(flat[6] === "SOLD"){
     return "Sold";
+  }
 
-  if(flat[6] === "VENDOR")
+  if(flat[6] === "VENDOR"){
     return "Vendor-Mestri";
+  }
 
-  if(flat[6] === "VENDOR-RMC")
+  if(flat[6] === "VENDOR-RMC"){
     return "Vendor-RMC";
+  }
 
   return "Available";
 
@@ -1874,98 +2314,117 @@ function getFilteredData(){
     document.getElementById("sort").value;
 
 
-  let data = getData().filter(flat => {
-
-    if(
-      search &&
-      !String(flat[0])
-        .toLowerCase()
-        .includes(search)
-    )
-      return false;
+  let data =
+    getData().filter(flat => {
 
 
-    if(
-      bhk !== "ALL" &&
-      flat[3] !== bhk
-    )
-      return false;
+      if(
+        search &&
+        !String(flat[0])
+          .toLowerCase()
+          .includes(search)
+      ){
+        return false;
+      }
 
 
-    if(
-      floor !== "ALL" &&
-      flat[1] !== floor
-    )
-      return false;
+      if(
+        bhk !== "ALL" &&
+        flat[3] !== bhk
+      ){
+        return false;
+      }
 
 
-    if(
-      facing !== "ALL" &&
-      flat[2] !== facing
-    )
-      return false;
+      if(
+        floor !== "ALL" &&
+        flat[1] !== floor
+      ){
+        return false;
+      }
 
 
-    if(
-      status === "AVAILABLE" &&
-      flat[6] !== "AVAILABLE"
-    )
-      return false;
+      if(
+        facing !== "ALL" &&
+        flat[2] !== facing
+      ){
+        return false;
+      }
 
 
-    if(
-      status === "SOLD" &&
-      flat[6] !== "SOLD"
-    )
-      return false;
+      if(
+        status === "AVAILABLE" &&
+        flat[6] !== "AVAILABLE"
+      ){
+        return false;
+      }
 
 
-    if(
-      status === "MORTGAGE" &&
-      flat[7] !== "Mortgage"
-    )
-      return false;
+      if(
+        status === "SOLD" &&
+        flat[6] !== "SOLD"
+      ){
+        return false;
+      }
 
 
-    if(
-      status === "CITY" &&
-      flat[7] !== "City Level"
-    )
-      return false;
+      if(
+        status === "MORTGAGE" &&
+        flat[7] !== "Mortgage"
+      ){
+        return false;
+      }
 
 
-    if(
-      status === "VENDOR" &&
-      flat[6] !== "VENDOR"
-    )
-      return false;
+      if(
+        status === "CITY" &&
+        flat[7] !== "City Level"
+      ){
+        return false;
+      }
 
 
-    if(
-      status === "RMC" &&
-      flat[6] !== "VENDOR-RMC"
-    )
-      return false;
+      if(
+        status === "VENDOR" &&
+        flat[6] !== "VENDOR"
+      ){
+        return false;
+      }
 
 
-    return true;
+      if(
+        status === "RMC" &&
+        flat[6] !== "VENDOR-RMC"
+      ){
+        return false;
+      }
 
-  });
+
+      return true;
+
+    });
 
 
-  if(sort === "PRICE_LOW")
-    data.sort((a,b) => a[5]-b[5]);
+  /* SORT */
 
-  if(sort === "PRICE_HIGH")
-    data.sort((a,b) => b[5]-a[5]);
+  if(sort === "PRICE_LOW"){
+    data.sort((a,b) => a[5] - b[5]);
+  }
 
-  if(sort === "AREA_LOW")
-    data.sort((a,b) => a[4]-b[4]);
+  if(sort === "PRICE_HIGH"){
+    data.sort((a,b) => b[5] - a[5]);
+  }
 
-  if(sort === "AREA_HIGH")
-    data.sort((a,b) => b[4]-a[4]);
+  if(sort === "AREA_LOW"){
+    data.sort((a,b) => a[4] - b[4]);
+  }
 
-  if(sort === "FLAT")
+  if(sort === "AREA_HIGH"){
+    data.sort((a,b) => b[4] - a[4]);
+  }
+
+  if(sort === "FLAT"){
+
     data.sort((a,b) =>
       a[0].localeCompare(
         b[0],
@@ -1973,6 +2432,8 @@ function getFilteredData(){
         {numeric:true}
       )
     );
+
+  }
 
 
   return data;
@@ -1996,7 +2457,9 @@ function apartmentCard(flat){
     flat[6] === "AVAILABLE";
 
   const block =
-    A.includes(flat) ? "A" : "B";
+    A.includes(flat)
+      ? "A"
+      : "B";
 
 
   const message =
@@ -2028,7 +2491,7 @@ function apartmentCard(flat){
       <div class="flat-meta">
 
         <span class="meta">
-          ${block === "A" ? "Block A" : "Block B"}
+          Block ${block}
         </span>
 
         <span class="meta">
@@ -2088,7 +2551,7 @@ function apartmentCard(flat){
 
 
 /* =========================================================
-   FLOOR
+   FLOOR RENDER
 ========================================================= */
 
 function render(){
@@ -2102,12 +2565,15 @@ function render(){
   const resultCount =
     document.getElementById("resultCount");
 
+
   resultCount.textContent =
     data.length;
 
 
   container.innerHTML = "";
 
+
+  /* EMPTY */
 
   if(!data.length){
 
@@ -2132,8 +2598,11 @@ function render(){
     `;
 
     return;
+
   }
 
+
+  /* FLOORS */
 
   floors.forEach(floor => {
 
@@ -2143,8 +2612,9 @@ function render(){
       );
 
 
-    if(!flats.length)
+    if(!flats.length){
       return;
+    }
 
 
     const available =
@@ -2155,8 +2625,8 @@ function render(){
 
     const floorNumber =
       floor === "Ground"
-      ? "G"
-      : floor.replace(/[^\d]/g,"");
+        ? "G"
+        : floor.replace(/[^\d]/g,"");
 
 
     const section =
@@ -2179,9 +2649,11 @@ function render(){
           <div>
 
             <div class="floor-name">
-              ${floor === "Ground"
-                ? "Ground Floor"
-                : floor + " Floor"}
+              ${
+                floor === "Ground"
+                  ? "Ground Floor"
+                  : floor + " Floor"
+              }
             </div>
 
             <div class="floor-count">
@@ -2235,7 +2707,9 @@ function render(){
       .addEventListener(
         "click",
         () => {
+
           section.classList.toggle("closed");
+
         }
       );
 
@@ -2248,7 +2722,7 @@ function render(){
 
 
 /* =========================================================
-   BLOCK SWITCH
+   BLOCK BUTTONS
 ========================================================= */
 
 document
@@ -2265,10 +2739,13 @@ document
             btn.classList.remove("active")
           );
 
+
         button.classList.add("active");
+
 
         currentBlock =
           button.dataset.block;
+
 
         render();
 
@@ -2293,6 +2770,7 @@ document
 
   const element =
     document.getElementById(id);
+
 
   element.addEventListener(
     id === "search"
