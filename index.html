@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -8,7 +9,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 
@@ -50,8 +55,18 @@ button{
 
 .hero{
   background:
-    radial-gradient(circle at 90% 10%, rgba(72,166,220,.20), transparent 30%),
-    linear-gradient(135deg,#061e36 0%,#0a3459 52%,#0c4774 100%);
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(72,166,220,.20),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #061e36 0%,
+      #0a3459 52%,
+      #0c4774 100%
+    );
+
   color:#fff;
   padding:24px 20px 70px;
 }
@@ -374,13 +389,18 @@ button{
   width:48px;
   height:48px;
   flex:0 0 48px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   border-radius:12px;
+
   background:#e8f3fa;
   border:1px solid #bcd5e4;
+
   color:#0a4d77;
+
   font-size:20px;
   font-weight:900;
 }
@@ -409,32 +429,39 @@ button{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+
   background:#d8f7e8;
   color:#007548;
+
   border:1.5px solid #72d4a5;
+
   border-radius:10px;
+
   padding:8px 12px;
+
   font-size:14px;
   font-weight:900;
+
   white-space:nowrap;
 }
 
 .floor-arrow{
   width:36px;
   height:36px;
+
   border-radius:10px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   background:#f1f6f9;
   color:#41657d;
+
   font-size:24px;
   font-weight:800;
-  transition:.25s;
-}
 
-.floor.closed .floor-arrow{
-  transform:rotate(0deg);
+  transition:.25s;
 }
 
 .floor:not(.closed) .floor-arrow{
@@ -467,20 +494,32 @@ button{
 
 .flat{
   position:relative;
+
   background:#fff;
+
   border:1.5px solid #d5e0e8;
+
   border-radius:19px;
+
   padding:19px 19px 23px 21px;
+
   overflow:hidden;
+
   transition:.25s;
+
   min-height:300px;
-  box-shadow:0 5px 16px rgba(10,45,80,.045);
+
+  box-shadow:
+    0 5px 16px rgba(10,45,80,.045);
 }
 
 .flat:hover{
   transform:translateY(-4px);
+
   border-color:#9eb9ce;
-  box-shadow:0 18px 35px rgba(10,45,80,.12);
+
+  box-shadow:
+    0 18px 35px rgba(10,45,80,.12);
 }
 
 
@@ -490,12 +529,17 @@ button{
 
 .flat:before{
   content:"";
+
   position:absolute;
+
   top:22px;
   left:14px;
+
   width:7px;
   height:7px;
+
   border-radius:50%;
+
   z-index:3;
 }
 
@@ -536,12 +580,17 @@ button{
 
 .flat:after{
   content:"";
+
   position:absolute;
+
   left:14px;
   right:14px;
   bottom:0;
+
   height:4px;
+
   border-radius:5px 5px 0 0;
+
   z-index:2;
 }
 
@@ -571,123 +620,186 @@ button{
 
 
 /* =========================================================
-   FLAT TOP
+   FLAT TITLE
+   ONE LINE
+
+   Example:
+   Flat-510 | 2 BHK | AVAILABLE
 ========================================================= */
 
 .flat-top{
   display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
+  align-items:center;
+
   gap:10px;
-  margin-bottom:7px;
+
+  margin-bottom:14px;
+
+  min-width:0;
+
+  white-space:nowrap;
+}
+
+.flat-title{
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  min-width:0;
+
+  white-space:nowrap;
+
+  font-size:22px;
+  line-height:1.15;
+
+  font-weight:900;
+
+  color:#082d4f;
 }
 
 .flat-number{
   padding-left:15px;
-  font-size:36px;
+
+  font-size:22px;
   line-height:1;
+
   font-weight:900;
-  letter-spacing:-1px;
+
+  letter-spacing:-.3px;
+
   color:#082d4f;
+
+  white-space:nowrap;
 }
 
+.flat-title-separator{
+  color:#91a5b4;
+  font-weight:900;
+}
 
-/* =========================================================
-   STATUS BADGES
-========================================================= */
+.flat-title-bhk{
+  color:#315873;
 
-.badge{
-  position:relative;
-  z-index:5;
+  font-size:18px;
+
+  font-weight:900;
+
+  white-space:nowrap;
+}
+
+.flat-title-status{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:32px;
-  font-size:12px;
+
+  min-height:30px;
+
+  padding:6px 10px;
+
+  border-radius:8px;
+
+  font-size:11px;
+  line-height:1;
+
   text-transform:uppercase;
-  letter-spacing:.55px;
+
+  letter-spacing:.45px;
+
   font-weight:900;
-  padding:7px 11px;
-  border-radius:9px;
+
   white-space:nowrap;
-  border:2px solid transparent;
-  box-shadow:0 4px 10px rgba(0,0,0,.06);
-}
 
-.badge.available{
-  color:#006f45;
-  background:#d8f7e8;
-  border-color:#72d4a5;
-  box-shadow:0 5px 14px rgba(7,151,102,.16);
-}
-
-.badge.sold{
-  color:#b92323;
-  background:#ffe0e0;
-  border-color:#ef9696;
-  box-shadow:0 5px 14px rgba(223,69,69,.14);
-}
-
-.badge.mortgage{
-  color:#995c00;
-  background:#ffedc8;
-  border-color:#e6b75d;
-  box-shadow:0 5px 14px rgba(201,130,23,.14);
-}
-
-.badge.city{
-  color:#5737a5;
-  background:#eee5ff;
-  border-color:#bca5ed;
-  box-shadow:0 5px 14px rgba(118,85,200,.14);
-}
-
-.badge.vendor{
-  color:#0c5f98;
-  background:#e0f1ff;
-  border-color:#94c9ed;
-  box-shadow:0 5px 14px rgba(40,127,196,.14);
-}
-
-.badge.rmc{
-  color:#067777;
-  background:#dcf8f8;
-  border-color:#8dd6d6;
-  box-shadow:0 5px 14px rgba(21,156,156,.14);
+  border:1.5px solid transparent;
 }
 
 
 /* =========================================================
-   FLAT TYPE
+   TITLE STATUS COLORS
 ========================================================= */
 
-.flat-type{
-  font-size:17px;
-  font-weight:900;
-  color:#315873;
-  margin-bottom:13px;
+.flat-title-status.available{
+  color:#006f45;
+
+  background:#d8f7e8;
+
+  border-color:#72d4a5;
+}
+
+.flat-title-status.sold{
+  color:#b92323;
+
+  background:#ffe0e0;
+
+  border-color:#ef9696;
+}
+
+.flat-title-status.mortgage{
+  color:#995c00;
+
+  background:#ffedc8;
+
+  border-color:#e6b75d;
+}
+
+.flat-title-status.city{
+  color:#5737a5;
+
+  background:#eee5ff;
+
+  border-color:#bca5ed;
+}
+
+.flat-title-status.vendor{
+  color:#0c5f98;
+
+  background:#e0f1ff;
+
+  border-color:#94c9ed;
+}
+
+.flat-title-status.rmc{
+  color:#067777;
+
+  background:#dcf8f8;
+
+  border-color:#8dd6d6;
 }
 
 
 /* =========================================================
    FLAT META
+   DESKTOP ONE LINE
 ========================================================= */
 
 .flat-meta{
   display:flex;
-  flex-wrap:wrap;
-  gap:8px;
+
+  flex-wrap:nowrap;
+
+  gap:6px;
+
   margin-bottom:14px;
+
+  white-space:nowrap;
 }
 
 .flat-meta .meta{
-  font-size:14px;
+  font-size:12px;
+
   font-weight:800;
+
   color:#234a65;
+
   background:#f3f7fa;
+
   border:1px solid #dbe5eb;
-  padding:7px 10px;
-  border-radius:8px;
+
+  padding:6px 8px;
+
+  border-radius:7px;
+
+  white-space:nowrap;
 }
 
 
@@ -697,25 +809,37 @@ button{
 
 .price-box{
   border:1.5px solid #b9d9ec;
+
   background:#f1f9fe;
+
   border-radius:13px;
+
   padding:12px 13px;
+
   margin-bottom:12px;
 }
 
 .price-label{
   color:#638096;
+
   font-size:11px;
+
   font-weight:900;
+
   text-transform:uppercase;
+
   letter-spacing:.45px;
 }
 
 .price{
   color:#075789;
+
   font-size:25px;
+
   line-height:1.2;
+
   font-weight:900;
+
   margin-top:3px;
 }
 
@@ -726,20 +850,37 @@ button{
 
 .remark{
   color:#385a70;
+
   font-size:14px;
+
   font-weight:800;
+
   margin-bottom:7px;
 }
 
 
 /* =========================================================
-   GST NOTE
+   GST & OTHER CHARGES
 ========================================================= */
 
 .charges-note{
-  color:#788d9c;
-  font-size:12px;
+  display:inline-flex;
+  align-items:center;
+
+  background:#fff4df;
+
+  color:#9a650d;
+
+  border:1px solid #f0d29b;
+
+  border-radius:7px;
+
+  padding:6px 9px;
+
+  font-size:11px;
+
   font-weight:800;
+
   margin-bottom:13px;
 }
 
@@ -750,22 +891,34 @@ button{
 
 .enquire{
   width:100%;
+
   min-height:43px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   text-decoration:none;
+
   background:#19ad69;
+
   color:#fff;
+
   border-radius:10px;
+
   font-size:13px;
+
   font-weight:900;
-  box-shadow:0 7px 17px rgba(25,173,105,.18);
+
+  box-shadow:
+    0 7px 17px rgba(25,173,105,.18);
+
   transition:.2s;
 }
 
 .enquire:hover{
   background:#0d9658;
+
   transform:translateY(-1px);
 }
 
@@ -776,17 +929,25 @@ button{
 
 .empty{
   padding:40px 20px;
+
   text-align:center;
+
   background:#fff;
+
   border:1px solid #dbe6ed;
+
   border-radius:18px;
+
   color:#6d8293;
 }
 
 .empty strong{
   display:block;
+
   color:#143c59;
+
   font-size:18px;
+
   margin-bottom:5px;
 }
 
@@ -797,10 +958,15 @@ button{
 
 .footer{
   max-width:1250px;
+
   margin:auto;
+
   padding:0 20px 35px;
+
   color:#738898;
+
   text-align:center;
+
   font-size:12px;
 }
 
@@ -826,6 +992,29 @@ button{
   .flat-grid{
     grid-template-columns:repeat(3,1fr);
   }
+
+
+  /* Keep title compact */
+
+  .flat-title{
+    gap:8px;
+    font-size:19px;
+  }
+
+  .flat-number{
+    font-size:19px;
+    padding-left:12px;
+  }
+
+  .flat-title-bhk{
+    font-size:16px;
+  }
+
+  .flat-title-status{
+    font-size:10px;
+    padding:6px 8px;
+  }
+
 }
 
 
@@ -864,7 +1053,9 @@ button{
 
   .main{
     margin-top:-28px;
-    padding:0 12px 45px;
+
+    padding:
+      0 12px 45px;
   }
 
   .quick-stats{
@@ -924,6 +1115,9 @@ button{
     min-height:44px;
   }
 
+
+  /* FLOOR */
+
   .floor-head{
     padding:14px;
   }
@@ -935,7 +1129,9 @@ button{
   .floor-number{
     width:44px;
     height:44px;
+
     flex-basis:44px;
+
     font-size:18px;
   }
 
@@ -960,12 +1156,16 @@ button{
   .floor-arrow{
     width:32px;
     height:32px;
+
     font-size:20px;
   }
 
   .floor-body{
     padding:0 12px 14px;
   }
+
+
+  /* FLATS */
 
   .flat-grid{
     grid-template-columns:1fr;
@@ -974,8 +1174,12 @@ button{
 
   .flat{
     min-height:auto;
-    padding:20px 20px 24px 22px;
+
+    padding:
+      20px 20px 24px 22px;
+
     border-radius:19px;
+
     border-width:1.5px;
   }
 
@@ -983,27 +1187,65 @@ button{
     left:14px;
     right:14px;
     bottom:0;
+
     height:4px;
   }
 
   .flat:before{
     top:24px;
     left:14px;
+
     width:7px;
     height:7px;
   }
 
-  .flat-number{
-    font-size:36px;
-    padding-left:15px;
+
+  /* ONE LINE TITLE */
+
+  .flat-top{
+    gap:7px;
+
+    overflow:hidden;
   }
 
-  .flat-type{
-    font-size:16px;
+  .flat-title{
+    gap:7px;
+
+    font-size:18px;
+
+    overflow:hidden;
+  }
+
+  .flat-number{
+    font-size:18px;
+
+    padding-left:12px;
+  }
+
+  .flat-title-bhk{
+    font-size:15px;
+  }
+
+  .flat-title-status{
+    font-size:9px;
+
+    padding:6px 7px;
+  }
+
+
+  /* META CAN WRAP */
+
+  .flat-meta{
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    white-space:normal;
   }
 
   .flat-meta .meta{
     font-size:13px;
+
     padding:7px 9px;
   }
 
@@ -1011,10 +1253,6 @@ button{
     font-size:23px;
   }
 
-  .badge{
-    font-size:10px;
-    padding:7px 9px;
-  }
 }
 
 
@@ -1048,16 +1286,27 @@ button{
     display:none;
   }
 
-  .flat-top{
-    align-items:flex-start;
+  .flat-title{
+    gap:5px;
   }
 
   .flat-number{
-    font-size:34px;
+    font-size:17px;
   }
+
+  .flat-title-bhk{
+    font-size:14px;
+  }
+
+  .flat-title-status{
+    font-size:8px;
+    padding:5px 6px;
+  }
+
 }
 
 </style>
+
 </head>
 
 
@@ -1147,84 +1396,101 @@ button{
   <section class="quick-stats">
 
     <div class="quick-stat available">
+
       <div
         class="stat-value"
         id="availableCount"
       >
         0
       </div>
+
       <div class="stat-label">
         AVAILABLE
       </div>
+
     </div>
 
 
     <div class="quick-stat sold">
+
       <div
         class="stat-value"
         id="soldCount"
       >
         0
       </div>
+
       <div class="stat-label">
         SOLD
       </div>
+
     </div>
 
 
     <div class="quick-stat mortgage">
+
       <div
         class="stat-value"
         id="mortgageCount"
       >
         0
       </div>
+
       <div class="stat-label">
         MORTGAGE
       </div>
+
     </div>
 
 
     <div class="quick-stat city">
+
       <div
         class="stat-value"
         id="cityCount"
       >
         0
       </div>
+
       <div class="stat-label">
         CITY LEVEL
       </div>
+
     </div>
 
 
     <div class="quick-stat vendor">
+
       <div
         class="stat-value"
         id="vendorCount"
       >
         0
       </div>
+
       <div class="stat-label">
         VENDOR-MESTRI
       </div>
+
     </div>
 
 
     <div class="quick-stat rmc">
+
       <div
         class="stat-value"
         id="rmcCount"
       >
         0
       </div>
+
       <div class="stat-label">
         VENDOR-RMC
       </div>
+
     </div>
 
   </section>
-
 
 
   <!-- =======================================================
@@ -1257,11 +1523,15 @@ button{
         ALL BLOCKS
       </button>
 
-      <button data-block="A">
+      <button
+        data-block="A"
+      >
         BLOCK A
       </button>
 
-      <button data-block="B">
+      <button
+        data-block="B"
+      >
         BLOCK B
       </button>
 
@@ -1272,7 +1542,12 @@ button{
 
     <div class="filters">
 
-      <div class="filter-group search-group">
+
+      <!-- SEARCH -->
+
+      <div
+        class="filter-group search-group"
+      >
 
         <label>
           Search Flat
@@ -1286,6 +1561,8 @@ button{
 
       </div>
 
+
+      <!-- STATUS -->
 
       <div class="filter-group">
 
@@ -1320,6 +1597,8 @@ button{
       </div>
 
 
+      <!-- BHK -->
+
       <div class="filter-group">
 
         <label>
@@ -1344,6 +1623,8 @@ button{
 
       </div>
 
+
+      <!-- FLOOR -->
 
       <div class="filter-group">
 
@@ -1402,6 +1683,8 @@ button{
       </div>
 
 
+      <!-- FACING -->
+
       <div class="filter-group">
 
         <label>
@@ -1430,6 +1713,8 @@ button{
 
       </div>
 
+
+      <!-- SORT -->
 
       <div class="filter-group">
 
@@ -1468,7 +1753,6 @@ button{
   </section>
 
 
-
   <!-- =======================================================
        FLOOR EXPLORER
   ======================================================== -->
@@ -1478,11 +1762,18 @@ button{
     id="explorer"
   ></section>
 
+
 </main>
 
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer class="footer">
+
   Oxygen Towers | NorthCity Developers
+
 </footer>
 
 
@@ -1491,269 +1782,310 @@ button{
 
 /* =========================================================
    BLOCK A DATA
-   DATA PRESERVED EXACTLY
+   EXACT DATA PRESERVED
 ========================================================= */
 
 const A = [
 
-["G1","Ground","EAST","3 BHK",1500,6800000,"VENDOR","Vendor-Mestri"],
-["G2","Ground","WEST","3 BHK",1800,8620000,"AVAILABLE","Mortgage"],
-["G3","Ground","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
-["G6","Ground","WEST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
-["G11","Ground","EAST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
-["G14","Ground","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
+  ["G1","Ground","EAST","3 BHK",1500,6800000,"VENDOR","Vendor-Mestri"],
+  ["G2","Ground","WEST","3 BHK",1800,8620000,"AVAILABLE","Mortgage"],
+  ["G3","Ground","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
+  ["G6","Ground","WEST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
+  ["G11","Ground","EAST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
+  ["G14","Ground","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
 
-["101","1st","EAST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
-["102","1st","WEST","3 BHK",1800,8620000,"AVAILABLE","Mortgage"],
-["103","1st","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
-["104","1st","NORTH","2 BHK",1220,5724000,"VENDOR","Vendor-Mestri"],
-["106","1st","WEST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
-["108","1st","NORTH","2 BHK",1220,5968000,"AVAILABLE","Mortgage"],
-["111","1st","EAST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
-["114","1st","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
-["115","1st","EAST","3 BHK",1800,8620000,"AVAILABLE","Mortgage"],
-["116","1st","WEST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
+  ["101","1st","EAST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
+  ["102","1st","WEST","3 BHK",1800,8620000,"AVAILABLE","Mortgage"],
+  ["103","1st","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
+  ["104","1st","NORTH","2 BHK",1220,5724000,"VENDOR","Vendor-Mestri"],
+  ["106","1st","WEST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
+  ["108","1st","NORTH","2 BHK",1220,5968000,"AVAILABLE","Mortgage"],
+  ["111","1st","EAST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
+  ["114","1st","NORTH","3 BHK",1520,7188000,"AVAILABLE","Mortgage"],
+  ["115","1st","EAST","3 BHK",1800,8620000,"AVAILABLE","Mortgage"],
+  ["116","1st","WEST","3 BHK",1500,7100000,"AVAILABLE","Mortgage"],
 
-["202","2nd","WEST","3 BHK",2455,11502000,"AVAILABLE","Available"],
-["204","2nd","NORTH","2 BHK",1415,6543000,"VENDOR","Vendor-Mestri"],
-["205","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
-["207","2nd","EAST","2 BHK",1435,6627000,"SOLD","Sold"],
-["208","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
-["212","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
-["213","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
-["215","2nd","EAST","3 BHK",2455,11502000,"SOLD","Sold"],
+  ["202","2nd","WEST","3 BHK",2455,11502000,"AVAILABLE","Available"],
+  ["204","2nd","NORTH","2 BHK",1415,6543000,"VENDOR","Vendor-Mestri"],
+  ["205","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
+  ["207","2nd","EAST","2 BHK",1435,6627000,"SOLD","Sold"],
+  ["208","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
+  ["212","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
+  ["213","2nd","NORTH","2 BHK",1415,6826000,"AVAILABLE","City Level"],
+  ["215","2nd","EAST","3 BHK",2455,11502000,"SOLD","Sold"],
 
-["302","3rd","WEST","3 BHK",2455,11011000,"VENDOR","Vendor-Mestri"],
-["304","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["305","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["307","3rd","EAST","2 BHK",1435,6914000,"SOLD","Sold"],
-["308","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["309","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["310","3rd","WEST","2 BHK",1435,6914000,"AVAILABLE","Available"],
-["313","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["302","3rd","WEST","3 BHK",2455,11011000,"VENDOR","Vendor-Mestri"],
+  ["304","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["305","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["307","3rd","EAST","2 BHK",1435,6914000,"SOLD","Sold"],
+  ["308","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["309","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["310","3rd","WEST","2 BHK",1435,6914000,"AVAILABLE","Available"],
+  ["313","3rd","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
 
-["404","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["405","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["407","4th","EAST","2 BHK",1435,6053000,"SOLD","Sold"],
-["408","4th","NORTH","2 BHK",1415,5977000,"SOLD","Sold"],
-["409","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["410","4th","WEST","2 BHK",1435,6914000,"AVAILABLE","Available"],
-["411","4th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
-["412","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["413","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["414","4th","NORTH","3 BHK",2075,9830000,"AVAILABLE","Available"],
-["415","4th","EAST","3 BHK",2455,11502000,"SOLD","Sold"],
+  ["404","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["405","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["407","4th","EAST","2 BHK",1435,6053000,"SOLD","Sold"],
+  ["408","4th","NORTH","2 BHK",1415,5977000,"SOLD","Sold"],
+  ["409","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["410","4th","WEST","2 BHK",1435,6914000,"AVAILABLE","Available"],
+  ["411","4th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
+  ["412","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["413","4th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["414","4th","NORTH","3 BHK",2075,9830000,"AVAILABLE","Available"],
+  ["415","4th","EAST","3 BHK",2455,11502000,"SOLD","Sold"],
 
-["501","5th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
-["502","5th","WEST","3 BHK",2455,11747500,"VENDOR-RMC","Vendor-RMC"],
-["503","5th","NORTH","3 BHK",2075,8585000,"SOLD","Sold"],
-["507","5th","EAST","2 BHK",1435,6053000,"SOLD","Sold"],
-["508","5th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["509","5th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
-["510","5th","WEST","2 BHK",1435,6914000,"AVAILABLE","Available"],
-["511","5th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
-["515","5th","EAST","3 BHK",2455,10029000,"SOLD","Sold"],
-["516","5th","WEST","3 BHK",1790,7502000,"SOLD","Sold"],
+  ["501","5th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
+  ["502","5th","WEST","3 BHK",2455,11747500,"VENDOR-RMC","Vendor-RMC"],
+  ["503","5th","NORTH","3 BHK",2075,8585000,"SOLD","Sold"],
+  ["507","5th","EAST","2 BHK",1435,6053000,"SOLD","Sold"],
+  ["508","5th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["509","5th","NORTH","2 BHK",1415,6826000,"AVAILABLE","Available"],
+  ["510","5th","WEST","2 BHK",1435,6914000,"AVAILABLE","Available"],
+  ["511","5th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
+  ["515","5th","EAST","3 BHK",2455,10029000,"SOLD","Sold"],
+  ["516","5th","WEST","3 BHK",1790,7502000,"SOLD","Sold"],
 
-["601","6th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
-["602","6th","WEST","3 BHK",2455,11747500,"VENDOR-RMC","Vendor-RMC"],
-["604","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["605","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["607","6th","EAST","2 BHK",1435,7057500,"SOLD","Sold"],
-["608","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["610","6th","WEST","2 BHK",1435,7057500,"AVAILABLE","Available"],
-["612","6th","NORTH","2 BHK",1415,6967500,"SOLD","Sold"],
-["613","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["615","6th","EAST","3 BHK",2455,11747500,"SOLD","Sold"],
+  ["601","6th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
+  ["602","6th","WEST","3 BHK",2455,11747500,"VENDOR-RMC","Vendor-RMC"],
+  ["604","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["605","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["607","6th","EAST","2 BHK",1435,7057500,"SOLD","Sold"],
+  ["608","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["610","6th","WEST","2 BHK",1435,7057500,"AVAILABLE","Available"],
+  ["612","6th","NORTH","2 BHK",1415,6967500,"SOLD","Sold"],
+  ["613","6th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["615","6th","EAST","3 BHK",2455,11747500,"SOLD","Sold"],
 
-["701","7th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
-["702","7th","WEST","3 BHK",2455,10029000,"SOLD","Sold"],
-["704","7th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["705","7th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["707","7th","EAST","2 BHK",1435,6053000,"SOLD","Sold"],
-["710","7th","WEST","2 BHK",1435,6914000,"AVAILABLE","Available"],
-["711","7th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
-["714","7th","NORTH","3 BHK",2075,10037500,"AVAILABLE","Available"],
-["715","7th","EAST","3 BHK",2455,10029000,"SOLD","Sold"],
+  ["701","7th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
+  ["702","7th","WEST","3 BHK",2455,10029000,"SOLD","Sold"],
+  ["704","7th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["705","7th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["707","7th","EAST","2 BHK",1435,6053000,"SOLD","Sold"],
+  ["710","7th","WEST","2 BHK",1435,6914000,"AVAILABLE","Available"],
+  ["711","7th","EAST","3 BHK",1790,7502000,"SOLD","Sold"],
+  ["714","7th","NORTH","3 BHK",2075,10037500,"AVAILABLE","Available"],
+  ["715","7th","EAST","3 BHK",2455,10029000,"SOLD","Sold"],
 
-["801","8th","EAST","3 BHK",1790,8218000,"SOLD","Sold"],
-["802","8th","WEST","3 BHK",2455,11520200,"SOLD","Sold"],
-["803","8th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
-["804","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["805","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["806","8th","WEST","3 BHK",1790,8755000,"AVAILABLE","Available"],
-["807","8th","EAST","2 BHK",1435,6627000,"SOLD","Sold"],
-["808","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["809","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["810","8th","WEST","2 BHK",1435,7057500,"SOLD","Sold"],
-["811","8th","EAST","3 BHK",1790,8218000,"SOLD","Sold"],
-["812","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["813","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
-["814","8th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
-["815","8th","EAST","3 BHK",2455,11011000,"SOLD","Sold"],
-["816","8th","WEST","3 BHK",1790,8755000,"AVAILABLE","Available"],
+  ["801","8th","EAST","3 BHK",1790,8218000,"SOLD","Sold"],
+  ["802","8th","WEST","3 BHK",2455,11520200,"SOLD","Sold"],
+  ["803","8th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
+  ["804","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["805","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["806","8th","WEST","3 BHK",1790,8755000,"AVAILABLE","Available"],
+  ["807","8th","EAST","2 BHK",1435,6627000,"SOLD","Sold"],
+  ["808","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["809","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["810","8th","WEST","2 BHK",1435,7057500,"SOLD","Sold"],
+  ["811","8th","EAST","3 BHK",1790,8218000,"SOLD","Sold"],
+  ["812","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["813","8th","NORTH","2 BHK",1415,6967500,"AVAILABLE","Available"],
+  ["814","8th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
+  ["815","8th","EAST","3 BHK",2455,11011000,"SOLD","Sold"],
+  ["816","8th","WEST","3 BHK",1790,8755000,"AVAILABLE","Available"],
 
-["901","9th","EAST","3 BHK",1790,8934000,"SOLD","Sold"],
-["902","9th","WEST","3 BHK",2455,11520200,"SOLD","Sold"],
-["903","9th","NORTH","3 BHK",2075,10296875,"SOLD","Sold"],
-["904","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
-["905","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
-["906","9th","WEST","3 BHK",1790,8799750,"AVAILABLE","Available"],
-["907","9th","EAST","2 BHK",1435,6627000,"SOLD","Sold"],
-["908","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
-["909","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
-["910","9th","WEST","2 BHK",1435,7093375,"AVAILABLE","Available"],
-["911","9th","EAST","3 BHK",1790,8978750,"AVAILABLE","Available"],
-["912","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
-["913","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
-["914","9th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
-["915","9th","EAST","3 BHK",2455,11011000,"SOLD","Sold"],
-["916","9th","WEST","3 BHK",1790,8755000,"AVAILABLE","Available"]
+  ["901","9th","EAST","3 BHK",1790,8934000,"SOLD","Sold"],
+  ["902","9th","WEST","3 BHK",2455,11520200,"SOLD","Sold"],
+  ["903","9th","NORTH","3 BHK",2075,10296875,"SOLD","Sold"],
+  ["904","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
+  ["905","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
+  ["906","9th","WEST","3 BHK",1790,8799750,"AVAILABLE","Available"],
+  ["907","9th","EAST","2 BHK",1435,6627000,"SOLD","Sold"],
+  ["908","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
+  ["909","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
+  ["910","9th","WEST","2 BHK",1435,7093375,"AVAILABLE","Available"],
+  ["911","9th","EAST","3 BHK",1790,8978750,"AVAILABLE","Available"],
+  ["912","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
+  ["913","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
+  ["914","9th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
+  ["915","9th","EAST","3 BHK",2455,11011000,"SOLD","Sold"],
+  ["916","9th","WEST","3 BHK",1790,8755000,"AVAILABLE","Available"]
 
 ];
 
 
 /* =========================================================
    BLOCK B DATA
-   DATA PRESERVED EXACTLY
+   EXACT DATA PRESERVED
 ========================================================= */
 
 const B = [
 
-["G17","Ground","WEST","3 BHK",1750,8400000,"AVAILABLE","Mortgage"],
-["G18","Ground","EAST","2 BHK",1205,5902000,"AVAILABLE","Mortgage"],
+  ["G17","Ground","WEST","3 BHK",1750,8400000,"AVAILABLE","Mortgage"],
+  ["G18","Ground","EAST","2 BHK",1205,5902000,"AVAILABLE","Mortgage"],
 
-["118","1st","WEST","3 BHK",1750,8400000,"AVAILABLE","Mortgage"],
-["125","1st","EAST","3 BHK",1750,8400000,"AVAILABLE","Mortgage"],
+  ["118","1st","WEST","3 BHK",1750,8400000,"AVAILABLE","Mortgage"],
+  ["125","1st","EAST","3 BHK",1750,8400000,"AVAILABLE","Mortgage"],
 
-["217","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
-["218","2nd","WEST","3 BHK",2305,10842000,"AVAILABLE","Available"],
-["220","2nd","NORTH","3 BHK",1900,600000,"AVAILABLE","City Level"],
-["222","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
-["223","2nd","NORTH","3 BHK",1900,9060000,"AVAILABLE","City Level"],
-["226","2nd","WEST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
+  ["217","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
+  ["218","2nd","WEST","3 BHK",2305,10842000,"AVAILABLE","Available"],
+  ["220","2nd","NORTH","3 BHK",1900,600000,"AVAILABLE","City Level"],
+  ["222","2nd","EAST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
+  ["223","2nd","NORTH","3 BHK",1900,9060000,"AVAILABLE","City Level"],
+  ["226","2nd","WEST","2 BHK",1400,6760000,"AVAILABLE","City Level"],
 
-["318","3rd","WEST","3 BHK",2305,10842000,"AVAILABLE","Available"],
-["319","3rd","NORTH","3 BHK",2280,10732000,"AVAILABLE","Available"],
-["321","3rd","WEST","2 BHK",1400,6760000,"AVAILABLE","Available"],
-["323","3rd","NORTH","3 BHK",1900,9060000,"AVAILABLE","Available"],
-["325","3rd","EAST","3 BHK",2305,10842000,"AVAILABLE","Available"],
+  ["318","3rd","WEST","3 BHK",2305,10842000,"AVAILABLE","Available"],
+  ["319","3rd","NORTH","3 BHK",2280,10732000,"AVAILABLE","Available"],
+  ["321","3rd","WEST","2 BHK",1400,6760000,"AVAILABLE","Available"],
+  ["323","3rd","NORTH","3 BHK",1900,9060000,"AVAILABLE","Available"],
+  ["325","3rd","EAST","3 BHK",2305,10842000,"AVAILABLE","Available"],
 
-["417","4th","EAST","2 BHK",1400,6760000,"AVAILABLE","Available"],
-["425","4th","EAST","3 BHK",2305,10842000,"AVAILABLE","Available"],
-["426","4th","WEST","2 BHK",1400,6760000,"AVAILABLE","Available"],
+  ["417","4th","EAST","2 BHK",1400,6760000,"AVAILABLE","Available"],
+  ["425","4th","EAST","3 BHK",2305,10842000,"AVAILABLE","Available"],
+  ["426","4th","WEST","2 BHK",1400,6760000,"AVAILABLE","Available"],
 
-["517","5th","EAST","2 BHK",1400,6760000,"AVAILABLE","Available"],
-["520","5th","NORTH","3 BHK",1900,9060000,"AVAILABLE","Available"],
-["521","5th","WEST","2 BHK",1400,6760000,"AVAILABLE","Available"],
-["522","5th","EAST","2 BHK",1400,6760000,"AVAILABLE","Available"],
+  ["517","5th","EAST","2 BHK",1400,6760000,"AVAILABLE","Available"],
+  ["520","5th","NORTH","3 BHK",1900,9060000,"AVAILABLE","Available"],
+  ["521","5th","WEST","2 BHK",1400,6760000,"AVAILABLE","Available"],
+  ["522","5th","EAST","2 BHK",1400,6760000,"AVAILABLE","Available"],
 
-["619","6th","NORTH","3 BHK",2280,11074000,"AVAILABLE","Available"],
-["620","6th","NORTH","3 BHK",1900,9345000,"AVAILABLE","Available"],
-["622","6th","EAST","2 BHK",1400,6970000,"AVAILABLE","Available"],
-["623","6th","NORTH","3 BHK",1900,9345000,"AVAILABLE","Available"],
-["624","6th","NORTH","3 BHK",2280,11074000,"AVAILABLE","Available"],
-["626","6th","WEST","2 BHK",1400,6830000,"AVAILABLE","Available"],
+  ["619","6th","NORTH","3 BHK",2280,11074000,"AVAILABLE","Available"],
+  ["620","6th","NORTH","3 BHK",1900,9345000,"AVAILABLE","Available"],
+  ["622","6th","EAST","2 BHK",1400,6970000,"AVAILABLE","Available"],
+  ["623","6th","NORTH","3 BHK",1900,9345000,"AVAILABLE","Available"],
+  ["624","6th","NORTH","3 BHK",2280,11074000,"AVAILABLE","Available"],
+  ["626","6th","WEST","2 BHK",1400,6830000,"AVAILABLE","Available"],
 
-["717","7th","EAST","2 BHK",1400,7005000,"AVAILABLE","Available"],
-["718","7th","WEST","3 BHK",2305,11014875,"AVAILABLE","Available"],
-["719","7th","NORTH","3 BHK",2280,11131000,"AVAILABLE","Available"],
-["720","7th","NORTH","3 BHK",1900,9392500,"AVAILABLE","Available"],
-["723","7th","NORTH","3 BHK",1900,9392500,"AVAILABLE","Available"],
-["724","7th","NORTH","3 BHK",2280,11131000,"AVAILABLE","Available"],
-["726","7th","WEST","2 BHK",1400,6865000,"AVAILABLE","Available"],
+  ["717","7th","EAST","2 BHK",1400,7005000,"AVAILABLE","Available"],
+  ["718","7th","WEST","3 BHK",2305,11014875,"AVAILABLE","Available"],
+  ["719","7th","NORTH","3 BHK",2280,11131000,"AVAILABLE","Available"],
+  ["720","7th","NORTH","3 BHK",1900,9392500,"AVAILABLE","Available"],
+  ["723","7th","NORTH","3 BHK",1900,9392500,"AVAILABLE","Available"],
+  ["724","7th","NORTH","3 BHK",2280,11131000,"AVAILABLE","Available"],
+  ["726","7th","WEST","2 BHK",1400,6865000,"AVAILABLE","Available"],
 
-["817","8th","EAST","2 BHK",1400,7040000,"AVAILABLE","Available"],
-["818","8th","WEST","3 BHK",2305,11072500,"AVAILABLE","Available"],
-["819","8th","NORTH","3 BHK",2280,11188000,"AVAILABLE","Available"],
-["820","8th","NORTH","3 BHK",1900,9440000,"AVAILABLE","Available"],
-["821","8th","WEST","2 BHK",1400,6900000,"AVAILABLE","Available"],
-["822","8th","EAST","2 BHK",1400,7040000,"AVAILABLE","Available"],
-["823","8th","NORTH","3 BHK",1900,9440000,"AVAILABLE","Available"],
-["824","8th","NORTH","3 BHK",2280,11188000,"AVAILABLE","Available"],
-["825","8th","EAST","3 BHK",2305,11303000,"AVAILABLE","Available"],
-["826","8th","WEST","2 BHK",1400,6900000,"AVAILABLE","Available"],
+  ["817","8th","EAST","2 BHK",1400,7040000,"AVAILABLE","Available"],
+  ["818","8th","WEST","3 BHK",2305,11072500,"AVAILABLE","Available"],
+  ["819","8th","NORTH","3 BHK",2280,11188000,"AVAILABLE","Available"],
+  ["820","8th","NORTH","3 BHK",1900,9440000,"AVAILABLE","Available"],
+  ["821","8th","WEST","2 BHK",1400,6900000,"AVAILABLE","Available"],
+  ["822","8th","EAST","2 BHK",1400,7040000,"AVAILABLE","Available"],
+  ["823","8th","NORTH","3 BHK",1900,9440000,"AVAILABLE","Available"],
+  ["824","8th","NORTH","3 BHK",2280,11188000,"AVAILABLE","Available"],
+  ["825","8th","EAST","3 BHK",2305,11303000,"AVAILABLE","Available"],
+  ["826","8th","WEST","2 BHK",1400,6900000,"AVAILABLE","Available"],
 
-["917","9th","EAST","2 BHK",1400,7075000,"AVAILABLE","Available"],
-["918","9th","WEST","3 BHK",2305,11130125,"AVAILABLE","Available"],
-["919","9th","NORTH","3 BHK",2280,11245000,"AVAILABLE","Available"],
-["920","9th","NORTH","3 BHK",1900,9487500,"AVAILABLE","Available"],
-["921","9th","WEST","2 BHK",1400,6935000,"AVAILABLE","Available"],
-["922","9th","EAST","2 BHK",1400,7075000,"AVAILABLE","Available"],
-["923","9th","NORTH","3 BHK",1900,9487500,"AVAILABLE","Available"],
-["924","9th","NORTH","3 BHK",2280,11245000,"AVAILABLE","Available"],
-["925","9th","EAST","3 BHK",2305,11360625,"AVAILABLE","Available"],
-["926","9th","WEST","2 BHK",1400,6935000,"AVAILABLE","Available"]
+  ["917","9th","EAST","2 BHK",1400,7075000,"AVAILABLE","Available"],
+  ["918","9th","WEST","3 BHK",2305,11130125,"AVAILABLE","Available"],
+  ["919","9th","NORTH","3 BHK",2280,11245000,"AVAILABLE","Available"],
+  ["920","9th","NORTH","3 BHK",1900,9487500,"AVAILABLE","Available"],
+  ["921","9th","WEST","2 BHK",1400,6935000,"AVAILABLE","Available"],
+  ["922","9th","EAST","2 BHK",1400,7075000,"AVAILABLE","Available"],
+  ["923","9th","NORTH","3 BHK",1900,9487500,"AVAILABLE","Available"],
+  ["924","9th","NORTH","3 BHK",2280,11245000,"AVAILABLE","Available"],
+  ["925","9th","EAST","3 BHK",2305,11360625,"AVAILABLE","Available"],
+  ["926","9th","WEST","2 BHK",1400,6935000,"AVAILABLE","Available"]
 
 ];
 
 
 /* =========================================================
-   HELPERS
+   GET DATA
 ========================================================= */
 
 function getData(){
 
   const block =
-    document.querySelector(
-      ".block-switch button.active"
-    )?.dataset.block || "ALL";
-
-  if(block === "A") return A;
-
-  if(block === "B") return B;
-
-  return [...A,...B];
-}
+    document
+      .querySelector(
+        ".block-switch button.active"
+      )
+      ?.dataset.block || "ALL";
 
 
-function money(value){
+  if(block === "A"){
+    return A;
+  }
 
-  return "₹" +
-    Number(value).toLocaleString(
-      "en-IN"
-    );
+
+  if(block === "B"){
+    return B;
+  }
+
+
+  return [
+    ...A,
+    ...B
+  ];
 
 }
 
 
 /* =========================================================
-   STATS
+   MONEY
+========================================================= */
+
+function money(value){
+
+  return "₹" +
+    Number(value)
+      .toLocaleString("en-IN");
+
+}
+
+
+/* =========================================================
+   UPDATE STATS
 ========================================================= */
 
 function updateStats(){
 
-  const data = getData();
+  const data =
+    getData();
 
-  document.getElementById("availableCount").textContent =
-    data.filter(
-      flat => flat[6] === "AVAILABLE"
-    ).length;
 
-  document.getElementById("soldCount").textContent =
-    data.filter(
-      flat => flat[6] === "SOLD"
-    ).length;
+  document
+    .getElementById("availableCount")
+    .textContent =
+      data.filter(
+        flat =>
+          flat[6] === "AVAILABLE"
+      ).length;
 
-  document.getElementById("mortgageCount").textContent =
-    data.filter(
-      flat => flat[7] === "Mortgage"
-    ).length;
 
-  document.getElementById("cityCount").textContent =
-    data.filter(
-      flat => flat[7] === "City Level"
-    ).length;
+  document
+    .getElementById("soldCount")
+    .textContent =
+      data.filter(
+        flat =>
+          flat[6] === "SOLD"
+      ).length;
 
-  document.getElementById("vendorCount").textContent =
-    data.filter(
-      flat => flat[6] === "VENDOR"
-    ).length;
 
-  document.getElementById("rmcCount").textContent =
-    data.filter(
-      flat => flat[6] === "VENDOR-RMC"
-    ).length;
+  document
+    .getElementById("mortgageCount")
+    .textContent =
+      data.filter(
+        flat =>
+          flat[7] === "Mortgage"
+      ).length;
+
+
+  document
+    .getElementById("cityCount")
+    .textContent =
+      data.filter(
+        flat =>
+          flat[7] === "City Level"
+      ).length;
+
+
+  document
+    .getElementById("vendorCount")
+    .textContent =
+      data.filter(
+        flat =>
+          flat[6] === "VENDOR"
+      ).length;
+
+
+  document
+    .getElementById("rmcCount")
+    .textContent =
+      data.filter(
+        flat =>
+          flat[6] === "VENDOR-RMC"
+      ).length;
 
 }
 
@@ -1768,23 +2100,29 @@ function visualClass(flat){
     return "mortgage";
   }
 
+
   if(flat[7] === "City Level"){
     return "city";
   }
+
 
   if(flat[6] === "SOLD"){
     return "sold";
   }
 
+
   if(flat[6] === "VENDOR"){
     return "vendor";
   }
+
 
   if(flat[6] === "VENDOR-RMC"){
     return "rmc";
   }
 
+
   return "available";
+
 }
 
 
@@ -1798,23 +2136,29 @@ function visualBadge(flat){
     return "Mortgage";
   }
 
+
   if(flat[7] === "City Level"){
     return "City Level";
   }
+
 
   if(flat[6] === "SOLD"){
     return "Sold";
   }
 
+
   if(flat[6] === "VENDOR"){
     return "Vendor-Mestri";
   }
+
 
   if(flat[6] === "VENDOR-RMC"){
     return "Vendor-RMC";
   }
 
+
   return "Available";
+
 }
 
 
@@ -1824,116 +2168,163 @@ function visualBadge(flat){
 
 function getFilteredData(){
 
-  let data = getData();
+  let data =
+    getData();
+
 
   const search =
-    document.getElementById("search")
+    document
+      .getElementById("search")
       .value
       .trim()
       .toLowerCase();
 
+
   const status =
-    document.getElementById("status").value;
+    document
+      .getElementById("status")
+      .value;
+
 
   const bhk =
-    document.getElementById("bhk").value;
+    document
+      .getElementById("bhk")
+      .value;
+
 
   const floor =
-    document.getElementById("floor").value;
+    document
+      .getElementById("floor")
+      .value;
+
 
   const facing =
-    document.getElementById("facing").value;
+    document
+      .getElementById("facing")
+      .value;
+
 
   const sort =
-    document.getElementById("sort").value;
+    document
+      .getElementById("sort")
+      .value;
 
 
-  data = data.filter(flat => {
+  data =
+    data.filter(flat => {
 
-    const matchesSearch =
-      !search ||
-      flat[0].toLowerCase().includes(search);
-
-    let matchesStatus = true;
-
-    if(status === "AVAILABLE"){
-      matchesStatus =
-        flat[6] === "AVAILABLE";
-    }
-
-    else if(status === "SOLD"){
-      matchesStatus =
-        flat[6] === "SOLD";
-    }
-
-    else if(status === "VENDOR"){
-      matchesStatus =
-        flat[6] === "VENDOR";
-    }
-
-    else if(status === "VENDOR-RMC"){
-      matchesStatus =
-        flat[6] === "VENDOR-RMC";
-    }
+      const matchesSearch =
+        !search ||
+        flat[0]
+          .toLowerCase()
+          .includes(search);
 
 
-    const matchesBhk =
-      bhk === "ALL" ||
-      flat[3] === bhk;
+      let matchesStatus =
+        true;
 
 
-    const matchesFloor =
-      floor === "ALL" ||
-      flat[1] === floor;
+      if(status === "AVAILABLE"){
+
+        matchesStatus =
+          flat[6] === "AVAILABLE";
+
+      }
 
 
-    const matchesFacing =
-      facing === "ALL" ||
-      flat[2] === facing;
+      else if(status === "SOLD"){
+
+        matchesStatus =
+          flat[6] === "SOLD";
+
+      }
 
 
-    return (
-      matchesSearch &&
-      matchesStatus &&
-      matchesBhk &&
-      matchesFloor &&
-      matchesFacing
-    );
+      else if(status === "VENDOR"){
 
-  });
+        matchesStatus =
+          flat[6] === "VENDOR";
 
+      }
+
+
+      else if(status === "VENDOR-RMC"){
+
+        matchesStatus =
+          flat[6] === "VENDOR-RMC";
+
+      }
+
+
+      const matchesBhk =
+        bhk === "ALL" ||
+        flat[3] === bhk;
+
+
+      const matchesFloor =
+        floor === "ALL" ||
+        flat[1] === floor;
+
+
+      const matchesFacing =
+        facing === "ALL" ||
+        flat[2] === facing;
+
+
+      return (
+        matchesSearch &&
+        matchesStatus &&
+        matchesBhk &&
+        matchesFloor &&
+        matchesFacing
+      );
+
+    });
+
+
+  /* =======================================================
+     SORT
+  ======================================================== */
 
   if(sort === "price-low"){
 
     data.sort(
-      (a,b) => a[5] - b[5]
+      (a,b) =>
+        a[5] - b[5]
     );
 
   }
+
 
   else if(sort === "price-high"){
 
     data.sort(
-      (a,b) => b[5] - a[5]
+      (a,b) =>
+        b[5] - a[5]
     );
 
   }
+
 
   else if(sort === "area-low"){
 
     data.sort(
-      (a,b) => a[4] - b[4]
+      (a,b) =>
+        a[4] - b[4]
     );
 
   }
+
 
   else if(sort === "area-high"){
 
     data.sort(
-      (a,b) => b[4] - a[4]
+      (a,b) =>
+        b[4] - a[4]
     );
 
   }
+
 
   else{
 
@@ -1942,7 +2333,9 @@ function getFilteredData(){
         String(a[0]).localeCompare(
           String(b[0]),
           undefined,
-          {numeric:true}
+          {
+            numeric:true
+          }
         )
     );
 
@@ -1963,14 +2356,20 @@ function apartmentCard(flat){
   const type =
     visualClass(flat);
 
+
   const badge =
     visualBadge(flat);
+
 
   const isAvailable =
     flat[6] === "AVAILABLE";
 
+
   const block =
-    A.includes(flat) ? "A" : "B";
+    A.includes(flat)
+      ? "A"
+      : "B";
+
 
   const message =
     `Hello, I am interested in Oxygen Towers Flat ${flat[0]} (${flat[3]}). Please share more details.`;
@@ -1978,48 +2377,90 @@ function apartmentCard(flat){
 
   return `
 
-    <article class="flat ${type}">
+    <article
+      class="flat ${type}"
+    >
+
+
+      <!-- =================================================
+           FLAT TITLE
+
+           Example:
+           Flat-510 | 2 BHK | AVAILABLE
+      ================================================== -->
 
       <div class="flat-top">
 
-        <div class="flat-number">
-          ${flat[0]}
-        </div>
+        <div class="flat-title">
 
-        <div class="badge ${type}">
-          ${badge}
+
+          <span class="flat-number">
+            Flat-${flat[0]}
+          </span>
+
+
+          <span class="flat-title-separator">
+            |
+          </span>
+
+
+          <span class="flat-title-bhk">
+            ${flat[3]}
+          </span>
+
+
+          <span class="flat-title-separator">
+            |
+          </span>
+
+
+          <span
+            class="flat-title-status ${type}"
+          >
+            ${badge}
+          </span>
+
+
         </div>
 
       </div>
 
 
-      <div class="flat-type">
-        ${flat[3]}
-      </div>
-
+      <!-- =================================================
+           FLAT META
+      ================================================== -->
 
       <div class="flat-meta">
+
 
         <span class="meta">
           Block ${block}
         </span>
 
+
         <span class="meta">
           ${flat[4].toLocaleString("en-IN")} SFT
         </span>
+
 
         <span class="meta">
           ${flat[2]}
         </span>
 
+
       </div>
 
+
+      <!-- =================================================
+           PRICE
+      ================================================== -->
 
       <div class="price-box">
 
         <div class="price-label">
           Flat Price
         </div>
+
 
         <div class="price">
           ${money(flat[5])}
@@ -2028,15 +2469,27 @@ function apartmentCard(flat){
       </div>
 
 
+      <!-- =================================================
+           REMARK
+      ================================================== -->
+
       <div class="remark">
         ${flat[7]}
       </div>
 
 
+      <!-- =================================================
+           GST
+      ================================================== -->
+
       <div class="charges-note">
         GST & other charges extra
       </div>
 
+
+      <!-- =================================================
+           WHATSAPP
+      ================================================== -->
 
       ${
         isAvailable
@@ -2054,6 +2507,7 @@ function apartmentCard(flat){
         ""
       }
 
+
     </article>
 
   `;
@@ -2068,7 +2522,10 @@ function apartmentCard(flat){
 function render(){
 
   const explorer =
-    document.getElementById("explorer");
+    document.getElementById(
+      "explorer"
+    );
+
 
   explorer.innerHTML = "";
 
@@ -2078,28 +2535,43 @@ function render(){
 
 
   const floors = [
+
     "Ground",
+
     "1st",
+
     "2nd",
+
     "3rd",
+
     "4th",
+
     "5th",
+
     "6th",
+
     "7th",
+
     "8th",
+
     "9th"
+
   ];
 
 
   const selectedFloor =
-    document.getElementById("floor").value;
+    document
+      .getElementById("floor")
+      .value;
 
 
   floors.forEach(floor => {
 
+
     const flats =
       data.filter(
-        flat => flat[1] === floor
+        flat =>
+          flat[1] === floor
       );
 
 
@@ -2109,11 +2581,13 @@ function render(){
 
 
     const section =
-      document.createElement("section");
+      document.createElement(
+        "section"
+      );
 
 
     /*
-      ALL FLOORS COLLAPSED INITIALLY.
+      ALL floors collapsed initially.
 
       If a specific floor is selected,
       that floor opens automatically.
@@ -2127,7 +2601,8 @@ function render(){
 
     const available =
       flats.filter(
-        flat => flat[6] === "AVAILABLE"
+        flat =>
+          flat[6] === "AVAILABLE"
       ).length;
 
 
@@ -2144,13 +2619,17 @@ function render(){
 
       <div class="floor-head">
 
+
         <div class="floor-left">
+
 
           <div class="floor-number">
             ${floorNumber}
           </div>
 
+
           <div>
+
 
             <div class="floor-name">
 
@@ -2162,39 +2641,47 @@ function render(){
 
             </div>
 
+
             <div class="floor-count">
               ${flats.length} Flats
             </div>
 
+
           </div>
+
 
         </div>
 
 
         <div class="floor-right">
 
+
           ${
             available
-              ?
-              `
-                <div class="floor-available">
-                  ${available} AVAILABLE
-                </div>
-              `
-              :
-              ""
+            ?
+            `
+              <div class="floor-available">
+                ${available} AVAILABLE
+              </div>
+            `
+            :
+            ""
           }
+
 
           <div class="floor-arrow">
             ›
           </div>
 
+
         </div>
+
 
       </div>
 
 
       <div class="floor-body">
+
 
         <div class="flat-grid">
 
@@ -2206,13 +2693,16 @@ function render(){
 
         </div>
 
+
       </div>
 
     `;
 
 
     section
-      .querySelector(".floor-head")
+      .querySelector(
+        ".floor-head"
+      )
       .addEventListener(
         "click",
         () => {
@@ -2225,7 +2715,9 @@ function render(){
       );
 
 
-    explorer.appendChild(section);
+    explorer.appendChild(
+      section
+    );
 
   });
 
@@ -2253,7 +2745,7 @@ function render(){
 
 
 /* =========================================================
-   BLOCK BUTTONS
+   BLOCK SWITCH
 ========================================================= */
 
 document
@@ -2262,19 +2754,23 @@ document
   )
   .forEach(button => {
 
+
     button.addEventListener(
       "click",
       () => {
+
 
         document
           .querySelectorAll(
             ".block-switch button"
           )
-          .forEach(btn =>
+          .forEach(btn => {
+
             btn.classList.remove(
               "active"
-            )
-          );
+            );
+
+          });
 
 
         button.classList.add(
@@ -2285,6 +2781,7 @@ document
         updateStats();
 
         render();
+
 
       }
     );
@@ -2306,17 +2803,21 @@ document
 ]
 .forEach(id => {
 
+
   document
     .getElementById(id)
     .addEventListener(
+
       id === "search"
         ? "input"
         : "change",
+
       () => {
 
         render();
 
       }
+
     );
 
 });
