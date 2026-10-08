@@ -3851,10 +3851,398 @@ function render(){
   });
 
 }
+  /* =========================================================
+   PARTNER PAYMENTS JS
+   HARD-CODED DATA - NO GOOGLE APPS SCRIPT
+========================================================= */
+
+const PARTNERS = [
+
+  {
+    sno: 1,
+    partner: "Maruthi Reddy Gaddam",
+    mobile: "9949090809",
+    percentage: 10,
+    totalCapital: 10000000,
+    bank: 2000000,
+    cash: 3000000,
+    totalReceived: 5000000,
+    due: 5000000,
+
+    bankPayments: [
+      { date: "10.07.2025", name: "GMR", amount: 200000 },
+      { date: "21.11.2025", name: "GMR", amount: 1400000 },
+      { date: "27.04.2026", name: "GMR", amount: 200000 },
+      { date: "27.04.2026", name: "GMR", amount: 200000 }
+    ],
+
+    cashPayments: [
+      { date: "", name: "GMR", amount: 1000000 },
+      { date: "20.11.2025", name: "GMR", amount: 1500000 },
+      { date: "17.04.2026", name: "", amount: 500000 }
+    ]
+  },
+
+  {
+    sno: 2,
+    partner: "Goutham Kumar Thummala",
+    mobile: "7989916248",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 2900000,
+    cash: 1200000,
+    totalReceived: 4100000,
+    due: 900000,
+
+    bankPayments: [
+      { date: "20.06.2025", name: "TGK", amount: 100000 },
+      { date: "01.07.2025", name: "TGK", amount: 300000 },
+      { date: "21.11.2025", name: "TGK", amount: 1000000 },
+      { date: "22.11.2025", name: "TGK", amount: 1000000 },
+      { date: "24.11.2025", name: "TGK", amount: 500000 }
+    ],
+
+    cashPayments: [
+      { date: "15.09.2025", name: "CHRR", amount: 400000 },
+      { date: "", name: "TGK", amount: 800000 }
+    ]
+  },
+
+  {
+    sno: 3,
+    partner: "Manoj Reddy Tummala",
+    mobile: "9849487988",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 2100000,
+    cash: 400000,
+    totalReceived: 2500000,
+    due: 2500000,
+
+    bankPayments: [
+      { date: "26.06.2025", name: "TMR", amount: 200000 },
+      { date: "23.01.2026", name: "TMR", amount: 1900000 }
+    ],
+
+    cashPayments: [
+      { date: "", name: "TMR", amount: 400000 }
+    ]
+  },
+
+  {
+    sno: 4,
+    partner: "Gudipally Bhasker Reddy",
+    mobile: "1(818)3970922",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 3100000,
+    cash: 400000,
+    totalReceived: 3500000,
+    due: 1500000,
+
+    bankPayments: [
+      { date: "21.06.2025", name: "GBR", amount: 1000 },
+      { date: "23.06.2025", name: "GBR", amount: 199000 },
+      { date: "13.11.2025", name: "GBR", amount: 500000 },
+      { date: "13.11.2025", name: "GBR", amount: 500000 },
+      { date: "13.11.2025", name: "GBR", amount: 500000 },
+      { date: "18.11.2025", name: "GBR", amount: 400000 },
+      { date: "24.08.2026", name: "GBR", amount: 500000 },
+      { date: "24.08.2026", name: "GBR", amount: 500000 }
+    ],
+
+    cashPayments: [
+      { date: "", name: "GBR", amount: 400000 }
+    ]
+  },
+
+  {
+    sno: 5,
+    partner: "Ram Gopal Reddy Kethireddy",
+    mobile: "9440090732",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 2500000,
+    cash: 0,
+    totalReceived: 2500000,
+    due: 2500000,
+
+    bankPayments: [
+      { date: "06.07.2025", name: "KRGR", amount: 200000 },
+      { date: "26.06.2025", name: "RUPAN", amount: 400000 },
+      { date: "18.11.2025", name: "KRGR", amount: 500000 },
+      { date: "21.11.2025", name: "KRGR", amount: 1000000 },
+      { date: "03.12.2025", name: "KRGR", amount: 400000 }
+    ],
+
+    cashPayments: []
+  },
+
+  {
+    sno: 6,
+    partner: "Kopu Chandrashekar",
+    mobile: "9666639661",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 800000,
+    cash: 1700000,
+    totalReceived: 2500000,
+    due: 2500000,
+
+    bankPayments: [
+      { date: "27.06.2025", name: "KCR", amount: 200000 },
+      { date: "21.11.2025", name: "KCR", amount: 300000 },
+      { date: "27.11.2025", name: "KCR", amount: 300000 }
+    ],
+
+    cashPayments: [
+      { date: "19.11.2025", name: "KCR", amount: 200000 },
+      { date: "21.11.2025", name: "KCR", amount: 1500000 }
+    ]
+  },
+
+  {
+    sno: 7,
+    partner: "Kiran Kumar Gaddam",
+    mobile: "8639131409",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 2200000,
+    cash: 800000,
+    totalReceived: 3000000,
+    due: 2000000,
+
+    bankPayments: [
+      { date: "26.06.2025", name: "GKK", amount: 400000 },
+      { date: "20.11.2025", name: "GKK", amount: 500000 },
+      { date: "20.11.2025", name: "GKK", amount: 300000 },
+      { date: "09.12.2025", name: "GKK", amount: 500000 },
+      { date: "10.12.2025", name: "GKK", amount: 500000 }
+    ],
+
+    cashPayments: [
+      { date: "19.09.2025", name: "GKK", amount: 200000 },
+      { date: "02.05.2026", name: "GKK", amount: 100000 },
+      { date: "18.07.2026", name: "GKK", amount: 500000 }
+    ]
+  },
+
+  {
+    sno: 8,
+    partner: "Vijayalaxmi Gaddam",
+    mobile: "9949304999",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 2600000,
+    cash: 400000,
+    totalReceived: 3000000,
+    due: 2000000,
+
+    bankPayments: [
+      { date: "30.06.2025", name: "GKK", amount: 200000 },
+      { date: "11.11.2025", name: "GKK", amount: 500000 },
+      { date: "19.11.2025", name: "GKK", amount: 500000 },
+      { date: "20.11.2025", name: "GKK", amount: 400000 },
+      { date: "28.11.2025", name: "GKK", amount: 350000 },
+      { date: "02.12.2025", name: "GKK", amount: 150000 },
+      { date: "05.03.2026", name: "GKK", amount: 500000 }
+    ],
+
+    cashPayments: [
+      { date: "17.07.2025", name: "GKK", amount: 400000 }
+    ]
+  },
+
+  {
+    sno: 9,
+    partner: "Shiva Krishna",
+    mobile: "447989653109",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 2900000,
+    cash: 600000,
+    totalReceived: 3500000,
+    due: 1500000,
+
+    bankPayments: [
+      { date: "13.11.2025", name: "SK", amount: 1000000 },
+      { date: "17.11.2025", name: "SK", amount: 900000 },
+      { date: "09.03.2026", name: "SK", amount: 1000000 }
+    ],
+
+    cashPayments: [
+      { date: "30.09.2025", name: "SK", amount: 600000 }
+    ]
+  },
+
+  {
+    sno: 10,
+    partner: "Palla Shailaja",
+    mobile: "8125992252",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 1800000,
+    cash: 850000,
+    totalReceived: 2650000,
+    due: 2350000,
+
+    bankPayments: [
+      { date: "30.06.2025", name: "PS", amount: 200000 },
+      { date: "25.11.2025", name: "PS", amount: 1500000 },
+      { date: "18.07.2026", name: "PS", amount: 100000 }
+    ],
+
+    cashPayments: [
+      { date: "19.09.2025", name: "PS", amount: 400000 },
+      { date: "20.05.2026", name: "PS", amount: 150000 },
+      { date: "18.07.2026", name: "PS", amount: 300000 }
+    ]
+  },
+
+  {
+    sno: 11,
+    partner: "Naveen Reddy Podduturi",
+    mobile: "6281519100",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 2100000,
+    cash: 700000,
+    totalReceived: 2800000,
+    due: 2200000,
+
+    bankPayments: [
+      { date: "24.06.2025", name: "PNR", amount: 200000 },
+      { date: "19.11.2025", name: "PNR", amount: 300000 },
+      { date: "02.12.2025", name: "PNR", amount: 400000 },
+      { date: "03.12.2025", name: "PNR", amount: 200000 },
+      { date: "24.03.2026", name: "PNR", amount: 600000 },
+      { date: "24.03.2026", name: "PNR", amount: 400000 }
+    ],
+
+    cashPayments: [
+      { date: "22.09.2025", name: "PNR", amount: 400000 },
+      { date: "20.05.2026", name: "PNR", amount: 300000 }
+    ]
+  },
+
+  {
+    sno: 12,
+    partner: "Loka Shravan Kumar Reddy",
+    mobile: "9966997575",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 1800000,
+    cash: 700000,
+    totalReceived: 2500000,
+    due: 2500000,
+
+    bankPayments: [
+      { date: "21.08.2025", name: "LSKR", amount: 199000 },
+      { date: "15.09.2025", name: "LSKR", amount: 1000 },
+      { date: "25.10.2025", name: "SRIKANTH", amount: 400000 },
+      { date: "13.11.2025", name: "LSKR", amount: 500000 },
+      { date: "13.11.2025", name: "LSKR", amount: 200000 },
+      { date: "14.11.2025", name: "LSKR", amount: 300000 },
+      { date: "18.11.2025", name: "LSKR", amount: 200000 }
+    ],
+
+    cashPayments: [
+      { date: "03.02.2026", name: "LSKR", amount: 500000 },
+      { date: "02.05.2026", name: "LSKR", amount: 200000 }
+    ]
+  },
+
+  {
+    sno: 13,
+    partner: "Podduturi Sabitha",
+    mobile: "9491166566",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 3900000,
+    cash: 400000,
+    totalReceived: 4300000,
+    due: 700000,
+
+    bankPayments: [
+      { date: "23.06.2025", name: "BRSR", amount: 200000 },
+      { date: "14.11.2025", name: "PS", amount: 1577000 },
+      { date: "20.11.2025", name: "PS", amount: 323000 },
+      { date: "11.12.2025", name: "PS", amount: 1000000 },
+      { date: "08.01.2026", name: "PS", amount: 1000000 }
+    ],
+
+    cashPayments: [
+      { date: "11.09.2025", name: "PS", amount: 400000 }
+    ]
+  },
+
+  {
+    sno: 14,
+    partner: "Venkateshwar Rao",
+    mobile: "9399942220",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 0,
+    cash: 0,
+    totalReceived: 0,
+    due: 5000000,
+
+    bankPayments: [],
+    cashPayments: []
+  },
+
+  {
+    sno: 15,
+    partner: "Aljapur Siddarth",
+    mobile: "9642424209",
+    percentage: 20,
+    totalCapital: 20000000,
+    bank: 6550000,
+    cash: 2550000,
+    totalReceived: 9100000,
+    due: 10900000,
+
+    bankPayments: [
+      { date: "21.08.2026", name: "", amount: 2000000 },
+      { date: "22.08.2026", name: "", amount: 450000 },
+      { date: "05.09.2026", name: "", amount: 2000000 },
+      { date: "06.09.2026", name: "", amount: 1000000 },
+      { date: "08.09.2026", name: "", amount: 200000 },
+      { date: "11.09.2026", name: "", amount: 500000 },
+      { date: "27.09.2026", name: "", amount: 400000 }
+    ],
+
+    cashPayments: [
+      { date: "07.09.2026", name: "", amount: 2550000 }
+    ]
+  },
+
+  {
+    sno: 16,
+    partner: "Yalla Narendhar",
+    mobile: "8759595989",
+    percentage: 5,
+    totalCapital: 5000000,
+    bank: 2500000,
+    cash: 0,
+    totalReceived: 2500000,
+    due: 2500000,
+
+    bankPayments: [
+      { date: "18.08.2026", name: "", amount: 500000 },
+      { date: "22.08.2026", name: "", amount: 1000000 },
+      { date: "23.08.2026", name: "", amount: 500000 },
+      { date: "23.08.2026", name: "", amount: 500000 }
+    ],
+
+    cashPayments: []
+  }
+
+];
 
 
 /* =========================================================
-   PARTNER PAYMENTS JS
+   PARTNER ELEMENTS
 ========================================================= */
 
 const partnersToggle =
@@ -3875,17 +4263,19 @@ const partnerStatus =
 const partnerDetails =
   document.getElementById("partnerDetails");
 
-let partnersLoaded = false;
 
+/* =========================================================
+   PARTNER HELPERS
+========================================================= */
 
 function partnerEscapeHtml(value){
 
-  return String(value ?? '')
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;')
-    .replace(/'/g,'&#039;');
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
@@ -3895,237 +4285,84 @@ function partnerMoney(value){
   const number = Number(value);
 
   if(!Number.isFinite(number)){
-    return '₹0';
+    return "₹0";
   }
 
-  return '₹' + number.toLocaleString('en-IN',{
+  return "₹" + number.toLocaleString("en-IN",{
     maximumFractionDigits:2
   });
 
 }
 
 
-function partnerGoogleScriptAvailable(){
+/* =========================================================
+   LOAD PARTNER DROPDOWN
+========================================================= */
 
-  return typeof google !== 'undefined' &&
-         google.script &&
-         google.script.run;
+function loadPartnerNames(){
+
+  partnerSelect.innerHTML =
+    '<option value="">Select a partner...</option>';
+
+  PARTNERS.forEach(function(partner){
+
+    const option =
+      document.createElement("option");
+
+    option.value =
+      partner.sno;
+
+    option.textContent =
+      partner.partner;
+
+    partnerSelect.appendChild(option);
+
+  });
 
 }
 
+
+/* =========================================================
+   OPEN PARTNER SECTION
+========================================================= */
 
 function openPartnerSection(){
 
   partnersSection.hidden = false;
 
-  partnersToggle.classList.add('active');
+  partnersToggle.classList.add("active");
 
+  loadPartnerNames();
 
   partnersSection.scrollIntoView({
-    behavior:'smooth',
-    block:'start'
+    behavior:"smooth",
+    block:"start"
   });
-
-
-  if(!partnersLoaded){
-    loadPartnerNames();
-  }
 
 }
 
+
+/* =========================================================
+   CLOSE PARTNER SECTION
+========================================================= */
 
 function closePartnerSection(){
 
   partnersSection.hidden = true;
 
-  partnersToggle.classList.remove('active');
+  partnersToggle.classList.remove("active");
 
 }
 
 
-function loadPartnerNames(){
-
-  if(!partnerGoogleScriptAvailable()){
-
-    partnerStatus.innerHTML =
-      '<span class="partner-error">' +
-      'Partner data requires the Google Apps Script web app.' +
-      '</span>';
-
-    return;
-  }
-
-
-  partnersLoaded = true;
-
-
-  partnerStatus.innerHTML =
-    '<span class="partner-loading">' +
-    'Loading partners...' +
-    '</span>';
-
-
-  partnerSelect.innerHTML =
-    '<option value="">Loading partners...</option>';
-
-
-  google.script.run
-
-    .withSuccessHandler(function(names){
-
-      partnerSelect.innerHTML =
-        '<option value="">Select a partner...</option>';
-
-
-      if(!Array.isArray(names) || names.length === 0){
-
-        partnerSelect.innerHTML =
-          '<option value="">No partners found</option>';
-
-
-        partnerStatus.textContent =
-          'No partner records were found.';
-
-        return;
-
-      }
-
-
-      names.forEach(function(name){
-
-        const option =
-          document.createElement('option');
-
-        option.value = name;
-
-        option.textContent = name;
-
-        partnerSelect.appendChild(option);
-
-      });
-
-
-      partnerStatus.textContent =
-        names.length +
-        ' partner' +
-        (names.length === 1 ? '' : 's') +
-        ' available.';
-
-    })
-
-    .withFailureHandler(function(error){
-
-      const message =
-        error && error.message
-          ? error.message
-          : error;
-
-
-      partnerStatus.innerHTML =
-        '<span class="partner-error">' +
-        'Unable to load partner names: ' +
-        partnerEscapeHtml(message) +
-        '</span>';
-
-
-      partnerSelect.innerHTML =
-        '<option value="">Unable to load partners</option>';
-
-    })
-
-    .getPartnerNames();
-
-}
-
-
-function loadSelectedPartner(){
-
-  const partnerName =
-    partnerSelect.value;
-
-
-  partnerDetails.innerHTML = '';
-
-
-  if(!partnerName){
-
-    partnerStatus.textContent =
-      'Select a partner to view details.';
-
-    return;
-
-  }
-
-
-  if(!partnerGoogleScriptAvailable()){
-
-    partnerStatus.innerHTML =
-      '<span class="partner-error">' +
-      'Partner data requires the Google Apps Script web app.' +
-      '</span>';
-
-    return;
-
-  }
-
-
-  partnerStatus.innerHTML =
-    '<span class="partner-loading">' +
-    'Loading ' +
-    partnerEscapeHtml(partnerName) +
-    '...' +
-    '</span>';
-
-
-  google.script.run
-
-    .withSuccessHandler(function(data){
-
-      if(!data || !data.details){
-
-        partnerStatus.innerHTML =
-          '<span class="partner-error">' +
-          'No data found for this partner.' +
-          '</span>';
-
-        return;
-
-      }
-
-
-      partnerStatus.textContent =
-        'Partner data loaded successfully.';
-
-
-      renderPartnerData(data);
-
-    })
-
-    .withFailureHandler(function(error){
-
-      const message =
-        error && error.message
-          ? error.message
-          : error;
-
-
-      partnerStatus.innerHTML =
-        '<span class="partner-error">' +
-        'Unable to load partner data: ' +
-        partnerEscapeHtml(message) +
-        '</span>';
-
-    })
-
-    .getPartnerData(partnerName);
-
-}
-
+/* =========================================================
+   PARTNER INFO CARD
+========================================================= */
 
 function partnerInfoCard(
   label,
   value,
-  moneyValue=false
+  moneyValue = false
 ){
 
   return `
@@ -4136,7 +4373,7 @@ function partnerInfoCard(
         ${partnerEscapeHtml(label)}
       </div>
 
-      <div class="partner-info-value ${moneyValue ? 'money' : ''}">
+      <div class="partner-info-value ${moneyValue ? "money" : ""}">
         ${partnerEscapeHtml(value)}
       </div>
 
@@ -4147,15 +4384,21 @@ function partnerInfoCard(
 }
 
 
+/* =========================================================
+   PARTNER PAYMENT TABLE
+========================================================= */
+
 function partnerPaymentTable(
   title,
   payments
 ){
 
-  let rows = '';
+  let rows = "";
 
-
-  if(Array.isArray(payments) && payments.length){
+  if(
+    Array.isArray(payments) &&
+    payments.length
+  ){
 
     rows = payments.map(function(payment){
 
@@ -4164,7 +4407,11 @@ function partnerPaymentTable(
         <tr>
 
           <td>
-            ${partnerEscapeHtml(payment.date || '')}
+            ${partnerEscapeHtml(payment.date || "-")}
+          </td>
+
+          <td>
+            ${partnerEscapeHtml(payment.name || "-")}
           </td>
 
           <td>
@@ -4175,7 +4422,7 @@ function partnerPaymentTable(
 
       `;
 
-    }).join('');
+    }).join("");
 
   }else{
 
@@ -4183,7 +4430,7 @@ function partnerPaymentTable(
 
       <tr>
 
-        <td colspan="2">
+        <td colspan="3">
 
           <div class="partner-empty">
             No payments recorded.
@@ -4206,25 +4453,21 @@ function partnerPaymentTable(
         ${partnerEscapeHtml(title)}
       </div>
 
-
       <table class="partner-payment-table">
 
         <thead>
 
           <tr>
 
-            <th>
-              Date
-            </th>
+            <th>Date</th>
 
-            <th>
-              Amount
-            </th>
+            <th>Name / Ref</th>
+
+            <th>Amount</th>
 
           </tr>
 
         </thead>
-
 
         <tbody>
 
@@ -4241,20 +4484,34 @@ function partnerPaymentTable(
 }
 
 
-function renderPartnerData(data){
+/* =========================================================
+   RENDER SELECTED PARTNER
+========================================================= */
 
-  const d =
-    data.details || {};
-
+function renderPartnerData(partner){
 
   const bankTotal =
-    Number(data.bankTotal) || 0;
+    partner.bankPayments.reduce(
+      (total,payment) =>
+        total + (Number(payment.amount) || 0),
+      0
+    );
 
   const cashTotal =
-    Number(data.cashTotal) || 0;
+    partner.cashPayments.reduce(
+      (total,payment) =>
+        total + (Number(payment.amount) || 0),
+      0
+    );
 
   const totalPaid =
-    Number(data.totalPaid) || 0;
+    bankTotal + cashTotal;
+
+
+  partnerStatus.textContent =
+    "Showing payments for " +
+    partner.partner +
+    ".";
 
 
   partnerDetails.innerHTML = `
@@ -4262,54 +4519,52 @@ function renderPartnerData(data){
     <div class="partner-summary">
 
       ${partnerInfoCard(
-        'S.NO',
-        d.sno ?? ''
+        "S.NO",
+        partner.sno
       )}
 
       ${partnerInfoCard(
-        'PARTNER',
-        d.partner ?? ''
+        "PARTNER",
+        partner.partner
       )}
 
       ${partnerInfoCard(
-        'MOBILE',
-        d.mobile ?? ''
+        "MOBILE",
+        partner.mobile
       )}
 
       ${partnerInfoCard(
-        'SHARE %',
-        d.percentage != null
-          ? d.percentage + '%'
-          : ''
+        "SHARE %",
+        partner.percentage + "%"
       )}
 
       ${partnerInfoCard(
-        'TOTAL CAPITAL',
-        partnerMoney(d.totalCapital),
+        "TOTAL CAPITAL",
+        partnerMoney(partner.totalCapital),
         true
       )}
 
       ${partnerInfoCard(
-        'BANK',
-        partnerMoney(d.bank),
+        "BANK",
+        partnerMoney(partner.bank),
         true
       )}
 
       ${partnerInfoCard(
-        'CASH',
-        partnerMoney(d.cash),
+        "CASH",
+        partnerMoney(partner.cash),
         true
       )}
 
       ${partnerInfoCard(
-        'TOTAL RECEIVED',
-        partnerMoney(d.totalReceived),
+        "TOTAL RECEIVED",
+        partnerMoney(partner.totalReceived),
         true
       )}
 
       ${partnerInfoCard(
-        'DUE',
-        partnerMoney(d.due),
+        "DUE",
+        partnerMoney(partner.due),
         true
       )}
 
@@ -4317,7 +4572,6 @@ function renderPartnerData(data){
 
 
     <div class="partner-payment-totals">
-
 
       <div class="partner-total-card">
 
@@ -4357,21 +4611,19 @@ function renderPartnerData(data){
 
       </div>
 
-
     </div>
 
 
     <div class="partner-payments-grid">
 
       ${partnerPaymentTable(
-        'BANK PAYMENTS',
-        data.bankPayments || []
+        "BANK PAYMENTS",
+        partner.bankPayments
       )}
 
-
       ${partnerPaymentTable(
-        'CASH PAYMENTS',
-        data.cashPayments || []
+        "CASH PAYMENTS",
+        partner.cashPayments
       )}
 
     </div>
@@ -4381,22 +4633,73 @@ function renderPartnerData(data){
 }
 
 
+/* =========================================================
+   PARTNER SELECT CHANGE
+========================================================= */
+
+function loadSelectedPartner(){
+
+  const partnerId =
+    Number(partnerSelect.value);
+
+  partnerDetails.innerHTML = "";
+
+  if(!partnerId){
+
+    partnerStatus.textContent =
+      "Select a partner to view details.";
+
+    return;
+
+  }
+
+
+  const partner =
+    PARTNERS.find(function(item){
+
+      return item.sno === partnerId;
+
+    });
+
+
+  if(!partner){
+
+    partnerStatus.innerHTML =
+      '<span class="partner-error">' +
+      'Partner data not found.' +
+      '</span>';
+
+    return;
+
+  }
+
+
+  renderPartnerData(partner);
+
+}
+
+
+/* =========================================================
+   PARTNER EVENTS
+========================================================= */
+
 partnersToggle.addEventListener(
   "click",
   openPartnerSection
 );
-
 
 partnersClose.addEventListener(
   "click",
   closePartnerSection
 );
 
-
 partnerSelect.addEventListener(
   "change",
   loadSelectedPartner
 );
+
+
+
 
 
 /* =========================================================
