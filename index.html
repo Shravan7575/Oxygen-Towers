@@ -117,28 +117,24 @@ select{
 ========================================================= */
 
 .nav{
-  display:flex;
-  justify-content:space-between;
+  display:grid;
+
+  grid-template-columns:1fr auto 1fr;
+
   align-items:center;
+
+  min-height:72px;
 }
+
+
+/* LEFT: COMPANY */
 
 .brand{
   display:flex;
   align-items:center;
   gap:17px;
-}
 
-.logo{
-  width:165px;
-  height:65px;
-
-  object-fit:contain;
-
-  background:white;
-
-  border-radius:12px;
-
-  padding:5px;
+  justify-self:start;
 }
 
 .brand-divider{
@@ -170,10 +166,46 @@ select{
   font-size:16px;
 }
 
+
+/* CENTER LOGO */
+
+.logo-wrap{
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  justify-self:center;
+}
+
+.logo{
+  width:165px;
+  height:65px;
+
+  object-fit:contain;
+
+  background:white;
+
+  border-radius:12px;
+
+  padding:5px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.16);
+}
+
+
+/* RIGHT CONTACT */
+
 .top-contact{
   display:flex;
+
   align-items:center;
+  justify-content:flex-end;
+
   gap:12px;
+
+  justify-self:end;
 }
 
 .contact-number{
@@ -198,6 +230,13 @@ select{
   font-weight:800;
 
   box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+  transition:.2s;
+}
+
+.whatsapp-top:hover{
+  background:#16ad65;
+  transform:translateY(-1px);
 }
 
 
@@ -832,9 +871,6 @@ select{
   gap:12px;
 }
 
-
-/* Small floor label */
-
 .floor-number{
   width:38px;
   height:38px;
@@ -888,9 +924,6 @@ select{
 
   gap:12px;
 }
-
-
-/* Strong availability */
 
 .floor-available{
   display:flex;
@@ -985,6 +1018,9 @@ select{
   transition:.25s;
 
   min-height:300px;
+
+  /* Keeps cards visually separated */
+  box-shadow:0 4px 12px rgba(10,45,80,.035);
 }
 
 .flat:hover{
@@ -997,8 +1033,94 @@ select{
 
 
 /* =========================================================
+   COLORED BOTTOM STATUS LINE
+========================================================= */
+
+.flat:after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  height:5px;
+
+  border-radius:0 0 19px 19px;
+
+  z-index:10;
+}
+
+
+/* Available */
+
+.flat.available:after{
+  background:linear-gradient(
+    90deg,
+    #079766,
+    #35c98e
+  );
+}
+
+
+/* Sold */
+
+.flat.sold:after{
+  background:linear-gradient(
+    90deg,
+    #df4545,
+    #ff7676
+  );
+}
+
+
+/* Mortgage */
+
+.flat.mortgage:after{
+  background:linear-gradient(
+    90deg,
+    #c98217,
+    #efb94f
+  );
+}
+
+
+/* City Level */
+
+.flat.city:after{
+  background:linear-gradient(
+    90deg,
+    #7655c8,
+    #a88be8
+  );
+}
+
+
+/* Vendor-Mestri */
+
+.flat.vendor:after{
+  background:linear-gradient(
+    90deg,
+    #287fc4,
+    #65b4ec
+  );
+}
+
+
+/* Vendor-RMC */
+
+.flat.rmc:after{
+  background:linear-gradient(
+    90deg,
+    #159c9c,
+    #53d0d0
+  );
+}
+
+
+/* =========================================================
    STATUS DOT
-   NO TRIANGLE / NO LARGE BACKGROUND
 ========================================================= */
 
 .flat:before{
@@ -1017,18 +1139,12 @@ select{
   z-index:2;
 }
 
-
-/* Available */
-
 .flat.available:before{
   background:#16a66b;
 
   box-shadow:
     0 0 0 4px rgba(22,166,107,.10);
 }
-
-
-/* Sold */
 
 .flat.sold:before{
   background:#df4545;
@@ -1037,18 +1153,12 @@ select{
     0 0 0 4px rgba(223,69,69,.10);
 }
 
-
-/* Mortgage */
-
 .flat.mortgage:before{
   background:#e39a27;
 
   box-shadow:
     0 0 0 4px rgba(227,154,39,.10);
 }
-
-
-/* City Level */
 
 .flat.city:before{
   background:#7655c8;
@@ -1057,18 +1167,12 @@ select{
     0 0 0 4px rgba(118,85,200,.10);
 }
 
-
-/* Vendor-Mestri */
-
 .flat.vendor:before{
   background:#287fc4;
 
   box-shadow:
     0 0 0 4px rgba(40,127,196,.10);
 }
-
-
-/* Vendor-RMC */
 
 .flat.rmc:before{
   background:#159c9c;
@@ -1096,11 +1200,6 @@ select{
   z-index:5;
 }
 
-
-/* =========================================================
-   FLAT NUMBER
-========================================================= */
-
 .flat-number{
   position:relative;
 
@@ -1124,9 +1223,6 @@ select{
 
   padding-left:15px;
 }
-
-
-/* Make absolutely sure there is no shape behind number */
 
 .flat-number::before,
 .flat-number::after{
@@ -1511,27 +1607,115 @@ select{
   }
 
   .hero-inner{
-    padding:17px 16px 65px;
+    padding:14px 16px 65px;
+  }
+
+
+  /* =====================================================
+     MOBILE HEADER
+  ===================================================== */
+
+  .nav{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:13px;
+
+    min-height:auto;
+  }
+
+
+  /* Logo comes first and stays centered */
+
+  .logo-wrap{
+    order:1;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
   }
 
   .logo{
-    width:125px;
-    height:53px;
+    width:145px;
+    height:58px;
+
+    border-radius:11px;
   }
 
-  .brand-divider,
-  .brand-copy,
-  .contact-number{
+
+  /* Company name below logo */
+
+  .brand{
+    order:2;
+
+    width:100%;
+
+    justify-content:center;
+
+    text-align:center;
+
+    gap:0;
+  }
+
+  .brand-divider{
     display:none;
   }
 
-  .whatsapp-top{
-    padding:10px 12px;
-    font-size:10px;
+  .brand-copy{
+    display:block;
   }
 
+  .brand-copy strong{
+    font-size:15px;
+
+    margin-top:0;
+  }
+
+  .brand-copy small{
+    font-size:9px;
+
+    margin-top:3px;
+  }
+
+
+  /* Contact below company */
+
+  .top-contact{
+    order:3;
+
+    width:100%;
+
+    justify-content:center;
+
+    gap:8px;
+  }
+
+  .contact-number{
+    display:block;
+
+    color:#cce5fb;
+
+    font-size:11px;
+  }
+
+  .whatsapp-top{
+    padding:9px 12px;
+
+    font-size:9px;
+
+    border-radius:9px;
+  }
+
+
+  /* HERO CONTENT */
+
   .hero-content{
-    padding-top:60px;
+    padding-top:48px;
   }
 
   .hero h1{
@@ -1719,25 +1903,52 @@ select{
   }
 
   .floor-body{
-    padding:0 10px 12px;
+    padding:0 8px 14px;
   }
 
 
-  /* FLATS */
+  /* =====================================================
+     MOBILE FLAT CARDS
+     ONE CLEAR BOX AFTER ANOTHER
+  ===================================================== */
 
   .flat-grid{
     grid-template-columns:1fr;
 
-    gap:12px;
+    gap:16px;
+
+    padding-top:4px;
   }
 
   .flat{
     min-height:auto;
 
+    width:100%;
+
     padding:20px;
 
-    border-radius:19px;
+    border-radius:18px;
+
+    /* Stronger separation */
+    border:1px solid #d7e2eb;
+
+    box-shadow:
+      0 5px 16px rgba(10,45,80,.07);
   }
+
+  .flat + .flat{
+    margin-top:0;
+  }
+
+
+  /* Colored bottom line slightly stronger on mobile */
+
+  .flat:after{
+    height:6px;
+
+    border-radius:0 0 18px 18px;
+  }
+
 
   .flat-number{
     font-size:36px;
@@ -1816,6 +2027,25 @@ select{
 
 @media(max-width:430px){
 
+  .logo{
+    width:140px;
+    height:56px;
+  }
+
+  .brand-copy strong{
+    font-size:14px;
+  }
+
+  .contact-number{
+    font-size:10px;
+  }
+
+  .whatsapp-top{
+    padding:9px 10px;
+
+    font-size:9px;
+  }
+
   .hero h1{
     font-size:37px;
   }
@@ -1872,6 +2102,19 @@ select{
 
 @media(max-width:390px){
 
+  .logo{
+    width:132px;
+    height:53px;
+  }
+
+  .nav{
+    gap:10px;
+  }
+
+  .top-contact{
+    flex-wrap:wrap;
+  }
+
   .flat-top{
     gap:7px;
   }
@@ -1897,6 +2140,10 @@ select{
     height:32px;
   }
 
+  .flat-grid{
+    gap:17px;
+  }
+
 }
 
 </style>
@@ -1916,14 +2163,10 @@ select{
 
     <nav class="nav">
 
-      <div class="brand">
 
-        <img
-          src="northcity-logo.png"
-          class="logo"
-          alt="NorthCity Developers"
-          onerror="this.style.display='none'"
-        >
+      <!-- COMPANY NAME - LEFT -->
+
+      <div class="brand">
 
         <div class="brand-divider"></div>
 
@@ -1941,6 +2184,22 @@ select{
 
       </div>
 
+
+      <!-- LOGO - CENTER -->
+
+      <div class="logo-wrap">
+
+        <img
+          src="northcity-logo.png"
+          class="logo"
+          alt="NorthCity Developers"
+          onerror="this.style.display='none'"
+        >
+
+      </div>
+
+
+      <!-- PHONE / WHATSAPP - RIGHT -->
 
       <div class="top-contact">
 
@@ -3197,12 +3456,6 @@ function render(){
     const section =
       document.createElement("section");
 
-
-    /*
-      All floors are collapsed initially.
-      If a floor is selected in the filter,
-      that floor opens automatically.
-    */
 
     section.className =
       selectedFloor === floor
