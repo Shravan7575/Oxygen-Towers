@@ -762,7 +762,10 @@ select{
   border-color:#f1ccd5;
 }
 
-
+#sort{
+  background:#eef5fb;
+  border-color:#cbddec;
+}
 
 .field input:focus,
 .field select:focus{
@@ -2396,7 +2399,34 @@ select{
 
         </div>
 
-      
+      </div>
+
+
+      <div class="logo-wrap">
+
+        <img
+          src="northcity-logo.png"
+          class="logo"
+          alt="NorthCity Developers"
+          onerror="this.style.display='none'"
+        >
+
+      </div>
+
+
+      <div class="top-contact">
+
+        <div class="contact-number">
+          +91 73863 26575
+        </div>
+
+        <a
+          class="whatsapp-top"
+          href="https://wa.me/917386326575"
+          target="_blank"
+        >
+          WhatsApp Us
+        </a>
 
       </div>
 
@@ -2631,7 +2661,7 @@ select{
         </div>
 
         <div class="section-title">
-          Choose your Flat
+          Choose your flat
         </div>
 
         <div class="section-description">
@@ -2690,7 +2720,7 @@ select{
       <div class="search-row">
 
 
-        
+        <div class="field">
 
           <input
             id="search"
@@ -2839,7 +2869,31 @@ select{
 
         <div class="field">
 
-        
+          <select id="sort">
+
+            <option value="FLAT">
+              Flat Number
+            </option>
+
+            <option value="PRICE_LOW">
+              Price: Low → High
+            </option>
+
+            <option value="PRICE_HIGH">
+              Price: High → Low
+            </option>
+
+            <option value="AREA_LOW">
+              Area: Low → High
+            </option>
+
+            <option value="AREA_HIGH">
+              Area: High → Low
+            </option>
+
+          </select>
+
+        </div>
 
       </div>
 
@@ -3478,7 +3532,37 @@ function getFilteredData(){
   });
 
 
-  
+  if(sort === "PRICE_LOW"){
+    data.sort((a,b) => a[5] - b[5]);
+  }
+
+  if(sort === "PRICE_HIGH"){
+    data.sort((a,b) => b[5] - a[5]);
+  }
+
+  if(sort === "AREA_LOW"){
+    data.sort((a,b) => a[4] - b[4]);
+  }
+
+  if(sort === "AREA_HIGH"){
+    data.sort((a,b) => b[4] - a[4]);
+  }
+
+  if(sort === "FLAT"){
+
+    data.sort(
+      (a,b) =>
+        a[0].localeCompare(
+          b[0],
+          undefined,
+          {
+            numeric:true
+          }
+        )
+    );
+
+  }
+
 
   return data;
 }
@@ -4688,6 +4772,14 @@ document
    FILTER EVENTS
 ========================================================= */
 
+[
+  "search",
+  "status",
+  "bhk",
+  "floor",
+  "facing",
+  "sort"
+].forEach(id => {
 
   const element =
     document.getElementById(id);
