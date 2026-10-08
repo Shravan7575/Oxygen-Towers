@@ -762,10 +762,7 @@ select{
   border-color:#f1ccd5;
 }
 
-#sort{
-  background:#eef5fb;
-  border-color:#cbddec;
-}
+
 
 .field input:focus,
 .field select:focus{
@@ -2693,7 +2690,7 @@ select{
       <div class="search-row">
 
 
-        <div class="field">
+        
 
           <input
             id="search"
@@ -3481,37 +3478,7 @@ function getFilteredData(){
   });
 
 
-  if(sort === "PRICE_LOW"){
-    data.sort((a,b) => a[5] - b[5]);
-  }
-
-  if(sort === "PRICE_HIGH"){
-    data.sort((a,b) => b[5] - a[5]);
-  }
-
-  if(sort === "AREA_LOW"){
-    data.sort((a,b) => a[4] - b[4]);
-  }
-
-  if(sort === "AREA_HIGH"){
-    data.sort((a,b) => b[4] - a[4]);
-  }
-
-  if(sort === "FLAT"){
-
-    data.sort(
-      (a,b) =>
-        a[0].localeCompare(
-          b[0],
-          undefined,
-          {
-            numeric:true
-          }
-        )
-    );
-
-  }
-
+  
 
   return data;
 }
@@ -4721,14 +4688,6 @@ document
    FILTER EVENTS
 ========================================================= */
 
-[
-  "search",
-  "status",
-  "bhk",
-  "floor",
-  "facing",
-  "sort"
-].forEach(id => {
 
   const element =
     document.getElementById(id);
