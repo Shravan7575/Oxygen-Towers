@@ -627,56 +627,63 @@ select{
 }
 
 .block-btn{
-  border:0;
-
+  border:2px solid #cbd8e5;
   min-width:105px;
-
   height:43px;
-
-  background:transparent;
-
-  color:#60758a;
-
+  background:#ffffff;
+  color:#183650;
   padding:0 16px;
-
   border-radius:11px;
-
   cursor:pointer;
-
-  font-size:11px;
-
+  font-size:12px;
   font-weight:900;
+  letter-spacing:.2px;
+  box-shadow:0 3px 8px rgba(16,47,80,.10);
+  transition:background .25s, color .25s, box-shadow .25s, transform .25s;
+}
 
-  transition:.25s;
+/* Always-visible color boxes, including when a block is not selected */
+.block-btn[data-block="ALL"]{
+  background:#e5efff;
+  border-color:#3678c8;
+  color:#123f79;
+}
+.block-btn[data-block="A"]{
+  background:#e0f7ef;
+  border-color:#159777;
+  color:#08664f;
+}
+.block-btn[data-block="B"]{
+  background:#eee8ff;
+  border-color:#8966d4;
+  color:#56379c;
 }
 
 .block-btn:hover{
-  background:#f8fbfd;
-  color:#123250;
+  transform:translateY(-1px);
+  filter:brightness(.97);
+  box-shadow:0 6px 13px rgba(16,47,80,.15);
 }
 
 .block-btn[data-block="ALL"].active{
   background:linear-gradient(135deg,#102f50,#075fae);
-
-  color:white;
-
-  box-shadow:0 8px 18px rgba(8,62,110,.24);
+  border-color:#075fae;
+  color:#ffffff;
+  box-shadow:0 8px 18px rgba(8,62,110,.28);
 }
 
 .block-btn[data-block="A"].active{
   background:linear-gradient(135deg,#0c8b72,#12b892);
-
-  color:white;
-
-  box-shadow:0 8px 18px rgba(12,139,114,.24);
+  border-color:#0c8b72;
+  color:#ffffff;
+  box-shadow:0 8px 18px rgba(12,139,114,.28);
 }
 
 .block-btn[data-block="B"].active{
   background:linear-gradient(135deg,#7552c7,#9673e8);
-
-  color:white;
-
-  box-shadow:0 8px 18px rgba(117,82,199,.24);
+  border-color:#7552c7;
+  color:#ffffff;
+  box-shadow:0 8px 18px rgba(117,82,199,.28);
 }
 
 
@@ -2667,7 +2674,7 @@ select{
         </div>
 
         <div class="section-title">
-          Choose your Flat
+          Choose your flat
         </div>
 
         <div class="section-description">
