@@ -3319,7 +3319,8 @@ function money(value){
 
 function updateStats(){
 
-  const data = [...A,...B];
+  // Use the currently selected block so the totals change with the block buttons.
+  const data = getData();
 
   let available = 0;
   let sold = 0;
@@ -3327,7 +3328,6 @@ function updateStats(){
   let city = 0;
   let vendor = 0;
   let rmc = 0;
-
 
   data.forEach(flat => {
 
@@ -3357,13 +3357,25 @@ function updateStats(){
 
   });
 
-
   document.getElementById("availableCount").textContent = available;
   document.getElementById("soldCount").textContent = sold;
   document.getElementById("mortgageCount").textContent = mortgage;
   document.getElementById("cityCount").textContent = city;
   document.getElementById("vendorCount").textContent = vendor;
   document.getElementById("rmcCount").textContent = rmc;
+
+  const availableNote = document.querySelector("#availableCount")
+    ?.parentElement?.querySelector(".stat-note");
+
+  if(availableNote){
+    if(currentBlock === "A"){
+      availableNote.textContent = "Block A only";
+    } else if(currentBlock === "B"){
+      availableNote.textContent = "Block B only";
+    } else {
+      availableNote.textContent = "Across Block A & Block B";
+    }
+  }
 
 }
 
@@ -4772,7 +4784,7 @@ document
         currentBlock =
           button.dataset.block;
 
-
+        updateStats();
         render();
 
       }
