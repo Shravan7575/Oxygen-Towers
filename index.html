@@ -2817,7 +2817,7 @@ ${record.terms ? flatPaymentTable("FLAT PRICE & PAYMENT TERMS",["Description","V
 {label:"Remaining per Floor",value:`${Number(record.terms.remainingPerFloorPercent).toFixed(2)}%`}
 ],"",row=>`<tr><td>${flatPaymentEscape(row.label)}</td><td>${flatPaymentEscape(row.value)}</td></tr>`) : ""}
 <div class="flat-payment-grid">
-${flatPaymentTable("INSTALLMENT SCHEDULE",["Installment","Due Date / Milestone","Amount","Status"],schedule,
+${flatPaymentTable("INSTALLMENT SCHEDULE",["Installment","Amount","Status"],schedule,
 "No installment schedule has been entered for this flat.",
 row=>`<tr><td>${flatPaymentEscape(row.installment||"—")}</td><td>${flatPaymentDate(row.dueDate)}</td><td>${flatPaymentMoney(row.amount)}</td><td>${flatPaymentEscape(row.status||"—")}</td></tr>`)}
 ${flatPaymentTable("ACTUAL PAYMENT HISTORY",["Date","Receipt / Ref","Method","Amount"],payments,
