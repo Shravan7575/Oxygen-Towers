@@ -2665,10 +2665,36 @@ cashPayments: []
 }
 ];
 const FLAT_PAYMENT_DATA = {
-// Optional per-flat overrides: add verified actual receipts here.
-// Example key: "A|G3". If a key is absent, the schedule is generated
-// automatically from that flat's number, size, and listed total price.
-// payments: [{ date, reference, method, amount, note }]
+  "A|G3": {
+    payments: [
+      {
+        date: "2026-08-10",
+        reference: "REC001",
+        method: "Bank Transfer",
+        amount: 100000,
+        note: "First payment"
+      },
+      {
+        date: "2026-09-15",
+        reference: "REC002",
+        method: "UPI",
+        amount: 50000,
+        note: "Second payment"
+      }
+    ]
+  },
+
+  "A|G1": {
+    payments: [
+      {
+        date: "2026-08-20",
+        reference: "REC003",
+        method: "Cash",
+        amount: 200000,
+        note: "Booking payment"
+      }
+    ]
+  }
 };
 const flatPaymentToggle = document.getElementById("flatPaymentToggle");
 const flatPaymentSection = document.getElementById("flatPaymentSection");
