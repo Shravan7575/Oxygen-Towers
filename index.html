@@ -4474,29 +4474,46 @@ function splitFlatPaymentAmount(total, count, makeLabel){
   });
 }
 
-function buildDefaultFlatPaymentRecord(flatNumber, flatSize, totalPrice){
-  const amenitiesParking = 500000;
+```javascript
+function buildDefaultFlatPaymentRecord(
+  flatNumber,
+  flatSize,
+  totalPrice
+) {
+  const flatLabel = String(flatNumber).toUpperCase();
+
+  let amenitiesParking = 500000;
+
+  if (flatSize === 1500 || flatSize === 1520) {
+    amenitiesParking = 500000;
+  } else if (flatLabel.includes("3 BHK")) {
+    amenitiesParking = 700000;
+  } else if (flatLabel.includes("2 BHK")) {
+    amenitiesParking = 600000;
+  }
+
   const firstPhaseTotal = Math.round(totalPrice * 0.25);
   const remainingTotal = totalPrice - firstPhaseTotal;
+
   return {
-    terms:{
+    terms: {
       flatSize,
-      pricePerSft:flatSize > 0 ? (totalPrice - amenitiesParking) / flatSize : 0,
+      pricePerSft:
+        flatSize > 0
+          ? (totalPrice - amenitiesParking) / flatSize
+          : 0,
       amenitiesParking,
       totalPrice,
-      firstSixMonthsPercent:25,
-      remainingPercent:75,
-      numberOfFloors:9,
-      remainingPerFloorPercent:75 / 9
-    },
-    schedule:[
-      ...splitFlatPaymentAmount(firstPhaseTotal,6,n=>`First 6 Months — Month ${n}`),
-      ...splitFlatPaymentAmount(remainingTotal,9,n=>`Remaining — Floor ${n} of 9`)
-    ],
-    payments:[]
+      firstPhaseTotal,
+      remainingTotal,
+      firstSixMonthsPercent: 25,
+      remainingPercent: 75,
+      numberOfFloors: 9,
+      remainingPerFloorPercent: 75 / 9
+    }
   };
 }
-
+```
 function renderFlatPaymentData(){
   const key = flatPaymentSelect.value;
   flatPaymentDetails.innerHTML = "";
