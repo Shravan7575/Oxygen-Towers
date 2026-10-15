@@ -1034,6 +1034,65 @@ select{
 }
 
 
+
+
+/* =========================================================
+   FLAT PAYMENT SCHEDULE
+========================================================= */
+.flat-payment-section[hidden]{display:none!important}
+.flat-payment-section{
+  margin-top:18px;padding:24px;border:1px solid var(--line);
+  border-radius:20px;background:#fff;box-shadow:var(--shadow)
+}
+.flat-payment-header{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px
+}
+.flat-payment-title{margin:0;color:var(--navy);font:800 22px/1.2 "Manrope",sans-serif}
+.flat-payment-subtitle{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+.flat-payment-controls{
+  display:grid;grid-template-columns:180px minmax(220px,420px) 1fr;align-items:end;gap:12px;
+  padding:16px;background:#f7fafc;border:1px solid var(--line);border-radius:14px
+}
+.flat-payment-controls label{display:block;color:var(--text);font-weight:800;font-size:13px;margin-bottom:7px}
+.flat-payment-controls select{
+  width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;background:#fff;
+  color:var(--text);font:600 14px "DM Sans",sans-serif;outline:none
+}
+.flat-payment-controls select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(12,111,216,.1)}
+#flatPaymentStatus{color:var(--muted);font-size:13px;align-self:center}
+.flat-payment-details{margin-top:20px}
+.flat-payment-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.flat-payment-card{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff;min-width:0}
+.flat-payment-label{color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.06em;margin-bottom:7px}
+.flat-payment-value{color:var(--navy);font:800 18px/1.25 "Manrope",sans-serif;overflow-wrap:anywhere}
+.flat-payment-value.money{font-size:20px}
+.flat-payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.flat-payment-box{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;min-width:0}
+.flat-payment-box-title{padding:14px 16px;background:#f7fafc;color:var(--navy);font-size:12px;font-weight:900;letter-spacing:.06em}
+.flat-payment-table-wrap{overflow-x:auto}
+.flat-payment-table{width:100%;border-collapse:collapse}
+.flat-payment-table th,.flat-payment-table td{padding:12px 14px;text-align:left;border-top:1px solid var(--line);font-size:12px;vertical-align:top}
+.flat-payment-table th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.flat-payment-table td:last-child,.flat-payment-table th:last-child{text-align:right;white-space:nowrap}
+.flat-payment-empty{color:var(--muted);padding:18px 14px;font-size:13px;line-height:1.5}
+.flat-payment-note{margin-top:12px;padding:12px 14px;border:1px solid #f1e1bf;border-radius:10px;background:#fff9ed;color:#8a6a35;font-size:12px;line-height:1.5}
+.flat-payment-toggle{
+  border:0;border-radius:12px;padding:12px 18px;background:linear-gradient(135deg,#0b4d89,#0873d5);
+  color:#fff;font:700 14px/1 "Manrope",sans-serif;cursor:pointer;box-shadow:0 8px 20px rgba(7,27,51,.16);transition:.2s ease
+}
+.flat-payment-toggle:hover{transform:translateY(-1px);box-shadow:0 12px 25px rgba(7,27,51,.22)}
+.flat-payment-toggle.active{background:linear-gradient(135deg,var(--blue),var(--blue2))}
+.flat-payment-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:15px}
+@media(max-width:760px){
+  .flat-payment-toggle{width:100%}
+  .flat-payment-section{padding:16px;border-radius:16px}
+  .flat-payment-header{align-items:flex-start}
+  .flat-payment-controls{grid-template-columns:1fr}
+  .flat-payment-summary{grid-template-columns:1fr 1fr}
+  .flat-payment-grid{grid-template-columns:1fr}
+}
+@media(max-width:430px){.flat-payment-summary{grid-template-columns:1fr}}
+
 /* =========================================================
    EXPLORER
 ========================================================= */
@@ -2724,6 +2783,14 @@ select{
         🤝 Partner Payments
       </button>
 
+      <button
+        class="flat-payment-toggle"
+        id="flatPaymentToggle"
+        type="button"
+      >
+        🧾 Flat Payment Schedule
+      </button>
+
     </div>
 
 
@@ -3008,6 +3075,41 @@ select{
 
   </section>
 
+
+
+  <!-- =====================================================
+       FLAT PAYMENT SCHEDULE
+  ===================================================== -->
+
+  <section class="flat-payment-section" id="flatPaymentSection" hidden>
+    <div class="flat-payment-header">
+      <div>
+        <h2 class="flat-payment-title">Flat Payment Schedule</h2>
+        <p class="flat-payment-subtitle">
+          View the agreed installment schedule and recorded payments for an individual flat.
+        </p>
+      </div>
+      <button class="partners-close" id="flatPaymentClose" type="button">Close</button>
+    </div>
+
+    <div class="flat-payment-controls">
+      <div>
+        <label for="flatPaymentSelect">Select Flat</label>
+      </div>
+      <div>
+        <select id="flatPaymentSelect">
+          <option value="">Select a flat...</option>
+        </select>
+      </div>
+      <div id="flatPaymentStatus">Select a flat to view its schedule and payment history.</div>
+    </div>
+
+    <div class="flat-payment-details" id="flatPaymentDetails"></div>
+    <div class="flat-payment-note">
+      Flat G3 is populated using the payment terms supplied. Calendar due dates and actual receipts have not been supplied;
+      record confirmed dates and received payments in <strong>FLAT_PAYMENT_DATA</strong> before relying on the schedule.
+    </div>
+  </section>
 
 
   <!-- FLOOR EXPLORER -->
@@ -4281,6 +4383,194 @@ const PARTNERS = [
   }
 
 ];
+
+
+/* =========================================================
+   FLAT PAYMENT SCHEDULE — HARD-CODED DATA
+   Key format: "BLOCK|FLAT_NUMBER", for example "A|101".
+   Add verified schedule rows and actual receipts for each flat.
+   Schedule row: { installment, dueDate, amount, status }
+   Payment row:  { date, reference, method, amount, note }
+========================================================= */
+
+const FLAT_PAYMENT_DATA = {
+  // Optional per-flat overrides: add verified actual receipts here.
+  // Example key: "A|G3". If a key is absent, the schedule is generated
+  // automatically from that flat's number, size, and listed total price.
+  // payments: [{ date, reference, method, amount, note }]
+};
+
+
+/* =========================================================
+   FLAT PAYMENT ELEMENTS
+========================================================= */
+const flatPaymentToggle = document.getElementById("flatPaymentToggle");
+const flatPaymentSection = document.getElementById("flatPaymentSection");
+const flatPaymentClose = document.getElementById("flatPaymentClose");
+const flatPaymentSelect = document.getElementById("flatPaymentSelect");
+const flatPaymentStatus = document.getElementById("flatPaymentStatus");
+const flatPaymentDetails = document.getElementById("flatPaymentDetails");
+
+function flatPaymentEscape(value){
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function flatPaymentMoney(value){
+  const amount = Number(value);
+  if(!Number.isFinite(amount)) return "—";
+  return "₹" + amount.toLocaleString("en-IN",{maximumFractionDigits:2});
+}
+
+function flatPaymentDate(value){
+  if(!value) return "—";
+  const text = String(value);
+  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  return match ? `${match[3]}/${match[2]}/${match[1]}` : flatPaymentEscape(text);
+}
+
+function loadFlatPaymentOptions(){
+  flatPaymentSelect.innerHTML = '<option value="">Select a flat...</option>';
+  const allFlats = [
+    ...A.map(flat => ({block:"A", number:String(flat[0]), floor:String(flat[1]), type:String(flat[3]), size:Number(flat[4]) || 0, price:Number(flat[5]) || 0})),
+    ...B.map(flat => ({block:"B", number:String(flat[0]), floor:String(flat[1]), type:String(flat[3]), size:Number(flat[4]) || 0, price:Number(flat[5]) || 0}))
+  ];
+  allFlats.sort((a,b) => a.block.localeCompare(b.block) ||
+    a.floor.localeCompare(b.floor,undefined,{numeric:true}) ||
+    a.number.localeCompare(b.number,undefined,{numeric:true}));
+  allFlats.forEach(flat => {
+    const option = document.createElement("option");
+    option.value = `${flat.block}|${flat.number}`;
+    option.textContent = `Block ${flat.block} · ${flat.number} · ${flat.type} · ${flat.floor} Floor`;
+    option.dataset.price = String(flat.price);
+    option.dataset.size = String(flat.size);
+    flatPaymentSelect.appendChild(option);
+  });
+}
+
+function flatPaymentTable(title, headers, rows, emptyMessage, rowRenderer){
+  const body = rows.length
+    ? `<table class="flat-payment-table"><thead><tr>${headers.map(h=>`<th>${flatPaymentEscape(h)}</th>`).join("")}</tr></thead><tbody>${rows.map(rowRenderer).join("")}</tbody></table>`
+    : `<div class="flat-payment-empty">${flatPaymentEscape(emptyMessage)}</div>`;
+  return `<div class="flat-payment-box"><div class="flat-payment-box-title">${flatPaymentEscape(title)}</div><div class="flat-payment-table-wrap">${body}</div></div>`;
+}
+
+function flatPaymentInfoCard(label,value,money=false){
+  return `<div class="flat-payment-card"><div class="flat-payment-label">${flatPaymentEscape(label)}</div><div class="flat-payment-value ${money?"money":""}">${flatPaymentEscape(value)}</div></div>`;
+}
+
+function splitFlatPaymentAmount(total, count, makeLabel){
+  const base = Math.floor(total / count);
+  let assigned = 0;
+  return Array.from({length:count}, (_, index) => {
+    const amount = index === count - 1 ? total - assigned : base;
+    assigned += amount;
+    const label = makeLabel(index + 1);
+    return {installment:label, dueDate:label, amount, status:"Scheduled"};
+  });
+}
+
+function buildDefaultFlatPaymentRecord(flatNumber, flatSize, totalPrice){
+  const amenitiesParking = 500000;
+  const firstPhaseTotal = Math.round(totalPrice * 0.25);
+  const remainingTotal = totalPrice - firstPhaseTotal;
+  return {
+    terms:{
+      flatSize,
+      pricePerSft:flatSize > 0 ? (totalPrice - amenitiesParking) / flatSize : 0,
+      amenitiesParking,
+      totalPrice,
+      firstSixMonthsPercent:25,
+      remainingPercent:75,
+      numberOfFloors:9,
+      remainingPerFloorPercent:75 / 9
+    },
+    schedule:[
+      ...splitFlatPaymentAmount(firstPhaseTotal,6,n=>`First 6 Months — Month ${n}`),
+      ...splitFlatPaymentAmount(remainingTotal,9,n=>`Remaining — Floor ${n} of 9`)
+    ],
+    payments:[]
+  };
+}
+
+function renderFlatPaymentData(){
+  const key = flatPaymentSelect.value;
+  flatPaymentDetails.innerHTML = "";
+  if(!key){
+    flatPaymentStatus.textContent = "Select a flat to view its schedule and payment history.";
+    return;
+  }
+
+  const option = flatPaymentSelect.options[flatPaymentSelect.selectedIndex];
+  const price = Number(option?.dataset.price) || 0;
+  const flatSize = Number(option?.dataset.size) || 0;
+  const [block, flatNumber] = key.split("|");
+  const record = {
+    ...buildDefaultFlatPaymentRecord(flatNumber, flatSize, price),
+    ...(FLAT_PAYMENT_DATA[key] || {})
+  };
+  const schedule = Array.isArray(record.schedule) ? record.schedule : [];
+  const payments = Array.isArray(record.payments) ? record.payments : [];
+  const scheduledTotal = schedule.reduce((sum,row)=>sum+(Number(row.amount)||0),0);
+  const paidTotal = payments.reduce((sum,row)=>sum+(Number(row.amount)||0),0);
+  const balance = Math.max(0,scheduledTotal-paidTotal);
+
+  flatPaymentStatus.textContent = `Showing payment details for Block ${block}, Flat ${flatNumber}.`;
+  flatPaymentDetails.innerHTML = `
+    <div class="flat-payment-summary">
+      ${flatPaymentInfoCard("BLOCK / FLAT",`Block ${block} · ${flatNumber}`)}
+      ${flatPaymentInfoCard("FLAT PRICE",flatPaymentMoney(price),true)}
+      ${flatPaymentInfoCard("SCHEDULED TOTAL",schedule.length?flatPaymentMoney(scheduledTotal):"Not entered",true)}
+      ${flatPaymentInfoCard("TOTAL RECEIVED",payments.length?flatPaymentMoney(paidTotal):"Not entered",true)}
+    </div>
+    ${record.terms ? flatPaymentTable("FLAT PRICE & PAYMENT TERMS",["Description","Value"],[
+      {label:"Flat Size (Sft)",value:Number(record.terms.flatSize).toLocaleString("en-IN")},
+      {label:"Price per Sft",value:flatPaymentMoney(record.terms.pricePerSft)},
+      {label:"Amenities & Car Parking",value:flatPaymentMoney(record.terms.amenitiesParking)},
+      {label:"Total Flat Price",value:flatPaymentMoney(record.terms.totalPrice)},
+      {label:"First 6 Months",value:`${Number(record.terms.firstSixMonthsPercent).toFixed(2)}%`},
+      {label:"Remaining",value:`${Number(record.terms.remainingPercent).toFixed(2)}%`},
+      {label:"Number of Floors",value:String(record.terms.numberOfFloors)},
+      {label:"Remaining per Floor",value:`${Number(record.terms.remainingPerFloorPercent).toFixed(2)}%`}
+    ],"",row=>`<tr><td>${flatPaymentEscape(row.label)}</td><td>${flatPaymentEscape(row.value)}</td></tr>`) : ""}
+    <div class="flat-payment-grid">
+      ${flatPaymentTable("INSTALLMENT SCHEDULE",["Installment","Due Date / Milestone","Amount","Status"],schedule,
+        "No installment schedule has been entered for this flat.",
+        row=>`<tr><td>${flatPaymentEscape(row.installment||"—")}</td><td>${flatPaymentDate(row.dueDate)}</td><td>${flatPaymentMoney(row.amount)}</td><td>${flatPaymentEscape(row.status||"—")}</td></tr>`)}
+      ${flatPaymentTable("ACTUAL PAYMENT HISTORY",["Date","Receipt / Ref","Method","Amount"],payments,
+        "No actual payments have been recorded for this flat.",
+        row=>`<tr><td>${flatPaymentDate(row.date)}</td><td>${flatPaymentEscape(row.reference||"—")}${row.note?`<div style="color:var(--muted);margin-top:4px">${flatPaymentEscape(row.note)}</div>`:""}</td><td>${flatPaymentEscape(row.method||"—")}</td><td>${flatPaymentMoney(row.amount)}</td></tr>`)}
+    </div>
+    ${schedule.length ? `<div class="flat-payment-note"><strong>Calculated schedule balance:</strong> ${flatPaymentMoney(balance)}. This is calculated from the schedule total less recorded payments; confirm allocations and adjustments against your accounts before relying on it.</div>` : ""}
+  `;
+}
+
+function openFlatPaymentSection(){
+  const password = prompt("Enter Flat Payment Schedule password:");
+  if(password === null) return;
+  if(password !== "Oxygen@2026"){
+    alert("Incorrect password.");
+    return;
+  }
+  flatPaymentSection.hidden = false;
+  flatPaymentToggle.classList.add("active");
+  loadFlatPaymentOptions();
+  renderFlatPaymentData();
+  flatPaymentSection.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function closeFlatPaymentSection(){
+  flatPaymentSection.hidden = true;
+  flatPaymentToggle.classList.remove("active");
+}
+
+flatPaymentToggle.addEventListener("click",openFlatPaymentSection);
+flatPaymentClose.addEventListener("click",closeFlatPaymentSection);
+flatPaymentSelect.addEventListener("change",renderFlatPaymentData);
 
 
 /* =========================================================
