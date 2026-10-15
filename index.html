@@ -4474,28 +4474,53 @@ function splitFlatPaymentAmount(total, count, makeLabel){
   });
 }
 
-function buildDefaultFlatPaymentRecord(flatNumber, flatSize, totalPrice){
-  const amenitiesParking = 500000;
+
+function buildDefaultFlatPaymentRecord(flatNumber, flatSize, totalPrice, flatType){
+  let amenitiesParking;
+
+  // Amenities & car parking based on flat type and size
+  if (flatSize === 1500 || flatSize === 1520) {
+    amenitiesParking = 500000;
+  } else if (String(flatType).toLowerCase().includes("3bhk")) {
+    amenitiesParking = 700000;
+  } else if (String(flatType).toLowerCase().includes("2bhk")) {
+    amenitiesParking = 600000;
+  } else {
+    amenitiesParking = 500000; // Default amount
+  }
+
   const firstPhaseTotal = Math.round(totalPrice * 0.25);
   const remainingTotal = totalPrice - firstPhaseTotal;
+
   return {
-    terms:{
+    terms: {
       flatSize,
-      pricePerSft:flatSize > 0 ? (totalPrice - amenitiesParking) / flatSize : 0,
+      pricePerSft: flatSize > 0
+        ? (totalPrice - amenitiesParking) / flatSize
+        : 0,
       amenitiesParking,
       totalPrice,
-      firstSixMonthsPercent:25,
-      remainingPercent:75,
-      numberOfFloors:9,
-      remainingPerFloorPercent:75 / 9
+      firstSixMonthsPercent: 25,
+      remainingPercent: 75,
+      numberOfFloors: 9,
+      remainingPerFloorPercent: 75 / 9
     },
-    schedule:[
-      ...splitFlatPaymentAmount(firstPhaseTotal,6,n=>`First 6 Months — Month ${n}`),
-      ...splitFlatPaymentAmount(remainingTotal,9,n=>`Remaining — Floor ${n} of 9`)
+    schedule: [
+      ...splitFlatPaymentAmount(
+        firstPhaseTotal, 6,
+        n => `First 6 Months — Month ${n}`
+      ),
+      ...splitFlatPaymentAmount(
+        remainingTotal, 9,
+        n => `Remaining — Floor ${n} of 9`
+      )
     ],
-    payments:[]
+    payments: []
   };
 }
+
+
+
 
 function renderFlatPaymentData(){
   const key = flatPaymentSelect.value;
@@ -4510,7 +4535,12 @@ function renderFlatPaymentData(){
   const flatSize = Number(option?.dataset.size) || 0;
   const [block, flatNumber] = key.split("|");
   const record = {
-    ...buildDefaultFlatPaymentRecord(flatNumber, flatSize, price),
+    ...buildDefaultFlatPaymentRecord(
+  flatNumber,
+  flatSize,
+  price,
+  option.textContent.split(" · ")[2]
+),
     ...(FLAT_PAYMENT_DATA[key] || {})
   };
   const schedule = Array.isArray(record.schedule) ? record.schedule : [];
