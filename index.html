@@ -710,7 +710,7 @@ color:var(--text);font:600 14px "DM Sans",sans-serif;outline:none
 .flat-payment-controls select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(12,111,216,.1)}
 #flatPaymentStatus{color:var(--muted);font-size:13px;align-self:center}
 .flat-payment-details{margin-top:20px}
-.flat-payment-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.flat-payment-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .flat-payment-card{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff;min-width:0}
 .flat-payment-label{color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.06em;margin-bottom:7px}
 .flat-payment-value{color:var(--navy);font:800 18px/1.25 "Manrope",sans-serif;overflow-wrap:anywhere}
@@ -1780,8 +1780,7 @@ id="partnerDetails"
 ></div></section><section class="flat-payment-section" id="flatPaymentSection" hidden><div class="flat-payment-header"><div><h2 class="flat-payment-title">Flat Payment Schedule</h2><p class="flat-payment-subtitle">
 View the agreed installment schedule and recorded payments for an individual flat.
 </p></div><button class="partners-close" id="flatPaymentClose" type="button">Close</button></div><div class="flat-payment-controls"><div><label for="flatPaymentSelect">Select Flat</label></div><div><select id="flatPaymentSelect"><option value="">Select a flat...</option></select></div><div id="flatPaymentStatus">Select a flat to view its schedule and payment history.</div></div><div class="flat-payment-details" id="flatPaymentDetails"></div><div class="flat-payment-note">
-Flat G3 is populated using the payment terms supplied. Calendar due dates and actual receipts have not been supplied;
-record confirmed dates and received payments in <strong>FLAT_PAYMENT_DATA</strong> before relying on the schedule.
+Add each confirmed receipt in <strong>FLAT_PAYMENT_DATA</strong>. The page adds recorded payments and calculates the remaining balance from the listed flat price.
 </div></section><section class="explorer"><div class="explorer-head"><div><div class="section-kicker">
 Floor Explorer
 </div><div class="explorer-title">
@@ -2665,10 +2664,19 @@ cashPayments: []
 }
 ];
 const FLAT_PAYMENT_DATA = {
-// Optional per-flat overrides: add verified actual receipts here.
-// Example key: "A|G3". If a key is absent, the schedule is generated
-// automatically from that flat's number, size, and listed total price.
-// payments: [{ date, reference, method, amount, note }]
+  // Add only confirmed payments. Use the exact block and flat number.
+  // Example only (keep commented until you replace it with a real receipt):
+  // "A|G3": {
+  //   payments: [
+  //     {
+  //       date: "2026-10-17",
+  //       reference: "REC001",
+  //       method: "Bank Transfer",
+  //       amount: 500000,
+  //       note: "Payment received"
+  //     }
+  //   ]
+  // }
 };
 const flatPaymentToggle = document.getElementById("flatPaymentToggle");
 const flatPaymentSection = document.getElementById("flatPaymentSection");
@@ -2798,13 +2806,17 @@ const payments = Array.isArray(record.payments) ? record.payments : [];
 const scheduledTotal = schedule.reduce((sum,row)=>sum+(Number(row.amount)||0),0);
 const paidTotal = payments.reduce((sum,row)=>sum+(Number(row.amount)||0),0);
 const balance = Math.max(0,scheduledTotal-paidTotal);
+const remainingBalance = Math.max(0,price-paidTotal);
+const paidPercent = price > 0 ? Math.min(100,(paidTotal/price)*100) : 0;
 flatPaymentStatus.textContent = `Showing payment details for Block ${block}, Flat ${flatNumber}.`;
 flatPaymentDetails.innerHTML = `
 <div class="flat-payment-summary">
 ${flatPaymentInfoCard("BLOCK / FLAT",`Block ${block} · ${flatNumber}`)}
-${flatPaymentInfoCard("FLAT PRICE",flatPaymentMoney(price),true)}
+${flatPaymentInfoCard("TOTAL FLAT PRICE",flatPaymentMoney(price),true)}
 ${flatPaymentInfoCard("SCHEDULED TOTAL",schedule.length?flatPaymentMoney(scheduledTotal):"Not entered",true)}
-${flatPaymentInfoCard("TOTAL RECEIVED",payments.length?flatPaymentMoney(paidTotal):"Not entered",true)}
+${flatPaymentInfoCard("TOTAL PAID",flatPaymentMoney(paidTotal),true)}
+${flatPaymentInfoCard("REMAINING BALANCE",flatPaymentMoney(remainingBalance),true)}
+${flatPaymentInfoCard("PAID PERCENTAGE",`${paidPercent.toFixed(2)}%`) }
 </div>
 ${record.terms ? flatPaymentTable("FLAT PRICE & PAYMENT TERMS",["Description","Value"],[
 {label:"Flat Size (Sft)",value:Number(record.terms.flatSize).toLocaleString("en-IN")},
@@ -2817,9 +2829,9 @@ ${record.terms ? flatPaymentTable("FLAT PRICE & PAYMENT TERMS",["Description","V
 {label:"Remaining per Floor",value:`${Number(record.terms.remainingPerFloorPercent).toFixed(2)}%`}
 ],"",row=>`<tr><td>${flatPaymentEscape(row.label)}</td><td>${flatPaymentEscape(row.value)}</td></tr>`) : ""}
 <div class="flat-payment-grid">
-${flatPaymentTable("INSTALLMENT SCHEDULE",["Installment","Due Date / Milestone","Amount","Status"],schedule,
+${flatPaymentTable("INSTALLMENT SCHEDULE",["Installment","Amount","Status"],schedule,
 "No installment schedule has been entered for this flat.",
-row=>`<tr><td>${flatPaymentEscape(row.installment||"—")}</td><td>${flatPaymentDate(row.dueDate)}</td><td>${flatPaymentMoney(row.amount)}</td><td>${flatPaymentEscape(row.status||"—")}</td></tr>`)}
+row=>`<tr><td>${flatPaymentEscape(row.installment||"—")}</td><td>${flatPaymentMoney(row.amount)}</td><td>${flatPaymentEscape(row.status||"—")}</td></tr>`)}
 ${flatPaymentTable("ACTUAL PAYMENT HISTORY",["Date","Receipt / Ref","Method","Amount"],payments,
 "No actual payments have been recorded for this flat.",
 row=>`<tr><td>${flatPaymentDate(row.date)}</td><td>${flatPaymentEscape(row.reference||"—")}${row.note?`<div style="color:var(--muted);margin-top:4px">${flatPaymentEscape(row.note)}</div>`:""}</td><td>${flatPaymentEscape(row.method||"—")}</td><td>${flatPaymentMoney(row.amount)}</td></tr>`)}
