@@ -2682,19 +2682,19 @@ cashPayments: []
 }
 ];
 const FLAT_PAYMENT_DATA = {
-  // Add only confirmed payments. Use the exact block and flat number.
-  // Example only (keep commented until you replace it with a real receipt):
-  // "A|G3": {
-  //   payments: [
-  //     {
-  //       date: "2026-10-17",
-  //       reference: "REC001",
-  //       method: "Bank Transfer",
-  //       amount: 500000,
-  //       note: "Payment received"
-  //     }
-  //   ]
-  // }
+  // All flats from Blocks A and B are loaded automatically from the app's flat list.
+  // Add only confirmed payments here. Keep existing entries when adding new payments.
+  "A|701": {
+    payments: [
+      {
+        date: "2023-03-01",
+        reference: "",
+        method: "Other",
+        amount: 1000000,
+        note: "Payment received"
+      }
+    ]
+  }
 };
 // New payments entered in the form are saved in this browser's local storage.
 // This is device/browser-specific, not a shared server database.
