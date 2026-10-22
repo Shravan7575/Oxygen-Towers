@@ -2703,23 +2703,23 @@ const FLAT_PAYMENT_DATA = {
   "A|516": { payments: [{ date: "2023-03-01", reference: "", method: "Other", amount: 200000, note: "Payment received" }] },
   // Additional confirmed payments received in August and September 2026.
   "A|815": { payments: [
-    { date: "2026-08-30", reference: "", method: "Other", amount: 100000, note: "Payment received" },
-    { date: "2026-09-07", reference: "", method: "Other", amount: 400000, note: "Payment received" }
+    { date: "2026-08-30", reference: "", method: "Bank Transfer", amount: 100000, note: "Payment received" },
+    { date: "2026-09-07", reference: "", method: "Bank Transfer", amount: 400000, note: "Payment received" }
   ] },
   "A|612": { payments: [
-    { date: "2026-08-30", reference: "", method: "Other", amount: 21000, note: "Payment received" },
-    { date: "2026-09-05", reference: "", method: "Other", amount: 479000, note: "Payment received" }
+    { date: "2026-08-30", reference: "612-A", method: "Bank Transfer", amount: 21000, note: "Payment received" },
+    { date: "2026-09-05", reference: "612-A", method: "Bank Transfer", amount: 479000, note: "Payment received" }
   ] },
   "A|915": { payments: [
-    { date: "2026-08-30", reference: "", method: "Other", amount: 200000, note: "Payment received" },
-    { date: "2026-08-31", reference: "", method: "Other", amount: 300000, note: "Payment received" }
+    { date: "2026-08-30", reference: "", method: "Bank Transfer", amount: 200000, note: "Payment received" },
+    { date: "2026-08-31", reference: "", method: "Bank Transfer", amount: 300000, note: "Payment received" }
   ] },
   "A|802": { payments: [
-    { date: "2026-09-01", reference: "", method: "Other", amount: 500000, note: "Payment received" },
-    { date: "2026-09-03", reference: "", method: "Other", amount: 500000, note: "Payment received" }
+    { date: "2026-09-01", reference: "", method: "Bank Transfer", amount: 500000, note: "Payment received" },
+    { date: "2026-09-03", reference: "", method: "Bank Transfer", amount: 500000, note: "Payment received" }
   ] },
   "A|801": { payments: [
-    { date: "2026-09-10", reference: "", method: "Other", amount: 400000, note: "Payment received" }
+    { date: "2026-09-10", reference: "", method: "Bank Transfer", amount: 400000, note: "Payment received" }
   ] },
   "A|207": { payments: [
     { date: "2026-09-10", reference: "", method: "Cash", amount: 500000, note: "Payment received" }
@@ -2731,11 +2731,11 @@ const FLAT_PAYMENT_DATA = {
     { date: "2026-09-10", reference: "", method: "Cash", amount: 500000, note: "Payment received" }
   ] },
   "A|415": { payments: [
-    { date: "2026-09-30", reference: "", method: "Other", amount: 100000, note: "Payment received" }
+    { date: "2026-09-30", reference: "", method: "Bank Transfer", amount: 100000, note: "Payment received" }
   ] },
   "A|807": { payments: [
-    { date: "2026-09-08", reference: "", method: "Other", amount: 41000, note: "Payment received" },
-    { date: "2026-09-24", reference: "", method: "Other", amount: 50000, note: "Payment received" }
+    { date: "2026-09-08", reference: "", method: "Bank Transfer", amount: 41000, note: "Payment received" },
+    { date: "2026-09-24", reference: "", method: "Bank Transfer", amount: 50000, note: "Payment received" }
   ] }
 };
 // New payments entered in the form are saved in this browser's local storage.
@@ -2753,7 +2753,7 @@ function saveFlatPaymentRecords() {
 // One-time migration: move the code-seeded payments into editable browser storage,
 // removing duplicates that match on date + amount. Prefer records with receipt refs
 // and a specific payment method over generic seeded rows.
-const FLAT_PAYMENT_MIGRATION_KEY = "oxygen-towers-flat-payment-migration-v2";
+const FLAT_PAYMENT_MIGRATION_KEY = "oxygen-towers-flat-payment-migration-v3";
 function flatPaymentRecordScore(payment) {
   let score = 0;
   if (String(payment.reference || "").trim()) score += 4;
