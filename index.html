@@ -2102,12 +2102,11 @@ document.getElementById("facing").value;
 const sort =
 document.getElementById("sort").value;
 let data = getData().filter(flat => {
-if(
+if (
 search &&
-!String(flat[0])
-.toLowerCase()
-.includes(search)
-){
+!String(flat[0]).toLowerCase().includes(search) &&
+!String(flat[4]).toLowerCase().includes(search)
+) {
 return false;
 }
 if(
