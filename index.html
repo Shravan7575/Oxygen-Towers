@@ -2815,11 +2815,14 @@ if (localStorage.getItem(FLAT_PAYMENT_MIGRATION_KEY) !== "done") {
   saveFlatPaymentRecords();
   try { localStorage.setItem(FLAT_PAYMENT_MIGRATION_KEY, "done"); } catch (error) {}
 } else {
-  // Keep the A-911 default payment available if no saved payment exists.
+  // Repair older builds where seeded A-911 payments remained in code but were not editable.
+  const seeded911 = Array.isArray(FLAT_PAYMENT_DATA["A|911"]?.payments) ? FLAT_PAYMENT_DATA["A|911"].payments : [];
+  if ((!Array.isArray(savedFlatPayments["A|911"]) || savedFlatPayments["A|911"].length === 0) && seeded911.length) {
+    savedFlatPayments["A|911"] = seeded911.map(payment => ({...payment}));
+    saveFlatPaymentRecords();
+  }
   for (const key of Object.keys(FLAT_PAYMENT_DATA)) {
-    if (key !== "A|911") {
-      FLAT_PAYMENT_DATA[key].payments = [];
-    }
+    FLAT_PAYMENT_DATA[key].payments = [];
   }
 }
 const flatPaymentToggle = document.getElementById("flatPaymentToggle");
@@ -2948,9 +2951,12 @@ option.textContent.split(" · ")[2]
 const schedule = Array.isArray(record.schedule) ? record.schedule : [];
 const basePayments = Array.isArray(record.payments) ? record.payments : [];
 const userPayments = Array.isArray(savedFlatPayments[key]) ? savedFlatPayments[key] : [];
-// After migration, recorded payments are all stored together and can be edited/deleted.
+// Editable rows use their actual index in browser storage, never the combined display index.
 const payments = [...basePayments, ...userPayments];
-const paymentEntries = payments.map((payment, index) => ({ payment, editable: true, index }));
+const paymentEntries = [
+  ...basePayments.map(payment => ({ payment, editable: false, index: -1 })),
+  ...userPayments.map((payment, index) => ({ payment, editable: true, index }))
+];
 const scheduledTotal = schedule.reduce((sum,row)=>sum+(Number(row.amount)||0),0);
 const paidTotal = payments.reduce((sum,row)=>sum+(Number(row.amount)||0),0);
 const balance = Math.max(0,scheduledTotal-paidTotal);
@@ -2996,8 +3002,8 @@ flatPaymentDetails.addEventListener("click", function(event) {
   if (password !== "ncd2026@oxygen2027") { alert("Incorrect payment edit/delete password."); return; }
   const key = flatPaymentSelect.value;
   const index = Number(button.dataset.paymentIndex);
-  if (!key || !Array.isArray(savedFlatPayments[key]) || !savedFlatPayments[key][index]) {
-    alert("This saved payment could not be found."); return;
+  if (button.dataset.paymentIndex === "-1" || !key || !Array.isArray(savedFlatPayments[key]) || !savedFlatPayments[key][index]) {
+    alert("This payment is not editable in browser storage. Refresh the payment section and try again."); return;
   }
   const payment = savedFlatPayments[key][index];
   if (button.dataset.paymentAction === "delete") {
