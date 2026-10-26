@@ -2176,7 +2176,7 @@ collectionKeys.forEach(key => {
   });
 });
 const collectionElement = document.getElementById("totalCollectionCount");
-if (collectionElement) collectionElement.textContent = money(collectionTotal);
+if (collectionElement) collectionElement.textContent = "₹ ••••••••";
 let available = 0;
 let sold = 0;
 let mortgage = 0;
@@ -2908,12 +2908,11 @@ const FLAT_PAYMENT_DATA = {
   { date: "2026-09-10", reference: "", method: "Cash", amount: 500000, note: "Payment received" }
 ] },
 "A|415": { payments: [
-  { date: "2026-09-30", reference: "", method: "Bank Transfer", amount: 100000, note: "Payment received" },
-  { date: "2026-10-12", reference: "", method: "Bank Transfer", amount: 400000, note: "Payment received" }
+  { date: "2026-09-30", reference: "", method: "Bank Transfer", amount: 100000, note: "Payment received" }
 ] },
   "A|911": { payments: [
-  { date: "2026-10-23", reference: "", method: "Bank Transfer", amount: 50000, note: "Payment received" },
-  { date: "2026-10-26", reference: "", method: "Bank Transfer", amount: 50000, note: "Payment received" }
+  { date: "2026-10-23", reference: "", method: "Bank Transfer", amount: 100000, note: "Payment received" },
+  { date: "2026-10-23", reference: "", method: "Bank Transfer", amount: 50000, note: "Payment received" }
 ] },
   "A|807": { payments: [
     { date: "2026-09-08", reference: "", method: "Bank Transfer", amount: 41000, note: "Payment received" },
@@ -3615,11 +3614,11 @@ render();
       const password=window.prompt('Enter Total Collection password:');
       if(password===null) return;
       if(password!=='Oxygen@2026'){window.alert('Incorrect password.');return;}
-      panel.hidden=false;card.setAttribute('aria-expanded','true');render();panel.scrollIntoView({behavior:'smooth',block:'start'});
-    } else {panel.hidden=true;card.setAttribute('aria-expanded','false');}
+      panel.hidden=false;card.setAttribute('aria-expanded','true');const totalDisplay=document.getElementById('totalCollectionCount');if(totalDisplay)totalDisplay.textContent='₹'+collectionTotal.toLocaleString('en-IN');render();panel.scrollIntoView({behavior:'smooth',block:'start'});
+    } else {panel.hidden=true;card.setAttribute('aria-expanded','false');const totalDisplay=document.getElementById('totalCollectionCount');if(totalDisplay)totalDisplay.textContent='₹ ••••••••';}
   }
   card.addEventListener('click',toggle);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
-  $('collectionCloseButton').addEventListener('click',()=>{panel.hidden=true;card.setAttribute('aria-expanded','false');});
+  $('collectionCloseButton').addEventListener('click',()=>{panel.hidden=true;card.setAttribute('aria-expanded','false');const totalDisplay=document.getElementById('totalCollectionCount');if(totalDisplay)totalDisplay.textContent='₹ ••••••••';});
   ['collectionFlatSearch','collectionBlockFilter','collectionReceiptFilter'].forEach(id=>$(id).addEventListener(id==='collectionFlatSearch'?'input':'change',render));
   // Refresh when the existing dashboard refreshes recorded payment totals.
   const originalUpdate=window.updateStats;
