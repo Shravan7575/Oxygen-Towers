@@ -1691,6 +1691,17 @@ button,.block-btn,.filter-btn{border-radius:10px}
 .eyebrow{font-size:clamp(26px,2.2vw,30px)!important;line-height:1.25!important;letter-spacing:2px!important;}
 .eyebrow i{width:32px!important;height:3px!important;}
 @media(max-width:640px){.eyebrow{font-size:clamp(20px,5vw,26px)!important;letter-spacing:1px!important;}}
+
+/* Block-wise SFT summary: isolated styles */
+.sft-summary{margin:22px 0 26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.sft-block-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+.sft-block-title{font:800 18px Manrope,sans-serif;color:var(--navy);margin-bottom:14px}
+.sft-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sft-metric{background:#f5f8fb;border-radius:12px;padding:14px}
+.sft-metric span{display:block;color:var(--muted);font-size:12px;font-weight:700;margin-bottom:6px}
+.sft-metric strong{display:block;color:var(--navy);font-size:clamp(18px,2.2vw,25px);font-weight:900;font-variant-numeric:tabular-nums}
+.sft-metric.sold strong{color:var(--green)}
+@media(max-width:650px){.sft-summary{grid-template-columns:1fr}.sft-block-card{padding:16px}}
 </style>
 <style>
 .collection-stat{cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;}
@@ -1801,6 +1812,16 @@ id="rmcCount"
 0
 </div><div class="stat-note">
 Reserved
+</div></div></section><section class="sft-summary" id="blockSftSummary" aria-label="Block-wise SFT summary">
+<div class="sft-block-card"><div class="sft-block-title">Block A — SFT Summary</div><div class="sft-metrics">
+<div class="sft-metric"><span>Total SFT</span><strong id="blockATotalSft">0</strong></div>
+<div class="sft-metric sold"><span>Total SFT Sold</span><strong id="blockASoldSft">0</strong></div>
+<div class="sft-metric"><span>Total SFT Remaining</span><strong id="blockARemainingSft">0</strong></div>
+</div></div>
+<div class="sft-block-card"><div class="sft-block-title">Block B — SFT Summary</div><div class="sft-metrics">
+<div class="sft-metric"><span>Total SFT</span><strong id="blockBTotalSft">0</strong></div>
+<div class="sft-metric sold"><span>Total SFT Sold</span><strong id="blockBSoldSft">0</strong></div>
+<div class="sft-metric"><span>Total SFT Remaining</span><strong id="blockBRemainingSft">0</strong></div>
 </div></div></section><section id="collectionDetailsPanel" class="collection-details-panel" hidden aria-label="Flat-wise collection">
 <div class="collection-panel-head"><div><div class="section-kicker">PAYMENT BREAKDOWN</div><div class="section-title">Flat-wise Total Collection</div><div class="section-description">Recorded receipts only. Scheduled or expected payments are not counted.</div></div><button id="collectionCloseButton" type="button" class="collection-close">Close ✕</button></div>
 <div class="collection-summary"><div><span>Total Received</span><strong id="collectionPanelTotal">₹0</strong></div><div><span>Flats with Receipts</span><strong id="collectionFlatsPaid">0</strong></div><div><span>Payment Entries</span><strong id="collectionPaymentEntries">0</strong></div></div>
@@ -2153,6 +2174,21 @@ function money(value){
 return "₹" +
 Number(value).toLocaleString("en-IN");
 }
+function updateBlockSftSummary(){
+  const updateBlock = (rows, prefix) => {
+    const total = rows.reduce((sum, flat) => sum + (Number(flat[4]) || 0), 0);
+    const sold = rows.reduce((sum, flat) => sum + (flat[6] === "SOLD" ? (Number(flat[4]) || 0) : 0), 0);
+    const fmtSft = value => Math.round(value).toLocaleString("en-IN") + " SFT";
+    const totalEl = document.getElementById(prefix + "TotalSft");
+    const soldEl = document.getElementById(prefix + "SoldSft");
+    const remainingEl = document.getElementById(prefix + "RemainingSft");
+    if (totalEl) totalEl.textContent = fmtSft(total);
+    if (soldEl) soldEl.textContent = fmtSft(sold);
+    if (remainingEl) remainingEl.textContent = fmtSft(Math.max(0, total - sold));
+  };
+  updateBlock(A, "blockA");
+  updateBlock(B, "blockB");
+}
 function updateStats(){
 // Use the currently selected block so the totals change with the block buttons.
 const data = getData();
@@ -2220,6 +2256,7 @@ availableNote.textContent = "Block B only";
 availableNote.textContent = "Across Block A & Block B";
 }
 }
+  updateBlockSftSummary();
 }
 function visualClass(flat){
 if(flat[7] === "Mortgage"){
