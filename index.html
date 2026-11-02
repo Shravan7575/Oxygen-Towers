@@ -4013,3 +4013,50 @@ render();
 </script>
 
 </body></html>
+
+<style id="oxygen-final-price-no-clipping">
+/* Compact price row: keep label and full rupee amount visible in narrow two-column cards */
+@media (max-width: 600px) {
+  .flat .price-box {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 4px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 6px 5px !important;
+    overflow: visible !important;
+  }
+  .flat .price-label {
+    flex: 0 0 42px !important;
+    width: 42px !important;
+    min-width: 0 !important;
+    max-width: 42px !important;
+    white-space: normal !important;
+    font-size: 7px !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0 !important;
+  }
+  .flat .price {
+    flex: 1 1 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    padding: 7px 4px !important;
+    margin: 0 !important;
+    font-size: clamp(10px, 3.1vw, 13px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.5px !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    overflow-wrap: normal !important;
+    word-break: keep-all !important;
+    text-align: center !important;
+  }
+}
+</style>
