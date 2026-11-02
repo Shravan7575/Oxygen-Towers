@@ -1985,6 +1985,55 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(212,166,77,.65)!impo
 .hero-content .hero-actions{order:4!important;justify-content:center!important}
 @media(max-width:600px){.hero-content{padding-top:22px!important}.hero-center-logo{margin-bottom:17px!important}.hero-center-logo .brand-logo{width:clamp(145px,45vw,190px)!important;max-height:100px!important}.hero-content .eyebrow{font-size:clamp(11px,3.2vw,15px)!important;letter-spacing:1px!important}.hero-content h1{font-size:clamp(36px,9vw,54px)!important;letter-spacing:-.04em!important}.hero-content h1 span{margin-left:.12em!important}.hero-content .hero-description{font-size:14px!important;line-height:1.6!important}}
 </style>
+
+<style id="oxygen-flat-price-inline-and-logo-top-fix">
+/* Keep the flat-price label and full amount together on one line. */
+.flat .price-box{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  flex-wrap:nowrap!important;
+  gap:6px!important;
+  min-width:0!important;
+  padding:9px 14px 9px 10px!important;
+  box-sizing:border-box!important;
+}
+.flat .price-label{
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+  margin:0!important;
+  font-size:8px!important;
+  letter-spacing:.15px!important;
+}
+.flat .price{
+  flex:0 1 auto!important;
+  min-width:0!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  margin:0!important;
+  padding:0 5px 0 0!important;
+  font-size:clamp(11px,3.6vw,15px)!important;
+  line-height:1.2!important;
+  letter-spacing:-.35px!important;
+}
+/* Remove excess layout spacing above the centered NorthCity logo. */
+.hero-inner{padding-top:0!important}
+.hero .nav{padding:0!important;margin:0!important;min-height:0!important}
+.hero-content{padding-top:0!important}
+.hero-center-logo{margin-top:0!important;padding-top:0!important}
+.hero-center-logo .brand-logo{margin-top:0!important;padding-top:0!important}
+@media(max-width:600px){
+  .flat .price-box{gap:5px!important;padding:9px 15px 9px 9px!important}
+  .flat .price-label{font-size:8px!important}
+  .flat .price{font-size:clamp(10.5px,3.45vw,13px)!important;padding-right:6px!important}
+  .hero-inner{padding-top:0!important}
+  .hero .nav{padding:0!important;margin:0!important}
+  .hero-content{padding-top:0!important}
+  .hero-center-logo{margin:0 auto 14px!important}
+}
+</style>
 </head><body><header class="hero"><div class="hero-inner"><nav class="nav"><div class="top-contact"><a
 class="whatsapp-top"
 href="https://wa.me/917386326575"
