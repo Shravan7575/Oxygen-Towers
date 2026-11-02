@@ -2024,6 +2024,64 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(212,166,77,.65)!impo
   }
 }
 </style>
+
+<style id="oxygen-final-mobile-price-and-logo-alignment">
+/* Keep the entire price on one line inside each flat card */
+@media (max-width: 600px) {
+  .price-box {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 7px 8px !important;
+    overflow: hidden !important;
+  }
+  .price-label {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    white-space: nowrap !important;
+    font-size: 8px !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+  }
+  .price {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: calc(100% - 75px) !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    overflow-wrap: normal !important;
+    word-break: keep-all !important;
+    text-align: left !important;
+    font-size: clamp(15px, 4.2vw, 18px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.45px !important;
+    padding: 8px 10px !important;
+    margin: 0 !important;
+    border: 1px solid #c9e3f7 !important;
+    background: #f1f8ff !important;
+    box-shadow: 0 4px 12px rgba(10,75,125,.06) !important;
+  }
+}
+/* Remove the empty navigation gap and center the NorthCity logo neatly at the top */
+.hero-inner { padding-top: 14px !important; }
+.hero-inner > .nav { min-height: 0 !important; height: 0 !important; margin: 0 !important; padding: 0 !important; gap: 0 !important; }
+.hero-content { padding-top: 0 !important; margin-top: 0 !important; }
+.hero-center-logo { margin: 0 auto 16px !important; padding: 0 !important; }
+.hero-center-logo .brand-logo { display: block !important; margin: 0 auto !important; object-position: center center !important; }
+@media (max-width: 600px) {
+  .hero-inner { padding-top: 10px !important; }
+  .hero-center-logo { margin-bottom: 13px !important; }
+}
+</style>
 </head><body><header class="hero"><div class="hero-inner"><nav class="nav"><div class="top-contact"><a
 class="whatsapp-top"
 href="https://wa.me/917386326575"
