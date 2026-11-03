@@ -1759,6 +1759,27 @@ button,.block-btn,.filter-btn{border-radius:10px}
 @media(max-width:720px){.explorer{padding:15px!important;border-radius:19px!important}.explorer-head{margin-bottom:14px!important}.floor-head{padding:12px 13px!important;min-height:66px!important}.floor-body{padding:10px!important}.flat-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.flat{min-height:166px!important;padding:11px 10px 10px!important}.flat-number{font-size:23px!important}.flat-type{font-size:11px!important}.badge{font-size:7px!important;padding:4px 5px!important}.price{font-size:12px!important}.price-box{padding:7px!important}.charges-note{font-size:7px!important}.inventory-legend{padding:11px!important;gap:9px 12px!important}}
 @media(max-width:360px){.flat-grid{grid-template-columns:1fr!important}.flat{min-height:0!important}}
 
+
+/* Clubhouse amenities panel */
+.partner-action{gap:10px;flex-wrap:wrap;align-items:center}
+.amenities-toggle{border:0;border-radius:12px;padding:12px 18px;background:linear-gradient(135deg,#087e72,#19a58d);color:#fff;font:800 14px/1 "Manrope",sans-serif;cursor:pointer;box-shadow:0 8px 20px rgba(8,126,114,.16);transition:.2s ease}
+.amenities-toggle:hover{transform:translateY(-1px);box-shadow:0 12px 25px rgba(8,126,114,.22)}
+.amenities-toggle.active{background:linear-gradient(135deg,#075e57,#0b8f7e)}
+.amenities-section{margin-top:22px;padding:24px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow)}
+.amenities-section[hidden]{display:none!important}
+.amenities-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}
+.amenities-kicker{font-size:10px;letter-spacing:1.5px;font-weight:900;color:#078575;margin-bottom:6px}
+.amenities-title{margin:0;color:var(--navy);font-size:24px;font-weight:900}
+.amenities-subtitle{margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
+.amenities-close{border:1px solid var(--line);border-radius:10px;background:#f5f8fb;color:var(--navy);font-weight:800;padding:10px 15px;cursor:pointer}
+.amenities-category{margin-top:22px}.amenities-category h3{margin:0 0 13px;color:var(--navy);font-size:17px;font-weight:900}
+.amenities-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.amenity-card{display:flex;align-items:flex-start;gap:12px;min-width:0;padding:15px;border:1px solid #e2eaf1;border-radius:14px;background:linear-gradient(145deg,#fff,#f8fbfd)}
+.amenity-card>span{flex:0 0 36px;width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:#e8f5f2;font-size:19px}
+.amenity-card h4{margin:1px 0 5px;color:#183650;font-size:13px;line-height:1.35;font-weight:900}
+.amenity-card p{margin:0;color:#687b8e;font-size:11px;line-height:1.55}
+@media(max-width:900px){.amenities-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.amenities-section{padding:16px;border-radius:16px}.amenities-header{gap:10px}.amenities-title{font-size:20px}.amenities-subtitle{font-size:12px}.amenities-grid{grid-template-columns:1fr}.amenity-card{padding:13px}.amenities-close{padding:9px 11px;font-size:11px}}
 </style>
 <style>
 .collection-stat{cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;}
@@ -2132,7 +2153,7 @@ class="block-btn"
 data-block="B"
 >
 Block B
-</button></div></div><div class="partner-action"><button
+</button></div></div><div class="partner-action"><button class="amenities-toggle" id="amenitiesToggle" type="button">🏡 Clubhouse Amenities</button><button
 class="partners-toggle"
 id="partnersToggle"
 type="button"
@@ -2214,7 +2235,49 @@ Showing
 flats
 </div><div>
 Oxygen Towers • NorthCity Developers
-</div></div></div></section><section
+</div></div></div></section><section class="amenities-section" id="amenitiesSection" hidden>
+<div class="amenities-header"><div><div class="amenities-kicker">OXYGEN TOWERS LIFESTYLE</div><h2 class="amenities-title">Clubhouse & Community Amenities</h2><p class="amenities-subtitle">Thoughtfully planned spaces for fitness, recreation, convenience and sustainable living.</p></div><button class="amenities-close" id="amenitiesClose" type="button">Close</button></div>
+<div class="amenities-category"><h3>🏛️ Clubhouse</h3><div class="amenities-grid">
+<div class="amenity-card"><span>🎉</span><div><h4>Multipurpose Banquet Hall</h4><p>An air-conditioned venue with a pantry, designed for celebrations, social gatherings and residents’ association meetings.</p></div></div>
+<div class="amenity-card"><span>🏋️</span><div><h4>Fitness Centre</h4><p>A well-equipped fitness space with cardio machines and strength-training equipment.</p></div></div>
+<div class="amenity-card"><span>🧘</span><div><h4>Walking, Yoga & Meditation Studio</h4><p>A top-floor walking track, complemented by a calm, naturally lit studio for yoga, aerobics and meditation.</p></div></div>
+<div class="amenity-card"><span>🎱</span><div><h4>Indoor Games Lounge</h4><p>A dedicated recreation space for table tennis, carrom, chess and billiards.</p></div></div>
+<div class="amenity-card"><span>🏊</span><div><h4>Swimming Pool</h4><p>A top-floor swimming pool with a separate children’s pool, deck seating and changing facilities.</p></div></div>
+<div class="amenity-card"><span>🧸</span><div><h4>Kids’ Activity Room</h4><p>A dedicated indoor space for play and age-appropriate activities for young children.</p></div></div>
+<div class="amenity-card"><span>📚</span><div><h4>Library & Reading Lounge</h4><p>A peaceful reading area with comfortable seating.</p></div></div>
+<div class="amenity-card"><span>💻</span><div><h4>Co-working Space</h4><p>A convenient work hub with Wi-Fi, designed to support remote working.</p></div></div>
+<div class="amenity-card"><span>🎬</span><div><h4>Mini Theatre</h4><p>An audio-visual room for movie nights and community screenings.</p></div></div>
+<div class="amenity-card"><span>🛒</span><div><h4>Convenience Store</h4><p>An on-site store for everyday essentials and daily needs.</p></div></div>
+</div></div>
+<div class="amenities-category"><h3>🌳 Outdoor & Landscape</h3><div class="amenities-grid">
+<div class="amenity-card"><span>🌿</span><div><h4>Oxygen Garden</h4><p>A landscaped central green with neem, peepal, areca palms, bamboo and other native plant species.</p></div></div>
+<div class="amenity-card"><span>🚶</span><div><h4>Walking & Jogging Track</h4><p>A landscaped route through the green spaces, suitable for walking and jogging.</p></div></div>
+<div class="amenity-card"><span>🛝</span><div><h4>Children’s Play Area</h4><p>Children’s play equipment set on soft-surfaced flooring.</p></div></div>
+<div class="amenity-card"><span>💪</span><div><h4>Outdoor Gym</h4><p>Outdoor exercise stations for open-air workouts.</p></div></div>
+<div class="amenity-card"><span>🏀</span><div><h4>Multipurpose Sports Court</h4><p>A versatile sports area for half-court basketball, badminton and box cricket.</p></div></div>
+<div class="amenity-card"><span>🪑</span><div><h4>Senior Citizens’ Sit-out</h4><p>Shaded seating areas beneath pergolas for relaxation.</p></div></div>
+<div class="amenity-card"><span>🎊</span><div><h4>Party Lawn</h4><p>An open green space for community gatherings, celebrations and festivals.</p></div></div>
+<div class="amenity-card"><span>🎭</span><div><h4>Amphitheatre</h4><p>An outdoor performance space for cultural programmes and community events.</p></div></div>
+<div class="amenity-card"><span>🌇</span><div><h4>Rooftop Terrace Garden</h4><p>A landscaped rooftop retreat with seating and views across the surrounding green belt.</p></div></div>
+</div></div>
+<div class="amenities-category"><h3>🛎️ Convenience & Services</h3><div class="amenities-grid">
+<div class="amenity-card"><span>🏢</span><div><h4>Grand Entrance Lobbies</h4><p>An elegant double-height entrance lobby with seating in each block.</p></div></div>
+<div class="amenity-card"><span>🛋️</span><div><h4>Visitors’ Lounge</h4><p>A welcoming reception and waiting area near the entrance.</p></div></div>
+<div class="amenity-card"><span>🗂️</span><div><h4>Association Office</h4><p>A dedicated workspace for the residents’ association and facility-management team.</p></div></div>
+<div class="amenity-card"><span>🚘</span><div><h4>Staff & Drivers’ Rest Rooms</h4><p>Designated rest areas with toilet facilities in the cellar.</p></div></div>
+<div class="amenity-card"><span>📶</span><div><h4>Wi-Fi Zones</h4><p>Wi-Fi connectivity in the clubhouse and designated common areas.</p></div></div>
+<div class="amenity-card"><span>🧹</span><div><h4>Professional Maintenance</h4><p>Facility-management support for housekeeping, upkeep and day-to-day common-area services.</p></div></div>
+</div></div>
+<div class="amenities-category"><h3>♻️ Green & Sustainable Features</h3><div class="amenities-grid">
+<div class="amenity-card"><span>💧</span><div><h4>Sewage Treatment Plant</h4><p>Treated wastewater reused for flushing and landscape irrigation.</p></div></div>
+<div class="amenity-card"><span>🌧️</span><div><h4>Rainwater Harvesting</h4><p>Rainwater recharge pits to help replenish groundwater.</p></div></div>
+<div class="amenity-card"><span>☀️</span><div><h4>Solar Lighting</h4><p>Solar-powered lighting for selected common and landscaped areas.</p></div></div>
+<div class="amenity-card"><span>💡</span><div><h4>LED Common Lighting</h4><p>Energy-efficient LED lighting throughout common areas.</p></div></div>
+<div class="amenity-card"><span>🔌</span><div><h4>EV Charging</h4><p>EV-charging provision in the cellar/common parking areas.</p></div></div>
+<div class="amenity-card"><span>🗑️</span><div><h4>Waste Management</h4><p>Waste segregation facilities with an organic-waste converter.</p></div></div>
+</div></div>
+</section>
+<section
 class="partners-section"
 id="partnersSection"
 hidden
@@ -3832,6 +3895,26 @@ partnerSelect.addEventListener(
 "change",
 loadSelectedPartner
 );
+// Public clubhouse amenities panel: initialize independently of block filters.
+(function(){
+  const toggle = document.getElementById("amenitiesToggle");
+  const panel = document.getElementById("amenitiesSection");
+  const close = document.getElementById("amenitiesClose");
+  if (!toggle || !panel || !close) return;
+
+  toggle.addEventListener("click", function(){
+    panel.hidden = false;
+    toggle.classList.add("active");
+    panel.scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  close.addEventListener("click", function(){
+    panel.hidden = true;
+    toggle.classList.remove("active");
+    toggle.scrollIntoView({behavior:"smooth", block:"center"});
+  });
+})();
+
 document
 .querySelectorAll(".block-btn")
 .forEach(button => {
