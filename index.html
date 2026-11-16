@@ -2190,7 +2190,26 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(212,166,77,.65)!impo
 }
 </style>
 
-</head><body><header class="hero"><div class="hero-inner"><nav class="nav"><div class="top-contact"><a
+<style id="oxygen-land-owner-styles">
+#soldFlatsCard{border:1px solid #f3d7b4!important;background:linear-gradient(145deg,#fffaf4 0%,#fff 92%)!important;box-shadow:inset 0 3px 0 #e7a45b,0 7px 20px rgba(190,120,45,.07)!important}
+#soldFlatsCard .stat-label,#soldFlatsCard .stat-note{color:#956333!important}
+#soldFlatsCard .sold-flats-action{background:#f8e4cc!important;color:#84501e!important;box-shadow:none!important}
+#soldFlatsCard:hover,#soldFlatsCard:focus-visible{border-color:#e9bd8e!important;box-shadow:0 12px 25px rgba(190,120,45,.13)!important;outline:2px solid rgba(231,164,91,.16)!important}
+/* Land Owner card: match Sold Flats with a thin, soft orange border and gentle background. */
+#landOwnerCard{cursor:pointer!important;border:1px solid #f3d7b4!important;background:linear-gradient(145deg,#fffaf4 0%,#fff 92%)!important;box-shadow:0 5px 14px rgba(190,120,45,.06)!important}
+#landOwnerCard .stat-label,#landOwnerCard .stat-note{color:#956333!important} #landOwnerCard .stat-number{color:#956333!important}
+#landOwnerCard .land-owner-action{display:inline-flex;align-items:center;padding:5px 8px;border-radius:999px;background:#f8e4cc;color:#84501e;font-size:9px;font-weight:800;white-space:nowrap}
+#landOwnerCard:hover,#landOwnerCard:focus-visible{transform:translateY(-2px);border-color:#e9bd8e!important;box-shadow:0 8px 18px rgba(190,120,45,.10)!important;outline:1px solid rgba(231,164,91,.14);outline-offset:2px}
+/* Floor sections use a quiet cream header instead of a strong color block. */
+.land-owner-floor{margin-top:16px;border:1px solid #f3d7b4;border-radius:12px;overflow:hidden;background:#fff}
+.land-owner-floor h3{padding:12px 16px;background:#fffaf4;color:#956333;font:700 15px Manrope,sans-serif;border-bottom:1px solid #f3d7b4}
+.land-owner-table{width:100%;border-collapse:collapse;min-width:620px}
+.land-owner-table th,.land-owner-table td{padding:10px 12px;text-align:left;border-bottom:1px solid #edf1f5;font-size:12px}
+.land-owner-table th{background:#fbf9f6;color:#647487;font-size:10px;letter-spacing:.05em}
+.land-owner-table td:first-child{font-weight:800;color:#17324d}
+.land-owner-table tfoot td{font-weight:800;background:#fffaf4;color:#956333}.land-owner-table-wrap{overflow-x:auto}
+@media(max-width:760px){#landOwnerCard .land-owner-action{font-size:8px;padding:4px 6px}.land-owner-table th,.land-owner-table td{padding:9px 8px;font-size:11px}}
+</style></head><body><header class="hero"><div class="hero-inner"><nav class="nav"><div class="top-contact"><a
 class="whatsapp-top"
 href="https://wa.me/917386326575"
 target="_blank" rel="noopener"
@@ -2233,7 +2252,7 @@ id="mortgageCount"
 0
 </div><div class="stat-note">
 Special category
-</div></div><div class="stat"><div class="stat-label">
+</div></div><div class="stat" id="landOwnerCard" role="button" tabindex="0" aria-expanded="false" aria-controls="landOwnerPanel" title="Click to view land owner flats floor-wise"><div class="stat-label">Land Owner <span class="land-owner-action" aria-hidden="true">☷ &nbsp; TAP TO VIEW LIST</span></div><div class="stat-number">87</div><div class="stat-note">Floor-wise land owner flat details</div></div><div class="stat"><div class="stat-label">
 City Level
 </div><div
 class="stat-number"
@@ -2267,7 +2286,7 @@ Reserved
 <div class="collection-filter-row"><label for="soldBlockFilter">Select Block</label><select id="soldBlockFilter" aria-label="Select block"><option value="A">Block A</option><option value="B">Block B</option></select></div>
 <div class="collection-table-wrap"><table class="collection-table"><thead><tr><th>Flat No.</th><th>Name / Customer</th><th>Payment / Flat Price</th><th>SFT</th><th>Floor</th><th>Facing</th></tr></thead><tbody id="collectionFlatRows"></tbody></table></div>
 <p class="collection-footnote">Only flats marked SOLD in the inventory are shown. Payment / Flat Price displays the listed flat price.</p>
-</section><section class="find-section"><div class="section-heading"><div><div class="section-kicker">
+</section><section id="landOwnerPanel" class="collection-details-panel land-owner-panel" hidden aria-label="Land owner flats list"><div class="collection-panel-head"><div><div class="section-kicker">LAND OWNER FLATS</div><div class="section-title">Land Owner Flats – Floor-wise List</div><div class="section-description">All land owner flats across Blocks A and B, grouped by floor.</div></div><button id="landOwnerCloseButton" type="button" class="collection-close">Close ✕</button></div><div id="landOwnerFloorTables"></div></section><section class="find-section"><div class="section-heading"><div><div class="section-kicker">
 Find Your Flat
 </div><div class="section-title">
 Choose Your Flat
@@ -4275,4 +4294,35 @@ render();
 })();
 </script>
 
+<script id="oxygen-land-owner-script">
+(function(){
+ const card=document.getElementById('landOwnerCard'),panel=document.getElementById('landOwnerPanel');if(!card||!panel)return;
+ const floors={"GROUND FLOOR": [["G4", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["G5", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["G7", "A", "EAST FACING", "1160", "", "MORTGAGE"], ["G8", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["G9", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["G10", "A", "WEST FACING", "1160", "", "MORTGAGE"], ["G12", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["G13", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["G21", "B", "WEST FACING", "1205", "", "MORTGAGE"], ["G22", "B", "EAST FACING", "1205", "", "MORTGAGE"]], "FIRST FLOOR": [["105", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["107", "A", "EAST FACING", "1160", "", "MORTGAGE"], ["109", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["110", "A", "WEST FACING", "1160", "", "MORTGAGE"], ["112", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["113", "A", "NORTH FACING", "1220", "", "MORTGAGE"], ["117", "B", "NORTH FACING", "1205", "", "MORTGAGE"], ["121", "B", "WEST FACING", "1205", "", "MORTGAGE"], ["122", "B", "EAST FACING", "1205", "", "MORTGAGE"], ["126", "B", "WEST FACING", "1205", "", "MORTGAGE"]], "SECOND FLOOR": [["201", "A", "EAST FACING", "", "1780", ""], ["203", "A", "NORTH FACING", "", "2065", "CITY LEVEL"], ["206", "A", "WEST FACING", "", "1780", "CITY LEVEL"], ["210", "A", "WEST FACING", "1425", "", "CITY LEVEL"], ["211", "A", "EAST FACING", "", "1780", "CITY LEVEL"], ["214", "A", "NORTH FACING", "", "2065", ""], ["216", "A", "WEST FACING", "", "1780", "CITY LEVEL"], ["219", "B", "NORTH FACING", "", "2280", ""], ["221", "B", "WEST FACING", "1400", "", "CITY LEVEL"], ["224", "B", "NORTH FACING", "", "2280", ""], ["225", "B", "EAST FACING", "", "2305", ""]], "THIRD FLOOR": [["301", "A", "EAST FACING", "", "1780", ""], ["303", "A", "NORTH FACING", "", "2065", ""], ["306", "A", "WEST FACING", "", "1780", ""], ["311", "A", "EAST FACING", "", "1780", ""], ["312", "A", "NORTH FACING", "1410", "", ""], ["314", "A", "NORTH FACING", "", "2065", ""], ["315", "A", "EAST FACING", "", "2440", ""], ["316", "A", "WEST FACING", "", "1780", ""], ["317", "B", "EAST FACING", "1400", "", ""], ["320", "B", "NORTH FACING", "", "1900", ""], ["322", "B", "EAST FACING", "1400", "", ""], ["324", "B", "NORTH FACING", "", "2280", ""], ["326", "B", "WEST FACING", "1400", "", ""]], "FOURTH FLOOR": [["401", "A", "EAST FACING", "", "1780", ""], ["402", "A", "WEST FACING", "", "2440", ""], ["403", "A", "NORTH FACING", "", "2065", ""], ["406", "A", "WEST FACING", "", "1780", ""], ["416", "A", "WEST FACING", "", "1780", ""], ["418", "B", "WEST FACING", "", "2305", ""], ["419", "B", "NORTH FACING", "", "2280", ""], ["420", "B", "NORTH FACING", "", "1900", ""], ["421", "B", "WEST FACING", "1400", "", ""], ["422", "B", "EAST FACING", "1400", "", ""], ["423", "B", "NORTH FACING", "", "1900", ""], ["424", "B", "NORTH FACING", "", "2280", ""]], "FIFTH FLOOR": [["504", "A", "NORTH FACING", "1410", "", ""], ["505", "A", "NORTH FACING", "1410", "", ""], ["506", "A", "WEST FACING", "", "1780", ""], ["512", "A", "NORTH FACING", "1410", "", ""], ["513", "A", "NORTH FACING", "1410", "", ""], ["514", "A", "NORTH FACING", "", "2065", ""], ["518", "B", "WEST FACING", "", "2305", ""], ["519", "B", "NORTH FACING", "", "2280", ""], ["523", "B", "NORTH FACING", "", "1900", ""], ["524", "B", "NORTH FACING", "", "2280", ""], ["525", "B", "EAST FACING", "", "2305", ""], ["526", "B", "WEST FACING", "1400", "", ""]], "SIXTH FLOOR": [["603", "A", "NORTH FACING", "", "2065", ""], ["606", "A", "WEST FACING", "", "1780", ""], ["611", "A", "EAST FACING", "", "1780", ""], ["614", "A", "NORTH FACING", "", "2065", ""], ["616", "A", "WEST FACING", "", "1780", ""], ["617", "B", "EAST FACING", "1400", "", ""], ["618", "B", "WEST FACING", "", "2305", ""], ["621", "B", "WEST FACING", "1400", "", ""], ["625", "B", "EAST FACING", "", "2305", ""]], "SEVENTH FLOOR": [["703", "A", "NORTH FACING", "", "2065", ""], ["706", "A", "WEST FACING", "", "1780", ""], ["708", "A", "NORTH FACING", "1410", "", ""], ["709", "A", "NORTH FACING", "1410", "", ""], ["712", "A", "NORTH FACING", "1410", "", ""], ["713", "A", "NORTH FACING", "1410", "", ""], ["716", "A", "WEST FACING", "", "1780", ""], ["721", "B", "WEST FACING", "1400", "", ""], ["722", "B", "EAST FACING", "1400", "", ""], ["725", "B", "EAST FACING", "", "2305", ""]]},esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ document.getElementById('landOwnerFloorTables').innerHTML=Object.entries(floors).map(([name,rows])=>{
+ const two=rows.reduce((a,r)=>a+(Number(r[3])||0),0),three=rows.reduce((a,r)=>a+(Number(r[4])||0),0);
+ return `<section class="land-owner-floor"><h3>${name}</h3><div class="land-owner-table-wrap"><table class="land-owner-table"><thead><tr><th>FLAT NO</th><th>BLOCK</th><th>FLAT FACING</th><th>2 BHK</th><th>3 BHK</th><th>REMARKS</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${r[3]?Number(r[3]).toLocaleString('en-IN'):''}</td><td>${r[4]?Number(r[4]).toLocaleString('en-IN'):''}</td><td>${esc(r[5])}</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="3">FLOOR TOTAL</td><td>${two.toLocaleString('en-IN')}</td><td>${three.toLocaleString('en-IN')}</td><td></td></tr></tfoot></table></div></section>`;
+ }).join('');
+ function toggle(){const opening=panel.hidden;panel.hidden=!opening;card.setAttribute('aria-expanded',String(opening));if(opening)panel.scrollIntoView({behavior:'smooth',block:'start'});}
+ card.addEventListener('click',toggle);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+ document.getElementById('landOwnerCloseButton').addEventListener('click',()=>{panel.hidden=true;card.setAttribute('aria-expanded','false');});
+})();
+</script>
+<style id="oxygen-land-owner-visibility-fix">
+/* Make the Land Owner entry obvious while keeping it beside Mortgage in the summary-card flow. */
+#landOwnerCard{
+  display:flex!important; visibility:visible!important; opacity:1!important;
+  min-height:126px!important; padding:20px 18px!important;
+  border:2px solid #d6a348!important;
+  background:linear-gradient(135deg,#fff3d6 0%,#fffaf0 58%,#fff 100%)!important;
+  box-shadow:inset 0 4px 0 #c58b2d,0 8px 24px rgba(166,106,18,.16)!important;
+  cursor:pointer!important;
+}
+#landOwnerCard .stat-label{color:#704713!important;font-size:13px!important;font-weight:900!important;letter-spacing:.06em!important}
+#landOwnerCard .stat-number{color:#995d08!important;font-size:34px!important;font-weight:900!important}
+#landOwnerCard .stat-note{color:#805b24!important;font-weight:700!important}
+#landOwnerCard .land-owner-action{display:inline-flex!important;align-items:center!important;margin-left:6px!important;padding:6px 9px!important;border-radius:999px!important;background:#f1d69d!important;color:#68430f!important;font-size:9px!important;font-weight:900!important;white-space:nowrap!important}
+#landOwnerCard:hover,#landOwnerCard:focus-visible{transform:translateY(-3px)!important;border-color:#b77a1a!important;outline:3px solid rgba(197,139,45,.22)!important;outline-offset:2px!important}
+@media (min-width:761px) and (max-width:1100px){#landOwnerCard{grid-column:span 2!important}}
+@media (max-width:760px){#landOwnerCard{grid-column:1 / -1!important;min-height:112px!important;padding:16px!important}#landOwnerCard .stat-label{font-size:12px!important}#landOwnerCard .stat-number{font-size:30px!important}}
+</style>
 </body></html>
