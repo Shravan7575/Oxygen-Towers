@@ -2055,6 +2055,47 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(212,166,77,.65)!impo
   .hero-center-logo{margin:0 auto 14px!important}
 }
 </style>
+<style>
+
+/* Make the Sold Flats card unmistakably clickable without changing other dashboard cards. */
+#soldFlatsCard{
+  position:relative!important;cursor:pointer!important;
+  border:2px solid #f0a51a!important;
+  background:linear-gradient(135deg,#fff9e8 0%,#ffffff 72%)!important;
+  box-shadow:0 8px 24px rgba(208,137,13,.16)!important;
+}
+#soldFlatsCard .stat-label{color:#8a5100!important;display:flex;align-items:center;justify-content:space-between;gap:8px}
+#soldFlatsCard .sold-flats-action{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:6px 10px;border-radius:999px;background:#f2a900;color:#382300;
+  font-size:10px;font-weight:900;letter-spacing:.045em;white-space:nowrap;
+  box-shadow:0 2px 7px rgba(160,100,0,.2)
+}
+#soldFlatsCard .sold-flats-action-icon{font-size:16px;line-height:1}
+#soldFlatsCard .stat-note{color:#805313!important;font-weight:700!important}
+#soldFlatsCard:hover,#soldFlatsCard:focus-visible{
+  transform:translateY(-4px)!important;border-color:#d88900!important;
+  box-shadow:0 14px 30px rgba(208,137,13,.27)!important;
+  outline:3px solid rgba(242,169,0,.22);outline-offset:2px
+}
+#soldFlatsCard:active{transform:translateY(-1px)!important}
+@media(max-width:600px){#soldFlatsCard .sold-flats-action{font-size:9px;padding:5px 7px}}
+
+/* Sold Flats block dropdown: prominent, high-contrast and easy to tap. */
+#collectionDetailsPanel .collection-filter-row{align-items:center;gap:12px;margin:16px 0 18px}
+#collectionDetailsPanel .collection-filter-row label{font-weight:800;color:#17324d;font-size:15px}
+#collectionDetailsPanel #soldBlockFilter{
+  flex:0 1 260px;min-width:210px;min-height:50px;padding:10px 44px 10px 16px;
+  border:2px solid #0759a6!important;border-radius:12px!important;
+  background-color:#0877cf!important;color:#fff!important;
+  font-size:16px!important;font-weight:800!important;letter-spacing:.2px;
+  cursor:pointer;box-shadow:0 4px 12px rgba(8,119,207,.22)!important;
+}
+#collectionDetailsPanel #soldBlockFilter:focus{outline:3px solid rgba(8,119,207,.28)!important;outline-offset:2px}
+#collectionDetailsPanel #soldBlockFilter option{background:#fff;color:#17324d;font-weight:700}
+@media(max-width:600px){#collectionDetailsPanel #soldBlockFilter{flex:1 1 100%;width:100%;min-width:0}}
+
+</style>
 </head><body><header class="hero"><div class="hero-inner"><nav class="nav"><div class="top-contact"><a
 class="whatsapp-top"
 href="https://wa.me/917386326575"
@@ -2085,10 +2126,10 @@ Contact Us <span aria-hidden="true">✉</span>
 Total Flats
 </div><div class="stat-number" id="totalFlatsCount">246</div><div class="stat-note">
 Blocks A & B
-</div></div><div class="stat" id="totalCollectionCard" role="button" tabindex="0" aria-expanded="false" aria-controls="collectionDetailsPanel" title="Click to view flat-wise collection"><div class="stat-label">
-Total Collection <span aria-hidden="true" style="color:#0873e8;font-weight:800">↗</span>
-</div><div class="stat-number" id="totalCollectionCount">₹0</div><div class="stat-note">
-Click to view flat-wise report
+</div></div><div class="stat" id="soldFlatsCard" role="button" tabindex="0" aria-expanded="false" aria-controls="collectionDetailsPanel" title="Click to view sold flats in Block A and Block B"><div class="stat-label">
+Sold Flats <span class="sold-flats-action" aria-hidden="true"><span class="sold-flats-action-icon">☷</span> TAP TO VIEW LIST</span>
+</div><div class="stat-number" id="totalCollectionCount">0</div><div class="stat-note">
+View sold flats in Blocks A &amp; B
 </div></div><div class="stat availability-booking-card"><div class="stat-label">FLAT AVAILABILITY</div><div class="availability-booking-split"><div class="availability-side"><span class="availability-caption">AVAILABLE</span><strong id="availableCount">0</strong></div><div class="booking-side"><span class="availability-caption">BOOKED</span><strong id="soldCount">0</strong></div></div><div class="stat-note">Available and booked flats across selected blocks</div></div><div class="stat"><div class="stat-label">
 Mortgage
 </div><div
@@ -2127,11 +2168,11 @@ id="rmcCount"
 Reserved
 </div></div></section><section class="sft-summary" id="blockSftSummary" aria-label="Block-wise SFT summary">
 <div class="sft-block-card"><div class="sft-block-title">BLOCK A</div><div class="sft-total-line"><span>Total SFT</span><strong id="blockATotalSft">0 SFT</strong></div><details class="sft-breakdown"><summary>View booked &amp; available SFT</summary><div class="sft-metrics"><div class="sft-metric sold"><span>Booked SFT</span><strong id="blockASoldSft">0 SFT</strong></div><div class="sft-metric available"><span>Available SFT</span><strong id="blockARemainingSft">0 SFT</strong></div></div></details></div>
-<div class="sft-block-card"><div class="sft-block-title">BLOCK B</div><div class="sft-total-line"><span>Total SFT</span><strong id="blockBTotalSft">0 SFT</strong></div><details class="sft-breakdown"><summary>View booked &amp; available SFT</summary><div class="sft-metrics"><div class="sft-metric sold"><span>Booked SFT</span><strong id="blockBSoldSft">0 SFT</strong></div><div class="sft-metric available"><span>Available SFT</span><strong id="blockBRemainingSft">0 SFT</strong></div></div></details></div></section><section id="collectionDetailsPanel" class="collection-details-panel" hidden aria-label="Flat-wise collection">
-<div class="collection-panel-head"><div><div class="section-kicker">PAYMENT BREAKDOWN</div><div class="section-title">Flat-wise Total Collection</div><div class="section-description">Recorded receipts only. Scheduled or expected payments are not counted.</div></div><button id="collectionCloseButton" type="button" class="collection-close">Close ✕</button></div>
-<div class="collection-summary"><div><span>Total Received</span><strong id="collectionPanelTotal">₹0</strong></div><div><span>Flats with Receipts</span><strong id="collectionFlatsPaid">0</strong></div><div><span>Payment Entries</span><strong id="collectionPaymentEntries">0</strong></div></div>
-<div class="collection-filter-row"><input id="collectionFlatSearch" type="search" placeholder="Search flat number or block…" aria-label="Search flat-wise collection"><select id="collectionBlockFilter" aria-label="Filter collection by block"><option value="ALL">All Blocks</option><option value="A">Block A</option><option value="B">Block B</option></select><select id="collectionReceiptFilter" aria-label="Filter by payment status"><option value="ALL">All flats</option><option value="PAID">Flats with receipts</option><option value="ZERO">No receipts recorded</option></select></div>
-<div class="collection-table-wrap"><table class="collection-table"><thead><tr><th>Block / Flat</th><th>Flat Price</th><th>Received</th><th>Balance</th><th>Payment History</th></tr></thead><tbody id="collectionFlatRows"></tbody></table></div><p class="collection-footnote">Balance is calculated as listed flat price minus recorded receipts, with a minimum of ₹0. Please verify payment records before using this as an accounting statement.</p>
+<div class="sft-block-card"><div class="sft-block-title">BLOCK B</div><div class="sft-total-line"><span>Total SFT</span><strong id="blockBTotalSft">0 SFT</strong></div><details class="sft-breakdown"><summary>View booked &amp; available SFT</summary><div class="sft-metrics"><div class="sft-metric sold"><span>Booked SFT</span><strong id="blockBSoldSft">0 SFT</strong></div><div class="sft-metric available"><span>Available SFT</span><strong id="blockBRemainingSft">0 SFT</strong></div></div></details></div></section><section id="collectionDetailsPanel" class="collection-details-panel" hidden aria-label="Sold flats list">
+<div class="collection-panel-head"><div><div class="section-kicker">SOLD FLATS</div><div class="section-title">Sold Flats List</div><div class="section-description">Select Block A or Block B to view sold flat details.</div></div><button id="collectionCloseButton" type="button" class="collection-close">Close ✕</button></div>
+<div class="collection-filter-row"><label for="soldBlockFilter">Select Block</label><select id="soldBlockFilter" aria-label="Select block"><option value="A">Block A</option><option value="B">Block B</option></select></div>
+<div class="collection-table-wrap"><table class="collection-table"><thead><tr><th>Flat No.</th><th>Name / Customer</th><th>Payment / Flat Price</th><th>SFT</th><th>Floor</th><th>Facing</th></tr></thead><tbody id="collectionFlatRows"></tbody></table></div>
+<p class="collection-footnote">Only flats marked SOLD in the inventory are shown. Payment / Flat Price displays the listed flat price.</p>
 </section><section class="find-section"><div class="section-heading"><div><div class="section-kicker">
 Find Your Flat
 </div><div class="section-title">
@@ -2416,7 +2457,7 @@ const A = [
 ["715","7th","EAST","3 BHK [Kiran - 9052606969]",2455,10029000,"SOLD","Sold"],
 ["801","8th","EAST","3 BHK  [G V Anitha - 8466905099]",1790,8218000,"SOLD","Sold"],
 ["802","8th","WEST","3 BHK  [Chandrashekar - 9666639661]",2455,11520200,"SOLD","Sold"],
-["803","8th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
+["803","8th","NORTH","3 BHK  [Siddu - 9642424209]",2075,9415000,"SOLD","Sold"],
 ["804","8th","NORTH","2 BHK",1415,7073625,"AVAILABLE","Available"],
 ["805","8th","NORTH","2 BHK",1415,7073625,"AVAILABLE","Available"],
 ["806","8th","WEST","3 BHK  [Siddu - 9642424209]",1790,8576000,"SOLD","Sold"],
@@ -2427,12 +2468,12 @@ const A = [
 ["811","8th","EAST","3 BHK  [Ramesh - 8919916826]",1790,8218000,"SOLD","Sold"],
 ["812","8th","NORTH","2 BHK",1415,7073625,"AVAILABLE","Available"],
 ["813","8th","NORTH","2 BHK",1415,7073626,"AVAILABLE","Available"],
-["814","8th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
-["815","8th","EAST","3 BHK",2455,11011000,"SOLD","Sold"],
-["816","8th","WEST","3 BHKK  [Siddu - 9642424209]",1790,8576000,"SOLD","Sold"],
+["814","8th","NORTH","3 BHK  [Siddu - 9642424209]",2075,9415000,"SOLD","Sold"],
+["815","8th","EAST","3 BHK  [Vihitha - 9642424209]",2455,11011000,"SOLD","Sold"],
+["816","8th","WEST","3 BHK  [Siddu - 9642424209]",1790,8576000,"SOLD","Sold"],
 ["901","9th","EAST","3 BHK",1790,8934000,"AVAILABLE","Available"],
 ["902","9th","WEST","3 BHK  [Chandrashekar - 9666639661]",2455,11520200,"SOLD","Sold"],
-["903","9th","NORTH","3 BHK",2075,10296875,"SOLD","Sold"],
+["903","9th","NORTH","3 BHK  [Siddu - 9642424209]",2075,10296875,"SOLD","Sold"],
 ["904","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
 ["905","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
 ["906","9th","WEST","3 BHK  [Siddu - 9642424209]",1790,8576000,"SOLD","Sold"],
@@ -2443,7 +2484,7 @@ const A = [
 ["911","9th","EAST","3 BHK  [Narender - 8759595989]",1790,8576000,"SOLD","Sold"],
 ["912","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
 ["913","9th","NORTH","2 BHK",1415,7144375,"AVAILABLE","Available"],
-["914","9th","NORTH","3 BHK",2075,9415000,"SOLD","Sold"],
+["914","9th","NORTH","3 BHK  [Siddu - 9642424209]",2075,9415000,"SOLD","Sold"],
 ["915","9th","EAST","3 BHK  [Swetha - 9248771111]",2455,11011000,"SOLD","Sold"],
 ["916","9th","WEST","3 BHK  [Siddu - 9642424209]",1790,8576000,"SOLD","Sold"]
 ];
@@ -2556,25 +2597,8 @@ function updateStats(){
 const data = getData();
 const totalFlatsElement = document.getElementById("totalFlatsCount");
 if (totalFlatsElement) totalFlatsElement.textContent = A.length + B.length;
-let collectionTotal = 0;
-// Sum payments by flat and de-duplicate seeded/browser copies with the same date + amount.
-const collectionKeys = new Set([
-  ...(typeof FLAT_PAYMENT_DATA !== "undefined" ? Object.keys(FLAT_PAYMENT_DATA) : []),
-  ...(typeof savedFlatPayments !== "undefined" ? Object.keys(savedFlatPayments) : [])
-]);
-collectionKeys.forEach(key => {
-  const rows = [
-    ...(typeof FLAT_PAYMENT_DATA !== "undefined" && Array.isArray(FLAT_PAYMENT_DATA[key]?.payments) ? FLAT_PAYMENT_DATA[key].payments : []),
-    ...(typeof savedFlatPayments !== "undefined" && Array.isArray(savedFlatPayments[key]) ? savedFlatPayments[key] : [])
-  ];
-  const seen = new Set();
-  rows.forEach(payment => {
-    const identity = `${payment.date || ""}|${Number(payment.amount) || 0}`;
-    if (!seen.has(identity)) { seen.add(identity); collectionTotal += Number(payment.amount) || 0; }
-  });
-});
-const collectionElement = document.getElementById("totalCollectionCount");
-if (collectionElement) collectionElement.textContent = "₹ ••••••••";
+const soldCountDisplay = document.getElementById("totalCollectionCount");
+if (soldCountDisplay) soldCountDisplay.textContent = [...A, ...B].filter(flat => flat[6] === "SOLD").length.toLocaleString("en-IN");
 let available = 0;
 let sold = 0;
 let mortgage = 0;
@@ -4126,66 +4150,34 @@ render();
 <script>
 (function(){
   const $ = id => document.getElementById(id);
-  const panel = $('collectionDetailsPanel'), card = $('totalCollectionCard');
+  const panel = $('collectionDetailsPanel'), card = $('soldFlatsCard');
   if(!panel || !card) return;
-  const moneyFmt = value => '₹' + (Number(value)||0).toLocaleString('en-IN');
-  function paymentMap(){
-    const map = new Map();
-    const keys = new Set([
-      ...(typeof FLAT_PAYMENT_DATA !== 'undefined' ? Object.keys(FLAT_PAYMENT_DATA) : []),
-      ...(typeof savedFlatPayments !== 'undefined' ? Object.keys(savedFlatPayments) : [])
-    ]);
-    keys.forEach(key => {
-      const seeded = typeof FLAT_PAYMENT_DATA !== 'undefined' && Array.isArray(FLAT_PAYMENT_DATA[key]?.payments) ? FLAT_PAYMENT_DATA[key].payments : [];
-      const saved = typeof savedFlatPayments !== 'undefined' && Array.isArray(savedFlatPayments[key]) ? savedFlatPayments[key] : [];
-      const unique = new Map();
-      [...seeded,...saved].forEach(p => {
-        const id = `${p.date||''}|${Number(p.amount)||0}`;
-        if(!unique.has(id)) unique.set(id,p);
-      });
-      map.set(key,[...unique.values()].sort((a,b)=>String(a.date||'').localeCompare(String(b.date||''))));
-    });
-    return map;
-  }
-  function allFlats(){
-    const paymentsByFlat=paymentMap();
-    return [...A.map(f=>({block:'A',flat:f})),...B.map(f=>({block:'B',flat:f}))].map(({block,flat})=>{
-      const key=block+'|'+String(flat[0]);
-      const payments=paymentsByFlat.get(key)||[];
-      const received=payments.reduce((sum,p)=>sum+(Number(p.amount)||0),0);
-      return {block,number:String(flat[0]),floor:String(flat[1]),price:Number(flat[5])||0,received,balance:Math.max(0,(Number(flat[5])||0)-received),payments};
-    });
-  }
+  const esc = value => String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const money = value => '₹' + (Number(value)||0).toLocaleString('en-IN');
   function render(){
-    const query=($('collectionFlatSearch').value||'').trim().toLowerCase();
-    const block=$('collectionBlockFilter').value, receipt=$('collectionReceiptFilter').value;
-    const flats=allFlats();
-    const total=flats.reduce((s,f)=>s+f.received,0);
-    $('collectionPanelTotal').textContent=moneyFmt(total);
-    $('collectionFlatsPaid').textContent=flats.filter(f=>f.received>0).length.toLocaleString('en-IN');
-    $('collectionPaymentEntries').textContent=flats.reduce((s,f)=>s+f.payments.length,0).toLocaleString('en-IN');
-    const filtered=flats.filter(f=>(block==='ALL'||f.block===block)&&(receipt==='ALL'||(receipt==='PAID'?f.received>0:f.received===0))&&(`${f.block} ${f.number} ${f.floor}`.toLowerCase().includes(query)));
-    $('collectionFlatRows').innerHTML=filtered.length?filtered.map(f=>{
-      const history=f.payments.length?`<details class="collection-history"><summary>${f.payments.length} payment${f.payments.length===1?'':'s'}</summary><ul>${f.payments.map(p=>`<li><strong>${moneyFmt(p.amount)}</strong> — ${String(p.date||'Date not recorded')}<br>${[p.method,p.reference,p.note].filter(Boolean).map(esc).join(' · ')||'No additional details'}</li>`).join('')}</ul></details>`:'<span class="collection-sub">No receipts recorded</span>';
-      return `<tr><td><span class="collection-flat-name">Block ${f.block} · ${esc(f.number)}</span><span class="collection-sub">${esc(f.floor)} floor</span></td><td>${moneyFmt(f.price)}</td><td><strong>${moneyFmt(f.received)}</strong></td><td>${moneyFmt(f.balance)}</td><td>${history}</td></tr>`;
-    }).join(''):'<tr><td colspan="5" class="collection-empty">No flats match these filters.</td></tr>';
+    const block = $('soldBlockFilter').value;
+    const inventory = block === 'A' ? A : B;
+    const sold = inventory.filter(flat => String(flat[6]).toUpperCase() === 'SOLD');
+    $('collectionFlatRows').innerHTML = sold.length ? sold.map(flat => {
+      const details = String(flat[3] || '');
+      const match = details.match(/^(.*?)(?:\s*\[([^\]]+)\])?$/);
+      const configuration = (match && match[1] || details).trim();
+      const customer = (match && match[2] || '').trim() || '—';
+      return `<tr><td><strong>${esc(flat[0])}</strong></td><td>${esc(customer)}<span class="collection-sub">${esc(configuration)}</span></td><td><strong>${money(flat[5])}</strong></td><td>${Number(flat[4]||0).toLocaleString('en-IN')} SFT</td><td>${esc(flat[1])}</td><td>${esc(flat[2])}</td></tr>`;
+    }).join('') : '<tr><td colspan="6" class="collection-empty">No sold flats are listed in this block.</td></tr>';
   }
-  function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function toggle(){
-    const opening=panel.hidden;
+    const opening = panel.hidden;
     if(opening){
-      const password=window.prompt('Enter Total Collection password:');
-      if(password===null) return;
-      if(password!=='Oxygen@2026'){window.alert('Incorrect password.');return;}
-      panel.hidden=false;card.setAttribute('aria-expanded','true');const totalDisplay=document.getElementById('totalCollectionCount');if(totalDisplay)totalDisplay.textContent='₹'+collectionTotal.toLocaleString('en-IN');render();panel.scrollIntoView({behavior:'smooth',block:'start'});
-    } else {panel.hidden=true;card.setAttribute('aria-expanded','false');const totalDisplay=document.getElementById('totalCollectionCount');if(totalDisplay)totalDisplay.textContent='₹ ••••••••';}
+      panel.hidden = false; card.setAttribute('aria-expanded','true'); render(); panel.scrollIntoView({behavior:'smooth',block:'start'});
+    } else {panel.hidden = true; card.setAttribute('aria-expanded','false');}
   }
-  card.addEventListener('click',toggle);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
-  $('collectionCloseButton').addEventListener('click',()=>{panel.hidden=true;card.setAttribute('aria-expanded','false');const totalDisplay=document.getElementById('totalCollectionCount');if(totalDisplay)totalDisplay.textContent='₹ ••••••••';});
-  ['collectionFlatSearch','collectionBlockFilter','collectionReceiptFilter'].forEach(id=>$(id).addEventListener(id==='collectionFlatSearch'?'input':'change',render));
-  // Refresh when the existing dashboard refreshes recorded payment totals.
-  const originalUpdate=window.updateStats;
-  if(typeof originalUpdate==='function') window.updateStats=function(){originalUpdate.apply(this,arguments);if(!panel.hidden)render();};
+  card.addEventListener('click',toggle);
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+  $('collectionCloseButton').addEventListener('click',()=>{panel.hidden=true;card.setAttribute('aria-expanded','false');});
+  $('soldBlockFilter').addEventListener('change',render);
+  const originalUpdate = window.updateStats;
+  if(typeof originalUpdate === 'function') window.updateStats = function(){originalUpdate.apply(this,arguments);if(!panel.hidden)render();};
 })();
 </script>
 
