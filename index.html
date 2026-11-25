@@ -4444,8 +4444,14 @@ render();
     if(!oldToggle || !section) return;
     var toggle=oldToggle.cloneNode(true); oldToggle.parentNode.replaceChild(toggle,oldToggle);
     toggle.addEventListener('click',function(){
-      var pw=window.prompt(passwordLabel); if(pw===null)return;
-      if(pw!=='Oxygen@2026'){window.alert('Incorrect password.');return;}
+      if(toggleId === 'partnersToggle'){
+  var pw=window.prompt(passwordLabel);
+  if(pw===null)return;
+  if(pw!=='Oxygen@2026'){
+    window.alert('Incorrect password.');
+    return;
+  }
+}
       section.hidden=false; toggle.classList.add(activeClass);
       try { if(typeof window[onOpenName]==='function') window[onOpenName](); } catch(e){ console.error(e); }
       try { if(onChangeName && typeof window[onChangeName]==='function') window[onChangeName](); } catch(e){ console.error(e); }
