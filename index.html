@@ -4083,12 +4083,6 @@ flatPaymentDetails.addEventListener("click", function(event) {
 });
 
 function openFlatPaymentSection(){
-const password = prompt("Enter Flat Payment Schedule password:");
-if(password === null) return;
-if(password !== "Oxygen@2026"){
-alert("Incorrect password.");
-return;
-}
 flatPaymentSection.hidden = false;
 flatPaymentToggle.classList.add("active");
 loadFlatPaymentOptions();
