@@ -4454,7 +4454,7 @@ render();
     if(oldClose){ var close=oldClose.cloneNode(true); oldClose.parentNode.replaceChild(close,oldClose); close.addEventListener('click',function(){section.hidden=true;toggle.classList.remove(activeClass);}); }
   }
   function bind(){
-    bindSection('flatPaymentToggle','flatPaymentSection','flatPaymentClose','Enter Flat Payment Schedule password:','active','loadFlatPaymentOptions','renderFlatPaymentData');
+    bindSection('flatPaymentToggle','flatPaymentSection','flatPaymentClose','','active','loadFlatPaymentOptions','renderFlatPaymentData');
     bindSection('partnersToggle','partnersSection','partnersClose','Enter Partner Payments password:','active','loadPartnerNames','loadSelectedPartner');
     var ps=document.getElementById('flatPaymentSelect'); if(ps){ps.addEventListener('change',function(){try{if(typeof window.renderFlatPaymentData==='function')window.renderFlatPaymentData();}catch(e){console.error(e);}});}
     var partnerSelect=document.getElementById('partnerSelect'); if(partnerSelect){partnerSelect.addEventListener('change',function(){try{if(typeof window.loadSelectedPartner==='function')window.loadSelectedPartner();}catch(e){console.error(e);}});}
