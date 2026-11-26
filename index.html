@@ -4573,6 +4573,120 @@ render();
 })();
 </script>
 
+
+<style id="ot-bookings-edit-tools">
+.ot-edit-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 0}
+.ot-edit-toolbar button{border:1px solid #cbd5e1;border-radius:7px;background:#fff;color:#123047;padding:8px 12px;font-weight:700;cursor:pointer}
+.ot-edit-toolbar button.primary{background:#0c6fd8;color:#fff;border-color:#0c6fd8}
+.ot-edit-toolbar button.danger{color:#b42318;border-color:#f1b6b2}
+.ot-edit-toolbar .ot-edit-status{font-size:12px;color:#475569;margin-left:auto}
+.ot-sheet-table tr.ot-row-selected td{outline:2px solid #0c6fd8;outline-offset:-2px;background:#eff6ff}
+.ot-sheet-table td[contenteditable="true"]{background:#fff7d6!important;outline:2px solid #d69e18;outline-offset:-2px;min-width:55px}
+.ot-edit-hint{font-size:12px;color:#64748b;padding:0 0 8px}
+</style>
+<script id="ot-bookings-edit-tools-script">
+(function(){
+  const STORAGE_KEY='oxygen-towers-bookings-edited-rows-v1';
+  function init(){
+    const panel=document.querySelector('.ot-sheet-panel[data-sheet="0"]');
+    const table=panel&&panel.querySelector('.ot-sheet-table');
+    if(!panel||!table||table.dataset.editToolsReady==='1') return;
+    const header=Array.from(table.querySelectorAll('tr')).find(row=>row.querySelectorAll(':scope > th').length>1);
+    if(!header) return;
+    const headerIndex=Array.from(table.rows).indexOf(header);
+    const getRows=()=>Array.from(table.rows).slice(headerIndex+1).filter(row=>row.cells.length===header.cells.length);
+    const toolbar=document.createElement('div');
+    toolbar.className='ot-edit-toolbar';
+    toolbar.innerHTML='<button type="button" class="primary" data-ot-edit="edit">✏️ Edit selected row</button><button type="button" data-ot-edit="add">＋ Add row</button><button type="button" class="danger" data-ot-edit="delete">Delete selected row</button><button type="button" data-ot-edit="save">Save changes</button><button type="button" data-ot-edit="export">Download edited CSV</button><span class="ot-edit-status" aria-live="polite">Select a booking row to edit or delete</span>';
+    const hint=document.createElement('div');
+    hint.className='ot-edit-hint';
+    hint.textContent='Select a customer row first. Edits are saved in this browser; download the CSV to keep a copy and publish updated data through GitHub.';
+    const filterToolbar=panel.querySelector('.ot-filter-toolbar');
+    const insertBefore=filterToolbar||table.parentElement;
+    insertBefore.parentNode.insertBefore(hint,insertBefore);
+    insertBefore.parentNode.insertBefore(toolbar,insertBefore);
+    let selected=null, editing=false;
+    const status=toolbar.querySelector('.ot-edit-status');
+    function selectRow(row){
+      if(selected) selected.classList.remove('ot-row-selected');
+      selected=row; if(selected) selected.classList.add('ot-row-selected');
+      status.textContent=selected?'Selected S.No '+(selected.cells[0]?.innerText.trim()||'new row'):'Select a booking row';
+    }
+    function persist(){
+      const payload=getRows().map(row=>Array.from(row.cells).map(cell=>cell.innerText.trim()));
+      try{localStorage.setItem(STORAGE_KEY,JSON.stringify(payload));status.textContent='Saved in this browser';return true;}
+      catch(e){status.textContent='Could not save in this browser';return false;}
+    }
+    function restore(){
+      try{
+        const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
+        if(!Array.isArray(saved)) return;
+        const rows=getRows();
+        saved.forEach((values,index)=>{
+          let row=rows[index];
+          if(!row){row=table.insertRow(-1);for(let c=0;c<header.cells.length;c++)row.insertCell();}
+          values.forEach((value,c)=>{if(row.cells[c])row.cells[c].textContent=value;});
+        });
+        rows.slice(saved.length).forEach(row=>row.remove());
+      }catch(e){}
+    }
+    function finishEdit(){
+      getRows().forEach(row=>Array.from(row.cells).forEach(cell=>cell.removeAttribute('contenteditable')));
+      editing=false;
+    }
+    function startEdit(row){
+      if(!row)return;
+      finishEdit();selectRow(row);editing=true;
+      Array.from(row.cells).forEach((cell,index)=>{if(index!==0)cell.contentEditable='true';});
+      status.textContent='Editing row — change cells, then click Save changes';
+      const first=row.cells[1];if(first)first.focus();
+    }
+    function addRow(){
+      finishEdit();
+      const row=table.insertRow(-1);
+      for(let c=0;c<header.cells.length;c++)row.insertCell();
+      row.cells[0].textContent=String(getRows().length);
+      startEdit(row);
+      status.textContent='New row added — fill in the cells, then click Save changes';
+    }
+    function csvEscape(value){return '"'+String(value??'').replace(/"/g,'""')+'"';}
+    function exportCSV(){
+      const lines=[Array.from(header.cells).map(c=>csvEscape(c.innerText.trim())).join(',')];
+      getRows().forEach(row=>lines.push(Array.from(row.cells).map(c=>csvEscape(c.innerText.trim())).join(',')));
+      const blob=new Blob(['\ufeff'+lines.join('\r\n')],{type:'text/csv;charset=utf-8;'});
+      const url=URL.createObjectURL(blob),a=document.createElement('a');
+      a.href=url;a.download='Oxygen-Towers-Bookings-edited.csv';a.click();
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+      status.textContent='CSV downloaded';
+    }
+    restore();
+    table.addEventListener('click',function(event){
+      const row=event.target.closest('tr');
+      if(row&&getRows().includes(row)&&!editing)selectRow(row);
+    });
+    toolbar.addEventListener('click',function(event){
+      const action=event.target.closest('[data-ot-edit]')?.dataset.otEdit;
+      if(!action)return;
+      if(action==='edit'){if(!selected){status.textContent='Select a booking row first';return;}startEdit(selected);}
+      if(action==='add')addRow();
+      if(action==='save'){finishEdit();persist();if(selected)selectRow(selected);}
+      if(action==='delete'){
+        if(!selected){status.textContent='Select a booking row first';return;}
+        if(!confirm('Delete this booking row?'))return;
+        const removed=selected;selected=null;removed.remove();finishEdit();
+        getRows().forEach((row,index)=>{if(row.cells[0])row.cells[0].textContent=String(index+1);});
+        persist();status.textContent='Row deleted and saved in this browser';
+      }
+      if(action==='export'){finishEdit();persist();exportCSV();}
+    });
+    table.dataset.editToolsReady='1';
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+  document.addEventListener('click',function(event){
+    if(event.target.closest('[data-sheet-tab="0"]'))setTimeout(init,0);
+  });
+})();
+</script>
 </body></html>
 
 <script id="northcity-dashboard-navigation">
