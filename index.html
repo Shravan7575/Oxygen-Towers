@@ -4600,8 +4600,8 @@ render();
  const toolbar=document.createElement('div');
  toolbar.className='ot-edit-toolbar';
  toolbar.hidden=true;
- toolbar.innerHTML='<button type="button" class="primary" data-action="edit">✏️ Edit selected row</button><button type="button" data-action="add">＋ Add row</button><button type="button" class="danger" data-action="delete">Delete selected row</button><button type="button" data-action="save">Save changes</button><button type="button" data-action="publish">Download updated website (index.html)</button><span class="ot-edit-status" aria-live="polite">Unlock editing to make changes</span>';
- const hint=document.createElement('div');hint.className='ot-edit-hint';hint.textContent='Select a booking row, then choose Edit. Changes are saved in this browser until you download the updated Excel workbook and publish the updated website.';
+ toolbar.innerHTML='<button type="button" class="primary" data-action="edit">✏️ Edit selected row</button><button type="button" data-action="add">＋ Add row</button><button type="button" class="danger" data-action="delete">Delete selected row</button><button type="button" data-action="save">Save changes</button><span class="ot-edit-status" aria-live="polite">Unlock editing to make changes</span>';
+ const hint=document.createElement('div');hint.className='ot-edit-hint';hint.textContent='Select a booking row, then choose Edit. Editing controls are available only after the owner unlocks this section.';
  const filterToolbar=document.createElement('div');filterToolbar.className='ot-filter-toolbar';
  filterToolbar.innerHTML='<span class="ot-filter-count" aria-live="polite"></span><button type="button" class="ot-clear-filters">Clear all filters</button>';
  panel.insertBefore(toolbar,document.getElementById('otBookingsTableMount'));
@@ -4730,18 +4730,7 @@ render();
    }catch(err){console.error(err);alert('Could not create the Excel workbook. Please try again or download the original workbook.');}
  }
 
- function downloadWebsite(){
-   finishEdit();recalcAll();persist();
-   selects.forEach(sel=>{if(sel)sel.value='';});
-   applyFilters();
-   if(selected){selected.classList.remove('ot-row-selected');selected=null;}
-   toolbar.hidden=true;unlockBtn.hidden=false;lockBtn.hidden=true;unlocked=false;
-   const source='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
-   const blob=new Blob([source],{type:'text/html;charset=utf-8;'});
-   const url=URL.createObjectURL(blob),a=document.createElement('a');
-   a.href=url;a.download='index.html';a.click();
-   setTimeout(()=>URL.revokeObjectURL(url),1500);
- }
+ 
  unlockBtn.addEventListener('click',()=>{
    const entered=prompt('Enter the owner editing password:');if(entered===null)return;
    if(entered===OWNER_PASSWORD){unlocked=true;toolbar.hidden=false;unlockBtn.hidden=true;lockBtn.hidden=false;status.textContent='Owner editing unlocked in this browser';}
@@ -4754,7 +4743,6 @@ render();
    if(action==='add')addRow();
    if(action==='save'){finishEdit();recalcAll();persist();rebuildFilters();if(selected&&selected.isConnected)selectRow(selected);}
    if(action==='delete')deleteRow();
-   if(action==='publish')downloadWebsite();
  });
  tbody.addEventListener('click',e=>{const row=e.target.closest('tr');if(row&&rows().includes(row)&&!editing)selectRow(row);});
  tbody.addEventListener('input',e=>{const row=e.target.closest('tr');if(row&&rows().includes(row)&&editing){recalcRow(row,rows().indexOf(row));updateTotals();}});
