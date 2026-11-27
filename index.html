@@ -2406,6 +2406,16 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(212,166,77,.65)!impo
 }
 </style>
 <style id="ot-enhanced-payment-styles">
+
+/* Clear, soft color coding for the Payment Tracker */
+.ot-sheet-table tbody tr:nth-child(even) td{background:#f7f9fc}
+.ot-sheet-table tbody tr:nth-child(odd) td{background:#fff}
+.ot-sheet-table tbody td:nth-child(20){background:#e8f5ed;color:#17633b;font-weight:700}
+.ot-sheet-table tbody td:nth-child(21){background:#f0eafd;color:#6541a5;font-weight:700}
+.ot-sheet-table tbody td:nth-child(22){background:#fff1df;color:#96520b;font-weight:700}
+.ot-sheet-table tbody tr:hover td{filter:brightness(.97)}
+.ot-sheet-table tbody tr.ot-row-selected td{background:#fff2bf!important;color:#493800!important}
+.ot-sheet-table tbody tr.ot-row-selected td[contenteditable="true"]{background:#fff9df!important}
 .ot-excel-toolbar{padding:15px 18px;border-bottom:1px solid #e2e8f0}
 .ot-excel-toolbar strong{font-size:18px;color:#123047}
 .ot-excel-subtitle{font-size:12px;color:#64748b;margin-top:4px}
@@ -2418,7 +2428,14 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(212,166,77,.65)!impo
 .ot-sheet-table td,.ot-sheet-table th{border-right:1px solid #e1e7ef;border-bottom:1px solid #e1e7ef;padding:8px 9px;text-align:left;vertical-align:middle}
 .ot-sheet-table th{background:#eaf1f8;color:#17324d;font-weight:800;position:sticky;top:0;z-index:2;white-space:normal;min-width:105px;max-width:190px}
 .ot-sheet-table th:first-child,.ot-sheet-table td:first-child{border-left:1px solid #e1e7ef}
-.ot-sheet-table tr:first-child td{font-weight:700}
+ .ot-sheet-table tr:first-child td{font-weight:700}
+/* Workbook colour coding: customer, cheque, reference, SFT and rate */
+.ot-sheet-panel[data-sheet="0"] .ot-sheet-table tbody td:nth-child(2){background:#d9f1ff;color:#075985;font-weight:700}
+.ot-sheet-panel[data-sheet="0"] .ot-sheet-table tbody td:nth-child(9){background:#e8f5e9;color:#25633a;font-weight:700}
+.ot-sheet-panel[data-sheet="0"] .ot-sheet-table tbody td:nth-child(10){background:#fff2cc;color:#805600;font-weight:700}
+.ot-sheet-panel[data-sheet="0"] .ot-sheet-table tbody td:nth-child(23){background:#fde2e2;color:#a61b1b;font-weight:700}
+.ot-sheet-table td.ot-cheque-cell{background:#ffd6d6!important;color:#b00020!important;font-weight:800!important}
+
 .ot-sheet-table tbody tr{cursor:pointer}
 .ot-sheet-table tbody tr:hover td{background:#f3f8ff}
 .ot-sheet-table tbody tr.ot-row-selected td{background:#fff2bf!important;box-shadow:inset 0 1px 0 #e7b94a,inset 0 -1px 0 #e7b94a}
@@ -2664,7 +2681,9 @@ View your uploaded Excel workbook and its data sheets below.
 <div class="ot-bookings-intro"><div><strong>Bookings</strong><span>Use the dropdowns under each heading to filter. Totals update to match the visible rows.</span></div><button class="ot-download-btn" id="otDownloadWorkbook" type="button">Download complete Excel (.xlsx)</button></div>
 <div class="ot-total-cards">
 <div class="ot-total-card"><span>Visible bookings</span><strong id="otVisibleCount">0</strong></div>
+<div class="ot-total-card"><span>Total payment</span><strong id="otTotalPayment">₹0</strong></div>
 <div class="ot-total-card"><span>Total paid amount</span><strong id="otPaidTotal">₹0</strong></div>
+<div class="ot-total-card"><span>Total balance</span><strong id="otBalanceTotal">₹0</strong></div>
 <div class="ot-total-card"><span>Total 25% amount</span><strong id="otQuarterTotal">₹0</strong></div>
 </div>
 <div class="ot-owner-bar"><span>Editing is locked for visitors.</span><button id="otUnlockBtn" type="button">Owner unlock</button><button hidden="" id="otLockBtn" type="button">Lock editing</button></div>
@@ -4562,7 +4581,14 @@ render();
 .ot-sheet-table{border-collapse:collapse;width:max-content;min-width:100%;font-size:12px;white-space:nowrap}
 .ot-sheet-table td,.ot-sheet-table th{border:1px solid #d8dee8;padding:7px 9px;text-align:left;vertical-align:top}
 .ot-sheet-table th{background:#e9eef5;font-weight:700;position:sticky;top:0;z-index:1}
-.ot-sheet-table tr:first-child td{font-weight:700}
+ .ot-sheet-table tr:first-child td{font-weight:700}
+/* Workbook colour coding: customer, cheque, reference, SFT and rate */
+.ot-sheet-panel[data-sheet="0"] .ot-sheet-table tbody td:nth-child(2){background:#d9f1ff;color:#075985;font-weight:700}
+.ot-sheet-panel[data-sheet="0"] .ot-sheet-table tbody td:nth-child(9){background:#e8f5e9;color:#25633a;font-weight:700}
+.ot-sheet-panel[data-sheet="0"] .ot-sheet-table tbody td:nth-child(10){background:#fff2cc;color:#805600;font-weight:700}
+.ot-sheet-panel[data-sheet="0"] .ot-sheet-table tbody td:nth-child(23){background:#fde2e2;color:#a61b1b;font-weight:700}
+.ot-sheet-table td.ot-cheque-cell{background:#ffd6d6!important;color:#b00020!important;font-weight:800!important}
+
 .ot-sheet-panel[hidden]{display:none!important}
 </style>
 <script>
@@ -4578,7 +4604,7 @@ render();
   });
 })();
 </script>
-<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
 <script id="ot-enhanced-payment-script">
 (function(){
  const OWNER_PASSWORD='ncd2026@oxygen2027'; // Change this value if you want a different owner passcode.
@@ -4593,7 +4619,7 @@ render();
  const thead=table.querySelector('thead'),tbody=table.querySelector('tbody');
  const headerRow=thead.querySelector('tr');
  const headers=Array.from(headerRow.cells);
- const paidIndex=19, quarterIndex=20;
+ const totalPaymentIndex=18, paidIndex=19, quarterIndex=20, balanceIndex=21;
  let selected=null,editing=false,unlocked=false;
  const unlockBtn=document.getElementById('otUnlockBtn'),lockBtn=document.getElementById('otLockBtn');
  const downloadBtn=document.getElementById('otDownloadWorkbook');
@@ -4628,12 +4654,17 @@ render();
  }
  function recalcAll(){rows().forEach((r,i)=>recalcRow(r,i));}
  const rows=()=>Array.from(tbody.rows);
+ function markChequeCells(){document.querySelectorAll('.ot-sheet-table td').forEach(cell=>{if(/\bcheque\b/i.test((cell.innerText||'').trim()))cell.classList.add('ot-cheque-cell');});}
+ markChequeCells();
  function selectRow(row){if(selected)selected.classList.remove('ot-row-selected');selected=row;if(selected)selected.classList.add('ot-row-selected');if(unlocked)status.textContent=selected?'Selected S.No '+(selected.cells[0]?.innerText.trim()||'new row'):'Select a booking row';}
  function updateTotals(){
    const visible=rows().filter(r=>!r.hidden);
+   const sumColumn=index=>visible.reduce((sum,row)=>sum+num(row.cells[index]?.innerText),0);
    document.getElementById('otVisibleCount').textContent=visible.length.toLocaleString('en-IN');
-   document.getElementById('otPaidTotal').textContent=money(visible.reduce((s,r)=>s+num(r.cells[paidIndex]?.innerText),0));
-   document.getElementById('otQuarterTotal').textContent=money(visible.reduce((s,r)=>s+num(r.cells[quarterIndex]?.innerText),0));
+   document.getElementById('otTotalPayment').textContent=money(sumColumn(totalPaymentIndex));
+   document.getElementById('otPaidTotal').textContent=money(sumColumn(paidIndex));
+   document.getElementById('otBalanceTotal').textContent=money(sumColumn(balanceIndex));
+   document.getElementById('otQuarterTotal').textContent=money(sumColumn(quarterIndex));
    filterToolbar.querySelector('.ot-filter-count').textContent='Showing '+visible.length+' of '+rows().length+' bookings';
  }
  const selects=[];
@@ -4725,7 +4756,39 @@ render();
      }
      const range=XLSX.utils.decode_range(sheet['!ref']||'A1:W304');
      range.e.r=Math.max(range.e.r,303);range.e.c=Math.max(range.e.c,22);sheet['!ref']=XLSX.utils.encode_range(range);
+     // Apply consistent colours to the downloaded workbook as well as the website view.
+     const fillStyle=(rgb,fontRgb='000000')=>({fill:{patternType:'solid',fgColor:{rgb}},font:{color:{rgb:fontRgb},bold:true}});
+     const columnStyles={1:fillStyle('D9F1FF','075985'),8:fillStyle('E8F5E9','25633A'),9:fillStyle('FFF2CC','805600'),22:fillStyle('FDE2E2','A61B1B')};
+     for(let r=4;r<=4+current.length;r++)for(const [col,style] of Object.entries(columnStyles)){const addr=XLSX.utils.encode_cell({r:r-1,c:Number(col)});if(sheet[addr])sheet[addr].s={...(sheet[addr].s||{}),...style};}
+     Object.values(book.Sheets).forEach(ws=>{Object.keys(ws).forEach(addr=>{if(addr[0]==='!')return;const cell=ws[addr];if(typeof cell.v==='string'&&/\bcheque\b/i.test(cell.v))cell.s={...(cell.s||{}),...fillStyle('FFD6D6','B00020')};});});
      book.Workbook=book.Workbook||{};book.Workbook.CalcPr={calcMode:'auto',fullCalcOnLoad:true,forceFullCalc:true};
+     
+     // Apply a coordinated color theme to all workbook sheets.
+     const fill=(rgb)=>({patternType:'solid',fgColor:{rgb}});
+     const font=(rgb,bold=true)=>({name:'Aptos',sz:10,bold,color:{rgb}});
+     Object.keys(book.Sheets).forEach(sheetName=>{
+       const ws=book.Sheets[sheetName];if(!ws||!ws['!ref'])return;
+       const rg=XLSX.utils.decode_range(ws['!ref']);
+       const headerRow=sheetName==='Bookings'?3:rg.s;
+       for(let c=rg.s.c;c<=rg.e.c;c++){
+         const a=XLSX.utils.encode_cell({r:headerRow,c});
+         if(ws[a])ws[a].s={...(ws[a].s||{}),fill:fill('17365D'),font:font('FFFFFF'),alignment:{vertical:'center',wrapText:true}};
+       }
+       if(sheetName==='Bookings'){
+         for(let r=4;r<=rg.e.r;r++){
+           for(let c=rg.s.c;c<=rg.e.c;c++){
+             const a=XLSX.utils.encode_cell({r,c});if(!ws[a])continue;
+             let bg=(r%2===0)?'F4F7FB':'FFFFFF',fg='24364B';
+             if(c===19){bg='E8F5ED';fg='17633B'}
+             if(c===20){bg='F0EAFD';fg='6541A5'}
+             if(c===21){bg='FFF1DF';fg='96520B'}
+             ws[a].s={...(ws[a].s||{}),fill:fill(bg),font:font(fg,c>=19&&c<=21),alignment:{vertical:'center'}};
+           }
+         }
+       }
+     });
+     if(book.Sheets['Bookings'])book.Sheets['Bookings']['!rows']=[{},{},{},{hpt:32}];
+     
      XLSX.writeFile(book,'Oxygen-Towers-Updated-Workbook.xlsx',{bookType:'xlsx',cellStyles:true});
    }catch(err){console.error(err);alert('Could not create the Excel workbook. Please try again or download the original workbook.');}
  }
