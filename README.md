@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Oxygen Towers | NCD</title><meta name="theme-color" content="#0c2c50"/><link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png" /><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/><meta name="application-name" content="Oxygen Towers | NCD"/><meta name="apple-mobile-web-app-title" content="Oxygen NCD"/><link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" /><link rel="manifest" href="./manifest.webmanifest" /><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&amp;family=Manrope:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"/><style>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Oxygen Towers | NCD</title><meta name="theme-color" content="#0c2c50"/><link rel="apple-touch-icon" sizes="180x180" href="/Oxygen-Towers/icons/apple-touch-icon-v2.png" /><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/><meta name="application-name" content="Oxygen Towers | NCD"/><meta name="apple-mobile-web-app-title" content="Oxygen Towers | NCD"/><link rel="icon" type="image/png" sizes="192x192" href="/Oxygen-Towers/icons/icon-192-v2.png" /><link rel="manifest" href="/Oxygen-Towers/manifest.webmanifest?v=2" /><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&amp;family=Manrope:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"/><style>
 :root{
 --navy:#071b33;
 --navy2:#0c2c50;
@@ -2568,6 +2568,26 @@ body{background:linear-gradient(180deg,#f4f8fc 0%,#eef4f9 100%);color:var(--ot-i
 .hero-content .hero-actions { animation: oxygenActionsFadeIn 1.5s cubic-bezier(.2,.75,.25,1) 5.45s both; }
 @media (prefers-reduced-motion: reduce) {
   .hero-content .eyebrow, .hero-content h1, .hero-content .hero-description, .hero-content .hero-actions { animation: none !important; }
+}
+</style>
+
+<style id="ot-mobile-install-music-fix-v2">
+/* v2: consistent top-corner music control on phone and desktop */
+#otLuxuryMusicToggle{
+ position:fixed !important;
+ top:calc(env(safe-area-inset-top, 0px) + 12px) !important;
+ right:12px !important;
+ bottom:auto !important;
+ left:auto !important;
+ z-index:2147483647 !important;
+ width:40px !important;height:40px !important;
+}
+@media(max-width:600px){
+ #otLuxuryMusicToggle{
+  top:calc(env(safe-area-inset-top, 0px) + 10px) !important;
+  right:10px !important;bottom:auto !important;left:auto !important;
+  width:38px !important;height:38px !important;
+ }
 }
 </style>
 </head><body><header class="hero" id="overview"><div class="hero-inner"><nav aria-label="Main navigation" class="nav dashboard-header">
