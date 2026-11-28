@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Oxygen Towers | NCD</title><meta name="theme-color" content="#0c2c50"/><link rel="apple-touch-icon" sizes="180x180" href="/Oxygen-Towers/icons/apple-touch-icon-v2.png" /><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/><meta name="application-name" content="Oxygen Towers | NCD"/><meta name="apple-mobile-web-app-title" content="Oxygen Towers | NCD"/><link rel="icon" type="image/png" sizes="192x192" href="/Oxygen-Towers/icons/icon-192-v2.png" /><link rel="manifest" href="/Oxygen-Towers/manifest.webmanifest?v=2" /><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&amp;family=Manrope:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"/><style>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Oxygen Towers | NCD</title><meta name="theme-color" content="#0c2c50"/><link rel="apple-touch-icon" sizes="180x180" href="/Oxygen-Towers/apple-touch-icon-v4.png?v=4" /><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/><meta name="application-name" content="Oxygen Towers | NCD"/><meta name="apple-mobile-web-app-title" content="Oxygen Towers | NCD"/><link rel="icon" type="image/png" sizes="192x192" href="/Oxygen-Towers/icons/icon-192-v4.png?v=4" /><link rel="manifest" href="/Oxygen-Towers/manifest.webmanifest?v=4" /><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&amp;family=Manrope:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"/><style>
 :root{
 --navy:#071b33;
 --navy2:#0c2c50;
@@ -2571,24 +2571,10 @@ body{background:linear-gradient(180deg,#f4f8fc 0%,#eef4f9 100%);color:var(--ot-i
 }
 </style>
 
-<style id="ot-mobile-install-music-fix-v2">
-/* v2: consistent top-corner music control on phone and desktop */
-#otLuxuryMusicToggle{
- position:fixed !important;
- top:calc(env(safe-area-inset-top, 0px) + 12px) !important;
- right:12px !important;
- bottom:auto !important;
- left:auto !important;
- z-index:2147483647 !important;
- width:40px !important;height:40px !important;
-}
-@media(max-width:600px){
- #otLuxuryMusicToggle{
-  top:calc(env(safe-area-inset-top, 0px) + 10px) !important;
-  right:10px !important;bottom:auto !important;left:auto !important;
-  width:38px !important;height:38px !important;
- }
-}
+<style id="ot-mobile-install-music-fix-v3">
+/* Music control is moved directly under body by the script below. */
+#otLuxuryMusicToggle{position:fixed!important;top:calc(env(safe-area-inset-top,0px) + 12px)!important;right:12px!important;bottom:auto!important;left:auto!important;z-index:2147483647!important;transform:none!important;}
+@media(max-width:600px){#otLuxuryMusicToggle{top:calc(env(safe-area-inset-top,0px) + 10px)!important;right:10px!important;bottom:auto!important;left:auto!important;}}
 </style>
 </head><body><header class="hero" id="overview"><div class="hero-inner"><nav aria-label="Main navigation" class="nav dashboard-header">
 <a aria-label="NorthCity Developers — Oxygen Towers home" class="dashboard-brand" href="#overview">
@@ -5003,6 +4989,31 @@ render();
  }
  document.addEventListener('pointerdown',firstGesture,true);
  document.addEventListener('keydown',firstGesture,true);
+})();
+</script>
+
+<script id="ot-music-fixed-position-v3">
+(function(){
+  function pinMusicControl(){
+    var b=document.getElementById('otLuxuryMusicToggle');
+    if(!b) return;
+    /* Escape transformed/scrolling containers that can make fixed controls drift. */
+    if(b.parentElement!==document.body) document.body.appendChild(b);
+    b.style.setProperty('position','fixed','important');
+    b.style.setProperty('top','calc(env(safe-area-inset-top, 0px) + 10px)','important');
+    b.style.setProperty('right','10px','important');
+    b.style.setProperty('bottom','auto','important');
+    b.style.setProperty('left','auto','important');
+    b.style.setProperty('z-index','2147483647','important');
+    b.style.setProperty('transform','none','important');
+    b.style.setProperty('margin','0','important');
+    b.style.setProperty('display','flex','important');
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',pinMusicControl); else pinMusicControl();
+  window.addEventListener('load',pinMusicControl,{passive:true});
+  window.addEventListener('scroll',pinMusicControl,{passive:true});
+  window.addEventListener('resize',pinMusicControl,{passive:true});
+  setTimeout(pinMusicControl,500); setTimeout(pinMusicControl,1500);
 })();
 </script>
 </body></html>
