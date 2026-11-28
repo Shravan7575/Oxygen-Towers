@@ -4922,6 +4922,46 @@ render();
  restore();recalcAll();rebuildFilters();updateTotals();
 })();
 </script>
+
+<style id="ot-background-piano-style">
+  #otMusicToggle{position:fixed;right:18px;bottom:18px;z-index:99999;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:12px 17px;background:linear-gradient(135deg,#0b2b4d,#126fc0);color:#fff;font:700 13px/1.2 "DM Sans",sans-serif;box-shadow:0 8px 24px rgba(4,25,48,.28);cursor:pointer}
+  #otMusicToggle:focus-visible{outline:2px solid #8bc9ff;outline-offset:3px}
+  @media(max-width:520px){#otMusicToggle{right:12px;bottom:12px;padding:11px 14px}}
+</style>
+<audio id="otBackgroundPiano" loop preload="auto" autoplay playsinline>
+  <source src="https://upload.wikimedia.org/wikipedia/commons/b/b8/K545_andante.ogg" type="audio/ogg">
+</audio>
+<button id="otMusicToggle" type="button" aria-label="Turn background music on or off">♫ Tap for music</button>
+<script id="ot-background-piano-script">
+(function(){
+  const audio=document.getElementById('otBackgroundPiano');
+  const toggle=document.getElementById('otMusicToggle');
+  if(!audio||!toggle)return;
+  audio.volume=0.18;
+  let started=false;
+  function setLabel(playing){
+    toggle.textContent=playing?'♫ Music Off':'♫ Tap for music';
+    toggle.setAttribute('aria-pressed',playing?'true':'false');
+  }
+  function startMusic(){
+    audio.play().then(function(){started=true;setLabel(true);}).catch(function(){setLabel(false);});
+  }
+  // Try immediately when the app opens. Browsers may block audible autoplay;
+  // if blocked, the first user interaction starts playback.
+  startMusic();
+  document.addEventListener('pointerdown',function(event){
+    if(!started && event.target!==toggle && !toggle.contains(event.target)) startMusic();
+  },{once:true,capture:true});
+  toggle.addEventListener('click',function(){
+    if(!audio.paused){audio.pause();started=false;setLabel(false);}
+    else startMusic();
+  });
+  audio.addEventListener('play',function(){started=true;setLabel(true);});
+  audio.addEventListener('pause',function(){started=false;setLabel(false);});
+})();
+</script>
+<!-- Piano music: Mozart, Piano Sonata No. 16 in C major, K.545, second movement (Andante). Public-domain recording from Wikimedia Commons. -->
+
 </body></html>
 <script id="northcity-dashboard-navigation">
 (function(){
